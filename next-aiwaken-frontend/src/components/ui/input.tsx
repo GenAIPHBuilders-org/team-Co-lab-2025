@@ -1,32 +1,47 @@
 "use client";
 
 import * as React from "react";
-import { Controller, Control, FieldPath, FieldValues } from "react-hook-form";
+import {
+  Controller,
+  Control,
+  FieldPath,
+  FieldValues,
+} from "react-hook-form";
 import { cn } from "@/lib/utils";
 
 type InputProps = React.ComponentPropsWithoutRef<"input"> & {
   error?: string;
+  icon?: React.ReactNode;
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, error, ...props }, ref) => {
+  ({ className, type, error, icon, ...props }, ref) => {
     return (
       <div>
-        <input
-          type={type}
-          className={cn(
-            "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-            error && "border-red-500",
-            className
+        <div className="relative h-10">
+          {icon && (
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+              {icon}
+            </div>
           )}
-          ref={ref}
-          {...props}
-        />
+          <input
+            type={type}
+            className={cn(
+              "h-full w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+              icon && "pl-10",
+              error && "border-red-500",
+              className
+            )}
+            ref={ref}
+            {...props}
+          />
+        </div>
         {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
       </div>
     );
   }
 );
+
 Input.displayName = "Input";
 
 type ControlledInputProps<
@@ -70,6 +85,7 @@ function ControlledInput<
               {isRequired && <span className="text-red-500 ml-1">*</span>}
             </label>
           )}
+
           <Input
             style={{ zIndex: 99999 }}
             {...inputProps}
