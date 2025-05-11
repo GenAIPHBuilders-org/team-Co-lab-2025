@@ -10,8 +10,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
 import { RegistrationIcon } from "../icons/registration-icon"
 import { useRegistration } from "@/(features)/authentication-action"
+import { useRouter } from "next/navigation"
 
 export default function RegistrationForm() {
+  const router = useRouter();
   const { registerCb, isLoading, isSuccess } = useRegistration();
   const methods = useForm<RegistrationFormValues>({
     mode: "all",
@@ -30,6 +32,7 @@ export default function RegistrationForm() {
     try {
       await registerCb(values);
       methods.reset();
+      router.push("/login");
     } catch (error) {
       console.error("Error submitting form:", error)
     }
