@@ -3,9 +3,7 @@
 // Future improvements: refactor this component.
 import { useState } from "react"
 import {
-  BookOpen,
   Calculator,
-  Code,
   FlaskRoundIcon as Flask,
   Lock,
   ChevronRight,
@@ -97,26 +95,6 @@ const topics = [
     description: "Explore the natural world through scientific inquiry and experimentation.",
     rewards: ["Scientific Method Mastery", "Observation +3", "Analytical Thinking"],
   },
-  {
-    id: 3,
-    name: "Computer Science",
-    icon: Code,
-    color: "bg-blue-100 text-blue-600",
-    locked: true,
-    difficulty: "intermediate" as Difficulty,
-    description: "Learn programming fundamentals and computational thinking.",
-    rewards: ["Coding Proficiency", "Logic +5", "Algorithm Design"],
-  },
-  {
-    id: 4,
-    name: "Literature",
-    icon: BookOpen,
-    color: "bg-purple-100 text-purple-600",
-    locked: true,
-    difficulty: "beginner" as Difficulty,
-    description: "Discover great works of literature and develop critical reading skills.",
-    rewards: ["Comprehension +3", "Vocabulary Expansion", "Cultural Awareness"],
-  },
 ]
 
 export function TopicSelectionCard() {
@@ -141,12 +119,12 @@ export function TopicSelectionCard() {
   return (
     <>
       <TooltipProvider>
-        <Card className="overflow-hidden">
-          <CardHeader className="bg-slate-50 pb-3">
+        <Card className="overflow-hidden h-64">
+          <CardHeader className="">
             <CardTitle className="text-lg">Educational Topics</CardTitle>
             <CardDescription>Select a topic to explore</CardDescription>
           </CardHeader>
-          <CardContent className="p-4">
+          <CardContent className="">
             <div className="grid grid-cols-2 gap-2">
               {topics.map((topic) => {
                 const Icon = topic.icon
@@ -156,8 +134,8 @@ export function TopicSelectionCard() {
                     key={topic.id}
                     variant="outline"
                     className={cn(
-                      "h-auto flex-col gap-2 p-3 justify-start items-center border relative",
-                      selectedTopic === topic.id ? "border-slate-400 bg-slate-50" : "border-slate-200",
+                      "h-auto flex-col gap-2 p-4 justify-start items-center border border-[#9F8DFC] relative",
+                      selectedTopic === topic.id ? "border-slate-400 bg-slate-50" : "border-[#9F8DFC]",
                       topic.locked ? "opacity-80" : "",
                     )}
                     onClick={() => handleTopicClick(topic)}
@@ -166,10 +144,10 @@ export function TopicSelectionCard() {
                     <div className={cn("rounded-full p-2", topic.color)}>
                       <Icon className="h-4 w-4" />
                     </div>
-                    <span className="text-xs font-medium">{topic.name}</span>
+                    <span className="text-xs font-medium text-[#9F8DFC]">{topic.name}</span>
                     {topic.locked && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-100/80 rounded-sm">
-                        <Lock className="h-4 w-4 text-slate-500" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-slate-500/70 rounded-sm">
+                        <Lock className="h-4 w-4 text-slate-100" />
                       </div>
                     )}
                     {!topic.locked && (
@@ -205,34 +183,34 @@ export function TopicSelectionCard() {
       </TooltipProvider>
 
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="sm:max-w-md border-0 bg-gray-900 text-white shadow-[0_0_15px_rgba(0,149,255,0.5)] overflow-hidden p-0">
+        <DialogContent className="sm:max-w-md border-0 bg-gray-900/80 text-white shadow-[0_0_15px_rgba(159,141,252,0.5)] overflow-hidden p-0">
           <div className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=400')] opacity-10"></div>
 
           <button
             onClick={() => setModalOpen(false)}
             className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
           >
-            <X className="h-4 w-4 text-blue-400" />
+            <X className="h-4 w-4 text-[#9F8DFC]" />
             <span className="sr-only">Close</span>
           </button>
 
           <div className="relative z-10">
-            <DialogHeader className="border-b border-blue-900/50 bg-gradient-to-r from-blue-950 to-gray-900 p-6">
+            <DialogHeader className="border-b border-[#9F8DFC]/50 bg-gradient-to-r from-[#9F8DFC] to-gray-900 p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-900 text-blue-300">
-                    <Star className="h-4 w-4" />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#9F8DFC]">
+                    <Star className="h-4 w-4 text-[#9F8DFC]" />
                   </div>
-                  <DialogTitle className="text-xl font-bold text-blue-300">QUEST CONFIRMATION</DialogTitle>
+                  <DialogTitle className="text-xl font-bold ">QUEST CONFIRMATION</DialogTitle>
                 </div>
                 {confirmingTopic && (
-                  <div className="flex items-center gap-1 rounded-full bg-blue-900/50 px-3 py-1 text-xs font-bold text-blue-300">
+                  <div className="flex items-center gap-1 rounded-full bg-[#9F8DFC] px-3 py-1 text-xs font-bold ">
                     <span>LVL {difficultyMap[confirmingTopic.difficulty].level}</span>
                   </div>
                 )}
               </div>
               {confirmingTopic && (
-                <DialogDescription className="mt-2 text-lg font-medium text-blue-100">
+                <DialogDescription className="mt-2 text-lg font-medium ">
                   {confirmingTopic.name}
                 </DialogDescription>
               )}
@@ -244,39 +222,12 @@ export function TopicSelectionCard() {
                   <p className="text-sm text-gray-300">{confirmingTopic.description}</p>
                 </div>
 
-                {/* <div className="mb-6">
-                  <h4 className="mb-2 text-sm font-bold text-blue-400">REQUIRED STATS</h4>
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="flex flex-col items-center rounded-md bg-gray-800/50 p-2">
-                      <Sword className="mb-1 h-4 w-4 text-red-400" />
-                      <span className="text-xs text-gray-400">Strength</span>
-                      <span className="text-sm font-bold text-white">
-                        {difficultyMap[confirmingTopic.difficulty].stats.strength}
-                      </span>
-                    </div>
-                    <div className="flex flex-col items-center rounded-md bg-gray-800/50 p-2">
-                      <Brain className="mb-1 h-4 w-4 text-blue-400" />
-                      <span className="text-xs text-gray-400">Intelligence</span>
-                      <span className="text-sm font-bold text-white">
-                        {difficultyMap[confirmingTopic.difficulty].stats.intelligence}
-                      </span>
-                    </div>
-                    <div className="flex flex-col items-center rounded-md bg-gray-800/50 p-2">
-                      <Shield className="mb-1 h-4 w-4 text-green-400" />
-                      <span className="text-xs text-gray-400">Endurance</span>
-                      <span className="text-sm font-bold text-white">
-                        {difficultyMap[confirmingTopic.difficulty].stats.endurance}
-                      </span>
-                    </div>
-                  </div>
-                </div> */}
-
                 <div className="mb-6">
-                  <h4 className="mb-2 text-sm font-bold text-blue-400">REWARDS</h4>
+                  <h4 className="mb-2 text-sm font-bold text-[#9F8DFC]">REWARDS</h4>
                   <ul className="space-y-2">
                     {confirmingTopic.rewards.map((reward, index) => (
                       <li key={index} className="flex items-center gap-2 text-sm">
-                        <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
+                        <div className="h-1.5 w-1.5 rounded-full bg-[#9F8DFC]"></div>
                         <span className="text-gray-300">{reward}</span>
                       </li>
                     ))}
@@ -293,13 +244,13 @@ export function TopicSelectionCard() {
                   </Button>
                   <Button
                     onClick={handleConfirm}
-                    className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900"
+                    className="relative overflow-hidden bg-gradient-to-r from-[#9F8DFC] to-[#9F8DFC] text-white hover:from-[#9F8DFC] hover:to-[#9F8DFC]"
                   >
                     <span className="relative z-10 flex items-center font-bold">
                       Confirm <ChevronRight className="ml-1 h-4 w-4" />
                     </span>
                     <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
-                      <span className="h-full w-full bg-blue-400/20"></span>
+                      <span className="h-full w-full bg-[#9F8DFC]/20"></span>
                     </span>
                   </Button>
                 </DialogFooter>
