@@ -27,5 +27,6 @@ declare global {
     type TAuthContextValue = {
         user: TUser | null;
         login: (username: string, password: string) => Promise<void>;
+        handleLogout: () => void;
     }
 }

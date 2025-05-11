@@ -10,14 +10,14 @@ type AuthProps = {
 
 const AuthenticationContext = createContext<TAuthContextValue>({
     user: null,
-    login: async () => {},
+    login: async () => { },
+    handleLogout: () => { },
 })
 
 export const useAuthentication = () => {
     if (!AuthenticationContext) {
         throw new Error("useAuthentication must be used within an AuthenticationProvider");
     }
-
     return useContext(AuthenticationContext);
 }
 
@@ -58,11 +58,18 @@ export const AuthenticationProvider = ({initialUser, children}: AuthProps) => {
          }
     }
 
+    function handleLogout() {
+        setUser(null);
+        TokenStorage.removeAccessToken();
+        document.cookie = "access_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+        router.push("/login");
+    }
+
     return (
         <AuthenticationContext.Provider value={{
             user,
             login,
-
+            handleLogout,
         }}>
             {children}
         </AuthenticationContext.Provider>
