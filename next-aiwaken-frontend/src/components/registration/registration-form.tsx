@@ -9,9 +9,10 @@ import { RegistrationFormValues, registrationSchema } from "./schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
 import { RegistrationIcon } from "../icons/registration-icon"
+import { useRegistration } from "@/(features)/authentication-action"
 
 export default function RegistrationForm() {
-  const [isSubmitted, setIsSubmitted] = React.useState(false)
+  const { registerCb, isLoading, isSuccess } = useRegistration();
   const methods = useForm<RegistrationFormValues>({
     mode: "all",
     resolver: zodResolver(registrationSchema),
@@ -23,24 +24,16 @@ export default function RegistrationForm() {
     },
   })
 
-  const { control, handleSubmit, watch } = methods;
-
-  console.log(watch());
-
+  const { control, handleSubmit } = methods;
 
   async function onSubmit(values: RegistrationFormValues) {
     try {
-      setIsSubmitted(true)
-      console.log("Form submitted:", values)
-      // Simulate an API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      setIsSubmitted(false)
-
+      await registerCb(values);
+      methods.reset();
     } catch (error) {
       console.error("Error submitting form:", error)
     }
   }
-
 
   return (
     <FormProvider {...methods}>
@@ -101,18 +94,18 @@ export default function RegistrationForm() {
         <CardFooter>
           <Button
             onClick={handleSubmit(onSubmit)}
-            disabled={isSubmitted}
+            disabled={isLoading}
             className="w-full bg-purple-700 hover:bg-purple-600 text-white font-semibold relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center justify-center">
-              {isSubmitted ? "Registering..." : "Register"}
+              {isLoading ? "Registering..." : "Register"}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </Button>
         </CardFooter>
       </Card>
-      {isSubmitted && (
+      {isSuccess && (
         <div
           className="fixed top-4 opacity-100 left-1/2 transform -translate-x-1/2 bg-blue-900 border border-blue-500 text-blue-100 px-6 py-3 rounded shadow-lg transition-opacity duration-300  flex items-center"
         >
