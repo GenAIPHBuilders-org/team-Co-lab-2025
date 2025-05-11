@@ -10,8 +10,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
 import { RegistrationIcon } from "../icons/registration-icon"
 import { Checkbox } from "../ui/checkbox"
+import { useAuthentication } from "@/context/auth-context"
 
 export default function LoginForm() {
+  const { login } = useAuthentication();
   const [isSubmitted, setIsSubmitted] = React.useState(false)
   const methods = useForm<LoginFormValues>({
     mode: "all",
@@ -22,24 +24,18 @@ export default function LoginForm() {
     },
   })
 
-  const { control, handleSubmit, watch } = methods;
-
-  console.log(watch());
-
+  const { control, handleSubmit } = methods;
 
   async function onSubmit(values: LoginFormValues) {
     try {
+      await login(values.username, values.password)
       setIsSubmitted(true)
-      console.log("Form submitted:", values)
-      // Simulate an API call
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      setIsSubmitted(false)
+      methods.reset();
 
     } catch (error) {
       console.error("Error submitting form:", error)
     }
   }
-
 
   return (
     <FormProvider {...methods}>

@@ -12,12 +12,12 @@ export const description = "A sidebar with a header and a search form."
 export default function Page() {
   return (
     <div className="[--header-height:calc(--spacing(14))] ">
-      <SidebarProvider className="flex flex-col bg-gradient-to-b from-gray-900 to-gray-950" >
+      <SidebarProvider className="flex flex-col " >
         <SiteHeader />
         <div className="flex flex-1 ">
           <AppSidebar collapsible="icon"/>
           <SidebarInset>
-            <div className="flex flex-1 flex-col gap-4 p-4 bg-gradient-to-b from-gray-900 to-gray-950">
+            <div className="flex flex-1 flex-col gap-4 p-4  bg-gradient-to-b from-gray-900 to-gray-950 shadow-sm backdrop-blur">
               <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                 <Card className="flex-1 glow-border h-64">
                 <CardContent className="p-6">

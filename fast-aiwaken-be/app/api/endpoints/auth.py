@@ -6,7 +6,7 @@ from app.models.user import LoginRequest
 
 from app.controller import user_controller as user_service
 from app.schemas.user import User, UserCreate
-from app.schemas.token import Token
+from app.schemas.token import TokenizedUser
 from app.dependencies import get_db, get_current_user
 from app.security import create_access_token
 from app.config import settings
@@ -32,8 +32,8 @@ def register(
     user = user_service.create_user(db, user_in=user_in)
     return user
 
-@router.post("/login", response_model=Token)
-def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> Token:
+@router.post("/login", response_model=TokenizedUser)
+def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> TokenizedUser:
 
     user_obj = user_service.authenticate_user(
         db, credentials.dict()
@@ -56,9 +56,13 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> Token:
         "token_type": "Bearer",
     }
 
-@router.get("/current-user", response_model=User)
+@router.get("/current-user", response_model=TokenizedUser)
 def get_current_user_info(
     current_user: User = Depends(get_current_user),
-) -> User:
-
-    return current_user
+) -> TokenizedUser:
+    access_token = create_access_token(subject=current_user.id)
+    return {
+        "user": current_user,
+        "access_token": access_token,
+        "token_type": "Bearer",
+    }
