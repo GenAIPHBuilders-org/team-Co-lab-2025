@@ -55,7 +55,7 @@ export default function LoginForm() {
               <ControlledInput
                 control={control}
                 name="username"
-                label="Username"
+                label="Username / Email"
                 type="text"
                 icon={<User className="h-4 w-4 text-purple-500" />}
                 className="pl-10 bg-gray-800 border-[#7b2cbf] text-white focus:border-purple-500 focus:ring-purple-500"

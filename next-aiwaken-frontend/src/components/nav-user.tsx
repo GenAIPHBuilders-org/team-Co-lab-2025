@@ -32,7 +32,7 @@ import {
 import { useAuthentication } from "@/context/auth-context"
 
 export function NavUser() {
-  const { user } = useAuthentication();
+  const { user, handleLogout } = useAuthentication();
   const { isMobile } = useSidebar()
 
   return (
@@ -96,7 +96,7 @@ export function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
               <LogOut />
               Log out
             </DropdownMenuItem>
