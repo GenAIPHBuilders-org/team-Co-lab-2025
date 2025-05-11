@@ -2,8 +2,10 @@
 from typing import Optional
 from pydantic import BaseModel
 from datetime import datetime
+from app.models.user import UserInfo
 
 class Token(BaseModel):
+    user: UserInfo
     access_token: str
     token_type: str
 

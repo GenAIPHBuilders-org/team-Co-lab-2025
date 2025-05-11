@@ -1,6 +1,6 @@
 from typing import Optional
 from sqlalchemy.orm import Session
-
+import re
 from app.models.user import User
 from app.schemas.user import UserCreate
 from app.security import get_password_hash, verify_password
@@ -26,16 +26,22 @@ def create_user(db: Session, user_in: UserCreate) -> User:
     db.refresh(db_user)
     return db_user
 
-def authenticate_user(db: Session, username_or_email: str, password: str) -> Optional[User]:
-    # Try to find user by email first
-    user = get_user_by_email(db, username_or_email)
-    
-    # If not found by email, try by username
-    if not user:
-        user = get_user_by_username(db, username_or_email)
-    
-    # If still not found or password doesn't match, return None
+def authenticate_user(db: Session, credentials: dict) -> Optional[User]:
+    username = credentials.get("username")
+    password = credentials.get("password")
+
+    if not username or not password:
+        return None
+
+    if is_email(username):
+        user = get_user_by_email(db, username)
+    else:
+        user = get_user_by_username(db, username)
+
     if not user or not verify_password(password, user.hashed_password):
         return None
-    
+
     return user
+
+def is_email(value: str) -> bool:
+    return re.match(r"[^@]+@[^@]+\.[^@]+", value) is not None
