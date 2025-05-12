@@ -14,15 +14,16 @@ declare global {
     }
 
     type TUser = {
-        user: {
-            id: number;
-            username: string;
-            email: string;
-            is_active: boolean;
-        }
-        accessToken?: string;
-        token_type?: string;
-    }
+      user: {
+        id: number;
+        username: string;
+        email: string;
+        is_active: boolean;
+        is_new_user?: boolean;
+      };
+      accessToken?: string;
+      token_type?: string;
+    };
 
     type TAuthContextValue = {
         user: TUser | null;

@@ -45,3 +45,8 @@ def authenticate_user(db: Session, credentials: dict) -> Optional[User]:
 
 def is_email(value: str) -> bool:
     return re.match(r"[^@]+@[^@]+\.[^@]+", value) is not None
+
+def setNewUser(db: Session, user: User) -> None:
+    user.is_new_user = False
+    db.commit()
+    db.refresh(user)

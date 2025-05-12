@@ -56,7 +56,7 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> Tokenized
         "token_type": "Bearer",
     }
 
-@router.get("/current-user", response_model=TokenizedUser)
+@router.get("/tokenized-user", response_model=TokenizedUser)
 def get_current_user_info(
     current_user: User = Depends(get_current_user),
 ) -> TokenizedUser:
@@ -66,3 +66,11 @@ def get_current_user_info(
         "access_token": access_token,
         "token_type": "Bearer",
     }
+
+@router.post("/set-new-user-status", response_model=User)
+def set_new_user_status(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> User:
+    user_service.setNewUser(db, current_user)
+    return current_user

@@ -7,7 +7,7 @@ class ApiService {
     return data;
   }
 
-  static async post<T>(url: string, body: Record<string, any>): Promise<T> {
+  static async post<T>(url: string, body?: Record<string, any>): Promise<T> {
     const { data } = await apiClient.post<T>(url, body);
     return data;
   }

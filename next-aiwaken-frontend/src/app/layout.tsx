@@ -4,6 +4,7 @@ import "./globals.css";
 import { QueryClientContextProvider } from "@/context/query-client-context";
 import { AuthenticationProvider } from "@/context/auth-context";
 import { getServerAuthSession } from "@/services/ssr/auth";
+import { OnboardingStepper } from "@/components/on-boarding-stepper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,23 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const data = await getServerAuthSession();
+
+  if (data?.user.is_new_user) {
+    return (
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <QueryClientContextProvider>
+            <div className="w-full h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-950 shadow-sm backdrop-blur">
+              <OnboardingStepper />
+            </div>
+          </QueryClientContextProvider>
+        </body>
+      </html>
+    );
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -34,7 +52,7 @@ export default async function RootLayout({
         <QueryClientContextProvider>
           <AuthenticationProvider initialUser={data}>
             {children}
-        </AuthenticationProvider>
+          </AuthenticationProvider>
         </QueryClientContextProvider>
       </body>
     </html>
