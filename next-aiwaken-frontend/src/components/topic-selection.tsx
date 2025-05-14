@@ -181,7 +181,7 @@ export function TopicSelectionCard() {
   return (
     <>
       <TooltipProvider>
-        <Card className="overflow-hidden h-64">
+        <Card className="overflow-hidden h-64 glow-border">
           <CardHeader className="">
             <CardTitle className="text-lg">Educational Topics</CardTitle>
             <CardDescription>Select a topic to explore</CardDescription>
@@ -189,7 +189,7 @@ export function TopicSelectionCard() {
           <CardContent className="">
             <div className="grid grid-cols-2 gap-2">
               {topics.map((topic) => {
-                const Icon = topic.icon
+                const Icon = topic.icon;
 
                 const topicButton = (
                   <Button
@@ -197,8 +197,10 @@ export function TopicSelectionCard() {
                     variant="outline"
                     className={cn(
                       "h-auto flex-col gap-2 p-4 justify-start items-center border border-[#9F8DFC] relative",
-                      selectedTopic === topic.id ? "border-slate-400 bg-slate-50" : "border-[#9F8DFC]",
-                      topic.locked ? "opacity-80" : "",
+                      selectedTopic === topic.id
+                        ? "border-slate-400 bg-slate-50"
+                        : "border-[#9F8DFC]",
+                      topic.locked ? "opacity-80" : ""
                     )}
                     onClick={() => handleTopicClick(topic)}
                     disabled={topic.locked}
@@ -206,7 +208,9 @@ export function TopicSelectionCard() {
                     <div className={cn("rounded-full p-2", topic.color)}>
                       <Icon className="h-4 w-4" />
                     </div>
-                    <span className="text-xs font-medium text-[#9F8DFC]">{topic.name}</span>
+                    <span className="text-xs font-medium text-[#9F8DFC]">
+                      {topic.name}
+                    </span>
                     {topic.locked && (
                       <div className="absolute inset-0 flex items-center justify-center bg-slate-500/70 rounded-sm">
                         <Lock className="h-4 w-4 text-slate-100" />
@@ -217,14 +221,14 @@ export function TopicSelectionCard() {
                         className={cn(
                           "absolute top-1 right-1 px-1.5 py-0.5 rounded-sm text-[10px] font-medium",
                           difficultyMap[topic.difficulty].color,
-                          difficultyMap[topic.difficulty].textColor,
+                          difficultyMap[topic.difficulty].textColor
                         )}
                       >
                         {difficultyMap[topic.difficulty].label}
                       </div>
                     )}
                   </Button>
-                )
+                );
 
                 return topic.locked ? (
                   <TooltipProvider key={topic.id}>
@@ -237,14 +241,14 @@ export function TopicSelectionCard() {
                   </TooltipProvider>
                 ) : (
                   topicButton
-                )
+                );
               })}
             </div>
           </CardContent>
         </Card>
       </TooltipProvider>
 
- <AnimatePresence>
+      <AnimatePresence>
         {modalOpen && (
           <Dialog open={modalOpen} onOpenChange={setModalOpen}>
             <DialogContent className="sm:max-w-md border-0 bg-gray-900/80 text-white shadow-[0_0_15px_rgba(159,141,252,0.5)] overflow-hidden p-0">
@@ -430,5 +434,5 @@ export function TopicSelectionCard() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
