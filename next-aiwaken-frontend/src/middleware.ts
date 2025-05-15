@@ -21,6 +21,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const PUBLIC_PATHS = ["/", "/login", "/registration"];
+const PRIVATE_PATHS = ["/dashboard", "/dashboard/course-structure"];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -33,11 +34,16 @@ export function middleware(request: NextRequest) {
   if (!token) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
+
   if (token && PUBLIC_PATHS.includes(pathname)) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  if (token && pathname !== "/dashboard") {
+  if (token && PRIVATE_PATHS.includes(pathname)) {
+    return NextResponse.next();
+  }
+
+  if (token && !PRIVATE_PATHS.includes(pathname)) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
