@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.endpoints import auth
 from app.config import settings
 from app.database import Base, engine
+from app.api.endpoints import companion_interaction
 
 # Create tables
 Base.metadata.create_all(bind=engine)
@@ -35,3 +36,7 @@ app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/authentication", 
 @app.get("/")
 def root():
     return {"message": "Authentication API"}
+
+
+# companion interaction router
+app.include_router(companion_interaction.router, prefix="/api/v1/companion")

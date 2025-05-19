@@ -18,6 +18,12 @@ class Settings(BaseSettings):
     POSTGRES_PORT: int = Field(..., env="POSTGRES_PORT")
     POSTGRES_DB: str = Field(..., env="POSTGRES_DB")
 
+    # Gemini API Key
+    GEMINI_API_KEY: str = Field(..., env="GEMINI_API_KEY") 
+
+    # Youtube API Key
+    YOUTUBE_API_KEY: str = Field(..., env="YOUTUBE_API_KEY")
+
     DATABASE_URL: str | None = Field(None, env="DATABASE_URL")
 
     @field_validator("DATABASE_URL", mode="before")
