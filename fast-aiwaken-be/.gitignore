@@ -16,3 +16,7 @@
 #  (Optional) Virtual environment
 .venv/
 venv/
+
+
+# __init__.py files
+__init__.py

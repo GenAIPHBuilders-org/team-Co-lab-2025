@@ -1,0 +1,112 @@
+from fastapi import APIRouter, Depends, HTTPException, Query
+from app.core.companion import CompanionLogic
+from app.core.llm_client import llm_client
+from typing import List, Dict, Any, Optional
+from app.static_data.game_data import COMPANION_DETAILS
+import json
+
+
+
+
+router = APIRouter()
+
+# companion details
+@router.get("/companion/details", response_model=Dict[str, Any])
+async def get_companion_details():
+    return {"companions": COMPANION_DETAILS}
+
+# course structure
+@router.get("/course/structure", response_model=Dict[str, Any])
+async def get_course_structure(subject: str = Query(..., description="The subject of the course, e.g., 'mathematics'"),
+                               difficulty: str = Query(..., description="The difficulty level, e.g., 'easy'")):
+    """
+    Generates and returns the structured outline for a course, including sections,
+    topics, and learning steps with material type suggestions
+    """  
+    course_structure = llm_client.generate_structured_course(subject, difficulty)
+    if not course_structure or course_structure.get("error"):
+        raise HTTPException(status_code=500, detail=f"Failed to generate course structure: {course_structure.get('error', 'Unknown LLM error')}")
+    if not course_structure.get("sections"): # Basic validation
+        raise HTTPException(status_code=500, detail="Generated course structure is invalid or empty.")
+    return course_structure
+
+# course with structure and learning steps
+@router.get("/course/learning_step_content", response_model=Dict[str, Any])
+async def get_learning_step_content_api(
+    subject: str = Query(..., description="Subject of the course"),
+    topic_title: str = Query(..., description="Title of the parent topic"),
+    step_title: str = Query(..., description="Title of the specific learning step"),
+    material_type_suggestion: str = Query(..., description="Suggested material type, e.g., 'text', 'youtube_video'"),
+    difficulty: str = Query(..., description="Difficulty level of the course context"),
+    companion_name: str = Query("Gabriel", description="Name of the companion (e.g., Gabriel, Brian, Ryan, Kent)") 
+):
+    content_details = llm_client.generate_learning_step_content(
+        subject=subject,
+        topic_title=topic_title,
+        step_title=step_title,
+        material_type_suggestion=material_type_suggestion,
+        difficulty=difficulty,
+        companion_name=companion_name
+    )
+    if not content_details or content_details.get("error"):
+        raise HTTPException(status_code=500, detail="Failed to generate learning step content.")
+    return content_details
+
+
+# interactive quiz place holder
+@router.get("/course/learning_step_quiz", response_model=dict)
+async def get_learning_step_quiz(
+    subject: str = Query(...),
+    topic_title: str = Query(...),
+    step_title: str = Query(...),
+    difficulty: str = Query(...),
+    companion_name: str = Query("Gabriel")
+):
+    prompt = (
+        f"Generate a 5-question multiple-choice quiz for the learning step '{step_title}' "
+        f"in the topic '{topic_title}' for the subject '{subject}' at {difficulty} level. "
+        f"Each question should have 4 options and indicate the correct answer."
+    )
+    quiz = llm_client.generate_content(prompt, is_json_output=True)
+    return {"quiz": quiz}
+
+
+
+# course conclusion endpoint for quiz and summary
+@router.post("/course/conclusion", response_model=Dict[str, Any])
+async def get_course_conclusion_api(
+    course_title: str = Query(..., description="Title of the course"),
+    subject: str = Query(..., description="Subject of the course"),
+    difficulty: str = Query(..., description="Difficulty level"),
+    sections_data_json: str = Query(..., description="JSON string of course sections/topics covered"),
+    enemy_theme: Optional[str] = Query("a cunning quizmaster", description="Theme for the enemy delivering the quiz")
+):
+    try:
+        sections_data = json.loads(sections_data_json)
+        if not isinstance(sections_data, list):
+            raise ValueError("sections_data_json must be a JSON array of sections.")
+    except json.JSONDecodeError:
+        raise HTTPException(status_code=400, detail="Invalid JSON format for sections_data_json.")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+    # conclusion_data = dynamic_content_service.get_course_summary_and_quiz(course_title, subject, difficulty, sections_data, enemy_theme)
+    conclusion_data = llm_client.generate_course_summary_and_quiz(course_title, subject, difficulty, sections_data, enemy_theme)
+
+    # Extract topics covered
+    topics_covered = []
+    for section in sections_data:
+        for topic in section.get("topics", []):
+            topic_title = topic.get("topic_title")
+            if topic_title:
+                topics_covered.append(topic_title)
+
+    if not conclusion_data or conclusion_data.get("error"):
+        raise HTTPException(status_code=500, detail=f"Failed to generate course conclusion: {conclusion_data.get('error', 'Unknown LLM error')}")
+    if not conclusion_data.get("summary") or not conclusion_data.get("quiz"):
+        raise HTTPException(status_code=500, detail="Generated course conclusion is invalid or incomplete.")
+
+    # Add topics_covered to the response
+    conclusion_data["topics_covered"] = topics_covered
+    return conclusion_data
