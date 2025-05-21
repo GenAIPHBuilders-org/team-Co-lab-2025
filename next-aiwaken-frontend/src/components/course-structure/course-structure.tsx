@@ -106,11 +106,10 @@ export function CourseStructure({ courseData }: CourseStructureProps) {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-4 w-4 ${
-                      i < Math.floor(courseData.rating)
+                    className={`h-4 w-4 ${i < Math.floor(courseData.rating)
                         ? "text-yellow-400 fill-yellow-400"
                         : "text-gray-600"
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -166,9 +165,8 @@ export function CourseStructure({ courseData }: CourseStructureProps) {
             className="rounded-xl overflow-hidden border border-purple-800/40 bg-black/60 backdrop-blur-sm transition-all duration-300 hover:border-purple-600/60"
           >
             <div
-              className={`p-4 flex justify-between items-center cursor-pointer ${
-                chapter.unlocked ? "" : "opacity-70"
-              }`}
+              className={`p-4 flex justify-between items-center cursor-pointer ${chapter.unlocked ? "" : "opacity-70"
+                }`}
               onClick={() => chapter.unlocked && toggleChapter(index)}
             >
               <div className="flex items-center flex-1">
