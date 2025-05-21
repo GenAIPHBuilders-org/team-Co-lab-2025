@@ -35,6 +35,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useGenerateCourse } from "@/(features)/course-action";
 
 type Difficulty = "beginner" | "intermediate" | "advanced";
 
@@ -116,7 +117,8 @@ const topics = [
 ];
 
 export function TopicSelectionCard() {
-  const [selectedTopic, setSelectedTopic] = useState<number | null>(null);
+  const { data, generateCourseAsync } = useGenerateCourse();
+  const [selectedTopic,] = useState<number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmingTopic, setConfirmingTopic] = useState<
     (typeof topics)[0] | null
@@ -129,12 +131,16 @@ export function TopicSelectionCard() {
     }
   };
 
-  const handleConfirm = () => {
-    if (confirmingTopic) {
-      setSelectedTopic(confirmingTopic.id);
+  async function handleGenerateCourse(subject: string, difficulty: string) {
+    try {
+      await generateCourseAsync({ subject, difficulty });
+      console.log("Course generated successfully:", data);
+      setModalOpen(false);
+    } catch (error) {
+      console.error("Error generating course:", error);
       setModalOpen(false);
     }
-  };
+  }
 
   const dialogVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 20 },
@@ -400,7 +406,7 @@ export function TopicSelectionCard() {
                         transition={{ delay: 0.9 }}
                       >
                         <Button
-                          onClick={handleConfirm}
+                          onClick={() => handleGenerateCourse("Mathematics", confirmingTopic.difficulty)}
                           className="relative overflow-hidden bg-gradient-to-r from-[#9F8DFC] to-[#9F8DFC] text-white hover:from-[#9F8DFC] hover:to-[#9F8DFC]"
                         >
                           <motion.span

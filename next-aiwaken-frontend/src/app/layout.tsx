@@ -5,6 +5,8 @@ import { QueryClientContextProvider } from "@/context/query-client-context";
 import { AuthenticationProvider } from "@/context/auth-context";
 import { getServerAuthSession } from "@/services/ssr/auth";
 import { OnboardingStepper } from "@/components/on-boarding-stepper";
+import { AuthLayout } from "@/components/auth-layout";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,7 +53,7 @@ export default async function RootLayout({
       >
         <QueryClientContextProvider>
           <AuthenticationProvider initialUser={data}>
-            {children}
+            <AuthLayout>{children}</AuthLayout>
           </AuthenticationProvider>
         </QueryClientContextProvider>
       </body>
