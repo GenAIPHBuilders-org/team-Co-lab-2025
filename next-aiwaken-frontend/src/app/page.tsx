@@ -1,103 +1,143 @@
-import Image from "next/image";
+import Link from "next/link"
+import { ArrowRight, Brain, Shield, Sparkles } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex w-full h-screen p-16 flex-col ">
+      <header className="container z-40 py-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Shield className="h-8 w-8 text-purple-500" />
+            <span className="text-2xl font-bold tracking-tighter text-white">
+              AI<span className="text-purple-500">WAKEN</span>
+            </span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6">
+            <Link href="#features" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+              Features
+            </Link>
+            <Link href="#how-it-works" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+              How It Works
+            </Link>
+            <Link href="#testimonials" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+              Testimonials
+            </Link>
+          </nav>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" className="text-gray-300 hover:text-white">
+              Sign In
+            </Button>
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white">Register</Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </header>
+
+      <section className="container py-24 md:py-32 relative">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-purple-900/20 blur-3xl"></div>
+          <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-900/20 blur-3xl"></div>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <Badge className="bg-purple-600 text-white hover:bg-purple-700">Level Up Your Education</Badge>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
+                Arise from the <span className="text-purple-500">Shadow</span> of Ignorance
+              </h1>
+              <p className="text-xl text-gray-300 max-w-[600px]">
+                A gamified learning platform inspired by Solo Leveling. Gain knowledge, complete quests, and level up
+                with our AI-powered educational system.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
+                Start Your Journey <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-gray-700 text-gray-300 hover:text-white hover:border-gray-600"
+              >
+                Learn More
+              </Button>
+            </div>
+            <div className="flex items-center gap-8">
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold text-white">10K+</span>
+                <span className="text-gray-400">Students</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold text-white">200+</span>
+                <span className="text-gray-400">Courses</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold text-white">95%</span>
+                <span className="text-gray-400">Success Rate</span>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="relative rounded-lg overflow-hidden border border-gray-800 shadow-2xl">
+              <div className="bg-gray-900 p-6 rounded-lg relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-2">
+                      <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center">
+                        <Shield className="h-5 w-5 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-white">Hunter Rank</h3>
+                        <p className="text-sm text-gray-400">E-Rank Hunter</p>
+                      </div>
+                    </div>
+                    <Badge className="bg-purple-600/20 text-purple-400 hover:bg-purple-600/30">Level 5</Badge>
+                  </div>
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-gray-400">Experience</span>
+                        <span className="text-gray-300">250/500 XP</span>
+                      </div>
+                      <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-purple-600 to-blue-500 w-1/2"></div>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-gray-800/50 p-4 rounded-lg">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Brain className="h-4 w-4 text-blue-400" />
+                          <span className="text-sm text-gray-300">Intelligence</span>
+                        </div>
+                        <span className="text-2xl font-bold text-white">42</span>
+                      </div>
+                      <div className="bg-gray-800/50 p-4 rounded-lg">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Sparkles className="h-4 w-4 text-yellow-400" />
+                          <span className="text-sm text-gray-300">Wisdom</span>
+                        </div>
+                        <span className="text-2xl font-bold text-white">38</span>
+                      </div>
+                    </div>
+                    <div className="bg-gray-800/50 p-4 rounded-lg">
+                      <h4 className="text-white font-medium mb-2">Current Quest</h4>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-gray-300">Advanced AI Concepts</span>
+                        <span className="text-sm text-gray-400">3/5 completed</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
+          </div>
+        </div>
+      </section>
+
     </div>
-  );
+  )
 }

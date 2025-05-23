@@ -1,3 +1,4 @@
+import { Course } from "@/app/dashboard/course-structure/mock";
 import Cookies from "js-cookie";
 
 export class TokenStorage {
@@ -21,5 +22,50 @@ export class TokenStorage {
 
   static setNewUser(): void {
     localStorage.setItem("new_user", "true");
+  }
+
+  static setUserCompanion(companion: string): void {
+    localStorage.setItem("user_companion", companion);
+  }
+
+  static getUserCompanion(): string | null {
+    return localStorage.getItem("user_companion") || null;
+  }
+
+  static getCourseData(): Course | null {
+    if (typeof window === "undefined") {
+      return null;
+    }
+
+    const rawData = localStorage.getItem("generatedCourse");
+
+    if (!rawData || rawData === "undefined") {
+      return null;
+    }
+
+    try {
+      return JSON.parse(rawData);
+    } catch (e) {
+      console.error("Failed to parse courseData from localStorage:", e);
+      return null;
+    }
+  }
+  static getSummaryConclusion(): CourseConclusion | null {
+    if (typeof window === "undefined") {
+      return null;
+    }
+
+    const data = localStorage.getItem("courseSummaryConclusion");
+
+    if (!data || data === "undefined") {
+      return null;
+    }
+
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      console.error("Failed to parse courseData from localStorage:", e);
+      return null;
+    }
   }
 }

@@ -1,10 +1,15 @@
 "use client";
+import { useAuthentication } from "@/context/auth-context";
 import { AppSidebar } from "./app-sidebar";
 import { SiteHeader } from "./site-header";
 import { SidebarInset, SidebarProvider } from "./ui/sidebar";
 import { motion } from "framer-motion";
 
 export function AuthLayout({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useAuthentication();
+
+  if (!isAuthenticated) return null;
+
   return (
     <div className="[--header-height:calc(--spacing(14))] ">
       <SidebarProvider className="flex flex-col">

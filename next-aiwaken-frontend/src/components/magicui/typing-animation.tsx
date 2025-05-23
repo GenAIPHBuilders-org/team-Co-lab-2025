@@ -1,10 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, MotionProps } from "motion/react";
+import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-interface TypingAnimationProps extends MotionProps {
+interface TypingAnimationProps {
   children: string;
   className?: string;
   duration?: number;

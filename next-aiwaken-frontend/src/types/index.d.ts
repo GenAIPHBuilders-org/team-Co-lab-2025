@@ -32,7 +32,7 @@ declare global {
     isAuthenticated: boolean;
   };
 
-  export interface CourseData {
+  interface CourseData {
     id: string;
     title: string;
     subtitle: string;
@@ -48,14 +48,14 @@ declare global {
     certification: Certification;
   }
 
-  export interface Instructor {
+  interface Instructor {
     name: string;
     title: string;
     avatar: string;
     bio: string;
   }
 
-  export interface Chapter {
+  interface Chapter {
     id: string;
     number: number;
     title: string;
@@ -67,7 +67,7 @@ declare global {
     resources: Resource[];
   }
 
-  export interface Lesson {
+  interface Lesson {
     id: string;
     title: string;
     type: string;
@@ -80,31 +80,31 @@ declare global {
     completed: boolean;
   }
 
-  export interface Resource {
+  interface Resource {
     title: string;
     type: string;
     url: string;
   }
 
-  export type LearningStep = {
+  type LearningStep = {
     step_id: string;
     step_title: string;
     material_type_suggestion: string;
   };
 
-  export type Topic = {
+  type Topic = {
     topic_id: string;
     topic_title: string;
     learning_steps: LearningStep[];
   };
 
-  export type Section = {
+  type Section = {
     section_id: string;
     section_title: string;
     topics: Topic[];
   };
 
-  export type CourseOutline = {
+  type CourseOutline = {
     course_title: string;
     course_description: string;
     subject: string;
@@ -112,7 +112,7 @@ declare global {
     sections: Section[];
   };
 
-  export interface Certification {
+  interface Certification {
     title: string;
     issuer: string;
     validityPeriod: string;
@@ -130,10 +130,69 @@ declare global {
     motivation_style: string;
   };
 
-  export type CompanionsData = {
+  type CompanionsData = {
     Gabriel: Companion;
     Brian: Companion;
     Ryan: Companion;
     Kent: Companion;
   };
+
+  type LearningStepContentResponse = {
+    type:
+      | "youtube_video"
+      | "text"
+      | "text_with_image"
+      | "interactive_quiz_placeholder"
+      | "pdf_document";
+    content: string;
+    accompanying_text: string;
+    image_description: string;
+    video_details: VideoDetails;
+    pdf_description: string;
+  };
+
+  type VideoDetails = {
+    title: string;
+    link: string;
+    thumbnail: string;
+    video_id: string;
+  };
+
+  type LearningStepContentParams = {
+    subject: string;
+    topic_title: string;
+    step_title: string;
+    material_type_suggestion: string;
+    difficulty: string;
+    companion_name: string;
+  };
+
+  interface CourseConclusion {
+    summary: string;
+    quiz: QuizQuestion[];
+    topics_covered: string[];
+  }
+
+  interface QuizQuestion {
+    question_text: string;
+    options: string[];
+    correct_answer: string;
+    explanation: string;
+  }
+
+  interface CourseConclusionParams {
+    course_title: string;
+    subject: string;
+    difficulty: string;
+    sections_data_json: SectionData[];
+  }
+
+  interface SectionData {
+    section_title: string;
+    topics: TopicData[];
+  }
+
+  interface TopicData {
+    topic_title: string;
+  }
 }
