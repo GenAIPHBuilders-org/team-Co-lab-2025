@@ -3,6 +3,10 @@ from app.core.companion import CompanionLogic
 from app.core.llm_client import llm_client
 from typing import List, Dict, Any, Optional
 from app.static_data.game_data import COMPANION_DETAILS
+from app.schemas.user import CompanionSelection, User
+from app.dependencies import get_db, get_current_user
+from sqlalchemy.orm import Session
+from app.controller import user_controller as user_service
 import json
 
 
@@ -110,3 +114,24 @@ async def get_course_conclusion_api(
     # Add topics_covered to the response
     conclusion_data["topics_covered"] = topics_covered
     return conclusion_data
+
+@router.put("/select-companion", response_model=User)
+def select_companion(
+    selection: CompanionSelection,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+) -> User:
+    companion_name = selection.companion_name
+
+    if companion_name not in COMPANION_DETAILS:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid companion name. Choose from: " + ", ".join(COMPANION_DETAILS.keys())
+        )
+
+    updated_user = user_service.update_user_companion(db, current_user, companion_name)
+    return updated_user
+
+@router.get("/companions", response_model=List[str])
+def get_available_companions():
+    return list(COMPANION_DETAILS.keys())

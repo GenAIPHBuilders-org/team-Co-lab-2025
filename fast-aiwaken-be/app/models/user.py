@@ -13,6 +13,7 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     is_new_user = Column(Boolean, default=True)
+    selected_companion = Column(String, nullable=True)
 
 class LoginRequest(BaseModel):
     username: str
@@ -24,3 +25,4 @@ class UserInfo(BaseModel):
     username: str
     is_active: bool
     is_new_user: bool
+    selected_companion: str | None = None
