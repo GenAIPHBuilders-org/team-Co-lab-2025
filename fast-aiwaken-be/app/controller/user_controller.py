@@ -52,6 +52,24 @@ def setNewUser(db: Session, user: User) -> None:
     db.refresh(user)
 
 def update_user_companion(db: Session, user: User, companion_name: str) -> User:
+    """
+    Updates the selected companion name for a given user.
+
+    This function modifies the `selected_companion` field of the provided `User` instance,
+    commits the change to the database, and refreshes the instance to reflect the updated state.
+
+    Args:
+        db (Session): The SQLAlchemy database session.
+        user (User): The user object to update.
+        companion_name (str): The new companion name to assign to the user.
+
+    Returns:
+        User: The updated user object with the new companion name.
+
+    Side Effects:
+        - Commits changes to the database.
+        - Refreshes the user instance to ensure it reflects the persisted data.
+    """
     user.selected_companion = companion_name
     db.commit()
     db.refresh(user)

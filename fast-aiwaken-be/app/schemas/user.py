@@ -17,10 +17,9 @@ class UserInDB(UserBase):
     
     class Config:
         from_attributes = True
-
-class User(UserBase):
-    id: int
-    selected_companion: Optional[str] = None
-
+        
 class Config:
     from_attributes = True
+
+class CompanionSelection(BaseModel):
+    companion_name: str = Field(..., description="Name of the selected companion")
