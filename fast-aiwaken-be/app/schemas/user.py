@@ -20,6 +20,7 @@ class UserInDB(UserBase):
 
 class User(UserBase):
     id: int
-    
-    class Config:
-        from_attributes = True
+    selected_companion: Optional[str] = None
+
+class Config:
+    from_attributes = True

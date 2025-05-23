@@ -50,3 +50,9 @@ def setNewUser(db: Session, user: User) -> None:
     user.is_new_user = False
     db.commit()
     db.refresh(user)
+
+def update_user_companion(db: Session, user: User, companion_name: str) -> User:
+    user.selected_companion = companion_name
+    db.commit()
+    db.refresh(user)
+    return user
