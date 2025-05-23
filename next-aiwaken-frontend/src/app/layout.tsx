@@ -37,7 +37,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <QueryClientContextProvider>
-            <div className="w-full h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-950 shadow-sm backdrop-blur">
+            <div className="w-full h-screen p-4 flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-950 shadow-sm backdrop-blur">
               <OnboardingStepper />
             </div>
           </QueryClientContextProvider>
@@ -53,7 +53,15 @@ export default async function RootLayout({
       >
         <QueryClientContextProvider>
           <AuthenticationProvider initialUser={data}>
-            <AuthLayout>{children}</AuthLayout>
+            {!data?.user.is_active ? (
+              <React.Fragment>
+                <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 flex items-center justify-center p-4">
+                  {children}
+                </div>
+              </React.Fragment>
+            ) : (
+              <AuthLayout>{children}</AuthLayout>
+            )}
           </AuthenticationProvider>
         </QueryClientContextProvider>
       </body>

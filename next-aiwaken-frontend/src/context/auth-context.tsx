@@ -4,14 +4,14 @@ import { useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 
 type AuthProps = {
-    initialUser: TUser | null;
-    children: React.ReactNode;
+  initialUser: TUser | null;
+  children: React.ReactNode;
 }
 
 const AuthenticationContext = createContext<TAuthContextValue>({
   user: null,
-  login: async () => {},
-  handleLogout: () => {},
+  login: async () => { },
+  handleLogout: () => { },
   isAuthenticated: false,
 });
 
@@ -47,6 +47,7 @@ export const AuthenticationProvider = ({
 
       if (response.ok) {
         setUser({
+          accessToken: data.access_token,
           user: {
             id: data.user.id,
             username: data.user.username,
@@ -57,6 +58,7 @@ export const AuthenticationProvider = ({
         TokenStorage.setAccessToken(data.access_token);
         document.cookie = `access_token=${data.access_token}; path=/; max-age=3600;`;
         router.push("/dashboard");
+        window.location.reload();
       } else {
         console.error("Login failed", data);
       }

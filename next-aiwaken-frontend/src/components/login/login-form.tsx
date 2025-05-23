@@ -39,7 +39,7 @@ export default function LoginForm() {
 
   return (
     <FormProvider {...methods}>
-      <Card className="border-[#9600ff] bg-gray-900 shadow-xl shadow-purple-[#9600ff20]">
+      <Card className="border-[#9600ff] bg-gray-900 shadow-xl shadow-purple-[#9600ff20] glow-border">
         <CardHeader className="space-y-1 text-center">
           <div className="mx-auto mb-4 h-12 w-12 overflow-hidden rounded-full border-2 border-purple-500 bg-purple-950 flex items-center justify-center">
             <RegistrationIcon />

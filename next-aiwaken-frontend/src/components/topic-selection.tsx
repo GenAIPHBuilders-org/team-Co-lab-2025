@@ -104,7 +104,7 @@ const topics = [
     name: "Science",
     icon: Flask,
     color: "bg-green-100 text-green-600",
-    locked: true,
+    locked: false,
     difficulty: "beginner" as Difficulty,
     description:
       "Explore the natural world through scientific inquiry and experimentation.",
@@ -114,10 +114,40 @@ const topics = [
       "Analytical Thinking",
     ],
   },
+  {
+    id: 3,
+    name: "English",
+    icon: Star,
+    color: "bg-blue-100 text-blue-600",
+    locked: false,
+    difficulty: "beginner" as Difficulty,
+    description:
+      "Develop your English language skills including grammar, vocabulary, and reading comprehension.",
+    rewards: [
+      "Grammar Guru Badge",
+      "200 XP",
+      "Vocabulary Booster"
+    ],
+  },
+  {
+    id: 4,
+    name: "Basic Python",
+    icon: Flask,
+    color: "bg-purple-100 text-purple-600",
+    locked: false,
+    difficulty: "beginner" as Difficulty,
+    description:
+      "Learn the basics of Python programming including syntax, variables, and simple logic.",
+    rewards: [
+      "Python Novice Badge",
+      "200 XP",
+      "Code Starter Pack"
+    ],
+  },
 ];
 
 export function TopicSelectionCard() {
-  const { data, generateCourseAsync } = useGenerateCourse();
+  const { generateCourseAsync, isPending } = useGenerateCourse();
   const [selectedTopic,] = useState<number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmingTopic, setConfirmingTopic] = useState<
@@ -134,7 +164,6 @@ export function TopicSelectionCard() {
   async function handleGenerateCourse(subject: string, difficulty: string) {
     try {
       await generateCourseAsync({ subject, difficulty });
-      console.log("Course generated successfully:", data);
       setModalOpen(false);
     } catch (error) {
       console.error("Error generating course:", error);
@@ -187,7 +216,7 @@ export function TopicSelectionCard() {
   return (
     <>
       <TooltipProvider>
-        <Card className="overflow-hidden h-64 glow-border">
+        <Card className="overflow-hidden h-90 glow-border">
           <CardHeader className="">
             <CardTitle className="text-lg">Educational Topics</CardTitle>
             <CardDescription>Select a topic to explore</CardDescription>
@@ -406,7 +435,9 @@ export function TopicSelectionCard() {
                         transition={{ delay: 0.9 }}
                       >
                         <Button
-                          onClick={() => handleGenerateCourse("Mathematics", confirmingTopic.difficulty)}
+                          onClick={() => handleGenerateCourse(confirmingTopic.name, confirmingTopic.difficulty)}
+                          loading={isPending}
+                          disabled={isPending}
                           className="relative overflow-hidden bg-gradient-to-r from-[#9F8DFC] to-[#9F8DFC] text-white hover:from-[#9F8DFC] hover:to-[#9F8DFC]"
                         >
                           <motion.span

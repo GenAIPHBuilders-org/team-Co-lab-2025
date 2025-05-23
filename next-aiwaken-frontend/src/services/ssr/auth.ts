@@ -1,27 +1,29 @@
 import { cookies } from "next/headers";
 
 export async function getServerAuthSession(): Promise<TUser | null> {
-    const cookie = await cookies();
-    const accessToken = cookie.get("access_token")?.value;
+  const cookie = await cookies();
+  const accessToken = cookie.get("access_token")?.value;
 
-    if (!accessToken) {
-        return null;
+  if (!accessToken) {
+    return null;
+  }
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/v1/authentication/tokenized-user`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
     }
+  );
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/v1/authentication/tokenized-user`, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-        },
-    })
+  if (!response.ok) {
+    return null;
+  }
 
-    if (!response.ok) {
-        return null;
-    }
+  const data = await response.json();
 
-    const data = await response.json();
-    console.log("User data from server:", data);
-
-    return data;
+  return data;
 }
