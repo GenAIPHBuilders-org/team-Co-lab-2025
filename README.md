@@ -38,6 +38,12 @@ The AI companion adapts its guidance based on your pace, preferences, and perfor
 - [@nasolgabriel](https://github.com/nasolgabriel)
 - [@ryan](https://github.com/Pekatsou)
 
+  ## Tech Stack
+
+**Client:** Next JS, TypeScript, Zod, ShadCN, Framer Motion, 
+
+**Server:** FastAPI, Python, GEMINI AI, PostgreSQL 
+
 ## 🚀 Getting Started after Installation Next JS (Quick Summary)
 ```bash
   git clone https://github.com/GenAIPHBuilders-org/team-Co-lab-2025.git
