@@ -49,16 +49,14 @@ async def get_learning_step_content_api(
     topic_title: str = Query(..., description="Title of the parent topic"),
     step_title: str = Query(..., description="Title of the specific learning step"),
     material_type_suggestion: str = Query(..., description="Suggested material type, e.g., 'text', 'youtube_video'"),
-    difficulty: str = Query(..., description="Difficulty level of the course context"),
-    companion_name: str = Query("Gabriel", description="Name of the companion (e.g., Gabriel, Brian, Ryan, Kent)") 
+    difficulty: str = Query(..., description="Difficulty level of the course context")
 ):
     content_details = llm_client.generate_learning_step_content(
         subject=subject,
         topic_title=topic_title,
         step_title=step_title,
         material_type_suggestion=material_type_suggestion,
-        difficulty=difficulty,
-        companion_name=companion_name
+        difficulty=difficulty
     )
     if not content_details or content_details.get("error"):
         raise HTTPException(status_code=500, detail="Failed to generate learning step content.")

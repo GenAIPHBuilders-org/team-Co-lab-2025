@@ -16,10 +16,6 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     is_new_user = Column(Boolean, default=True)
-    selected_companion = Column(String, nullable=True)
-
-    # courses relationship
-    courses = relationship("Course", back_populates="user")
 
 class LoginRequest(BaseModel):
     username: str
