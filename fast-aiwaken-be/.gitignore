@@ -1,0 +1,24 @@
+#  Environment files
+# Local dotenv file (sensitive credentials, API keys, etc.)
+.env.local
+.env
+
+
+#  Python bytecode cache
+# Ignore all __pycache__ folders recursively
+**/__pycache__/
+
+# Ignore compiled Python files
+*.pyc   # standard bytecode
+*.pyo   # optimized bytecode
+*.pyd   # Windows DLLs generated from Python
+
+#  (Optional) Virtual environment
+.venv/
+venv/
+
+# Generated pdf
+generated_pdf/
+
+# __init__.py files
+__init__.py
