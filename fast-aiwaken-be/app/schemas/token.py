@@ -2,7 +2,7 @@
 from typing import Optional
 from pydantic import BaseModel
 from datetime import datetime
-from app.models.user import UserInfo
+from app.models.userModel import UserInfo
 
 class TokenizedUser(BaseModel):
     user: UserInfo
