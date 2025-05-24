@@ -125,28 +125,32 @@ export function OnboardingStepper() {
 
   if (isComplete) {
     return (
-      <Card className="w-full max-w-3xl rounded-xl glow-card border border-[#9F8DFC] p-6 shadow-xl md:p-8 glow-border ">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="w-full max-w-3xl rounded-xl p-8 shadow-xl"
-        >
-          <div className="flex flex-col items-center justify-center space-y-4">
-            <RobotGuide
-              message={`You're all set! ${selectedCompanion ? `${selectedCompanion} will be your guide as you explore the platform.` : "Feel free to explore the platform on your own now."}`}
-            />
-            <h2 className="text-2xl font-bold">Welcome to the Platform!</h2>
-            <p className="text-muted-foreground">
-              You&apos;ve completed the onboarding. Start exploring all the features now.
-            </p>
-            <div className="w-full flex items-center justify-center mt-4">
-              <Button onClick={handleOnboardingComplete} variant="outline">
-                Start Using the Platform
-              </Button>
+      <div
+        className={`w-full h-screen p-4 flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-950 shadow-sm backdrop-blur`}
+      >
+        <Card className="w-full max-w-3xl rounded-xl glow-card border border-[#9F8DFC] p-6 shadow-xl md:p-8 glow-border ">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="w-full max-w-3xl rounded-xl p-8 shadow-xl"
+          >
+            <div className="flex flex-col items-center justify-center space-y-4">
+              <RobotGuide
+                message={`You're all set! ${selectedCompanion ? `${selectedCompanion} will be your guide as you explore the platform.` : "Feel free to explore the platform on your own now."}`}
+              />
+              <h2 className="text-2xl font-bold">Welcome to the Platform!</h2>
+              <p className="text-muted-foreground">
+                You&apos;ve completed the onboarding. Start exploring all the features now.
+              </p>
+              <div className="w-full flex items-center justify-center mt-4">
+                <Button onClick={handleOnboardingComplete} variant="outline">
+                  Start Using the Platform
+                </Button>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      </Card>
+          </motion.div>
+        </Card>
+      </div>
     )
   }
 

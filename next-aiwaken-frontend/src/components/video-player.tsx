@@ -86,11 +86,11 @@ export function VideoPlayer({ content, accompanying_text, video_details }: Video
               Instructor Notes
             </h3>
             <div className="space-y-3">
-              <p className="text-sm text-gray-300 w-full flex flex-col space-y-2 mb-6">
+              <div className="text-sm text-gray-300 w-full flex flex-col space-y-2 mb-6">
                 <ReactMarkdown>
                   {accompanying_text}
                 </ReactMarkdown>
-              </p>
+              </div>
             </div>
           </CardContent>
         </Card>
