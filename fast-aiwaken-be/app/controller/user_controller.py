@@ -1,8 +1,8 @@
 from typing import Optional
 from sqlalchemy.orm import Session
 import re
-from app.models.user import User
-from app.schemas.user import UserCreate
+from app.models.userModel import User
+from app.schemas.userSchema import UserCreate
 from app.security import get_password_hash, verify_password
 
 def get_user_by_email(db: Session, email: str) -> Optional[User]:
