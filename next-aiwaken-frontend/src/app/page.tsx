@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 export default function HomePage() {
   return (
     <div className="flex w-full h-screen p-16 flex-col ">
-      <header className="container z-40 py-6">
+      <header className="z-40 py-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Shield className="h-8 w-8 text-purple-500" />
@@ -14,27 +14,23 @@ export default function HomePage() {
               AI<span className="text-purple-500">WAKEN</span>
             </span>
           </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link href="#features" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              Features
-            </Link>
-            <Link href="#how-it-works" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              How It Works
-            </Link>
-            <Link href="#testimonials" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              Testimonials
-            </Link>
-          </nav>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="text-gray-300 hover:text-white">
-              Sign In
-            </Button>
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white">Register</Button>
+            <Link href="/login" passHref>
+              <Button variant="ghost" className="text-gray-300 hover:text-white">
+                Sign In
+              </Button>
+            </Link>
+            <Link href="/register" passHref>
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+                Register
+              </Button>
+            </Link>
           </div>
         </div>
-      </header>
+      </header >
 
-      <section className="container py-24 md:py-32 relative">
+
+      <section className=" py-24 md:py-32 relative">
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-purple-900/20 blur-3xl"></div>
           <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-blue-900/20 blur-3xl"></div>
@@ -137,7 +133,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-    </div>
+    </div >
   )
 }

@@ -1,5 +1,5 @@
 "use client"
-
+import ReactMarkdown from 'react-markdown';
 import { useState, useRef, useEffect } from "react"
 import ReactPlayer from "react-player/lazy"
 import { Card, CardContent } from "@/components/ui/card"
@@ -86,7 +86,11 @@ export function VideoPlayer({ content, accompanying_text, video_details }: Video
               Instructor Notes
             </h3>
             <div className="space-y-3">
-              <p className="text-sm text-gray-300">{accompanying_text}</p>
+              <p className="text-sm text-gray-300 w-full flex flex-col space-y-2 mb-6">
+                <ReactMarkdown>
+                  {accompanying_text}
+                </ReactMarkdown>
+              </p>
             </div>
           </CardContent>
         </Card>

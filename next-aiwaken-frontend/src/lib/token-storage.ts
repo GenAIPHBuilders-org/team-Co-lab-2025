@@ -50,6 +50,25 @@ export class TokenStorage {
       return null;
     }
   }
+
+  static getLearningStepQuiz(): QuizData | null {
+    if (typeof window === "undefined") {
+      return null;
+    }
+
+    const data = localStorage.getItem("learningStepQuiz");
+
+    if (!data || data === "undefined") {
+      return null;
+    }
+
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      console.error("Failed to parse learningStepQuiz from localStorage:", e);
+      return null;
+    }
+  }
   static getSummaryConclusion(): CourseConclusion | null {
     if (typeof window === "undefined") {
       return null;

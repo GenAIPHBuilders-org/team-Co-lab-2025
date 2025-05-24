@@ -92,3 +92,29 @@ export const useGetCourseSummaryConclusion = () => {
     error,
   };
 };
+
+export const useGetLearningStepQuiz = () => {
+  const { mutate, mutateAsync, data, isPending, isSuccess, isError, error } =
+    useMutation<LearningStepQuizResponse, Error, LearningStepQuizParams>({
+      mutationFn: async (params: LearningStepQuizParams) => {
+        const response = await CourseService.getLearningStepQuiz(params);
+        return response;
+      },
+      onSuccess: (data) => {
+        console.log("Learning step quiz fetched successfully:", data);
+        localStorage.setItem("learningStepQuiz", JSON.stringify(data));
+      },
+      onError: (error) => {
+        console.error("Error fetching learning step quiz:", error.message);
+      },
+    });
+  return {
+    getLearningStepQuiz: mutate,
+    getLearningStepQuizAsync: mutateAsync,
+    data,
+    isPending,
+    isSuccess,
+    isError,
+    error,
+  };
+};
