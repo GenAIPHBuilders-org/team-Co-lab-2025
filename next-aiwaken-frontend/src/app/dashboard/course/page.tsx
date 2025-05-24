@@ -7,11 +7,16 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronRight, ArrowLeft, BookOpen, Video, FileText, PenTool } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useGetCourseSummaryConclusion, useGetLearningStepContent } from "@/(features)/course-action"
+import { useGetCourseSummaryConclusion, useGetLearningStepContent, useGetLearningStepQuiz } from "@/(features)/course-action"
 import { VideoPlayer, VideoPlayerProps } from "@/components/video-player"
 import { TokenStorage } from "@/lib/token-storage"
+import { CompanionAvatar } from "@/components/companion-avatar"
+import ReactMarkdown from 'react-markdown';
+import { LearningStepQuiz } from "@/components/learning-step-quiz"
 
 export default function CoursePage() {
+  const quizData = TokenStorage.getLearningStepQuiz()
+  const { getLearningStepQuizAsync, isPending: quizLoading } = useGetLearningStepQuiz();
   const { getCourseSummaryConclusionAsync, isPending: loading } = useGetCourseSummaryConclusion();
   const courseData = TokenStorage.getCourseData();
   const { data, getLearningStepContentAsync, isPending } = useGetLearningStepContent();
@@ -34,6 +39,14 @@ export default function CoursePage() {
       [topicId]: !prev[topicId],
     }
     ))
+  }
+
+  async function generateQuiz(params: LearningStepQuizParams) {
+    try {
+      await getLearningStepQuizAsync(params);
+    } catch (error) {
+      console.error("Error generating quiz:", error)
+    }
   }
 
   const selectStep = async (stepId: string, data: LearningStepContentParams) => {
@@ -67,29 +80,135 @@ export default function CoursePage() {
     switch (materialType) {
       case "text_with_image":
         return (
-          <div className="flex flex-col items-center">
-            <p className="space-y-4">{data?.content
-              .split("\n\n")
-              .map((paragraph: string, idx: number) => (
-                <p key={idx}>{paragraph}</p>
-              ))}
-            </p>
+          <div className="flex flex-col items-center w-full">
+            <div className="flex items-center gap-4 mb-6 w-full">
+              <div className="relative">
+                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
+                  Guide
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold text-white">{companion}</span>
+                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
+                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
+              </div>
+            </div>
+            <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
+              {data?.content
+                .split("\n\n")
+                .map((paragraph: string, idx: number) => (
+                  <div className="w-full flex flex-col space-y-2 mb-6" key={idx}>
+                    <ReactMarkdown >
+                      {paragraph}
+                    </ReactMarkdown>
+                  </div>
+                ))}
+            </div>
           </div>
         )
       case "text":
         return (
-          <div className="flex flex-col items-center space-y-2">
-            <p className="space-y-4">{data?.content
-              .split("\n\n")
-              .map((paragraph: string, idx: number) => (
-                <p key={idx}>{paragraph}</p>
-              ))}
-            </p>
+          <div className="flex flex-col items-center w-full">
+            <div className="flex items-center gap-4 mb-6 w-full">
+              <div className="relative">
+                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
+                  Guide
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold text-white">{companion}</span>
+                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
+                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
+              </div>
+            </div>
+            <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
+              {data?.content
+                .split("\n\n")
+                .map((paragraph: string, idx: number) => (
+                  <div className="w-full flex flex-col space-y-2 mb-6" key={idx}>
+                    <ReactMarkdown >
+                      {paragraph}
+                    </ReactMarkdown>
+                  </div>
+                ))}
+            </div>
           </div>
         )
       case "youtube_video":
         return (
           <VideoPlayer {...data as VideoPlayerProps} />
+        )
+      case "pdf_document":
+        return (
+          <div className="flex flex-col items-center w-full">
+            <div className="flex items-center gap-4 mb-6 w-full">
+              <div className="relative">
+                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
+                  Guide
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold text-white">{companion}</span>
+                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
+                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
+              </div>
+            </div>
+            <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
+              {data?.pdf_description && (
+                <div className="w-full flex flex-col space-y-2 mb-6">
+                  <ReactMarkdown>
+                    {data.pdf_description}
+                  </ReactMarkdown>
+                </div>
+              )}
+              {data?.content
+                .split("\n\n")
+                .map((paragraph: string, idx: number) => (
+                  <div className="w-full flex flex-col space-y-2 mb-6" key={idx}>
+                    <ReactMarkdown>
+                      {paragraph}
+                    </ReactMarkdown>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )
+      case "interactive_quiz_placeholder":
+        return (
+          <div className="flex flex-col items-center w-full">
+            {!quizData ? (
+              <Button
+                onClick={() => generateQuiz({
+                  subject: courseData?.subject as string,
+                  topic_title: courseData?.sections
+                    .flatMap((s) => s.topics)
+                    .find((t) => t.learning_steps.some((s) => s.step_id === selectedStep))?.topic_title ?? "",
+                  step_title: courseData?.sections
+                    .flatMap((s) => s.topics)
+                    .flatMap((t) => t.learning_steps)
+                    .find((s) => s.step_id === selectedStep)?.step_title ?? "",
+                  difficulty: courseData?.difficulty ?? "easy",
+                  enemy_theme: "a mischievous goblin"
+                })}
+                variant="default"
+                loading={quizLoading}
+                className="w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80">
+                Generate Quiz
+              </Button>
+            )
+              : (
+                <LearningStepQuiz />
+              )
+            }
+            {quizLoading && (
+              <div className="mt-4 p-1 animate-spin drop-shadow-2xl bg-gradient-to-bl from-pink-400 via-purple-400 to-indigo-600 md:w-12 md:h-12 h-12 w-12 aspect-square rounded-full">
+                <div className="rounded-full h-full w-full bg-gradient-to-b from-gray-900 to-gray-950 background-blur-md"></div>
+              </div>
+            )}
+          </div>
         )
     }
   }
@@ -117,7 +236,6 @@ export default function CoursePage() {
     try {
       await getCourseSummaryConclusionAsync(params);
       router.push("/dashboard/quiz");
-      window.location.reload();
     } catch (error) {
       console.error("Error fetching course conclusion:", error);
     }

@@ -11,8 +11,10 @@ import { Sparkles, Brain, Zap, Award, ArrowRight, RefreshCcw } from "lucide-reac
 import { motion, AnimatePresence } from "framer-motion"
 import confetti from "canvas-confetti"
 import { TokenStorage } from "@/lib/token-storage"
+import { CompanionAvatar } from "@/components/companion-avatar"
 
-export default function QuantumQuiz() {
+export default function Quiz() {
+  const companion = TokenStorage.getUserCompanion();
   const quizData = TokenStorage.getSummaryConclusion();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
@@ -245,16 +247,24 @@ export default function QuantumQuiz() {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.3 }}
                 >
+                  <div className="flex items-center gap-4 mb-6 w-full">
+                    <div className="relative">
+                      <CompanionAvatar
+                        name={companion as string}
+                        size="lg"
+                        className="shadow-lg border-2 border-[#9F8DFC]"
+                      />
+                      <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
+                        Guide
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-lg font-bold text-white">{companion}</span>
+                      <span className="text-xs text-gray-400">Your AI Learning Companion</span>
+                      <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
+                    </div>
+                  </div>
                   <Card className="bg-indigo-950/80 border-indigo-500 text-white">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-lg flex items-center gap-2">
-                        <Avatar className="h-8 w-8 border-2 border-indigo-400">
-                          <AvatarImage src="/placeholder.svg?height=32&width=32" alt="Explanation Bot" />
-                          <AvatarFallback className="bg-indigo-700 text-white">EB</AvatarFallback>
-                        </Avatar>
-                        Quantum Guide
-                      </CardTitle>
-                    </CardHeader>
                     <CardContent>
                       <p className="text-indigo-100">{currentQuestion.explanation}</p>
                     </CardContent>

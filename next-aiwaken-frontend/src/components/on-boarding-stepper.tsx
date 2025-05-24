@@ -11,43 +11,36 @@ import { useSetUserStatus } from "@/(features)/authentication-action"
 import { useRouter } from "next/navigation"
 import { CompanionSelection } from "./companion-selection"
 
-// Updated steps to include companion selection
 const steps = [
   {
-    title: "Welcome to the Platform",
-    description: "I'm your AI assistant! I'll guide you through our platform's key features.",
-    robotMessage: "Hello there! 👋 I'm excited to show you around our platform. Let's get started with a quick tour!",
+    title: "Welcome to AIwaken",
+    description: "I'm your AI guide! Let's walk through the essentials to get you started quickly.",
+    robotMessage: "Hi there! 👋 Welcome to AIwaken. I'll help you get familiar with the platform. Ready for a quick tour?",
   },
   {
-    title: "Choose Your Companion",
-    description: "Select an AI companion that matches your preferred interaction style.",
+    title: "Pick Your AI Companion",
+    description: "Choose a companion who will help you grow and support your learning journey.",
     robotMessage:
-      "Everyone works differently! Choose a companion that resonates with your style. This companion will guide you through your journey on our platform.",
+      "Growth is a journey! Pick a companion who will encourage and guide you as you develop new skills.",
     isCompanionSelection: true,
   },
   {
-    title: "Create Your First Project",
-    description: "Learn how to create and manage your projects with ease.",
+    title: "Meet Your Emotional Companion",
+    description: "Your companion isn't just smart—they understand emotions and can support you through challenges.",
     robotMessage:
-      "Creating projects is simple! Just click the 'New Project' button and follow the prompts. You can organize your work however you like.",
+      "I'm here to help, not just with knowledge, but with empathy and encouragement whenever you need it.",
   },
   {
-    title: "Collaborate with Your Team",
-    description: "Invite team members and collaborate in real-time.",
+    title: "Explore Generative Courses",
+    description: "Access dynamic, AI-powered courses in math, science, English, and more—tailored to your pace and interests.",
     robotMessage:
-      "Teamwork makes the dream work! Invite colleagues by email and start collaborating instantly. Everyone can contribute simultaneously.",
+      "Ready to learn? Dive into generative courses that adapt to you, covering subjects like math, science, English, and beyond!",
   },
   {
-    title: "Deploy Your Work",
-    description: "Deploy your projects with a single click to our global network.",
+    title: "You're Ready to Go!",
+    description: "You’re all set to make the most of AIwaken. Dive in and explore!",
     robotMessage:
-      "When you're ready to go live, just hit deploy! Your project will be available worldwide in seconds with our global CDN.",
-  },
-  {
-    title: "You're All Set!",
-    description: "You're now ready to use the platform to its full potential.",
-    robotMessage:
-      "Congratulations! You're all set to start creating amazing things. If you need help, I'm always here to assist you!",
+      "Awesome! You’re ready to start using AIwaken. If you need help, your companion and I are always here for you.",
   },
 ]
 
@@ -59,7 +52,6 @@ export function OnboardingStepper() {
   const [progress, setProgress] = useState<number>(0)
   const [selectedCompanion, setSelectedCompanion] = useState<string | null>(null)
 
-  // Load selected companion from localStorage on initial render
   useEffect(() => {
     const savedCompanion = localStorage.getItem("selectedCompanion")
     if (savedCompanion) {
@@ -85,7 +77,7 @@ export function OnboardingStepper() {
 
   function handleSelectCompanion(companionName: string) {
     setSelectedCompanion(companionName)
-    localStorage.setItem("selectedCompanion", companionName)
+    localStorage.setItem("user_companion", companionName)
 
     const companionsData = {
       companions: {
@@ -161,60 +153,65 @@ export function OnboardingStepper() {
   const currentStepData = steps[currentStep]
 
   return (
-    <Card className="w-full max-w-3xl h-auto rounded-xl glow-card border border-[#9F8DFC] p-6 shadow-xl md:p-8 glow-border">
-      <div className="mb-8">
-        <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm font-medium text-muted-foreground">
-            Step {currentStep + 1} of {steps.length}
-          </span>
+    <div
+      className={`w-full ${currentStepData.isCompanionSelection ? "h-full" : "h-screen"
+        } p-4 flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-950 shadow-sm backdrop-blur`}
+    >
+      <Card className="w-full max-w-3xl h-auto rounded-xl glow-card border border-[#9F8DFC] p-6 shadow-xl md:p-8 glow-border">
+        <div className="mb-8">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="text-sm font-medium text-muted-foreground">
+              Step {currentStep + 1} of {steps.length}
+            </span>
+          </div>
+          <Progress value={progress} className="h-2" />
         </div>
-        <Progress value={progress} className="h-2" />
-      </div>
 
-      <div className="mb-8 flex justify-center">
-        <RobotGuide message={currentStepData.robotMessage} />
-      </div>
+        <div className="mb-8 flex justify-center">
+          <RobotGuide message={currentStepData.robotMessage} />
+        </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentStep}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.3 }}
-          className="mb-8 space-y-4"
-        >
-          <h2 className="text-2xl font-bold">{currentStepData.title}</h2>
-          <p className="text-slate-300">{currentStepData.description}</p>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentStep}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="mb-8 space-y-4"
+          >
+            <h2 className="text-2xl font-bold">{currentStepData.title}</h2>
+            <p className="text-slate-300">{currentStepData.description}</p>
 
-          {currentStepData.isCompanionSelection && (
-            <div className="mt-6">
-              <CompanionSelection onSelect={handleSelectCompanion} selectedCompanion={selectedCompanion} />
-            </div>
-          )}
-        </motion.div>
-      </AnimatePresence>
+            {currentStepData.isCompanionSelection && (
+              <div className="mt-6">
+                <CompanionSelection onSelect={handleSelectCompanion} selectedCompanion={selectedCompanion} />
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
 
-      <div className="flex justify-between">
-        <Button
-          variant="outline"
-          onClick={handlePrevious}
-          disabled={currentStep === 0}
-          className="flex items-center gap-1"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Previous
-        </Button>
-        <Button
-          onClick={handleNext}
-          disabled={isLoading || (currentStepData.isCompanionSelection && !selectedCompanion)}
-          className="flex items-center gap-1"
-          variant={"outline"}
-        >
-          {currentStep === steps.length - 1 ? "Finish" : "Next"}
-          {currentStep < steps.length - 1 && <ChevronRight className="h-4 w-4" />}
-        </Button>
-      </div>
-    </Card>
+        <div className="flex justify-between">
+          <Button
+            variant="outline"
+            onClick={handlePrevious}
+            disabled={currentStep === 0}
+            className="flex items-center gap-1"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Previous
+          </Button>
+          <Button
+            onClick={handleNext}
+            disabled={isLoading || (currentStepData.isCompanionSelection && !selectedCompanion)}
+            className="flex items-center gap-1"
+            variant={"outline"}
+          >
+            {currentStep === steps.length - 1 ? "Finish" : "Next"}
+            {currentStep < steps.length - 1 && <ChevronRight className="h-4 w-4" />}
+          </Button>
+        </div>
+      </Card>
+    </div>
   )
 }

@@ -23,6 +23,15 @@ class CourseService {
     );
   }
 
+  public static async getLearningStepQuiz(
+    params: LearningStepQuizParams
+  ): Promise<LearningStepQuizResponse> {
+    return await ApiService.get<LearningStepQuizResponse>(
+      "/v1/companion/course/learning_step_quiz",
+      params
+    );
+  }
+
   public static async getCourseSummaryConclusion(
     params: CourseConclusionParams
   ): Promise<CourseConclusion> {

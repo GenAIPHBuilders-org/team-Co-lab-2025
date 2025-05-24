@@ -195,4 +195,44 @@ declare global {
   interface TopicData {
     topic_title: string;
   }
+
+  interface LearningStepQuizParams {
+    subject: string;
+    topic_title: string;
+    step_title: string;
+    difficulty: string;
+    enemy_theme: string;
+  }
+
+  interface LearningStepQuizResponse {
+    question_text: string;
+    options: string[];
+    correct_answer: string;
+    explanation: string;
+  }
+
+  interface QuizData {
+    quiz: {
+      quiz: QuizQuestion[];
+    };
+  }
+
+  interface MotivationResponse {
+    motivation: string;
+  }
+
+  interface HintResponse {
+    hint: string;
+  }
+
+  interface CompanionTipsParams {
+    subject: string;
+    topic_title: string;
+    step_title: string;
+    difficulty: string;
+  }
+
+  interface TipsResponse {
+    tips: string;
+  }
 }
