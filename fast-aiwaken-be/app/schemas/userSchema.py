@@ -14,12 +14,15 @@ class UserCreate(BaseModel):
 class UserInDB(UserBase):
     id: int
     hashed_password: str
-    
+
     class Config:
         from_attributes = True
-        
-class Config:
-    from_attributes = True
+
+class User(UserBase):
+    id: int
+
+    class Config:
+        from_attributes = True
 
 class User(UserBase):
     id: int

@@ -6,6 +6,7 @@ import json
 from app.core.companion import CompanionLogic
 from app.core.rag_memory import RAGMemory
 from app.static_data.game_data import COMPANION_DETAILS, ENEMY_THEMES
+from app.core.utils.pdf_generator import generate_pdf
 
 
 
@@ -79,6 +80,7 @@ class GeminiClient:
             print(f"An unexpected error occurred during YouTube search: {e}")
             return []
     # end of API client
+
 
 
 
@@ -246,21 +248,37 @@ class GeminiClient:
 
         elif material_type_suggestion == "pdf_document":
             prompt_text = (
-                f"{theme_intro}\n"
-                f"Design comprehensive content for a 1-2 page PDF document on '{step_title}' ({topic_title}, {subject}, {difficulty} level).\n"
-                f"Include the following elements:\n"
-                f"1. A clear, descriptive title and brief introduction to the topic.\n"
-                f"2. Main content structured as either:\n"
-                f"   - A worksheet with 5-7 varied practice problems.\n"
-                f"   - A concise summary sheet with key concepts and examples.\n"
-                f"   - A set of practice problems with solutions.\n"
-                f"3. For worksheets/practice problems: Include a mix of question types (multiple choice, short answer, application) with appropriate complexity for {difficulty} level.\n"
-                f"4. For summary sheets: Organize key information with clear headings, concise explanations, and relevant examples.\n"
-                f"5. Include specific examples and visual elements appropriate for {subject} at {difficulty} level.\n"
-                f"Provide classroom-ready content that demonstrates clear progression of concepts related to '{step_title}' within the broader context of '{topic_title}'."
-            )
-            content_result["content"] = f"Downloadable PDF: {step_title}"
-            content_result["pdf_description"] = self.generate_content(prompt_text)
+                    f"Design a professional and well-structured 1-2 page PDF document on '{step_title}' ({topic_title}, {subject}, {difficulty} level).\n"
+                    f"Include the following elements:\n"
+                    f"1. A clear and engaging title for the document.\n"
+                    f"2. A brief introduction to the topic, explaining its importance and relevance.\n"
+                    f"3. Main content structured as:\n"
+                    f"   - Key concepts explained concisely.\n"
+                    f"   - Examples to illustrate the concepts.\n"
+                    f"   - Practice problems (5-7) with varying difficulty levels.\n"
+                    f"4. A summary or conclusion to reinforce the key takeaways.\n"
+                    f"5. Provide answers and explanations for the practice problems.\n"
+                    f"Ensure the content is clear, concise, and formatted for readability.\n"
+                    f"Return the content as plain text, with answers and explanations clearly separated."
+                )
+            pdf_content = self.generate_content(prompt_text)
+            if pdf_content:
+                pdf_filename = f"{step_title.replace(' ', '_')}.pdf"
+                
+                # Construct the content dictionary
+                content_dict = {
+                    "title": step_title,
+                    "main_content": pdf_content,
+                    "answers": []  
+                }
+                
+                pdf_path = generate_pdf(content_dict, pdf_filename)
+                content_result["content"] = f"Downloadable PDF: {pdf_filename}"
+                content_result["pdf_description"] = pdf_content
+                content_result["pdf_link"] = pdf_path
+            else:
+                content_result["content"] = "Error generating PDF content."
+                content_result["pdf_description"] = "No description available."
 
         elif material_type_suggestion == "interactive_quiz_placeholder":
             content_result["content"] = f"An interactive quiz for '{step_title}' will be available here."
@@ -338,6 +356,8 @@ class GeminiClient:
         Generate a hint for a quiz question using relevant context from RAG memory.
         Optionally filter by topic_title for more targeted context.
         """
+
+        
         # filter function for relevant memory
         def filter_fn(item):
             if topic_title and topic_title.lower() in item.get("topic_title", "").lower():

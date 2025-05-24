@@ -9,9 +9,12 @@ from sqlalchemy.orm import Session
 from app.controller import user_controller as user_service
 import json
 from pydantic import BaseModel
+from fastapi.responses import FileResponse
+import os
+
+
 
 router = APIRouter()
-
 
 
 # quiz hint request model
@@ -25,6 +28,7 @@ class QuizHintRequest(BaseModel):
 @router.get("/companion/details", response_model=Dict[str, Any])
 async def get_companion_details():
     return {"companions": COMPANION_DETAILS}
+
 
 # course structure
 @router.get("/course/structure", response_model=Dict[str, Any])
@@ -42,25 +46,39 @@ async def get_course_structure(subject: str = Query(..., description="The subjec
     
     return course_structure
 
+
+
 # course with structure and learning steps
 @router.get("/course/learning_step_content", response_model=Dict[str, Any])
 async def get_learning_step_content_api(
     subject: str = Query(..., description="Subject of the course"),
     topic_title: str = Query(..., description="Title of the parent topic"),
     step_title: str = Query(..., description="Title of the specific learning step"),
-    material_type_suggestion: str = Query(..., description="Suggested material type, e.g., 'text', 'youtube_video'"),
-    difficulty: str = Query(..., description="Difficulty level of the course context")
+    material_type_suggestion: str = Query(..., description="Suggested material type, e.g., 'text', 'youtube_video', 'pdf_document'"),
+    difficulty: str = Query(..., description="Difficulty level of the course context"),
+    enemy_theme: Optional[str] = Query("a mischievous goblin", description="Theme for the enemy delivering the content")
 ):
     content_details = llm_client.generate_learning_step_content(
         subject=subject,
         topic_title=topic_title,
         step_title=step_title,
         material_type_suggestion=material_type_suggestion,
-        difficulty=difficulty
+        difficulty=difficulty,
+        enemy_theme=enemy_theme
     )
+
     if not content_details or content_details.get("error"):
         raise HTTPException(status_code=500, detail="Failed to generate learning step content.")
+
+    # if the material type is 'pdf_document', return the PDF file
+    if material_type_suggestion == "pdf_document":
+        pdf_path = content_details.get("pdf_link")
+        if not pdf_path or not os.path.exists(pdf_path):
+            raise HTTPException(status_code=404, detail="PDF not found.")
+        return FileResponse(pdf_path, media_type="application/pdf", filename=os.path.basename(pdf_path))
+
     return content_details
+
 
 
 # interactive quiz place holder
@@ -72,16 +90,16 @@ async def get_learning_step_quiz(
     difficulty: str = Query(..., description="The difficulty level of the course"),
     enemy_theme: Optional[str] = Query("a mischievous goblin", description="Name of the monster or boss delivering the quiz")
 ):
-    """
-    Generate a 5-question multiple-choice quiz for the specified learning step.
-    """
-    # Dynamically generate the theme introduction using the LLM
+
+
+    # dynamically generate the theme introduction using the LLM
     theme_intro_prompt = (
         f"Generate a dynamic and engaging introduction for a quiz. The introduction should be themed around "
         f"a character named '{enemy_theme}' who challenges the learner to complete the quiz. "
         f"Make it fun, interactive, and motivational."
     )
     theme_intro = llm_client.generate_content(theme_intro_prompt)
+
 
     # Build the prompt for the quiz
     prompt = (
@@ -118,6 +136,8 @@ async def get_learning_step_quiz(
         raise HTTPException(status_code=500, detail="Failed to generate quiz content.")
     return {"quiz": quiz}
 
+
+
 # user motivation
 @router.get("/course/quiz_motivation", response_model=Dict[str, Any])
 async def get_quiz_motivation(
@@ -150,8 +170,6 @@ async def get_tips(
         difficulty=difficulty,
     )
     return {"tips": tips}
-
-
 
 
 
@@ -217,6 +235,8 @@ def select_companion(
 @router.get("/companions", response_model=List[str])
 def get_available_companions():
     return list(COMPANION_DETAILS.keys())
+
+
 
 # user hint
 @router.post("/hint")
