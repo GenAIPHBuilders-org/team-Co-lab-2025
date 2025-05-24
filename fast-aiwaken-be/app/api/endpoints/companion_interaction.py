@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from app.core.companion import CompanionLogic
 from app.core.llm_client import llm_client
 from typing import List, Dict, Any, Optional
@@ -8,11 +8,24 @@ from app.dependencies import get_db, get_current_user
 from sqlalchemy.orm import Session
 from app.controller import user_controller as user_service
 import json
-
-
-
+from pydantic import BaseModel
+from app.db.models import Course
+from sqlalchemy.orm import Session
+from app.db.session import SessionLocal
+from app.models.user import User
+from fastapi.security import OAuth2PasswordBearer
+from jose import JWTError, jwt
 
 router = APIRouter()
+
+
+
+# quiz hint request model
+class QuizHintRequest(BaseModel):
+    quiz_question: str
+    topic_title: str
+
+
 
 # companion details
 @router.get("/companion/details", response_model=Dict[str, Any])
@@ -32,6 +45,7 @@ async def get_course_structure(subject: str = Query(..., description="The subjec
         raise HTTPException(status_code=500, detail=f"Failed to generate course structure: {course_structure.get('error', 'Unknown LLM error')}")
     if not course_structure.get("sections"): # Basic validation
         raise HTTPException(status_code=500, detail="Generated course structure is invalid or empty.")
+    
     return course_structure
 
 # course with structure and learning steps
@@ -58,21 +72,94 @@ async def get_learning_step_content_api(
 
 
 # interactive quiz place holder
-@router.get("/course/learning_step_quiz", response_model=dict)
+@router.get("/course/learning_step_quiz", response_model=Dict[str, Any])
 async def get_learning_step_quiz(
-    subject: str = Query(...),
-    topic_title: str = Query(...),
-    step_title: str = Query(...),
-    difficulty: str = Query(...),
-    companion_name: str = Query("Gabriel")
+    subject: str = Query(..., description="The subject of the course"),
+    topic_title: str = Query(..., description="The title of the topic"),
+    step_title: str = Query(..., description="The title of the specific learning step"),
+    difficulty: str = Query(..., description="The difficulty level of the course"),
+    enemy_theme: Optional[str] = Query("a mischievous goblin", description="Name of the monster or boss delivering the quiz")
 ):
+    """
+    Generate a 5-question multiple-choice quiz for the specified learning step.
+    """
+    # Dynamically generate the theme introduction using the LLM
+    theme_intro_prompt = (
+        f"Generate a dynamic and engaging introduction for a quiz. The introduction should be themed around "
+        f"a character named '{enemy_theme}' who challenges the learner to complete the quiz. "
+        f"Make it fun, interactive, and motivational."
+    )
+    theme_intro = llm_client.generate_content(theme_intro_prompt)
+
+    # Build the prompt for the quiz
     prompt = (
+        f"{theme_intro}\n\n"
         f"Generate a 5-question multiple-choice quiz for the learning step '{step_title}' "
         f"in the topic '{topic_title}' for the subject '{subject}' at {difficulty} level. "
-        f"Each question should have 4 options and indicate the correct answer."
+        f"Each question should:\n"
+        f"- Be directly related to the learning step '{step_title}' and the topic '{topic_title}'.\n"
+        f"- Be themed as if posed by '{enemy_theme}', but vary the phrasing for each question introduction. "
+        f"For example, use phrases like 'The {enemy_theme} wonders...', 'The {enemy_theme} challenges you...', "
+        f"'The {enemy_theme} growls...', or 'The {enemy_theme} asks...'.\n"
+        f"- Have a 'question_text' (string).\n"
+        f"- Have an 'options' array of 4 strings (one correct, three plausible distractors).\n"
+        f"- Have a 'correct_answer' string (must exactly match one of the options).\n"
+        f"- Have a brief 'explanation' string for why the answer is correct (1-2 sentences).\n\n"
+        f"Ensure the questions are unique, engaging, and varied. Avoid repeating similar questions.\n\n"
+        f"Return the quiz as a valid JSON object with the following structure:\n"
+        f"{{\n"
+        f"  \"quiz\": [\n"
+        f"    {{\n"
+        f"      \"question_text\": \"The {enemy_theme} asks, 'What is 2 + 2?'\",\n"
+        f"      \"options\": [\"3\", \"4\", \"5\", \"22\"],\n"
+        f"      \"correct_answer\": \"4\",\n"
+        f"      \"explanation\": \"Basic addition: 2 + 2 equals 4.\"\n"
+        f"    }}\n"
+        f"  ]\n"
+        f"}}\n"
+        f"Ensure the JSON is well-formed and does not include any additional text or formatting outside the JSON object."
     )
+
+    # Generate the quiz using the LLM
     quiz = llm_client.generate_content(prompt, is_json_output=True)
+    if not quiz or quiz.get("error"):
+        raise HTTPException(status_code=500, detail="Failed to generate quiz content.")
     return {"quiz": quiz}
+
+# user motivation
+@router.get("/course/quiz_motivation", response_model=Dict[str, Any])
+async def get_quiz_motivation(
+    subject: str = Query(..., description="The title of the current topic"),
+    companion_name: str = Query("Gabriel", description="The name of the companion (e.g., Gabriel, Brian, Ryan, Kent)")
+):
+    """
+    Generate a motivational message to encourage the user to take the quiz.
+    """
+    motivation = CompanionLogic.generate_quiz_motivation(companion_name, subject)
+    return {"motivation": motivation}
+
+
+
+@router.get("/course/tips", response_model=Dict[str, Any])
+async def get_tips(
+    subject: str = Query(..., description="The subject of the course"),
+    topic_title: str = Query(..., description="The title of the topic"),
+    step_title: str = Query("", description="The title of the specific learning step (optional)"),
+    difficulty: str = Query(..., description="The difficulty level of the course"),
+
+):
+    """
+    Generate actionable tips for a specific topic or learning step.
+    """
+    tips = llm_client.generate_tips(
+        subject=subject,
+        topic_title=topic_title,
+        step_title=step_title,
+        difficulty=difficulty,
+    )
+    return {"tips": tips}
+
+
 
 
 
@@ -135,3 +222,17 @@ def select_companion(
 @router.get("/companions", response_model=List[str])
 def get_available_companions():
     return list(COMPANION_DETAILS.keys())
+
+# user hint
+@router.post("/hint")
+def get_quiz_hint(request: QuizHintRequest):
+    hint = llm_client.generate_quiz_hint(
+        quiz_question=request.quiz_question,
+        topic_title=request.topic_title
+    )
+    return {"hint": hint}
+
+
+
+
+    

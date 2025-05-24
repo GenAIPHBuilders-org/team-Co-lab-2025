@@ -13,11 +13,9 @@ class CompanionLogic:
     def generate_topic_explanation(companion_name: str, subject: str, concept: str) -> str:
         from app.core.llm_client import llm_client  # <-- move import here
         details = CompanionLogic.get_companion_details(companion_name)
-        personality = details.get("personality", "friendly and helpful")
         motivation_style = details.get("motivation_style", "supportive")
+        
         prompt = (
-            f"You are {companion_name}, a learning companion. "
-            f"Your personality: {personality}. "
             f"Your motivation style: {motivation_style}. "
             f"Explain '{concept}' in {subject} to a student in a way that matches your personality and motivation style. "
             f"Keep it under 200 words."
@@ -42,4 +40,28 @@ class CompanionLogic:
             f"Based on this, give a helpful hint that reminds the user of relevant concepts they've already seen, "
             f"but do not give away the answer. Stay in character."
         )
+        return llm_client.generate_content(prompt)
+    
+
+    # generate motivation based on companion's topic
+    @staticmethod
+    def generate_quiz_motivation(companion_name: str, subject: str) -> str:
+        '''Motivational message to encourage the user to take a quiz.'''
+        from app.core.llm_client import llm_client
+        details = CompanionLogic.get_companion_details(companion_name)
+        personality = details.get("personality", "friendly and encouraging")
+        motivation_style = details.get("motivation_style", "supportive")
+
+
+        prompt = (
+        f"You are {companion_name}, a learning companion with a {personality} personality. "
+        f"Your motivation style is {motivation_style}. "
+        f"The user is learning the topic '{subject}'. "
+        f"Encourage them to take the quiz for this topic and finish their course chapter. "
+        f"Make the message heartfelt, inspiring, and full of positive energy. "
+        f"Use emotional language to make the user feel confident and motivated. "
+        f"Keep the message short (2-3 sentences)."
+        )
+
+        # Generate the motivational message using the LLM
         return llm_client.generate_content(prompt)
