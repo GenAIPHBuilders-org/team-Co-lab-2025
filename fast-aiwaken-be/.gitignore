@@ -17,6 +17,8 @@
 .venv/
 venv/
 
+# Generated pdf
+generated_pdf/
 
 # __init__.py files
 __init__.py

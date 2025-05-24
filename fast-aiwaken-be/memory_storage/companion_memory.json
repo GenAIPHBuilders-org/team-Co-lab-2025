@@ -2709,6 +2709,429 @@
     "difficulty": "easy"
   },
   {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Counting Objects and Representing Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Practice Worksheet: Counting and Writing Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Number Line and Ordering",
+    "step_title": "Introducing the Number Line",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Number Line and Ordering",
+    "step_title": "Comparing Numbers (Greater Than, Less Than, Equal To)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Number Line and Ordering",
+    "step_title": "Ordering Numbers on a Number Line",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Addition",
+    "step_title": "Introduction to Addition",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Addition",
+    "step_title": "Adding Numbers with Examples",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Addition",
+    "step_title": "Practice Worksheet: Addition Problems",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Subtraction",
+    "step_title": "Introduction to Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Subtraction",
+    "step_title": "Subtracting Numbers with Examples",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Subtraction",
+    "step_title": "Practice Worksheet: Subtraction Problems",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Shapes and Patterns",
+    "topic_title": "Identifying Basic Shapes",
+    "step_title": "Introduction to Basic Shapes (Circle, Square, Triangle)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Shapes and Patterns",
+    "topic_title": "Identifying Basic Shapes",
+    "step_title": "Recognizing Shapes in Everyday Objects",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Shapes and Patterns",
+    "topic_title": "Identifying Basic Shapes",
+    "step_title": "Interactive Quiz: Shape Identification",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction to Whole Numbers",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Place Value and Number Representation",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Practice Worksheet: Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Addition and Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Multiplication and Division",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Practice Worksheet: Arithmetic Operations",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Identifying Basic Shapes (Circles, Squares, Triangles)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Understanding Angles",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Practice Worksheet: Identifying Shapes",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Working with Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Introduction to Fractions: Numerator and Denominator",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Working with Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Visualizing Fractions",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Working with Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Practice Worksheet: Fractions",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Error generating PDF content.",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Error generating PDF content.",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Error generating PDF content.",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
     "section_title": "Understanding Whole Numbers",
     "topic_title": "Counting and Number Recognition",
     "step_title": "Introduction to Numbers 0-100",
