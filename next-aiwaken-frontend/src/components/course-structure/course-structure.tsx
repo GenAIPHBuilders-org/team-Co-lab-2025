@@ -107,8 +107,8 @@ export function CourseStructure({ courseData }: CourseStructureProps) {
                   <Star
                     key={i}
                     className={`h-4 w-4 ${i < Math.floor(courseData.rating)
-                        ? "text-yellow-400 fill-yellow-400"
-                        : "text-gray-600"
+                      ? "text-yellow-400 fill-yellow-400"
+                      : "text-gray-600"
                       }`}
                   />
                 ))}

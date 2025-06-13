@@ -36,3 +36,20 @@ export interface TopicModalProps {
   onConfirm: (subject: string, difficulty: string) => Promise<void>;
   isPending: boolean;
 }
+
+export type TVideoState = {
+  isPlaying: boolean;
+  isMuted: boolean;
+  progress: number;
+  isFullscreen: boolean;
+  isBookmarked: boolean;
+  showNotes: boolean;
+};
+
+export type TVideoAction =
+  | { type: "SET_PLAYING"; payload: boolean }
+  | { type: "SET_MUTED"; payload: boolean }
+  | { type: "SET_PROGRESS"; payload: number }
+  | { type: "SET_FULLSCREEN"; payload: boolean }
+  | { type: "SET_BOOKMARKED"; payload: boolean }
+  | { type: "SET_SHOWNOTES"; payload: boolean };

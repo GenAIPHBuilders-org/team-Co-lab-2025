@@ -8,11 +8,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronRight, ArrowLeft, BookOpen, Video, FileText, PenTool } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useGetCourseSummaryConclusion, useGetLearningStepContent, useGetLearningStepQuiz } from "@/(features)/course-action"
-import { VideoPlayer, VideoPlayerProps } from "@/components/video-player"
+import { VideoPlayer } from "@/components/video-player"
 import { TokenStorage } from "@/lib/token-storage"
-import { CompanionAvatar } from "@/components/companion-avatar"
 import ReactMarkdown from 'react-markdown';
 import { LearningStepQuiz } from "@/components/learning-step-quiz"
+import { VideoPlayerProps } from "@/types/video-player"
+import { CompanionGuide } from "@/components/companion-guide"
 
 export default function CoursePage() {
   const quizData = TokenStorage.getLearningStepQuiz()
@@ -81,19 +82,7 @@ export default function CoursePage() {
       case "text_with_image":
         return (
           <div className="flex flex-col items-center w-full">
-            <div className="flex items-center gap-4 mb-6 w-full">
-              <div className="relative">
-                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
-                  Guide
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">{companion}</span>
-                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-              </div>
-            </div>
+            <CompanionGuide companion={companion as string} />
             <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
               {data?.content
                 .split("\n\n")
@@ -110,19 +99,7 @@ export default function CoursePage() {
       case "text":
         return (
           <div className="flex flex-col items-center w-full">
-            <div className="flex items-center gap-4 mb-6 w-full">
-              <div className="relative">
-                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
-                  Guide
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">{companion}</span>
-                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-              </div>
-            </div>
+            <CompanionGuide companion={companion as string} />
             <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
               {data?.content
                 .split("\n\n")
@@ -138,24 +115,14 @@ export default function CoursePage() {
         )
       case "youtube_video":
         return (
-          <VideoPlayer {...data as VideoPlayerProps} />
+          <div className="flex flex-col items-center w-full">
+            <VideoPlayer {...data as VideoPlayerProps} />
+          </div>
         )
       case "pdf_document":
         return (
           <div className="flex flex-col items-center w-full">
-            <div className="flex items-center gap-4 mb-6 w-full">
-              <div className="relative">
-                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
-                  Guide
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">{companion}</span>
-                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-              </div>
-            </div>
+            <CompanionGuide companion={companion as string} />
             <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
               {data?.pdf_description && (
                 <div className="w-full flex flex-col space-y-2 mb-6">
@@ -306,8 +273,7 @@ export default function CoursePage() {
                                 <ChevronDown className="h-3 w-3 text-gray-400" />
                               ) : (
                                 <ChevronRight className="h-3 w-3 text-gray-400" />
-                              )}
-                            </div>
+                              )}                            </div>
 
                             {expandedTopics[topic.topic_id] && (
                               <div className="p-2 space-y-2 bg-gray-800/20">

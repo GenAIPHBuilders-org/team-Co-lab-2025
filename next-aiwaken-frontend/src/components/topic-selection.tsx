@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { useGenerateCourse } from "@/(features)/course-action";
 import { Topic } from "@/types/topic";
 import { topics } from "@/constants/topics";
@@ -18,7 +17,7 @@ import { TopicModal } from "./topic-modal";
 export function TopicSelectionCard() {
   const { generateCourseAsync, isPending } = useGenerateCourse();
   const [selectedTopic,] = useState<number | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [confirmingTopic, setConfirmingTopic] = useState<Topic | null>(null);
 
   const handleTopicClick = (topic: Topic) => {
