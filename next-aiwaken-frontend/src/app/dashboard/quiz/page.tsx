@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState } from "react"
@@ -183,7 +182,7 @@ export default function Quiz() {
                           : bossHealth > 20
                             ? "linear-gradient(90deg, #eab308, #f97316)"
                             : "linear-gradient(90deg, #ef4444, #b91c1c)",
-                    } as any
+                    } as React.CSSProperties
                   }
                 />
                 <span className="absolute top-0 right-2 text-xs font-bold text-white">{Math.round(bossHealth)}%</span>

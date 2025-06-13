@@ -35,6 +35,9 @@ export default function LoginForm() {
     } catch (error) {
       console.error("Error submitting form:", error)
     }
+    finally {
+      setIsSubmitted(false)
+    }
   }
 
   return (

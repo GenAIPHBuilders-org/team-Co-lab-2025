@@ -35,7 +35,6 @@ const buttonVariants = cva(
   }
 )
 
-// Simple spinner for loading state
 function Spinner() {
   return (
     <svg
@@ -83,8 +82,12 @@ function Button({
       disabled={loading || disabled}
       {...props}
     >
-      {loading && <Spinner />}
-      {children}
+      {loading
+        ? <Spinner /> : (
+          <>
+            {children}
+          </>
+        )}
     </Comp>
   )
 }
