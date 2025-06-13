@@ -2,10 +2,11 @@ import { Card, CardContent } from "./ui/card"
 import { motion } from "framer-motion"
 import { Progress } from "./ui/progress"
 
-type Props = {
+type TProgressCardProps = {
   progressValue: number;
 }
-export const ProgressCard = ({ progressValue }: Props) => {
+
+export const ProgressCard = ({ progressValue }: TProgressCardProps) => {
   return (
     <Card className="flex-2 glow-border h-80 overflow-hidden">
       <CardContent className="p-6">

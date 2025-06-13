@@ -5,26 +5,22 @@ import ReactPlayer from "react-player/lazy"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Bookmark, BookmarkCheck, Maximize2, Minimize2, Volume2, VolumeX } from "lucide-react"
+import {
+  Bookmark,
+  BookmarkCheck,
+  Maximize2,
+  Minimize2,
+  Volume2,
+  VolumeX
+} from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { VideoPlayerProps } from '@/types/video-player';
 
-interface VideoDetails {
-  title: string
-  link: string
-  thumbnail: string
-  video_id: string
-}
-
-export interface VideoPlayerProps {
-  type: "youtube_video" | "text" | "text_with_image" | "interactive_quiz_placeholder" | "pdf_document"
-  content: string
-  accompanying_text: string
-  image_description?: string | null
-  video_details: VideoDetails
-  pdf_description?: string | null
-}
-
-export function VideoPlayer({ content, accompanying_text, video_details }: VideoPlayerProps) {
+export function VideoPlayer({
+  content,
+  accompanying_text,
+  video_details
+}: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [progress, setProgress] = useState(0)
