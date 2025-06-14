@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation"
 export default function RegistrationForm() {
   const router = useRouter();
   const { registerCb, isLoading, isSuccess } = useRegistration();
+
   const methods = useForm<RegistrationFormValues>({
     mode: "all",
     resolver: zodResolver(registrationSchema),
