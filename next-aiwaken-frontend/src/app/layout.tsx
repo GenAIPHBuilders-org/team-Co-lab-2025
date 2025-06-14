@@ -6,7 +6,10 @@ import { AuthenticationProvider } from "@/context/auth-context";
 import { getServerAuthSession } from "@/services/ssr/auth";
 import { OnboardingStepper } from "@/components/on-boarding-stepper";
 import { AuthLayout } from "@/components/auth-layout";
-import React from "react";
+import React, { Suspense } from "react";
+import RouteLoader from "@/components/route-loader";
+import Loading from "./loading";
+import DashboardLoading from "./dashboard/loading";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,16 +52,23 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <RouteLoader />
         <QueryClientContextProvider>
           <AuthenticationProvider initialUser={data}>
             {!data?.user.is_active ? (
               <React.Fragment>
                 <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 flex items-center justify-center p-4">
-                  {children}
+                  <Suspense fallback={<Loading />}>
+                    {children}
+                  </Suspense>
                 </div>
               </React.Fragment>
             ) : (
-              <AuthLayout>{children}</AuthLayout>
+              <Suspense fallback={
+                <DashboardLoading />
+              }>
+                <AuthLayout>{children}</AuthLayout>
+              </Suspense>
             )}
           </AuthenticationProvider>
         </QueryClientContextProvider>

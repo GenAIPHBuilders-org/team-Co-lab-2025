@@ -235,4 +235,11 @@ declare global {
   interface TipsResponse {
     tips: string;
   }
+
+  interface IconProps extends React.SVGProps<SVGSVGElement> {
+    width?: number | string;
+    height?: number | string;
+    className?: string;
+    style?: React.CSSProperties;
+  }
 }

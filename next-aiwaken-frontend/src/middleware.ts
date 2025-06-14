@@ -26,6 +26,8 @@ const PRIVATE_PATHS = [
   "/dashboard/course",
   "/dashboard/quiz",
   "/dashboard/course-quiz",
+  "/dashboard/shop",
+  "/dashboard/daily-quest",
 ];
 
 export function middleware(request: NextRequest) {
