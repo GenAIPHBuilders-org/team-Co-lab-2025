@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import {
+  Share2,
   Sparkles,
   SquareTerminal,
 } from "lucide-react"
@@ -20,7 +21,6 @@ import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "./ui/c
 import { Button } from "./ui/button"
 import { GenieIcon } from "./icons/genie"
 
-
 const data = {
   user: {
     name: "shadcn",
@@ -36,15 +36,13 @@ const data = {
     },
     {
       title: "Leaderboard",
-      url: "/dashboard/components",
+      url: "/dashboard/leaderboard",
       icon: Sparkles,
-      isActive: false,
     },
     {
       title: "Refer a Friend",
-      url: "/dashboard/refer",
-      icon: Sparkles,
-      isActive: false,
+      url: "/dashboard/referral",
+      icon: Share2,
     },
   ],
 }

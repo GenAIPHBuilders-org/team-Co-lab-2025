@@ -29,7 +29,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { useAuthentication } from "@/context/auth-context"
+import { useAuthentication } from "@/contexts/auth-context"
 
 export function NavUser() {
   const { user, handleLogout } = useAuthentication();

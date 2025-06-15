@@ -1,11 +1,11 @@
 import { Brain, Shield, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { itemVariants } from "@/lib/animations";
 import { Badge } from "./ui/badge";
+import AnimationVariants from "@/lib/animations";
 
 export function UserCard() {
   return (
-    <motion.div variants={itemVariants} className="md:col-span-1">
+    <motion.div variants={AnimationVariants.itemVariants} className="md:col-span-1">
       <div className="relative">
         <div className="relative rounded-lg overflow-hidden border border-gray-800 shadow-2xl">
           <div className="bg-gray-900 p-6 rounded-lg relative overflow-hidden">

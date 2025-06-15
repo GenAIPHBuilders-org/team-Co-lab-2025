@@ -37,6 +37,11 @@ export interface TopicModalProps {
   isPending: boolean;
 }
 
+export type TModalContextProps = Omit<
+  TopicModalProps,
+  "topic" | "isPending" | "onConfirm"
+>;
+
 export type TVideoState = {
   isPlaying: boolean;
   isMuted: boolean;

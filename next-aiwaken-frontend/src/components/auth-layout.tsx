@@ -1,5 +1,5 @@
 "use client";
-import { useAuthentication } from "@/context/auth-context";
+import { useAuthentication } from "@/contexts/auth-context";
 import { AppSidebar } from "./app-sidebar";
 import { SiteHeader } from "./site-header";
 import { SidebarInset, SidebarProvider } from "./ui/sidebar";
