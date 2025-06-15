@@ -1,28 +1,21 @@
 "use client"
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Sparkles, Brain, Zap, Award, ArrowRight, RefreshCcw } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import confetti from "canvas-confetti"
+import { Button } from "@/components/ui/button"
+import { Sparkles, Zap, Award, RefreshCcw } from "lucide-react"
 import { TokenStorage } from "@/lib/token-storage"
-import { CompanionAvatar } from "@/components/companion-avatar"
+import { useIdleDetection } from "@/hooks/use-idle-detection"
+import { MotivationalModal } from "@/components/dialog/motivational-dialog"
+import { useQuizState, QuizData } from "@/hooks/use-quiz-state"
+import { QuizBoss } from "@/components/quiz/quiz-boss"
+import { QuizQuestion } from "@/components/quiz/quiz-question"
+import { QuizExplanation } from "@/components/quiz/quiz-explanation"
+import { CompanionProvider } from "@/contexts/companion-context"
 
-export default function Quiz() {
-  const companion = TokenStorage.getUserCompanion();
-  const quizData = TokenStorage.getSummaryConclusion();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
-  const [bossHealth, setBossHealth] = useState(100)
-  const [showExplanation, setShowExplanation] = useState(false)
-  const [gameState, setGameState] = useState<"intro" | "playing" | "completed">("intro")
-  const [score, setScore] = useState(0)
-  const [damageAnimation, setDamageAnimation] = useState(false)
+export default function BossQuiz() {
+  const isIdle = useIdleDetection(10000)
+  const companion = TokenStorage.getUserCompanion()
+  const quizData = TokenStorage.getSummaryConclusion()
 
   if (!quizData) {
     return (
@@ -36,73 +29,39 @@ export default function Quiz() {
     )
   }
 
-  const currentQuestion = quizData.quiz[currentQuestionIndex]
-  const totalQuestions = quizData.quiz.length
+  return (
+    <CompanionProvider>
+      <BossQuizContent
+        quizData={{ quiz: { quiz: quizData.quiz } }}
+        companion={companion as string}
+        isIdle={isIdle}
+      />
+    </CompanionProvider>
+  )
+}
 
-  const handleAnswerSelect = (answer: string) => {
-    if (selectedAnswer !== null) return
-
-    setSelectedAnswer(answer)
-    const correct = answer === currentQuestion.correct_answer
-    setIsCorrect(correct)
-
-    if (correct) {
-      const damage = 100 / totalQuestions
-      setDamageAnimation(true)
-      setTimeout(() => {
-        setBossHealth((prev) => Math.max(0, prev - damage))
-        setDamageAnimation(false)
-        setScore((prev) => prev + 1)
-      }, 500)
-    }
-
-    setTimeout(() => {
-      setShowExplanation(true)
-    }, 1000)
-  }
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < totalQuestions - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1)
-      setSelectedAnswer(null)
-      setIsCorrect(null)
-      setShowExplanation(false)
-    } else {
-      setGameState("completed")
-      if (score >= 3) {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-        })
-      }
-    }
-  }
-
-  const startQuiz = () => {
-    setGameState("playing")
-  }
-
-  const restartQuiz = () => {
-    setCurrentQuestionIndex(0)
-    setSelectedAnswer(null)
-    setIsCorrect(null)
-    setBossHealth(100)
-    setShowExplanation(false)
-    setGameState("playing")
-    setScore(0)
-  }
-
-  // Determine boss state based on health
-  const getBossState = () => {
-    if (bossHealth > 60) return "strong"
-    if (bossHealth > 20) return "weakened"
-    return "critical"
-  }
+function BossQuizContent({ quizData, companion, isIdle }: { quizData: QuizData; companion: string; isIdle: boolean }) {
+  const {
+    currentQuestion,
+    currentQuestionIndex,
+    totalQuestions,
+    selectedAnswer,
+    isCorrect,
+    bossHealth,
+    showExplanation,
+    gameState,
+    score,
+    damageAnimation,
+    handleAnswerSelect,
+    handleNextQuestion,
+    startQuiz,
+    restartQuiz,
+    getBossState,
+  } = useQuizState({ quizData })
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 p-4 md:p-6">
-      <div className=" mt-24">
+      <div className="mt-24">
         {gameState === "intro" && (
           <Card className="bg-transparent glow-border text-white">
             <CardHeader>
@@ -117,19 +76,24 @@ export default function Quiz() {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <p className="text-purple-100 leading-relaxed">{quizData.summary.split("\n\n")[0]}</p>
-                <div className=" p-4 rounded-lg">
-                  <h3 className="font-bold text-lg flex items-center gap-2 mb-2">
-                    <Brain className="h-5 w-5 text-purple-300" /> Topics Covered:
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {quizData.topics_covered.map((topic, index) => (
-                      <Badge key={index} className="bg-purple-700 hover:bg-purple-600">
-                        {topic}
-                      </Badge>
-                    ))}
+                {quizData.summary && (
+                  <p className="text-purple-100 leading-relaxed">{quizData.summary.split("\n\n")[0]}</p>
+                )}
+                {quizData.topics_covered && (
+                  <div className="p-4 rounded-lg">
+                    <h3 className="font-bold text-lg flex items-center gap-2 mb-2">Topics Covered:</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {quizData.topics_covered.map((topic: string, index: number) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-purple-700 hover:bg-purple-600 rounded-full text-sm"
+                        >
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </CardContent>
             <CardFooter>
@@ -145,132 +109,28 @@ export default function Quiz() {
 
         {gameState === "playing" && (
           <>
-            <div className="mb-6 bg-purple-950/80 rounded-lg p-4 border border-purple-500">
-              <div className="flex justify-between items-center mb-2">
-                <div className="flex items-center gap-2">
-                  <Avatar
-                    className={`h-10 w-10 border-2 ${getBossState() === "critical" ? "border-red-500 animate-pulse" : getBossState() === "weakened" ? "border-yellow-500" : "border-purple-400"}`}
-                  >
-                    <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Quizmaster" />
-                    <AvatarFallback className="bg-purple-800 text-white">QM</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h3 className="font-bold">Cunning Quizmaster</h3>
-                    <p className="text-xs text-purple-300">
-                      {getBossState() === "critical"
-                        ? "Nearly defeated!"
-                        : getBossState() === "weakened"
-                          ? "Weakening..."
-                          : "Full of quantum tricks"}
-                    </p>
-                  </div>
-                </div>
-                <div className="text-sm font-bold">
-                  Question {currentQuestionIndex + 1}/{totalQuestions}
-                </div>
-              </div>
-              <div className="relative">
-                <Progress
-                  value={bossHealth}
-                  className={`h-4 ${damageAnimation ? "animate-pulse" : ""}`}
-                  style={
-                    {
-                      background: "rgba(88, 28, 135, 0.3)",
-                      "--tw-progress-fill":
-                        bossHealth > 60
-                          ? "linear-gradient(90deg, #9333ea, #6366f1)"
-                          : bossHealth > 20
-                            ? "linear-gradient(90deg, #eab308, #f97316)"
-                            : "linear-gradient(90deg, #ef4444, #b91c1c)",
-                    } as React.CSSProperties
-                  }
-                />
-                <span className="absolute top-0 right-2 text-xs font-bold text-white">{Math.round(bossHealth)}%</span>
-              </div>
-            </div>
-
-            {/* Question Card */}
-            <Card className="bg-purple-950/80 border-purple-500 text-white mb-6">
-              <CardHeader>
-                <CardTitle className="text-xl text-center">{currentQuestion.question_text}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-3">
-                  {currentQuestion.options.map((option, index) => (
-                    <Button
-                      key={index}
-                      variant="outline"
-                      className={`justify-start text-left h-auto py-3 px-4 border-2 ${selectedAnswer === option
-                        ? isCorrect
-                          ? "border-green-500 bg-green-900/20"
-                          : "border-red-500 bg-red-900/20"
-                        : "border-purple-600 bg-purple-900/40 hover:bg-purple-800/40"
-                        } ${selectedAnswer !== null &&
-                        option === currentQuestion.correct_answer &&
-                        "border-green-500 bg-green-900/20"
-                        }`}
-                      onClick={() => handleAnswerSelect(option)}
-                      disabled={selectedAnswer !== null}
-                    >
-                      <div className="flex items-center gap-2 w-full">
-                        <div
-                          className={`flex-shrink-0 h-6 w-6 rounded-full flex items-center justify-center ${selectedAnswer === option ? (isCorrect ? "bg-green-500" : "bg-red-500") : "bg-purple-700"
-                            } ${selectedAnswer !== null && option === currentQuestion.correct_answer && "bg-green-500"}`}
-                        >
-                          {String.fromCharCode(65 + index)}
-                        </div>
-                        <span className="flex-grow">{option}</span>
-                      </div>
-                    </Button>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-end">
-                {selectedAnswer && (
-                  <Button
-                    onClick={handleNextQuestion}
-                    className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500"
-                  >
-                    {currentQuestionIndex < totalQuestions - 1 ? "Next Question" : "See Results"}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                )}
-              </CardFooter>
-            </Card>
-
-            <AnimatePresence>
-              {showExplanation && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex items-center gap-4 mb-6 w-full">
-                    <div className="relative">
-                      <CompanionAvatar
-                        name={companion as string}
-                        size="lg"
-                        className="shadow-lg border-2 border-[#9F8DFC]"
-                      />
-                      <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
-                        Guide
-                      </span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-lg font-bold text-white">{companion}</span>
-                      <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-                      <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-                    </div>
-                  </div>
-                  <Card className="bg-indigo-950/80 border-indigo-500 text-white">
-                    <CardContent>
-                      <p className="text-indigo-100">{currentQuestion.explanation}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            <MotivationalModal isOpen={isIdle} title="You've Been Idle for a While!" actionText="I'm Ready!" />
+            <QuizBoss
+              bossHealth={bossHealth}
+              currentQuestionIndex={currentQuestionIndex}
+              totalQuestions={totalQuestions}
+              damageAnimation={damageAnimation}
+              getBossState={getBossState}
+            />
+            <QuizQuestion
+              question={currentQuestion}
+              selectedAnswer={selectedAnswer}
+              isCorrect={isCorrect}
+              onAnswerSelect={handleAnswerSelect}
+              onNextQuestion={handleNextQuestion}
+              currentQuestionIndex={currentQuestionIndex}
+              totalQuestions={totalQuestions}
+            />
+            <QuizExplanation
+              explanation={currentQuestion.explanation}
+              companion={companion}
+              showExplanation={showExplanation}
+            />
           </>
         )}
 
@@ -329,7 +189,9 @@ export default function Quiz() {
                   </p>
                 </div>
 
-                <p className="text-purple-100 leading-relaxed">{quizData.summary.split("\n\n")[1]}</p>
+                {quizData.summary && (
+                  <p className="text-purple-100 leading-relaxed">{quizData.summary.split("\n\n")[1]}</p>
+                )}
               </div>
             </CardContent>
             <CardFooter>

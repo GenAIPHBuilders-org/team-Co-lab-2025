@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { QueryClientContextProvider } from "@/context/query-client-context";
-import { AuthenticationProvider } from "@/context/auth-context";
+import { QueryClientContextProvider } from "@/contexts/query-client-context";
+import { AuthenticationProvider } from "@/contexts/auth-context";
 import { getServerAuthSession } from "@/services/ssr/auth";
 import { OnboardingStepper } from "@/components/on-boarding-stepper";
 import { AuthLayout } from "@/components/auth-layout";

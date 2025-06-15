@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
 import { RegistrationIcon } from "../icons/registration-icon"
 import { Checkbox } from "../ui/checkbox"
-import { useAuthentication } from "@/context/auth-context"
+import { useAuthentication } from "@/contexts/auth-context"
 
 export default function LoginForm() {
   const { login } = useAuthentication();

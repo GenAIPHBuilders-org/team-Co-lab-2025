@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -11,7 +11,7 @@ import { topics } from "@/constants/topics";
 import { TopicCard } from "./topic-card";
 import { TopicModal } from "./topic-modal";
 import { motion } from "framer-motion";
-import { itemVariants } from "@/lib/animations";
+import AnimationVariants from "@/lib/animations";
 
 export function TopicSelectionCard() {
   const { generateCourseAsync, isPending } = useGenerateCourse();
@@ -38,7 +38,7 @@ export function TopicSelectionCard() {
 
 
   return (
-    <>
+    <React.Fragment>
       <Card className="bg-gray-900 p-6 rounded-lg relative shadow-lg flex-2 h-90 overflow-hidden">
         <div className="absolute -top-6 -right-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
         <div className="absolute -top-6 -left-6 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
@@ -48,7 +48,7 @@ export function TopicSelectionCard() {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            variants={itemVariants}
+            variants={AnimationVariants.itemVariants}
           >
             <motion.h2
               className="text-2xl font-bold"
@@ -110,6 +110,6 @@ export function TopicSelectionCard() {
         onConfirm={handleGenerateCourse}
         isPending={isPending}
       />
-    </>
+    </React.Fragment>
   );
 }

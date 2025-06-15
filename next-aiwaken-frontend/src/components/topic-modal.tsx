@@ -11,49 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { TopicModalProps } from "@/types/topic";
 import { difficultyMap } from "@/constants/topics";
-
-const dialogVariants = {
-  hidden: { opacity: 0, scale: 0.8, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 25,
-    },
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.8,
-    y: 20,
-    transition: { duration: 0.2 },
-  },
-};
-
-const rewardItemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: 0.3 + i * 0.1,
-      duration: 0.3,
-    },
-  }),
-};
-
-const buttonVariants = {
-  hover: {
-    scale: 1.05,
-    transition: { duration: 0.2 },
-  },
-  tap: {
-    scale: 0.95,
-    transition: { duration: 0.1 },
-  },
-};
+import AnimationVariants from "@/lib/animations";
 
 export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: TopicModalProps) {
   if (!topic) return null;
@@ -82,7 +40,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
 
             <motion.div
               className="relative z-10"
-              variants={dialogVariants}
+              variants={AnimationVariants.dialogVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -167,7 +125,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
                         key={index}
                         className="flex items-center gap-2 text-sm"
                         custom={index}
-                        variants={rewardItemVariants}
+                        variants={AnimationVariants.rewardItemVariants}
                         initial="hidden"
                         animate="visible"
                       >
@@ -185,7 +143,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
 
                 <DialogFooter className="flex flex-col sm:flex-row sm:justify-between sm:space-x-2">
                   <motion.div
-                    variants={buttonVariants}
+                    variants={AnimationVariants.buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
                   >
@@ -198,7 +156,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
                     </Button>
                   </motion.div>
                   <motion.div
-                    variants={buttonVariants}
+                    variants={AnimationVariants.buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
                     initial={{ opacity: 0, y: 20 }}

@@ -23,6 +23,15 @@ import {
   Coins,
 } from 'lucide-react'
 
+// const mock = {
+//   "learning_style": "visual",
+//   "tone": "friendly",
+//   "goals": ["master algebra in 2 weeks"],
+//   "preferences": {
+//     "format": "infographics",
+//     "difficulty": "medium"
+//   }
+// }
 
 export default function ShopPage() {
 

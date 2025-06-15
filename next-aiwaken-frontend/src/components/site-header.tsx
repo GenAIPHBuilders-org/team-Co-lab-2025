@@ -16,6 +16,7 @@ import Link from "next/link"
 import useBreadcrumbs from "@/hooks/use-breadcrumbs"
 import React from "react"
 import { Badge } from "./ui/badge"
+import { DailyCheckInModal } from "./daily-check-in/daily-check-in"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
@@ -87,15 +88,7 @@ export function SiteHeader() {
               <span className="hidden sm:inline">Daily Quests</span>
             </Button>
           </Link>
-          <Link href="/dashboard/shop">
-            <Button
-              variant="ghost"
-              className="h-9 px-3 text-slate-300 hover:bg-white/10 hover:text-white transition-all duration-200 hover:scale-105"
-            >
-              <Store className="h-4 w-4 " />
-              <span className="hidden sm:inline">Daily Check-in</span>
-            </Button>
-          </Link>
+          <DailyCheckInModal />
           <Badge className="hidden sm:inline bg-purple-500/10 text-purple-300 border-purple-500/20">
             <div className="flex items-center gap-1">
               <Zap className="h-4 w-4" />
