@@ -1,12 +1,3 @@
-
-
-
-
-.venv/
-
-
-# generated pdf
-generated_pdfs/
 # Environment files
 # Local dotenv file (sensitive credentials, API keys, etc.)
 .env.local
@@ -17,7 +8,7 @@ generated_pdfs/
 # Ignore all pycache folders recursively
 **/pycache/
 
-#Ignore compiled Python files
+# Ignore compiled Python files
 *.pyc   # standard bytecode
 *.pyo   # optimized bytecode
 *.pyd   # Windows DLLs generated from Python
@@ -29,5 +20,5 @@ venv/
 # Generated pdf
 generated_pdf/
 
-init.py files
+# init.py files
 init.py
