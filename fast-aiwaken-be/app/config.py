@@ -21,6 +21,9 @@ class Settings(BaseSettings):
     # Gemini API Key
     GEMINI_API_KEY: str = Field(..., env="GEMINI_API_KEY") 
 
+    # Gemini url
+    GEMINI_BASE_URL: str = Field("https://api.gemini.com", env="GEMINI_BASE_URL")
+
     # Youtube API Key
     YOUTUBE_API_KEY: str = Field(..., env="YOUTUBE_API_KEY")
 
