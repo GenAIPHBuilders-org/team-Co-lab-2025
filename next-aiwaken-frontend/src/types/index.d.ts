@@ -30,6 +30,7 @@ declare global {
     login: (username: string, password: string) => Promise<void>;
     handleLogout: () => void;
     isAuthenticated: boolean;
+    isLoading: boolean;
   };
 
   interface CourseData {
