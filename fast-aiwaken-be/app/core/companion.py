@@ -11,7 +11,7 @@ class CompanionLogic:
 # ability of model to generate a topic explanation
     @staticmethod
     def generate_topic_explanation(companion_name: str, subject: str, concept: str) -> str:
-        from app.core.llm_client import llm_client  # <-- move import here
+        from app.core.llm_client import llm_client 
         details = CompanionLogic.get_companion_details(companion_name)
         motivation_style = details.get("motivation_style", "supportive")
         
