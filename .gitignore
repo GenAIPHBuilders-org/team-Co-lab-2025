@@ -1,3 +1,12 @@
+
+
+
+
+.venv/
+
+
+# generated pdf
+generated_pdfs/
 # Environment files
 # Local dotenv file (sensitive credentials, API keys, etc.)
 .env.local

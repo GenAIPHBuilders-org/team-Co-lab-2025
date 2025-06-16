@@ -1,0 +1,185 @@
+export const courseData = {
+  id: "MATH-FUNDAMENTALS-101",
+  title: "Math Fundamentals: A Beginner's Guide",
+  subtitle: "A foundational course for absolute beginners",
+  description:
+    "This course provides a foundational understanding of basic mathematical concepts, suitable for absolute beginners.  We'll cover essential arithmetic, introduce basic geometry, and explore simple algebra.",
+  instructor: {
+    name: "Dr. Alan Turing",
+    title: "Mathematics Professor",
+    avatar: "/images/instructors/alan-turing.jpg",
+    bio: "Renowned mathematician and computer scientist, known for his groundbreaking work in mathematics and cryptography.",
+  },
+  duration: "4 weeks",
+  level: "Beginner",
+  enrolledStudents: 0,
+  rating: 0,
+  tags: ["Arithmetic", "Geometry", "Algebra", "Beginner", "Mathematics"],
+  thumbnail: "/images/courses/math-fundamentals.jpg",
+  chapters: [
+    {
+      id: "section_1",
+      number: 1,
+      title: "Arithmetic Operations",
+      description:
+        "Master the basics of addition, subtraction, multiplication, and division.",
+      duration: "6 hours",
+      progress: 0,
+      unlocked: true,
+      lessons: [
+        {
+          id: "topic_1_1",
+          title: "Addition and Subtraction",
+          type: "group",
+          duration: "2 hours",
+          description: "Learn how to add and subtract numbers with confidence.",
+          completed: false,
+          steps: [
+            {
+              id: "step_1_1_1",
+              title: "Introduction to Addition and Subtraction",
+              type: "text_with_image",
+              description: "",
+              completed: false,
+            },
+            {
+              id: "step_1_1_2",
+              title: "Applying Addition and Subtraction with Examples",
+              type: "text_with_image",
+              description: "",
+              completed: false,
+            },
+            {
+              id: "step_1_1_3",
+              title: "Practice Worksheet: Addition and Subtraction",
+              type: "pdf_document",
+              description: "",
+              completed: false,
+            },
+          ],
+        },
+        {
+          id: "topic_1_2",
+          title: "Multiplication and Division",
+          type: "group",
+          duration: "2 hours",
+          description:
+            "Understand multiplication and division through examples and practice.",
+          completed: false,
+          steps: [
+            {
+              id: "step_1_2_1",
+              title: "Introduction to Multiplication and Division",
+              type: "text_with_image",
+              description: "",
+              completed: false,
+            },
+            {
+              id: "step_1_2_2",
+              title: "Applying Multiplication and Division with Examples",
+              type: "text_with_image",
+              description: "",
+              completed: false,
+            },
+            {
+              id: "step_1_2_3",
+              title: "Practice Worksheet: Multiplication and Division",
+              type: "pdf_document",
+              description: "",
+              completed: false,
+            },
+          ],
+        },
+      ],
+      resources: [],
+    },
+    {
+      id: "section_2",
+      number: 2,
+      title: "Basic Geometry",
+      description: "Explore basic shapes and their properties.",
+      duration: "4 hours",
+      progress: 0,
+      unlocked: false,
+      lessons: [
+        {
+          id: "topic_2_1",
+          title: "Shapes and their properties",
+          type: "group",
+          duration: "2 hours",
+          description:
+            "Identify and understand the properties of basic shapes.",
+          completed: false,
+          steps: [
+            {
+              id: "step_2_1_1",
+              title:
+                "Introduction to Basic Shapes (Circles, Squares, Triangles)",
+              type: "text_with_image",
+              description: "",
+              completed: false,
+            },
+            {
+              id: "step_2_1_2",
+              title: "Identifying Shapes and their Properties",
+              type: "interactive_quiz_placeholder",
+              description: "",
+              completed: false,
+            },
+          ],
+        },
+      ],
+      resources: [],
+    },
+    {
+      id: "section_3",
+      number: 3,
+      title: "Introduction to Algebra",
+      description: "Get started with variables and simple equations.",
+      duration: "4 hours",
+      progress: 0,
+      unlocked: false,
+      lessons: [
+        {
+          id: "topic_3_1",
+          title: "Understanding Variables",
+          type: "group",
+          duration: "2 hours",
+          description:
+            "Learn what variables are and how to use them in equations.",
+          completed: false,
+          steps: [
+            {
+              id: "step_3_1_1",
+              title: "What are Variables?",
+              type: "text",
+              description: "",
+              completed: false,
+            },
+            {
+              id: "step_3_1_2",
+              title: "Video Guide: Understanding Variables",
+              type: "youtube_video",
+              description: "",
+              completed: false,
+            },
+            {
+              id: "step_3_1_3",
+              title: "Practice: Using Variables in Simple Equations",
+              type: "pdf_document",
+              description: "",
+              completed: false,
+            },
+          ],
+        },
+      ],
+      resources: [],
+    },
+  ],
+  certification: {
+    title: "Certificate of Math Fundamentals",
+    issuer: "International Mathematics Association",
+    validityPeriod: "Lifetime",
+    skills: ["Arithmetic", "Geometry", "Algebra"],
+  },
+};
