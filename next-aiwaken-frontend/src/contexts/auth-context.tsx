@@ -13,6 +13,7 @@ const AuthenticationContext = createContext<TAuthContextValue>({
   login: async () => { },
   handleLogout: () => { },
   isAuthenticated: false,
+  isLoading: false,
 });
 
 export const useAuthentication = () => {
@@ -29,10 +30,12 @@ export const AuthenticationProvider = ({
   children,
 }: AuthProps) => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<TUser | null>(initialUser);
 
   async function login(username: string, password: string) {
     try {
+      setIsLoading(true);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/v1/authentication/login`,
         {
@@ -65,6 +68,9 @@ export const AuthenticationProvider = ({
     } catch (error) {
       console.error("Login failed", error);
     }
+    finally {
+      setIsLoading(false);
+    }
   }
 
   function handleLogout() {
@@ -82,6 +88,7 @@ export const AuthenticationProvider = ({
         login,
         handleLogout,
         isAuthenticated: !!user,
+        isLoading,
       }}
     >
       {children}

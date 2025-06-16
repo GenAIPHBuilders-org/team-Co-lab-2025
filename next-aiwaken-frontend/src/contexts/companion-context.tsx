@@ -1,8 +1,19 @@
-import { createContext, useContext, useState, useCallback } from 'react'
-import { useGetHint, useGetMotivation, useGetTips } from '@/(features)/companion-action'
+"use client"
+
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback
+} from 'react'
+import {
+  useGetHint,
+  useGetMotivation,
+  useGetTips
+} from '@/(features)/companion-action'
 import { TokenStorage } from '@/lib/token-storage'
 
-interface ICompanionContextType {
+export interface ICompanionContextType {
   showMotivation: boolean
   showHint: boolean
   showTips: boolean
@@ -20,7 +31,7 @@ interface ICompanionContextType {
   isTipsLoading: boolean
 }
 
-const CompanionContext = createContext<ICompanionContextType>({
+export const CompanionContext = createContext<ICompanionContextType>({
   showMotivation: false,
   showHint: false,
   showTips: false,
@@ -51,22 +62,23 @@ export const CompanionProvider: React.FC<React.PropsWithChildren> = ({ children 
   const [hintText, setHintText] = useState<string>('')
   const [tipsText, setTipsText] = useState<string>('')
 
-  const handleShowMotivation = useCallback(async () => {
-    try {
-      const motivationResponse = await getMotivationAsync({
-        companion_name: companion as string,
-        subject: courseData?.course_title as string,
-      })
-      setMotivationText(motivationResponse.motivation)
-      setShowMotivation(true)
+  const handleShowMotivation = useCallback(
+    async () => {
+      try {
+        const motivationResponse = await getMotivationAsync({
+          companion_name: companion as string,
+          subject: courseData?.course_title as string,
+        })
+        setMotivationText(motivationResponse.motivation)
+        setShowMotivation(true)
 
-      setTimeout(() => {
-        setShowMotivation(false)
-      }, 5000)
-    } catch (error) {
-      console.error('Error fetching motivation:', error)
-    }
-  }, [getMotivationAsync, companion, courseData])
+        setTimeout(() => {
+          setShowMotivation(false)
+        }, 5000)
+      } catch (error) {
+        console.error('Error fetching motivation:', error)
+      }
+    }, [getMotivationAsync, companion, courseData])
 
   const handleShowHint = useCallback(async (params: { quiz_question: string; topic_title: string }) => {
     try {

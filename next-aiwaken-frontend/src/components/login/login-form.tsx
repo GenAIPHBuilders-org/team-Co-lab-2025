@@ -13,7 +13,7 @@ import { Checkbox } from "../ui/checkbox"
 import { useAuthentication } from "@/contexts/auth-context"
 
 export default function LoginForm() {
-  const { login } = useAuthentication();
+  const { login, isLoading } = useAuthentication();
   const [isSubmitted, setIsSubmitted] = React.useState(false)
   const methods = useForm<LoginFormValues>({
     mode: "all",
@@ -95,11 +95,12 @@ export default function LoginForm() {
         <CardFooter>
           <Button
             onClick={handleSubmit(onSubmit)}
-            disabled={isSubmitted}
+            disabled={isLoading}
+            loading={isLoading}
             className="w-full bg-purple-700 hover:bg-purple-600 text-white font-semibold relative overflow-hidden group"
           >
             <span className="relative z-10 flex items-center justify-center">
-              {isSubmitted ? "Logging in..." : "Login"}
+              {isLoading ? "Logging in..." : "Login"}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
             <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
@@ -117,7 +118,6 @@ export default function LoginForm() {
           </div>
         </div>
       )}
-
     </FormProvider>
   )
 }
