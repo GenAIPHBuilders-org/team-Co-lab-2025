@@ -20,19 +20,27 @@ export const AdventureStyle = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full grid grid-cols-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="flex-1"
       >
-        <RobotGuide message={currentStep.description || "Choose your adventure style!"} />
+        <RobotGuide message={currentStep.description as string} />
+        <div className="w-full flex items-end justify-end px-24">
+          <NavigationButtons
+            isNextDisabled={false}
+            isPreviousDisabled={false}
+            showOnlyPreviousButton={true}
+            onPrevious={handlePrevious}
+          />
+        </div>
       </motion.div>
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-4xl rounded-xl border border-[#9F8DFC]/20 p-6 shadow-xl md:p-8 relative overflow-hidden">
           <div className="bg-gradient-to-r from-[#9F8DFC]/10 to-transparent opacity-50" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
             {adventureStyles.map((style, index) => {
               const Icon = style.icon as LucideIcon;
               return (
@@ -46,7 +54,7 @@ export const AdventureStyle = () => {
                   <Card
                     className={`p-6 cursor-pointer transition-all duration-200 border-2 ${style.color} ${selectedStyle === style.id ? "ring-2 ring-[#9F8DFC] shadow-lg scale-105" : "hover:shadow-md hover:scale-102"
                       }`}
-                    onClick={() => handleStyleSelection(style.id)}
+                    onClick={() => handleStyleSelection(style.description)}
                   >
                     <div className="flex flex-col items-center text-center relative">
                       {selectedStyle === style.id && (
@@ -64,15 +72,6 @@ export const AdventureStyle = () => {
             })}
           </div>
         </Card>
-      </div>
-
-      <div className="p-4">
-        <NavigationButtons
-          isNextDisabled={false}
-          isPreviousDisabled={false}
-          showOnlyPreviousButton={true}
-          onPrevious={handlePrevious}
-        />
       </div>
     </div>
   )

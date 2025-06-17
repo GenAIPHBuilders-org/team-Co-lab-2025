@@ -8,11 +8,14 @@ import { UserCard } from "@/components/user-card"
 import AnimationVariants from "@/lib/animations"
 import { CourseCard } from "@/components/course-card"
 import { Course } from "./course-structure/mock"
+import { useAuthentication } from "@/contexts/auth-context"
+import Forbidden from "../forbidden"
 
 export default function Page() {
   const courseData = TokenStorage.getCourseData();
   const [progressValue, setProgressValue] = useState<number | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
+  const { user } = useAuthentication();
 
   useEffect(() => {
     setIsLoaded(true)
@@ -21,6 +24,11 @@ export default function Page() {
     }, 100)
     return () => clearTimeout(timer)
   }, [])
+
+
+  if (!user) {
+    return <Forbidden />
+  }
 
   return (
     <div className="flex flex-1 mt-16 flex-col gap-4 p-4 bg-gradient-to-b from-gray-900 to-gray-950 shadow-sm backdrop-blur">

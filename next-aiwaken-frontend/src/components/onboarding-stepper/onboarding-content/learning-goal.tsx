@@ -20,19 +20,27 @@ export const LearningGoal = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full grid grid-cols-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="flex-1"
       >
-        <RobotGuide message={currentStep.description || "Choose your primary objective for using AIwaken"} />
+        <RobotGuide message={currentStep.description as string} />
+        <div className="w-full flex items-end justify-end px-24">
+          <NavigationButtons
+            isNextDisabled={false}
+            isPreviousDisabled={false}
+            showOnlyPreviousButton={true}
+            onPrevious={handlePrevious}
+          />
+        </div>
       </motion.div>
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-3xl rounded-xl border border-[#9F8DFC]/20 p-6 shadow-xl md:p-8 relative overflow-hidden">
           <div className="bg-gradient-to-r from-[#9F8DFC]/10 to-transparent opacity-50" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {learningGoals.map((goal, index) => {
               const Icon = goal.icon as LucideIcon;
               return (
@@ -46,7 +54,7 @@ export const LearningGoal = () => {
                   <Card
                     className={`p-6 cursor-pointer hover:border-[#9F8DFC] transition-colors border-2 border-[#9F8DFC40] ${selectedLearningGoal === goal.id ? "border-[#9F8DFC]" : ""
                       }`}
-                    onClick={() => handleLearningGoalSelection(goal.id)}
+                    onClick={() => handleLearningGoalSelection(goal.description)}
                   >
                     <div className="flex flex-col items-center text-center relative">
                       {selectedLearningGoal === goal.id && (
@@ -64,15 +72,6 @@ export const LearningGoal = () => {
             })}
           </div>
         </Card>
-      </div>
-
-      <div className="p-4">
-        <NavigationButtons
-          isNextDisabled={false}
-          isPreviousDisabled={false}
-          showOnlyPreviousButton={true}
-          onPrevious={handlePrevious}
-        />
       </div>
     </div>
   )

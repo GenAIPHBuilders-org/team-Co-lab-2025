@@ -1,33 +1,28 @@
-from typing import Optional, Dict  
-from pydantic import BaseModel, EmailStr, Field
+from typing import Optional
+from pydantic import BaseModel, EmailStr
+import uuid
+from datetime import datetime
 
 class UserBase(BaseModel):
     email: EmailStr
     username: str
-    is_active: bool = True
 
-class UserCreate(BaseModel):
-    email: EmailStr
-    username: str = Field(..., min_length=3, max_length=50)
-    password: str = Field(..., min_length=8)
+class UserCreate(UserBase):
+    password: str
 
-class UserInDB(UserBase):
-    id: int
-    hashed_password: str
-
-    class Config:
-        from_attributes = True
+class UserUpdate(BaseModel):
+    email: Optional[EmailStr] = None
+    username: Optional[str] = None
+    password: Optional[str] = None
 
 class User(UserBase):
-    id: int
+    id: uuid.UUID
+    is_active: bool
     is_new_user: bool
-    selected_companion: Optional[str] = None
-    boss_wins: int = 0
-    boss_losses: int = 0
-    weak_topics: Dict[str, int] = Field(default_factory=dict)
+    created_at: datetime
 
     class Config:
         from_attributes = True
 
-class CompanionSelection(BaseModel):
-    companion_name: str = Field(..., description="Name of the selected companion")
+class TokenData(BaseModel):
+    user_id: uuid.UUID
