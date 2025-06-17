@@ -122,25 +122,48 @@ class CoursePrompts:
       Enemy Theme for Quiz: "{enemy_theme}"
 
       Generate the following as a single JSON object:
-      1.  "summary": A concise and encouraging summary of the course (2-3 paragraphs), highlighting the key areas learned.
-      2.  "quiz": An array of 5 multiple-choice quiz questions. Each question should:
-          - Be relevant to one or more of the topics covered.
-        - Be themed as if posed by '{enemy_theme}'.
-        - Have a "question_text" (string).
-        - Have an "options" array of 4 strings (one correct, three plausible distractors).
-        - Have a "correct_answer" string (must exactly match one of the options).
-        - Have a brief "explanation" string for why the answer is correct (1-2 sentences).
-
-    Example quiz question structure:
-    {{
-        "question_text": "The {enemy_theme} cackles, 'What is the sum of 2 and 2 if you hope to pass?'",
-        "options": ["3", "4", "5", "22"],
-        "correct_answer": "4",
-        "explanation": "Basic addition: 2 + 2 equals 4."
-    }}
-
-    Ensure the JSON is well-formed.
-    """
+      1.  "summary": A concise and encouraging summary of the course (2-3 paragraphs)
+      2.  "quiz": An array of 5 quiz questions with these types:
+          - 2 True/False questions
+          - 2 Multiple Choice questions (with 3 options: A, B, C)
+          - 1 Fill-in-the-Blank question (max 10 letters)
+          
+          Each question should:
+          - Be relevant to the topics covered
+          - Be themed as if posed by '{enemy_theme}'
+          - Include:
+              "type": "true_false/multiple_choice/fill_blank"
+              "question_text": "String"
+              "options": ["A: Option1", "B: Option2", "C: Option3"] (only for multiple_choice)
+              "correct_answer": "String"
+              "explanation": "String (1-2 sentences)"
+              "difficulty": "easy/medium/hard"
+              "topic": "String"
+              
+          Fill-in-the-Blank format: 
+          - Represent blanks with 5-10 underscores (_____)
+          - Answers should be short (max 10 letters)
+          
+          Example True/False:
+          {{
+              "type": "true_false",
+              "question_text": "The {enemy_theme} challenges you: 'Water boils at 100°C at sea level. True or false?'",
+              "correct_answer": "True",
+              "explanation": "Water boils at 100°C at standard atmospheric pressure.",
+              "difficulty": "easy",
+              "topic": "Physics"
+          }}
+          
+          Example Fill-in-the-Blank:
+          {{
+              "type": "fill_blank",
+              "question_text": "The {enemy_theme} hisses: 'The capital of France is _______.'",
+              "correct_answer": "Paris",
+              "explanation": "Paris has been the capital since 508 AD.",
+              "difficulty": "easy",
+              "topic": "Geography"
+          }}
+      """
 
 
     

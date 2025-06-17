@@ -1,3 +1,4 @@
+from uuid import uuid4
 from fastapi import APIRouter, Depends, HTTPException, Query
 from app.core.companion import CompanionLogic
 from app.core.llm_client import llm_client
@@ -11,6 +12,7 @@ import json
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
 import os
+from app.schemas.bossBattleSchema import BossSubmission, AdaptiveQuizRequest
 
 
 
@@ -80,34 +82,33 @@ async def get_course_conclusion_api(
     subject: str = Query(..., description="Subject of the course"),
     difficulty: str = Query(..., description="Difficulty level"),
     sections_data_json: str = Query(..., description="JSON string of course sections/topics covered"),
-    enemy_theme: Optional[str] = Query("a cunning quizmaster", description="Theme for the enemy delivering the quiz")
+    enemy_theme: Optional[str] = Query("a cunning quizmaster", description="Theme for the enemy delivering the quiz"),
 ):
     try:
         sections_data = json.loads(sections_data_json)
         if not isinstance(sections_data, list):
             raise ValueError("sections_data_json must be a JSON array of sections.")
+        
+        # Generate course ID
+        course_id = str(uuid4())
+        
     except json.JSONDecodeError:
         raise HTTPException(status_code=400, detail="Invalid JSON format for sections_data_json.")
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-    conclusion_data = llm_client.generate_course_summary_and_quiz(course_title, subject, difficulty, sections_data, enemy_theme)
-
-    # Extract topics covered
-    topics_covered = []
-    for section in sections_data:
-        for topic in section.get("topics", []):
-            topic_title = topic.get("topic_title")
-            if topic_title:
-                topics_covered.append(topic_title)
-
-    if not conclusion_data or conclusion_data.get("error"):
-        raise HTTPException(status_code=500, detail=f"Failed to generate course conclusion: {conclusion_data.get('error', 'Unknown LLM error')}")
-    if not conclusion_data.get("summary") or not conclusion_data.get("quiz"):
-        raise HTTPException(status_code=500, detail="Generated course conclusion is invalid or incomplete.")
-
+    conclusion_data = llm_client.generate_course_summary_and_quiz(
+        course_title, 
+        subject, 
+        difficulty, 
+        sections_data, 
+        course_id, 
+        enemy_theme
+    )
     
-    conclusion_data["topics_covered"] = topics_covered
+    # Return course_id to frontend for future reference
+    conclusion_data["course_id"] = course_id
+    
     return conclusion_data
 
 @router.put("/select-companion", response_model=User)
@@ -141,6 +142,50 @@ def get_quiz_hint(request: QuizHintRequest):
     return {"hint": hint}
 
 
+@router.post("/boss/submit", response_model=Dict[str, Any])
+async def submit_boss_battle(
+    submission: BossSubmission,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    # Analyze performance
+    analysis = llm_client.analyze_boss_performance(
+        user_answers=submission.user_answers,
+        quiz_data=submission.quiz_data,
+        course_id=submission.course_id
+    )
+    
+    # Update user stats
+    if analysis["accuracy"] == 1.0:
+        current_user.boss_wins += 1
+    else:
+        current_user.boss_losses += 1
+    
+    # Update weak topics
+    current_user.weak_topics = analysis["weaknesses"]
+    
+    db.commit()
+    db.refresh(current_user)
+    
+    # Generate feedback
+    companion_name = current_user.selected_companion or "Gabriel"
+    feedback = CompanionLogic.generate_boss_feedback(analysis, companion_name)
+    
+    return {
+        "feedback": feedback,
+        "analysis": analysis,
+        "passed": analysis["accuracy"] == 1.0
+    }
 
+@router.post("/boss/retry", response_model=Dict[str, Any])
+async def get_adaptive_boss_quiz(
+    request: AdaptiveQuizRequest
+):
+    return llm_client.generate_adaptive_boss_quiz(
+        subject=request.subject,
+        difficulty=request.difficulty,
+        enemy_theme=request.enemy_theme,
+        course_id=request.course_id
+    )
 
     

@@ -1,13 +1,38 @@
 import json
 from typing import List, Dict, Any, Callable, Optional
 import os
+from datetime import datetime, timedelta
 
 class RAGMemory:
+    class ProgressTracker:
+        def __init__(self, course_id: str):
+            self.course_id = course_id
+            self.weak_topics = {}  # {topic: mistake_count}
+            self.last_updated = datetime.now()
+            self.expiration_days = 30
+            
+        def update_weak_topic(self, topic: str, count: int = 1):
+            self.weak_topics[topic] = self.weak_topics.get(topic, 0) + count
+            self.last_updated = datetime.now()
+            
+        def get_top_weak_topics(self, n=3) -> List[str]:
+            # Clean expired data
+            if datetime.now() > self.last_updated + timedelta(days=self.expiration_days):
+                self.weak_topics = {}
+                return []
+                
+            return sorted(self.weak_topics.items(), 
+                        key=lambda x: x[1], 
+                        reverse=True)[:n]
+
+
     def __init__(self, json_path: str = "memory_storage/companion_memory.json"):
         self.memory: List[Dict[str, Any]] = []
         self.json_path = json_path
         self._ensure_folder_exists()
         self.load_from_json()
+        self.progress_trackers = {}  # {course_id: ProgressTracker}
+
 
     # enusre the folder for the memory file exists
     def _ensure_folder_exists(self):
@@ -44,3 +69,9 @@ class RAGMemory:
                 self.memory = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError):
             self.memory = []
+
+    def get_progress_tracker(self, course_id: str) -> ProgressTracker:
+        if course_id not in self.progress_trackers:
+            self.progress_trackers[course_id] = ProgressTracker(course_id)
+        return self.progress_trackers[course_id]
+    

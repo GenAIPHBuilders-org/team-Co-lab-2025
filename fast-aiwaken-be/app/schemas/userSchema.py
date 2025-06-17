@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Dict  
 from pydantic import BaseModel, EmailStr, Field
 
 class UserBase(BaseModel):
@@ -20,12 +20,11 @@ class UserInDB(UserBase):
 
 class User(UserBase):
     id: int
-
-    class Config:
-        from_attributes = True
-
-class User(UserBase):
-    id: int
+    is_new_user: bool
+    selected_companion: Optional[str] = None
+    boss_wins: int = 0
+    boss_losses: int = 0
+    weak_topics: Dict[str, int] = Field(default_factory=dict)
 
     class Config:
         from_attributes = True
