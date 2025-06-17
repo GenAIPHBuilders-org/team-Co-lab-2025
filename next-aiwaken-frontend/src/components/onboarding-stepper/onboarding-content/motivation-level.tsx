@@ -20,19 +20,27 @@ export const MotivationLevel = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full grid grid-cols-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="flex-1"
       >
-        <RobotGuide message={currentStep.description || "Help us understand your learning drive"} />
+        <RobotGuide message={currentStep.description as string} />
+        <div className="w-full flex items-end justify-end px-24">
+          <NavigationButtons
+            isNextDisabled={false}
+            isPreviousDisabled={false}
+            showOnlyPreviousButton={true}
+            onPrevious={handlePrevious}
+          />
+        </div>
       </motion.div>
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-3xl rounded-xl border border-[#9F8DFC]/20 p-6 shadow-xl md:p-8 relative overflow-hidden">
           <div className="bg-gradient-to-r from-[#9F8DFC]/10 to-transparent opacity-50" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {motivationLevels.map((level, index) => {
               const Icon = level.icon as LucideIcon;
               return (
@@ -46,7 +54,7 @@ export const MotivationLevel = () => {
                   <Card
                     className={`p-6 cursor-pointer hover:border-[#9F8DFC] transition-colors border-2 border-[#9F8DFC40] ${selectedMotivationLevel === level.id ? "border-[#9F8DFC]" : ""
                       }`}
-                    onClick={() => handleMotivationLevelSelection(level.id)}
+                    onClick={() => handleMotivationLevelSelection(level.description)}
                   >
                     <div className="flex flex-col items-center text-center relative">
                       {selectedMotivationLevel === level.id && (
@@ -55,7 +63,7 @@ export const MotivationLevel = () => {
                         </div>
                       )}
                       <Icon className="w-8 h-8 text-[#9F8DFC] mb-3" />
-                      <span className="text-2xl font-bold text-white mb-2">{level.title}</span>
+                      <span className="text-2xl font-bold text-white mb-2">{level.level}</span>
                       <span className="text-slate-400">{level.description}</span>
                     </div>
                   </Card>
@@ -64,15 +72,6 @@ export const MotivationLevel = () => {
             })}
           </div>
         </Card>
-      </div>
-
-      <div className="p-4">
-        <NavigationButtons
-          isNextDisabled={false}
-          isPreviousDisabled={false}
-          showOnlyPreviousButton={true}
-          onPrevious={handlePrevious}
-        />
       </div>
     </div>
   )

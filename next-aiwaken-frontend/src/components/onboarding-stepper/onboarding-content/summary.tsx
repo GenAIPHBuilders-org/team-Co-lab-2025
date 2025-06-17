@@ -5,12 +5,13 @@ import { NavigationButtons } from "../navigation-buttons"
 import { useUserPreferencesStore } from "@/store/user-preferences-store"
 import { CheckCircle2 } from "lucide-react"
 import { RobotGuide } from "@/components/robot-guide"
+import { useStoreUserPreferences } from "@/(features)/preference-action"
 
 export const Summary = () => {
-  const { handleNext, handlePrevious, activeStep, steps } = useStepperContext();
+  const { handlePrevious, activeStep, steps } = useStepperContext();
   const currentStep = steps[activeStep];
   const { ageRange, motivationLevel, companion, explanationDepth, learningGoal, learningStyle } = useUserPreferencesStore();
-
+  const { storePreferencesAsync, isPending } = useStoreUserPreferences();
   const mockPreferences = {
     ageRange: ageRange || "No Selection",
     motivationLevel: motivationLevel || "No Selection",
@@ -53,6 +54,23 @@ export const Summary = () => {
     }
   ];
 
+
+  async function handleStorePreferences() {
+    try {
+      await storePreferencesAsync({
+        age_range: ageRange as string,
+        motivation_level: motivationLevel as string,
+        learning_goal: learningGoal as string,
+        explanation_depth: explanationDepth as string,
+        companion: companion as string,
+        learning_style: learningStyle as string
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error("Error storing preferences:", error);
+    }
+  }
+
   return (
     <div className="w-full h-full grid grid-cols-2">
       <motion.div
@@ -65,10 +83,11 @@ export const Summary = () => {
         <div className="w-full flex justify-end mt-4 px-12">
           <NavigationButtons
             onPrevious={handlePrevious}
-            onNext={handleNext}
+            onNext={handleStorePreferences}
             isPreviousDisabled={activeStep === 0}
-            isNextDisabled={false}
+            isNextDisabled={isPending}
             isLastStep={activeStep === steps.length - 1}
+            isLoading={isPending}
           />
         </div>
       </motion.div>
@@ -83,13 +102,13 @@ export const Summary = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                <Card className="p-4 border border-[#9F8DFC]/20 hover:border-[#9F8DFC]/40 transition-colors">
+                <Card className="p-4 border border-[#9F8DFC]/20 hover:border-[#9F8DFC]/40 transition-colors h-[12rem]">
                   <div className="flex items-start gap-4">
                     <CheckCircle2 className="w-6 h-6 text-[#9F8DFC] mt-1" />
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">{item.label}</h3>
-                      <p className="text-[#9F8DFC] font-medium">{item.value}</p>
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-semibold text-[#9F8DFC]">{item.label}</h3>
                       <p className="text-slate-400 text-sm mt-1">{item.description}</p>
+                      <p className="text-slate-200 font-medium text-sm">{item.value}</p>
                     </div>
                   </div>
                 </Card>

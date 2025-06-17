@@ -20,14 +20,22 @@ export const AgeRangeSelection = () => {
   }
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full h-full grid grid-cols-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="flex-1"
       >
-        <RobotGuide message={currentStep.description || "Welcome to AIwaken! Let's get started."} />
+        <RobotGuide message={currentStep.description as string} />
+        <div className="w-full flex items-end justify-end px-24">
+          <NavigationButtons
+            isNextDisabled={false}
+            isPreviousDisabled={false}
+            showOnlyPreviousButton={true}
+            onPrevious={handlePrevious}
+          />
+        </div>
       </motion.div>
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-3xl rounded-xl border border-[#9F8DFC]/20 p-6 shadow-xl md:p-8 relative overflow-hidden">
@@ -64,15 +72,6 @@ export const AgeRangeSelection = () => {
             })}
           </div>
         </Card>
-      </div>
-
-      <div className="p-4">
-        <NavigationButtons
-          isNextDisabled={false}
-          isPreviousDisabled={false}
-          showOnlyPreviousButton={true}
-          onPrevious={handlePrevious}
-        />
       </div>
     </div>
   )

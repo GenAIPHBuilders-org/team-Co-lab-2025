@@ -77,7 +77,7 @@ export function CompanionSelection({ onSelect, selectedCompanion }: CompanionSel
   }
 
   return (
-    <div className="flex w-full gap-6 justify-center">
+    <div className="grid grid-cols-2 gap-6 w-full">
       <AnimatePresence>
         {Object.entries(companions).map(([name, details]) => (
           <motion.div
@@ -88,11 +88,10 @@ export function CompanionSelection({ onSelect, selectedCompanion }: CompanionSel
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="w-[calc(25%-1.5rem)] min-w-[400px]"
           >
             <Card
               className={cn(
-                "p-6 w-full cursor-pointer border-2 transition-all duration-200 h-full",
+                "p-3 w-full cursor-pointer border-2 transition-all duration-200 h-full",
                 getCompanionColor(name),
                 selectedCompanion === name ? "ring-2 ring-[#9F8DFC] shadow-lg" : "hover:shadow-md",
               )}

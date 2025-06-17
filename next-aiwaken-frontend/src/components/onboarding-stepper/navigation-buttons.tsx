@@ -10,6 +10,7 @@ interface NavigationButtonsProps {
   isLastStep?: boolean
   className?: string
   showOnlyPreviousButton?: boolean
+  isLoading?: boolean
 }
 
 export const NavigationButtons = ({
@@ -19,7 +20,8 @@ export const NavigationButtons = ({
   isNextDisabled,
   isLastStep = false,
   className = "",
-  showOnlyPreviousButton = false
+  showOnlyPreviousButton = false,
+  isLoading = false
 }: NavigationButtonsProps) => {
   return (
     <motion.div
@@ -43,6 +45,7 @@ export const NavigationButtons = ({
           className="flex items-center gap-2 bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/90 transition-colors px-6 py-2"
           onClick={onNext}
           disabled={isNextDisabled}
+          loading={isLoading}
         >
           {isLastStep ? "Finish" : "Proceed"}
           {!isLastStep && <ChevronRight className="h-4 w-4" />}

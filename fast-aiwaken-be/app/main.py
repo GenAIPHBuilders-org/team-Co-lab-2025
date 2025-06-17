@@ -4,6 +4,9 @@ from app.api.endpoints import auth
 from app.config import settings
 from app.database import Base, engine
 from app.api.endpoints import companion_interaction
+from app.api.endpoints import user
+from app.api.endpoints import preferences
+from app.middleware import register_middlewares
 
 # Create tables
 Base.metadata.create_all(bind=engine)
@@ -32,8 +35,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Register custom middlewares
+register_middlewares(app)
+
 # Include routers
 app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/authentication", tags=["auth"])
+app.include_router(companion_interaction.router, prefix=f"{settings.API_V1_STR}/companion")
+app.include_router(user.router, prefix=f"{settings.API_V1_STR}/user")
+app.include_router(preferences.router, prefix=f"{settings.API_V1_STR}/preferences")
 
 @app.get("/")
 def root():
@@ -41,4 +50,3 @@ def root():
 
 
 # companion interaction router
-app.include_router(companion_interaction.router, prefix="/api/v1/companion")

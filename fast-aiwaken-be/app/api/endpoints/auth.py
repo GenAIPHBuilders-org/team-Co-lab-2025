@@ -11,6 +11,7 @@ from app.dependencies import get_db, get_current_user
 from app.security import create_access_token
 from app.config import settings
 from app.exceptions import DuplicateEmailError, DuplicateUsernameError, InvalidCredentialsError, InactiveUserError
+from app.services.preferences_service import PreferencesService
 
 router = APIRouter(tags=["auth"])
 
@@ -33,7 +34,7 @@ def register(
     return user
 
 @router.post("/login", response_model=TokenizedUser)
-def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> TokenizedUser:
+async def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> TokenizedUser:
 
     user_obj = user_service.authenticate_user(
         db, credentials.dict()
@@ -50,21 +51,39 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> Tokenized
         subject=user_obj.id, expires_delta=access_token_expires
     )
     
+    preferences_service = PreferencesService(db)
+    preferences = None
+    try:
+        preferences = await preferences_service.get_user_preferences(user_obj.id)
+    except HTTPException:
+        pass
+    
     return {
         "user": user_obj,
         "access_token": access_token,
         "token_type": "Bearer",
+        "preferences": preferences
     }
 
 @router.get("/tokenized-user", response_model=TokenizedUser)
-def get_current_user_info(
+async def get_current_user_info(
     current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ) -> TokenizedUser:
     access_token = create_access_token(subject=current_user.id)
+    
+    preferences_service = PreferencesService(db)
+    preferences = None
+    try:
+        preferences = await preferences_service.get_user_preferences(current_user.id)
+    except HTTPException:
+        pass
+    
     return {
         "user": current_user,
         "access_token": access_token,
         "token_type": "Bearer",
+        "preferences": preferences
     }
 
 @router.post("/set-new-user-status", response_model=User)
