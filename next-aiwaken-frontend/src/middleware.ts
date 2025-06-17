@@ -33,7 +33,7 @@ const PRIVATE_PATHS = [
   "/dashboard/referral",
 ];
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get("access_token")?.value;
 

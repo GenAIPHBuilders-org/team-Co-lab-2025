@@ -17,9 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Card, CardAction, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Button } from "./ui/button"
-import { GenieIcon } from "./icons/genie"
+import { AIWakenIcon } from "./icons/aiwaken-icon"
 
 const data = {
   user: {
@@ -59,7 +57,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild className="mt-4">
               <a href="#">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <GenieIcon width={30} height={30} />
+                  <AIWakenIcon width={50} height={50} />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">AIWAKEN</span>
@@ -74,24 +72,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter className="flex flex-col gap-4 p-2 mb-2">
-        <Card className="bg-gray-900 p-4 rounded-lg shadow-sm">
-          <CardHeader className="flex items-center gap-4">
-            <img
-              src={data.user.avatar}
-              alt={data.user.name}
-              className="h-10 w-10 rounded-full"
-            />
-            <div className="text-sm">
-              <CardTitle className="font-semibold text-white">{data.user.name}</CardTitle>
-              <CardDescription className="text-gray-400">{data.user.email}</CardDescription>
-            </div>
-          </CardHeader>
-          <CardAction>
-            <Button variant="outline" size="sm" className="w-full">
-              View Profile
-            </Button>
-          </CardAction>
-        </Card>
         <NavUser />
       </SidebarFooter>
     </Sidebar>

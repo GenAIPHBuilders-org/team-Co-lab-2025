@@ -15,7 +15,7 @@ declare global {
 
   type TUser = {
     user: {
-      id: number;
+      id: string;
       username: string;
       email: string;
       is_active: boolean;
