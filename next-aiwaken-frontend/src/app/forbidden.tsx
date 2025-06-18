@@ -1,4 +1,13 @@
+import { Button } from "@/components/ui/button"
+import { TokenStorage } from "@/lib/token-storage"
+
 export default function Forbidden() {
+
+  const handleClearAccessToken = () => {
+    TokenStorage.removeAccessToken()
+    window.location.href = "/login"
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-950">
       <div className="text-center space-y-6 p-8">
@@ -8,12 +17,13 @@ export default function Forbidden() {
           Sorry, you don&apos;t have permission to access this page. Please make sure you&apos;re logged in or have the necessary permissions.
         </p>
         <div className="pt-4">
-          <a
-            href="/login"
-            className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          <Button
+            onClick={handleClearAccessToken}
+            variant="outline"
+            className="bg-red-500 text-white hover:bg-red-600"
           >
             Return to Login
-          </a>
+          </Button>
         </div>
       </div>
     </div>

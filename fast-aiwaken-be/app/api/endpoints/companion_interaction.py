@@ -3,8 +3,8 @@ from app.core.companion import CompanionLogic
 from app.core.llm_client import llm_client
 from typing import List, Dict, Any, Optional
 from app.static_data.game_data import COMPANION_DETAILS
-from app.schemas.userSchema import User
-from app.schemas.companionSchema import CompanionSelection
+from app.schemas.user_schema import User
+from app.schemas.companion_schema import CompanionSelection
 from app.dependencies import get_db, get_current_user
 from sqlalchemy.orm import Session
 from app.controller import user_controller as user_service

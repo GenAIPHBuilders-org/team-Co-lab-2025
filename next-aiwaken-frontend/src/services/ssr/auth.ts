@@ -1,6 +1,7 @@
+import { TExtendedUser } from "@/types/user";
 import { cookies } from "next/headers";
 
-export async function getServerAuthSession(): Promise<TUser | null> {
+export async function getServerAuthSession(): Promise<TExtendedUser | null> {
   const cookie = await cookies();
   const accessToken = cookie.get("access_token")?.value;
 
