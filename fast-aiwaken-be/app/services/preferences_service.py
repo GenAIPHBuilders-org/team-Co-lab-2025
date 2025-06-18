@@ -1,10 +1,10 @@
 from typing import Optional
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
-from app.models.preferencesModel import UserPreferences
-from app.schemas.preferencesSchema import PreferencesCreate, PreferencesUpdate
+from app.models.user_preferences_model import UserPreferences
+from app.schemas.preferences_schema import PreferencesCreate, PreferencesUpdate
 import uuid
-from app.models.userModel import User
+from app.models.user_model import User
 
 class PreferencesService:
     def __init__(self, db: Session):

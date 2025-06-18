@@ -6,8 +6,8 @@ from datetime import datetime
 import uuid
 
 from app.database import SessionLocal
-from app.schemas.token import TokenData
-from app.models.userModel import User
+from app.schemas.token_schema import TokenData
+from app.models.user_model import User
 from app.controller.user_controller import get_user_by_id
 from app.config import settings
 

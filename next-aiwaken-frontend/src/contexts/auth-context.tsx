@@ -1,12 +1,21 @@
 "use client"
 import { TokenStorage } from "@/lib/token-storage";
+import { TExtendedUser } from "@/types/user";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useState } from "react";
 
 type AuthProps = {
-  initialUser: TUser | null;
+  initialUser: TExtendedUser | null;
   children: React.ReactNode;
 }
+
+type TAuthContextValue = {
+  user: TExtendedUser | null;
+  login: (username: string, password: string) => Promise<void>;
+  handleLogout: () => void;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+};
 
 const AuthenticationContext = createContext<TAuthContextValue>({
   user: null,
@@ -31,7 +40,7 @@ export const AuthenticationProvider = ({
 }: AuthProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [user, setUser] = useState<TUser | null>(initialUser);
+  const [user, setUser] = useState<TExtendedUser | null>(initialUser);
 
   async function login(username: string, password: string) {
     try {
@@ -57,6 +66,8 @@ export const AuthenticationProvider = ({
             email: data.user.email,
             is_active: data.user.is_active,
           },
+          preferences: data.user.preferences,
+          stats: data.user.stats,
         });
         TokenStorage.setAccessToken(data.access_token);
         document.cookie = `access_token=${data.access_token}; path=/; max-age=3600;`;

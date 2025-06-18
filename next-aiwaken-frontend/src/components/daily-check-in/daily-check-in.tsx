@@ -5,28 +5,48 @@ import { useState } from "react";
 import { Progress } from "../ui/progress";
 import { Badge } from "../ui/badge";
 import { AnimatedModal } from "../ui/animated-modal";
-
-const rewards = [
-  { day: 1, icon: <Heart className="h-6 w-6 text-red-400" />, reward: "+1 Heart" },
-  { day: 2, icon: <Coins className="h-6 w-6 text-yellow-400" />, reward: "+50 Coins" },
-  { day: 3, icon: <Star className="h-6 w-6 text-blue-400" />, reward: "+100 XP" },
-  { day: 4, icon: <Heart className="h-6 w-6 text-red-400" />, reward: "+2 Hearts" },
-  { day: 5, icon: <Coins className="h-6 w-6 text-yellow-400" />, reward: "+100 Coins" },
-  { day: 6, icon: <Star className="h-6 w-6 text-blue-400" />, reward: "+150 XP" },
-  { day: 7, icon: <Trophy className="h-6 w-6 text-purple-400" />, reward: "Special Badge" },
-];
+import { useClaimDailyReward, useFetchDailyRewards } from "@/(features)/daily-reward-action";
 
 export const DailyCheckInModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentStreak, setCurrentStreak] = useState(3); // Mock current streak
-  const [claimedToday, setClaimedToday] = useState(false);
+  const { data: dailyRewards, isLoading, isError, error } = useFetchDailyRewards();
+  const { claimDailyRewardAsync, isPending } = useClaimDailyReward();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [showRewardModal, setShowRewardModal] = useState<boolean>(false);
+  const [claimedReward, setClaimedReward] = useState<{ type: "heart" | "coin" | "xp"; reward: string } | null>(null);
 
-  const handleClaim = () => {
-    if (!claimedToday) {
-      setClaimedToday(true);
-      setCurrentStreak(prev => prev + 1);
+  function renderIcon(type: "heart" | "coin" | "xp") {
+    switch (type) {
+      case "heart":
+        return <Heart className="h-6 w-6 text-red-400" />;
+      case "coin":
+        return <Coins className="h-6 w-6 text-yellow-400" />;
+      case "xp":
+        return <Star className="h-6 w-6 text-blue-400" />;
+      default:
+        return null;
     }
-  };
+  }
+
+  async function handleClaimDailyReward() {
+    try {
+      await claimDailyRewardAsync();
+      const currentDayReward = dailyRewards.rewards.find(reward => reward.day === dailyRewards.current_streak + 1);
+
+      if (currentDayReward) {
+        setClaimedReward({
+          type: currentDayReward.type as "heart" | "coin" | "xp",
+          reward: currentDayReward.reward
+        });
+        setShowRewardModal(true);
+      }
+      setIsOpen(false);
+    } catch (error) {
+      console.error("Error claiming daily reward:", error);
+    }
+  }
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {error?.message}</div>;
 
   return (
     <>
@@ -37,12 +57,14 @@ export const DailyCheckInModal = () => {
       >
         <Store className="h-4 w-4" />
         <span className="hidden sm:inline">Daily Check-in</span>
-        <Badge
-          variant="secondary"
-          className=" h-4 w-4 p-0 flex items-center justify-center bg-red-500 text-white text-[10px]"
-        >
-          !
-        </Badge>
+        {dailyRewards.can_claim && (
+          <Badge
+            variant="secondary"
+            className=" h-4 w-4 p-0 flex items-center justify-center bg-red-500 text-white text-[10px]"
+          >
+            !
+          </Badge>
+        )}
       </Button>
 
       <AnimatedModal
@@ -52,56 +74,52 @@ export const DailyCheckInModal = () => {
         size="xl"
       >
         <div className="space-y-6">
-          {/* Streak Info */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Calendar className="h-5 w-5 text-purple-400" />
               <span className="text-sm text-slate-300">Current Streak</span>
             </div>
             <Badge variant="secondary" className="bg-purple-500/20 text-purple-400">
-              {currentStreak} days
+              {dailyRewards.current_streak} {dailyRewards.current_streak > 1 ? "days" : "day"}
             </Badge>
           </div>
 
-          {/* Progress Bar */}
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-slate-300">Next Reward</span>
-              <span className="text-purple-400">Day {currentStreak + 1}</span>
+              <span className="text-purple-400">Day {dailyRewards.current_streak + 1}</span>
             </div>
-            <Progress value={(currentStreak % 7) * (100 / 7)} className="h-2" />
+            <Progress value={(dailyRewards.current_streak % 7) * (100 / 7)} className="h-2" />
           </div>
 
-          {/* Rewards Grid */}
           <div className="grid grid-cols-7 gap-2">
-            {rewards.map((reward, index) => (
+            {dailyRewards.rewards.map((reward, index) => (
               <motion.div
                 key={reward.day}
-                className={`relative aspect-square rounded-lg border ${index < currentStreak
-                  ? "border-purple-500/50 bg-purple-500/10"
+                className={`relative aspect-square rounded-lg border ${index < dailyRewards.current_streak + 1
+                  ? "border-purple-500/50 bg-purple-300/40 glow-border text-white"
                   : "border-slate-700 bg-slate-800/50"
                   } p-2 flex flex-col items-center justify-center`}
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="text-xs text-slate-400 mb-1">Day {reward.day}</div>
-                <div className="mb-1">{reward.icon}</div>
+                <div className="text-xs  mb-1">Day {reward.day}</div>
+                <div className="mb-1">{renderIcon(reward.type as "heart" | "coin" | "xp")}</div>
                 <div className="text-[10px] text-center text-slate-300">{reward.reward}</div>
-                {index < currentStreak && (
+                {index < dailyRewards.current_streak && (
                   <motion.div
                     className="absolute inset-0 flex items-center justify-center bg-purple-500/20 rounded-lg"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
-                    <Trophy className="h-4 w-4 text-purple-400" />
+                    <Trophy className="h-6 w-6 text-purple-400" />
                   </motion.div>
                 )}
               </motion.div>
             ))}
           </div>
 
-          {/* Claim Button */}
           <motion.div
             className="flex justify-center"
             initial={{ y: 20, opacity: 0 }}
@@ -109,14 +127,15 @@ export const DailyCheckInModal = () => {
             transition={{ delay: 0.5 }}
           >
             <Button
-              onClick={handleClaim}
-              disabled={claimedToday}
-              className={`w-full ${claimedToday
+              onClick={handleClaimDailyReward}
+              disabled={!dailyRewards.can_claim}
+              loading={isPending}
+              className={`w-full ${!dailyRewards.can_claim
                 ? "bg-slate-700 text-slate-400"
                 : "bg-purple-500 hover:bg-purple-600 text-white"
                 }`}
             >
-              {claimedToday ? (
+              {!dailyRewards.can_claim ? (
                 "Already Claimed Today"
               ) : (
                 <div className="flex items-center gap-2">
@@ -127,11 +146,65 @@ export const DailyCheckInModal = () => {
             </Button>
           </motion.div>
 
-          {/* Streak Info */}
-          <div className="text-center text-sm text-slate-400">
-            <p>Come back tomorrow to maintain your streak!</p>
-            <p className="text-xs mt-1">Longer streaks unlock better rewards</p>
-          </div>
+          {dailyRewards.can_claim ? (
+            <div className="text-center text-sm text-slate-400">
+              <p>Claim your reward to maintain your streak!</p>
+              <p className="text-xs mt-1">Longer streaks unlock better rewards</p>
+            </div>
+          ) : (
+            <div className="text-center text-sm text-slate-400">
+              <p>Come back tomorrow to maintain your streak!</p>
+              <p className="text-xs mt-1">Longer streaks unlock better rewards</p>
+            </div>
+          )}
+        </div>
+      </AnimatedModal>
+
+      <AnimatedModal
+        isOpen={showRewardModal}
+        onClose={() => setShowRewardModal(false)}
+        size="xl"
+      >
+        <div className="text-center space-y-6 py-8">
+          <motion.div
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="flex justify-center"
+          >
+            <div className="relative">
+              <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                {claimedReward && renderIcon(claimedReward.type)}
+              </div>
+              <motion.div
+                className="absolute -top-2 -right-2"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                <Trophy className="h-6 w-6 text-purple-400" />
+              </motion.div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="space-y-2"
+          >
+            <h3 className="text-xl font-semibold text-white">Reward Claimed!</h3>
+            <p className="text-slate-300">You received:</p>
+            <Badge variant="outline" className="text-2xl font-bold text-purple-400">{claimedReward?.reward || "No reward"}</Badge>
+          </motion.div>
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Button onClick={() => setShowRewardModal(false)}>Close</Button>
+          </motion.div>
         </div>
       </AnimatedModal>
     </>
