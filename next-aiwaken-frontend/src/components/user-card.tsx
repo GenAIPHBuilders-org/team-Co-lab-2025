@@ -2,8 +2,12 @@ import { Brain, Shield, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { Badge } from "./ui/badge";
 import AnimationVariants from "@/lib/animations";
+import { useAuthentication } from "@/contexts/auth-context";
+import { Progress } from "./ui/progress";
 
 export function UserCard() {
+  const { user } = useAuthentication();
+
   return (
     <motion.div variants={AnimationVariants.itemVariants} className="md:col-span-1">
       <div className="relative">
@@ -21,16 +25,21 @@ export function UserCard() {
                     <p className="text-sm text-gray-400">E-Rank Hunter</p>
                   </div>
                 </div>
-                <Badge className="bg-purple-600/20 text-purple-400 hover:bg-purple-600/30">Level 5</Badge>
+                <Badge className="bg-purple-600/20 text-purple-400 hover:bg-purple-600/30">Level {user?.stats.level}</Badge>
               </div>
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between text-sm mb-1">
                     <span className="text-gray-400">Experience</span>
-                    <span className="text-gray-300">250/500 XP</span>
+                    <span className="text-gray-300">{user?.stats.experience || 0}/{user?.stats.experience_to_next_level || 0} XP</span>
                   </div>
                   <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-purple-600 to-blue-500 w-1/2"></div>
+                    <Progress
+                      value={user?.stats.experience || 0}
+                      max={100}
+                      className="h-2 bg-gray-800 rounded-full overflow-hidden bg-gradient-to-r from-purple-600 to-blue-500"
+                      style={{ width: `${user?.stats.experience || 0}%` }}
+                    />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">

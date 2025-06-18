@@ -5,7 +5,6 @@ from app.database import Base
 from sqlalchemy.orm import relationship
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
-from app.models.preferencesModel import UserPreferences
 
 class User(Base):
     __tablename__ = "users"
@@ -17,6 +16,7 @@ class User(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     is_new_user = Column(Boolean, default=True)
     preferences = relationship("UserPreferences", back_populates="user", uselist=False)
+    stats = relationship("UserStats", back_populates="user", uselist=False)
 
 class LoginRequest(BaseModel):
     username: str

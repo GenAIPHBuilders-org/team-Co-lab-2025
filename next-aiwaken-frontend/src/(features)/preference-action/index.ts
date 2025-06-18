@@ -19,6 +19,8 @@ export const useStoreUserPreferences = () => {
   return {
     storePreferences: mutate,
     storePreferencesAsync: mutateAsync,
+    updatePreferences: mutate,
+    updatePreferencesAsync: mutateAsync,
     data,
     isPending,
     isSuccess,

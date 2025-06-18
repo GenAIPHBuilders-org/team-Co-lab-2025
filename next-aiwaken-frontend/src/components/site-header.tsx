@@ -17,10 +17,12 @@ import useBreadcrumbs from "@/hooks/use-breadcrumbs"
 import React from "react"
 import { Badge } from "./ui/badge"
 import { DailyCheckInModal } from "./daily-check-in/daily-check-in"
+import { useAuthentication } from "@/contexts/auth-context"
 
 export function SiteHeader() {
   const { toggleSidebar } = useSidebar()
   const breadcrumbs = useBreadcrumbs();
+  const { user } = useAuthentication();
 
   if (!breadcrumbs) return null;
 
@@ -38,9 +40,7 @@ export function SiteHeader() {
             <SidebarIcon className="h-4 w-4" />
             <span className="sr-only">Toggle sidebar</span>
           </Button>
-
           <Separator orientation="vertical" className="h-6 bg-white/20" />
-
           <Breadcrumb className="hidden sm:block">
             <BreadcrumbList>
               {breadcrumbs.map((crumb, idx) => (
@@ -101,33 +101,22 @@ export function SiteHeader() {
           <div className="flex items-center gap-4 w-full">
             <div className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-orange-500/20 to-red-500/20 px-3 py-1.5 border border-orange-500/30">
               <Flame className="h-4 w-4 text-orange-400" />
-              <span className="text-sm font-semibold text-white">2</span>
+              <span className="text-sm font-semibold text-white">{user?.stats.streak}</span>
               <span className="text-xs text-orange-300">Streak</span>
             </div>
 
             <div className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-yellow-500/20 to-amber-500/20 px-3 py-1.5 border border-yellow-500/30">
               <Coins className="h-4 w-4 text-yellow-400" />
-              <span className="text-sm font-semibold text-white">324</span>
+              <span className="text-sm font-semibold text-white">{user?.stats.coins}</span>
               <span className="text-xs text-yellow-300">Coins</span>
             </div>
 
             <div className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-red-500/20 to-red-500/20 px-3 py-1.5 border border-red-500/30">
               <Heart className="h-4 w-4 text-red-400" />
-              <span className="text-sm font-semibold text-white">5</span>
+              <span className="text-sm font-semibold text-white">{user?.stats.heart}</span>
               <span className="text-xs text-red-300">Heart</span>
             </div>
           </div>
-        </div>
-
-        <div className="md:hidden flex items-center gap-2 absolute right-6 top-1/2 -translate-y-1/2">
-          <Button variant="ghost" size="sm" className="h-8 px-2 text-orange-400 hover:bg-orange-500/20">
-            <Flame className="h-3 w-3 mr-1" />
-            <span className="text-xs">0</span>
-          </Button>
-          <Button variant="ghost" size="sm" className="h-8 px-2 text-yellow-400 hover:bg-yellow-500/20">
-            <Coins className="h-3 w-3 mr-1" />
-            <span className="text-xs">0</span>
-          </Button>
         </div>
       </div>
     </header>
