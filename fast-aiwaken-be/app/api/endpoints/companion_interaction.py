@@ -153,7 +153,7 @@ async def submit_boss_battle(
     analysis = llm_client.analyze_boss_performance(
         user_answers=submission.user_answers,
         quiz_data=submission.quiz_data,
-        course_id=submission.course_id
+        course_id=str(submission.course_id)
     )
     
     # Update user stats
@@ -186,7 +186,7 @@ async def get_adaptive_boss_quiz(
         subject=request.subject,
         difficulty=request.difficulty,
         enemy_theme=request.enemy_theme,
-        course_id=request.course_id
+        course_id=str(request.course_id)
     )
 
     
