@@ -19,7 +19,6 @@ from app.core.prompt_engineering.tips_prompts import generate_tips_prompt
 
 class LLMClient:
 
-
     def __init__(self):
         try:
             self.gemini_api = GeminiAPI(api_key=settings.GEMINI_API_KEY)
@@ -27,7 +26,6 @@ class LLMClient:
             self.rag_memory = RAGMemory()
         except Exception as e:
             print(f"# 2 Error initializing {e}")
-
 
     # Youtube API client
     def search_youtube_video(self, query: str, api_key: str, max_results: int = 1) -> List[Dict[str, str]]:
@@ -39,7 +37,7 @@ class LLMClient:
 
     # RAG memory
     def add_to_memory(self, entry: Dict[str, Any]):
-        self.rag_memory.add(entry)
+        self.rag_memory.add_to_memory(entry)
 
     # retrieve content from RAG memory
     def retrieve_rag_context(self, filter_fn=None, max_items=5) -> str:
@@ -54,23 +52,44 @@ class LLMClient:
         return context
 
     # course outline section
-    def generate_structured_course(self, subject: str, difficulty: str, enemy_theme) -> Dict[str, Any]:
-        prompts = CoursePrompts(subject, difficulty)
-        prompt = prompts.generate_course()
-        course_structure = self.generate_content(prompt, is_json_output=True)
+    def generate_structured_course(self, subject: str, difficulty: str, username:str, companion_name:str,
+                                    age_range: str, motivational_level: str, learning_goal: str,
+                                    explanation_depth: str, learning_style: str) -> Dict[str, Any]:
 
+        prompts = CoursePrompts(subject, difficulty)
+        prompt = prompts.generate_course(
+            username=username,
+            companion_name=companion_name,
+            age_range=age_range,
+            motivational_level=motivational_level,
+            learning_goal=learning_goal,
+            explanation_depth=explanation_depth,
+            learning_style=learning_style,
+        )
+        course_structure = self.generate_content(prompt, is_json_output=True)
+        
         for section in course_structure.get("sections", []):
             for topic in section.get("topics", []):
                 for step in topic.get("learning_steps", []):
                     step_title = step.get("step_title", "")
                     material_type_suggestion = step.get("material_type_suggestion","")
+                      # companion details
+                    companion_details = COMPANION_DETAILS.get(companion_name, {})
+                    motivation_style = companion_details.get("motivation_style", "supportive and encouraging")
                     step_content = self.generate_learning_step_content(
                         subject = subject,
                         topic_title = topic.get("topic_title", ""),
-                        step_title = step_title,
-                        material_type_suggestion = material_type_suggestion,
-                        difficulty = difficulty,
-                        enemy_theme=enemy_theme
+                        step_title=step_title,
+                        material_type_suggestion=material_type_suggestion,
+                        difficulty=difficulty,
+                        username=username,
+                        companion_name=companion_name,
+                        learning_goal=learning_goal,
+                        age_range=age_range,
+                        motivational_level=motivational_level,
+                        motivation_style=motivation_style,
+                        explanation_depth=explanation_depth,
+                        learning_style=learning_style,
                     )
 
                     step["content"] = step_content
@@ -93,7 +112,9 @@ class LLMClient:
     
     # learning materials section
     def generate_learning_step_content(self, subject: str, topic_title: str, step_title: str,
-                                    material_type_suggestion: str, difficulty: str, enemy_theme: Optional[str] = None) -> Dict[str, Any]:
+                                    material_type_suggestion: str, difficulty: str,username: str, companion_name: str,
+                                    learning_goal: str, age_range: str, motivational_level: str, motivation_style: str, explanation_depth: str, learning_style: str,
+                                    enemy_theme: Optional[str] = None) -> Dict[str, Any]:
         content_result = {
             "type": material_type_suggestion,
             "content": None,
@@ -104,7 +125,19 @@ class LLMClient:
         }
 
         prompts = CoursePrompts(subject, difficulty)
-        prompt_text = prompts.generate_learning_step(step_title, topic_title, material_type_suggestion, enemy_theme)
+        prompt_text = prompts.generate_learning_step(
+            step_title=step_title, 
+            topic_title=topic_title, 
+            material_type_suggestion=material_type_suggestion, 
+            companion_name=companion_name, 
+            username=username,
+            learning_goal=learning_goal, 
+            age_range=age_range, 
+            motivational_level=motivational_level, 
+            motivation_style=motivation_style, 
+            explanation_depth=explanation_depth, 
+            learning_style=learning_style
+            )
 
         try:
             print(f"Generating content for: {step_title} ({material_type_suggestion})")           
@@ -192,6 +225,7 @@ class LLMClient:
             "difficulty": difficulty
         })
         return content_result
+
 
     # generate quiz hint
     def generate_quiz_hint(self, quiz_question: str, topic_title: str = "", step_title: str = "") -> str:
