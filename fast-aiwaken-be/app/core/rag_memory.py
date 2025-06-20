@@ -1,6 +1,7 @@
 import json
-from typing import List, Dict, Any, Callable, Optional
 import os
+import redis
+from typing import List, Dict, Any, Callable, Optional
 from datetime import datetime, timedelta
 
 class RAGMemory:
@@ -42,33 +43,38 @@ class RAGMemory:
             os.makedirs(folder_path)
 
     # add a new entry to memory
-    def add(self, entry: Dict[str, Any]):
-        self.memory.append(entry)
-        self.save_to_json()
+    def add_to_memory(self, entry: Dict[str, Any]):
+        key = f"rag:{entry.get('subject', '').lower()}:{entry.get('difficulty', '').lower()}:{entry.get('step_title', '').replace(' ', '_').lower()}"
+        sanitized_entry = {k: (json.dumps(v) if isinstance(v, (dict, list)) else v) for k, v in entry.items() if v is not None}
+        
+        if not sanitized_entry:
+            print(f"skip empty entry for key {key}")
+            return      
+        self.redis_client.hmset(key, mapping=sanitized_entry)
+        print(f"Added entry to memory with key: {key}")
 
-    # retrieve the last n items from memory
+    # retrieve from rag
     def retrieve(self, filter_fn: Optional[Callable[[Dict[str, Any]], bool]] = None, max_items: int = 5) -> List[Dict[str, Any]]:
-        if filter_fn:
-            relevant = list(filter(filter_fn, self.memory))
-        else:
-            relevant = self.memory
-        return relevant[-max_items:]
+        keys = self.redis_client.keys("rag:*")
+        entries = []
+        for key in keys:
+            entry = {k: json.loads(v) if v.startswith('{') or v.startswith('[') else v for k, v in self.redis_client.hgetall(key).items()}
+            if not filter_fn or filter_fn(entry):
+                entries.append(entry)
+            if len(entries) >= max_items:
+                break
+        return entries
 
-    # save the memory to a json file
-    def save_to_json(self):
+    # clear all memory
+    def clear_memory(self):
+        keys = self.redis_client.keys("rag:*")
+        for key in keys:
+            self.redis_client.delete(key)
+        print("Cleared all memory entries.")
 
-        # debugging
-        print(f"Saving memory to {self.json_path} with {len(self.memory)}")
-        with open(self.json_path, "w", encoding="utf-8") as f:
-            json.dump(self.memory, f, ensure_ascii=False, indent=2)
 
-    # load the memory from a json file
-    def load_from_json(self):
-        try:
-            with open(self.json_path, "r", encoding="utf-8") as f:
-                self.memory = json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
-            self.memory = []
+
+
 
     def get_progress_tracker(self, course_id: str) -> ProgressTracker:
         if course_id not in self.progress_trackers:
