@@ -177,3 +177,71 @@ class CoursePrompts:
 
             Do not include any text outside the JSON object.
             """
+
+
+        return base_prompt
+
+    def generate_course_summary_and_quiz(self, course_title: str, sections_data: List[Dict], enemy_theme: Optional[str] = "a mysterious challenger") -> str:
+      topic_titles_covered = []
+      for section in sections_data:
+          for topic in section.get("topics", []):
+              topic_titles_covered.append(topic.get("topic_title", "Unknown Topic"))
+      
+      topics_string = ", ".join(list(set(topic_titles_covered))) if topic_titles_covered else "various concepts"
+
+      return f"""
+      You are creating a conclusion for an educational course.
+      Course Title: "{course_title}"
+      Subject: "{self.subject}"
+      Difficulty: "{self.difficulty}"
+      Topics Covered: {topics_string}
+      Enemy Theme for Quiz: "{enemy_theme}"
+
+      Generate the following as a single JSON object:
+      1.  "summary": A concise and encouraging summary of the course (2-3 paragraphs)
+      2.  "quiz": An array of 5 quiz questions with these types:
+          - 2 True/False questions
+          - 2 Multiple Choice questions (with 3 options: A, B, C)
+          - 1 Fill-in-the-Blank question (max 10 letters)
+          
+          Each question should:
+          - Be relevant to the topics covered
+          - Be themed as if posed by '{enemy_theme}'
+          - Include:
+              "type": "true_false/multiple_choice/fill_blank"
+              "question_text": "String"
+              "options": ["A: Option1", "B: Option2", "C: Option3"] (only for multiple_choice)
+              "correct_answer": "String"
+              "explanation": "String (1-2 sentences)"
+              "difficulty": "easy/medium/hard"
+              "topic": "String"
+              
+          Fill-in-the-Blank format: 
+          - Represent blanks with 5-10 underscores (_____)
+          - Answers should be short (max 10 letters)
+          
+          Example True/False:
+          {{
+              "type": "true_false",
+              "question_text": "The {enemy_theme} challenges you: 'Water boils at 100°C at sea level. True or false?'",
+              "correct_answer": "True",
+              "explanation": "Water boils at 100°C at standard atmospheric pressure.",
+              "difficulty": "easy",
+              "topic": "Physics"
+          }}
+          
+          Example Fill-in-the-Blank:
+          {{
+              "type": "fill_blank",
+              "question_text": "The {enemy_theme} hisses: 'The capital of France is _______.'",
+              "correct_answer": "Paris",
+              "explanation": "Paris has been the capital since 508 AD.",
+              "difficulty": "easy",
+              "topic": "Geography"
+          }}
+      """
+
+
+    
+    
+     

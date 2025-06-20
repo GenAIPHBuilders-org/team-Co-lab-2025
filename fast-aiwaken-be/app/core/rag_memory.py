@@ -2,8 +2,10 @@ import json
 import os
 import redis
 from typing import List, Dict, Any, Callable, Optional
+from app.core.progress_tracker import ProgressTracker
 
 class RAGMemory:
+
     def __init__(self):
         self.redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
 
@@ -37,5 +39,6 @@ class RAGMemory:
             self.redis_client.delete(key)
         print("Cleared all memory entries.")
 
-
-
+    def get_progress_tracker(self, course_id: str) -> ProgressTracker:
+        return ProgressTracker(course_id, redis_client=self.redis_client)
+    

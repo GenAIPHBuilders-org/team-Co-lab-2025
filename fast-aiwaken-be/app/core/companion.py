@@ -1,3 +1,4 @@
+from typing import Dict
 from app.static_data.game_data import COMPANION_DETAILS
 
 
@@ -64,4 +65,28 @@ class CompanionLogic:
         )
 
         # Generate the motivational message using the LLM
+        return llm_client.generate_content(prompt)
+    
+    @staticmethod
+    def generate_boss_feedback(analysis: Dict, companion_name: str) -> str:
+        """
+        Generate feedback after losing boss battle
+        :param analysis: Performance analysis from analyze_boss_performance
+        """
+        details = CompanionLogic.get_companion_details(companion_name)
+        personality = details.get("personality", "supportive")
+        
+        strengths = analysis.get("strengths", [])[:3] or ["several concepts"]
+        weaknesses = list(analysis.get("weaknesses", {}).keys())[:3] or ["a few areas"]
+        mistakes = analysis.get("common_mistakes", [])[:2] or ["some common errors"]
+        
+        prompt = (
+            f"As {companion_name} with a {personality} personality, "
+            f"provide constructive feedback after a lost boss battle:\n"
+            f"- Strengths: {', '.join(strengths)}\n"
+            f"- Areas needing improvement: {', '.join(weaknesses)}\n"
+            f"- Common mistakes: {'; '.join(mistakes)}\n"
+            f"Make it encouraging but honest. Suggest specific practice strategies. "
+            f"Keep it to 2-3 paragraphs max."
+        )
         return llm_client.generate_content(prompt)
