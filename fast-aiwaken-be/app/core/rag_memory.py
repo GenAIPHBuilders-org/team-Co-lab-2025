@@ -2,45 +2,12 @@ import json
 import os
 import redis
 from typing import List, Dict, Any, Callable, Optional
-from datetime import datetime, timedelta
+from app.core.progress_tracker import ProgressTracker
 
 class RAGMemory:
-    class ProgressTracker:
-        def __init__(self, course_id: str):
-            self.course_id = course_id
-            self.weak_topics = {}  # {topic: mistake_count}
-            self.last_updated = datetime.now()
-            self.expiration_days = 30
-            
-        def update_weak_topic(self, topic: str, count: int = 1):
-            self.weak_topics[topic] = self.weak_topics.get(topic, 0) + count
-            self.last_updated = datetime.now()
-            
-        def get_top_weak_topics(self, n=3) -> List[str]:
-            # Clean expired data
-            if datetime.now() > self.last_updated + timedelta(days=self.expiration_days):
-                self.weak_topics = {}
-                return []
-                
-            return sorted(self.weak_topics.items(), 
-                        key=lambda x: x[1], 
-                        reverse=True)[:n]
 
-
-    def __init__(self, json_path: str = "memory_storage/companion_memory.json"):
-        self.memory: List[Dict[str, Any]] = []
-        self.json_path = json_path
-        self._ensure_folder_exists()
-        self.load_from_json()
-        self.progress_trackers = {}  # {course_id: ProgressTracker}
-
-
-    # enusre the folder for the memory file exists
-    def _ensure_folder_exists(self):
-
-        folder_path = os.path.dirname(self.json_path)
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
+    def __init__(self):
+        self.redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
 
     # add a new entry to memory
     def add_to_memory(self, entry: Dict[str, Any]):
@@ -72,12 +39,6 @@ class RAGMemory:
             self.redis_client.delete(key)
         print("Cleared all memory entries.")
 
-
-
-
-
     def get_progress_tracker(self, course_id: str) -> ProgressTracker:
-        if course_id not in self.progress_trackers:
-            self.progress_trackers[course_id] = ProgressTracker(course_id)
-        return self.progress_trackers[course_id]
+        return ProgressTracker(course_id, redis_client=self.redis_client)
     
