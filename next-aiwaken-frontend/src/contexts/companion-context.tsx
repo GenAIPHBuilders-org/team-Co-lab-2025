@@ -12,6 +12,7 @@ import {
   useGetTips
 } from '@/(features)/companion-action'
 import { TokenStorage } from '@/lib/token-storage'
+import { useAuthentication } from './auth-context'
 
 export interface ICompanionContextType {
   showMotivation: boolean
@@ -53,7 +54,8 @@ export const CompanionProvider: React.FC<React.PropsWithChildren> = ({ children 
   const { getHintAsync, isPending: isHintLoading } = useGetHint()
   const { getMotivationAsync, isPending: isMotivationLoading } = useGetMotivation()
   const { getTipsAsync, isPending: isTipsLoading } = useGetTips()
-  const companion = TokenStorage.getUserCompanion()
+  const { user } = useAuthentication();
+  const companion = user?.preferences.companion
   const courseData = TokenStorage.getCourseData()
   const [showMotivation, setShowMotivation] = useState<boolean>(false)
   const [showHint, setShowHint] = useState<boolean>(false)

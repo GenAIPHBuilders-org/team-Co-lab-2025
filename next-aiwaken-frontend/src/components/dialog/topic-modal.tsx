@@ -9,20 +9,29 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { TopicModalProps } from "@/types/topic";
+import { Difficulty, TopicModalProps } from "@/types/topic";
 import { difficultyMap } from "@/constants/topics";
 import AnimationVariants from "@/lib/animations";
+import { TopicModalLoading } from "./topic-modal-loading";
+
+
 
 export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: TopicModalProps) {
   if (!topic) return null;
+
+  if (isPending) {
+    return (
+      <TopicModalLoading isOpen={isOpen} onClose={onClose} />
+    );
+  }
 
   return (
     <AnimatePresence>
       {isOpen && (
         <Dialog open={isOpen} onOpenChange={onClose}>
-          <DialogContent className="sm:max-w-md border-0 bg-gray-900/80 text-white shadow-[0_0_15px_rgba(159,141,252,0.5)] overflow-hidden p-0">
+          <DialogContent className="sm:max-w-2xl border-0 bg-gray-900/80 text-white shadow-[0_0_15px_rgba(159,141,252,0.5)] overflow-hidden p-4">
             <motion.div
-              className="absolute inset-0 bg-[url('/placeholder.svg?height=400&width=400')] opacity-10"
+              className="absolute inset-0 bg-gradient-to-r from-[#9F8DFC90] to-gray-900 opacity-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.1 }}
               transition={{ duration: 0.5 }}
@@ -45,7 +54,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
               animate="visible"
               exit="exit"
             >
-              <DialogHeader className="border-b border-[#9F8DFC]/50 bg-gradient-to-r from-[#9F8DFC] to-gray-900 p-6">
+              <DialogHeader className="border-b border-[#9F8DFC]/90 bg-gradient-to-r from-[#9F8DFC90] rounded-lg to-gray-900 p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <motion.div
@@ -67,7 +76,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
                       transition={{ delay: 0.2 }}
                     >
                       <DialogTitle className="text-xl font-bold">
-                        QUEST CONFIRMATION
+                        TOPIC CONFIRMATION
                       </DialogTitle>
                     </motion.div>
                   </div>
@@ -78,7 +87,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
                     transition={{ delay: 0.3, type: "spring" }}
                   >
                     <span>
-                      LVL {difficultyMap[topic.difficulty].level}
+                      LVL {difficultyMap[topic.difficulty as Difficulty].level}
                     </span>
                   </motion.div>
                 </div>
@@ -164,7 +173,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
                     transition={{ delay: 0.9 }}
                   >
                     <Button
-                      onClick={() => onConfirm(topic.name, topic.difficulty)}
+                      onClick={() => onConfirm(topic.name, topic.difficulty, topic.id)}
                       disabled={isPending}
                       className="relative overflow-hidden bg-gradient-to-r from-[#9F8DFC] to-[#9F8DFC] text-white hover:from-[#9F8DFC] hover:to-[#9F8DFC]"
                     >

@@ -175,6 +175,8 @@ declare global {
   }
 
   interface QuizQuestion {
+    monster_intro: string;
+    incorrect_explanation: Record<string, string>;
     question_text: string;
     options: string[];
     correct_answer: string;
@@ -242,5 +244,16 @@ declare global {
     height?: number | string;
     className?: string;
     style?: React.CSSProperties;
+  }
+
+  type CourseSuggestion = {
+    subject: string;
+    course_title: string;
+    course_description: string;
+  };
+
+  interface AICourseSuggestionResponse {
+    intro: string;
+    suggestions: CourseSuggestion[];
   }
 }

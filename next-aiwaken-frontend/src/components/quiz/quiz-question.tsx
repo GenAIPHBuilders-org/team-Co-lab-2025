@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, HelpCircle, Sparkles } from "lucide-react"
+import { ArrowRight, Coins } from "lucide-react"
 import { useCompanion } from "@/contexts/companion-context"
+import { useAuthentication } from "@/contexts/auth-context"
 
 interface QuizQuestionProps {
   question: {
@@ -32,7 +33,7 @@ export function QuizQuestion({
   totalQuestions,
   courseData,
 }: QuizQuestionProps) {
-
+  const { user } = useAuthentication();
   const {
     handleShowHint,
     handleShowTips,
@@ -41,7 +42,7 @@ export function QuizQuestion({
   } = useCompanion()
 
   return (
-    <Card className="bg-purple-950/80 border-purple-500 text-white mb-6">
+    <Card className="bg-purple-950/80 border-purple-500 text-white mb-6 max-w-7xl mx-auto">
       <CardHeader>
         <CardTitle className="text-xl text-center">{question.question_text}</CardTitle>
       </CardHeader>
@@ -81,37 +82,42 @@ export function QuizQuestion({
           ))}
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button
-          onClick={() =>
-            handleShowHint({
-              quiz_question: question.question_text,
-              topic_title: courseData?.course_title as string,
-            })
-          }
-          loading={isHintLoading}
-          variant="outline"
-          className="border-purple-500 text-purple-300 hover:bg-purple-900/20"
-        >
-          <HelpCircle className="mr-2 h-4 w-4" />
-          Get Hint
-        </Button>
-        <Button
-          onClick={() =>
-            handleShowTips({
-              topic_title: courseData?.course_title as string,
-              subject: courseData?.subject as string,
-              difficulty: courseData?.difficulty as string,
-              step_title: question.question_text,
-            })
-          }
-          loading={isTipsLoading}
-          variant="outline"
-          className="border-green-500 text-green-300 hover:bg-green-900/20"
-        >
-          <Sparkles className="mr-2 h-4 w-4" />
-          Get Tips
-        </Button>
+      <CardFooter className="w-full flex flex-col">
+        <div className="flex w-full justify-between gap-2">
+          <Button
+            onClick={() =>
+              handleShowHint({
+                quiz_question: question.question_text,
+                topic_title: courseData?.course_title as string,
+              })
+            }
+            disabled={user?.stats.coins as number < 5}
+            loading={isHintLoading}
+            variant="outline"
+            className="border-purple-500 text-purple-300 hover:bg-purple-900/20"
+          >
+            <Coins className="mr-2 h-4 w-4" />
+            Get Hint (-3 coins)
+          </Button>
+          <Button
+            onClick={() =>
+              handleShowTips({
+                topic_title: courseData?.course_title as string,
+                subject: courseData?.subject as string,
+                difficulty: courseData?.difficulty as string,
+                step_title: question.question_text,
+              })
+            }
+            disabled={user?.stats.coins as number < 5}
+            loading={isTipsLoading}
+            variant="outline"
+            className="border-green-500 text-green-300 hover:bg-green-900/20"
+          >
+            <Coins className="mr-2 h-4 w-4" />
+            Get Tips (-5 coins)
+          </Button>
+        </div>
+
         {selectedAnswer && (
           <Button
             onClick={onNextQuestion}

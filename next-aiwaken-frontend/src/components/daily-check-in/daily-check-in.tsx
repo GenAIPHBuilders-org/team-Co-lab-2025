@@ -1,18 +1,27 @@
+"use client";
 import { Button } from "../ui/button";
 import { Store, Gift, Star, Heart, Coins, Trophy, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Progress } from "../ui/progress";
 import { Badge } from "../ui/badge";
-import { AnimatedModal } from "../ui/animated-modal";
-import { useClaimDailyReward, useFetchDailyRewards } from "@/(features)/daily-reward-action";
+import { AnimatedModal } from "../dialog/animated-modal";
+import { useClaimDailyReward } from "@/(features)/daily-reward-action";
+import { TDailyRewardResponse } from "@/types/services";
 
-export const DailyCheckInModal = () => {
-  const { data: dailyRewards, isLoading, isError, error } = useFetchDailyRewards();
+type DailyCheckInModalProps = {
+  dailyRewards: TDailyRewardResponse | null
+}
+
+export const DailyCheckInModal = ({ dailyRewards }: DailyCheckInModalProps) => {
   const { claimDailyRewardAsync, isPending } = useClaimDailyReward();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [showRewardModal, setShowRewardModal] = useState<boolean>(false);
   const [claimedReward, setClaimedReward] = useState<{ type: "heart" | "coin" | "xp"; reward: string } | null>(null);
+
+  if (!dailyRewards) {
+    return null;
+  }
 
   function renderIcon(type: "heart" | "coin" | "xp") {
     switch (type) {
@@ -30,7 +39,7 @@ export const DailyCheckInModal = () => {
   async function handleClaimDailyReward() {
     try {
       await claimDailyRewardAsync();
-      const currentDayReward = dailyRewards.rewards.find(reward => reward.day === dailyRewards.current_streak + 1);
+      const currentDayReward = dailyRewards?.rewards.find(reward => reward.day === dailyRewards.current_streak + 1);
 
       if (currentDayReward) {
         setClaimedReward({
@@ -44,9 +53,6 @@ export const DailyCheckInModal = () => {
       console.error("Error claiming daily reward:", error);
     }
   }
-
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error: {error?.message}</div>;
 
   return (
     <>
@@ -162,7 +168,10 @@ export const DailyCheckInModal = () => {
 
       <AnimatedModal
         isOpen={showRewardModal}
-        onClose={() => setShowRewardModal(false)}
+        onClose={() => {
+          setShowRewardModal(false);
+          window.location.reload();
+        }}
         size="xl"
       >
         <div className="text-center space-y-6 py-8">

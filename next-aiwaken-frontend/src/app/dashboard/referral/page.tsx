@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -6,9 +6,16 @@ import { Badge } from "@/components/ui/badge"
 import { Share2, Users, Gift, Star, Copy } from "lucide-react"
 import { motion } from "framer-motion"
 import { useClipboard } from "@/hooks/use-clipboard"
+import { ComingSoon } from "@/components/coming-soon"
+import { useState } from "react"
 
 export default function ReferralPage() {
+  const [showComingSoon] = useState(true);
   const copyReferralCode = useClipboard();
+
+  if (showComingSoon) {
+    return <ComingSoon />;
+  }
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-gray-950 text-white">
       <div className="container mx-auto mt-12 py-12 px-4 space-y-8">

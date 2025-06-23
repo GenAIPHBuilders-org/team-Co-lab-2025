@@ -1,3 +1,4 @@
+import { IBossBattleAIGeneratedQuestion } from "./../../app/dashboard/boss-battle/constant";
 import CourseService from "@/services/course-service";
 import { useMutation } from "@tanstack/react-query";
 
@@ -65,9 +66,9 @@ export const useGetLearningStepContent = () => {
 };
 export const useGetCourseSummaryConclusion = () => {
   const { mutate, mutateAsync, data, isPending, isSuccess, isError, error } =
-    useMutation<CourseConclusion, Error, CourseConclusionParams>({
-      mutationFn: async (params: CourseConclusionParams) => {
-        const response = await CourseService.getCourseSummaryConclusion(params);
+    useMutation<IBossBattleAIGeneratedQuestion, Error, void>({
+      mutationFn: async (): Promise<IBossBattleAIGeneratedQuestion> => {
+        const response = await CourseService.getCourseSummaryConclusion();
         return response;
       },
       onSuccess: (data) => {

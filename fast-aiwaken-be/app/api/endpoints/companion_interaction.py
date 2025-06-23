@@ -51,6 +51,7 @@ async def get_suggested_courses(
         learning_style=preferences.learning_style,
         age_range=preferences.age_range
     )
+    
     return result
     
 
@@ -110,7 +111,7 @@ async def get_course_structure(
     if not course_structure.get("sections"):
         raise HTTPException(status_code=500, detail="Generated course structure is invalid or incomplete.")
 
-    store_in_redis(redis_key, course_structure, ttl=3600)
+    store_in_redis(redis_key, course_structure, ttl=-1)
     print(f"Stored course structure in cache for {username}:{redis_key}")
     return course_structure
 
@@ -135,17 +136,43 @@ async def get_tips(
     topic_title: str = Query(..., description="The title of the topic"),
     step_title: str = Query("", description="The title of the specific learning step (optional)"),
     difficulty: str = Query(..., description="The difficulty level of the course"),
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
-    """
-    Generate actionable tips for a specific topic or learning step.
-    """
-    tips = llm_client.generate_tips(
-        subject=subject,
-        topic_title=topic_title,
-        step_title=step_title,
-        difficulty=difficulty,
-    )
+    try:
+        if current_user.stats.coins < 5:
+            raise HTTPException(status_code=400, detail="Not enough coins to generate tips.")
+        tips = llm_client.generate_tips(
+            subject=subject,
+            topic_title=topic_title,
+            step_title=step_title,
+            difficulty=difficulty,
+            username=current_user.username
+        )
+        current_user.stats.coins -= 5
+        db.commit()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate tips: {str(e)}")
     return {"tips": tips}
+
+@router.post("/hint")
+def get_quiz_hint(request: QuizHintRequest, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    try: 
+        if current_user.stats.coins < 3:
+            raise HTTPException(status_code=400, detail="Not enough coins to generate a hint.")
+        
+        hint = llm_client.generate_quiz_hint(
+            quiz_question=request.quiz_question,
+            topic_title=request.topic_title,
+            username=current_user.username
+        )
+        
+        current_user.stats.coins -= 3
+        db.commit()
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to generate quiz hint: {str(e)}")
+    return {"hint": hint}
 
 # course conclusion for quiz and summary
 @router.post("/course/conclusion", response_model=Dict[str, Any])
@@ -223,26 +250,6 @@ def select_companion(
 def get_available_companions():
     return list(COMPANION_DETAILS.keys())
 
-# user hint
-@router.post("/hint")
-def get_quiz_hint(request: QuizHintRequest):
-    # Enhanced hint generation with RAG context
-    context = llm_client.retrieve_rag_context(
-        filter_fn=lambda item:(
-            request.topic_title.lower() in item.get("topic_title","").lower()
-            or request.quiz_question.lower() in (item.get("content") or "").lower()
-        ),
-        max_items=5
-    )
-    
-    hint = llm_client.generate_quiz_hint(
-        quiz_question=request.quiz_question,
-        topic_title=request.topic_title,
-        context=context
-    )
-    return {"hint": hint}
-
-# --- Boss Battle Section ---
 
 # submit boss answer
 @router.post("/boss/submit", response_model=Dict[str, Any])
@@ -359,7 +366,8 @@ async def get_course_cache(
     cached_course = get_from_redis(redis_key)
     
     if not cached_course:
-        raise HTTPException(status_code=404, detail=f"No cached course found for {redis_key}") 
+        # Fallback to empty array if not found
+        return []
     return cached_course
 
 

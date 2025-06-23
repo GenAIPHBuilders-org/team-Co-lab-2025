@@ -1,76 +1,75 @@
-import { Brain, Shield, Sparkles } from "lucide-react";
+import { Flame, Heart, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { Badge } from "./ui/badge";
-import AnimationVariants from "@/lib/animations";
 import { useAuthentication } from "@/contexts/auth-context";
-import { Progress } from "./ui/progress";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { cn } from "@/lib/utils";
+import { LottieAnimation } from "./ui/lottie";
+import yo from "@/components/lottie-json/yo.json";
 
 export function UserCard() {
-  const { user } = useAuthentication();
+  const { user: userDetails } = useAuthentication();
 
   return (
-    <motion.div variants={AnimationVariants.itemVariants} className="md:col-span-1">
-      <div className="relative">
-        <div className="relative rounded-lg overflow-hidden border border-gray-800 shadow-2xl">
-          <div className="bg-gray-900 p-6 rounded-lg relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center">
-                    <Shield className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white">Hunter Rank</h3>
-                    <p className="text-sm text-gray-400">E-Rank Hunter</p>
-                  </div>
-                </div>
-                <Badge className="bg-purple-600/20 text-purple-400 hover:bg-purple-600/30">Level {user?.stats.level}</Badge>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Card className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-gray-700/50 `}>
+        <CardHeader className="pb-3">
+          <CardTitle className="text-lg flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-[#9F8DFC]" />
+            Your Profile
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <div
+                className={cn(
+                  "rounded-full bg-gray-700/20 flex items-center justify-center",
+                  "lg",
+                  "shadow-lg border-2 border-[#9F8DFC]",
+                )}
+              >
+                <LottieAnimation animationData={yo} height="auto" width={130} />
               </div>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="text-gray-400">Experience</span>
-                    <span className="text-gray-300">{user?.stats.experience || 0}/{user?.stats.experience_to_next_level || 0} XP</span>
-                  </div>
-                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                    <Progress
-                      value={user?.stats.experience || 0}
-                      max={100}
-                      className="h-2 bg-gray-800 rounded-full overflow-hidden bg-gradient-to-r from-purple-600 to-blue-500"
-                      style={{ width: `${user?.stats.experience || 0}%` }}
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-gray-800/50 p-4 rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Brain className="h-4 w-4 text-blue-400" />
-                      <span className="text-sm text-gray-300">Intelligence</span>
-                    </div>
-                    <span className="text-2xl font-bold text-white">42</span>
-                  </div>
-                  <div className="bg-gray-800/50 p-4 rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Sparkles className="h-4 w-4 text-yellow-400" />
-                      <span className="text-sm text-gray-300">Wisdom</span>
-                    </div>
-                    <span className="text-2xl font-bold text-white">38</span>
-                  </div>
-                </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg">
-                  <h4 className="text-white font-medium mb-2">Current Quest</h4>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-300">Advanced AI Concepts</span>
-                    <span className="text-sm text-gray-400">3/5 completed</span>
-                  </div>
-                </div>
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
+                Level {userDetails?.stats.level}
+              </span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-xl font-bold text-white">{userDetails?.user.username}</h3>
+              <p className="text-sm text-gray-300">Student</p>
+              <div className="flex items-center gap-2 mt-2">
+                <Heart className="h-4 w-4 text-red-400" />
+                <span className="text-xs text-gray-400">{userDetails?.preferences.age_range}</span>
               </div>
             </div>
           </div>
-        </div>
-        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
-      </div>
+
+          <div className="space-y-3 py-4">
+            <div className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-orange-500/20 to-red-500/20 px-3 py-1.5 border border-orange-500/30">
+              <Flame className="h-4 w-4 text-orange-400" />
+              <span className="text-sm font-semibold text-white">{userDetails?.stats.streak}</span>
+              <span className="text-xs text-orange-300">Streak</span>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex justify-between text-xs text-gray-400">
+                <span>Exp :</span>
+                <span>{userDetails?.stats.experience} / {userDetails?.stats?.experience_to_next_level as number}</span>
+              </div>
+              <div className="w-full bg-gray-700/50 rounded-full h-2">
+                <div
+                  className="bg-gradient-to-r from-[#9F8DFC] to-purple-500 h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${(userDetails?.stats.experience as number / (userDetails?.stats.experience_to_next_level as number)) * 100}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   )
 }

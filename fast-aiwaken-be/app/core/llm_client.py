@@ -10,8 +10,11 @@ from app.core.utils.pdf_generator import generate_pdf
 from app.core.llm.gemini_client import GeminiAPI
 from app.core.llm.youtube_client import YouTubeAPI
 from app.core.prompt_engineering.course_prompts import CoursePrompts
-from app.core.prompt_engineering.quiz_prompts import generate_quiz_hint, retrieve_relevant_context
-from app.core.prompt_engineering.tips_prompts import generate_tips_prompt
+from app.core.prompt_engineering.quiz_prompts import generate_quiz_hint, retrieve_relevant_context, generate_tips_prompt
+from fastapi import Depends
+from app.models.user_model import User
+from app.dependencies import get_current_user, get_db
+from sqlalchemy.orm import Session
 from app.core.prompt_engineering.boss_prompts import generate_boss_prompt
 from collections import defaultdict
 
@@ -252,14 +255,15 @@ class LLMClient:
 
 
     # generate quiz hint
-    def generate_quiz_hint(self, quiz_question: str, topic_title: str = "", step_title: str = "") -> str:
+    def generate_quiz_hint(self, quiz_question: str, topic_title: str = "", step_title: str = "", username: str = "") -> str:
         context = retrieve_relevant_context(self.rag_memory, quiz_question, topic_title, step_title, max_items = 5)
-        prompt = generate_quiz_hint(quiz_question, context)
+        prompt = generate_quiz_hint(quiz_question, context, username)
         return self.generate_content(prompt)
 
     # generate tips for the user
-    def generate_tips(self, subject: str, topic_title: str, step_title: str, difficulty: str) -> str:  
-        prompt = generate_course_prompt(subject, topic_title, step_title, difficulty)
+    def generate_tips(self, subject: str, topic_title: str, step_title: str, difficulty: str, 
+                      username: str) -> str:  
+        prompt = generate_tips_prompt(subject, topic_title, step_title, difficulty, username)
         return self.generate_content(prompt)
 
     # generate boss battle

@@ -1,5 +1,4 @@
 "use client"
-import ReactMarkdown from 'react-markdown';
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -8,7 +7,6 @@ import {
   BookmarkCheck,
   Maximize2,
   Minimize2,
-  NotebookPen,
   Volume2,
   VolumeX
 } from "lucide-react"
@@ -17,11 +15,10 @@ import { VideoPlayerProps } from '@/types/video-player';
 import { useVideoPlayer } from '@/hooks/use-video-player';
 import ReactPlayer from 'react-player';
 import { CompanionAvatar } from './companion-avatar';
-import { TokenStorage } from '@/lib/token-storage';
+import { useAuthentication } from '@/contexts/auth-context';
 
 export function VideoPlayer({
   content,
-  accompanying_text,
   video_details
 }: VideoPlayerProps) {
   const {
@@ -38,10 +35,11 @@ export function VideoPlayer({
     toggleFullscreen,
     handleProgress,
   } = useVideoPlayer();
-  const companion = TokenStorage.getUserCompanion();
+  const { user } = useAuthentication();
+  const companion = user?.preferences.companion
 
   return (
-    <div className="w-full ">
+    <div className="w-[40rem]  ">
       <div className="hidden md:block mb-4">
         <Card className="h-full bg-gray-800/50 border-gray-700">
           <CardContent className="p-4">
@@ -56,17 +54,6 @@ export function VideoPlayer({
                 <span className="text-lg font-bold text-white">{companion}</span>
                 <span className="text-xs text-gray-400">Your AI Learning Companion</span>
                 <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-              </div>
-            </div>
-            <h3 className="text-md font-medium text-white mb-3 flex items-center">
-              <NotebookPen />
-              Instructor Notes
-            </h3>
-            <div className="space-y-3">
-              <div className="text-sm text-gray-300 w-full flex flex-col space-y-2 mb-6">
-                <ReactMarkdown>
-                  {accompanying_text}
-                </ReactMarkdown>
               </div>
             </div>
           </CardContent>

@@ -3,7 +3,6 @@ import Link from "next/link"
 import { ArrowRight, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { UserCard } from "@/components/user-card"
 
 export default function HomePage() {
   return (
@@ -77,7 +76,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <UserCard />
+          {/* <UserCard /> */}
         </div>
       </section>
     </div >

@@ -11,10 +11,12 @@ import { QuizBoss } from "@/components/quiz/quiz-boss"
 import { QuizQuestion } from "@/components/quiz/quiz-question"
 import { QuizExplanation } from "@/components/quiz/quiz-explanation"
 import { CompanionProvider } from "@/contexts/companion-context"
+import { useAuthentication } from "@/contexts/auth-context"
 
 export default function BossQuiz() {
   const isIdle = useIdleDetection(10000)
-  const companion = TokenStorage.getUserCompanion()
+  const { user } = useAuthentication();
+  const companion = user?.preferences.companion
   const quizData = TokenStorage.getSummaryConclusion()
 
   if (!quizData) {

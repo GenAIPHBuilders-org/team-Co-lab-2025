@@ -11,7 +11,7 @@ interface RobotGuideProps {
 
 export function RobotGuide({ message }: RobotGuideProps) {
   return (
-    <div className="w-full flex items-center justify-center gap-8 p-4">
+    <div className="w-full flex items-center justify-center p-4">
       <div className="relative">
         <LottieAnimation animationData={yo} height="auto" width={300} />
       </div>

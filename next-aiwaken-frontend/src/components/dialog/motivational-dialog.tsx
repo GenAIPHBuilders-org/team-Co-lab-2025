@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Sparkles, Target, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { AnimatedModal } from "../ui/animated-modal"
+import { AnimatedModal } from "./animated-modal"
 import { useRandomMessage } from "@/hooks/use-random-message"
 
 interface IMotivationalModalProps {

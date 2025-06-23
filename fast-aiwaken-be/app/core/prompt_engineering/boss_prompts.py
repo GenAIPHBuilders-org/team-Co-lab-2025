@@ -19,7 +19,7 @@ def extract_topic(rag_entries: List[Dict[str, Any]]) -> List[str]:
             seen.add(topic)
         return topics
 
-def generate_boss_prompt(user_info: Dict[str, Any], rag_entries: List[Dict[str, Any]], 
+def generate_boss_prompt(user_info: Dict[str, Any], rag_entries: List[Dict[str, Any]],
                         hearts: int) -> str:
 
     topics = extract_topic(rag_entries)
@@ -30,42 +30,44 @@ def generate_boss_prompt(user_info: Dict[str, Any], rag_entries: List[Dict[str, 
     return f"""
     Focus on these topics: {topics_str}
 
-    Generate a pool of questions for the boss fight:
-    - 9 Easy
-    - 10 Medium
-    - 9 Hard
+    Generate a pool of boss fight questions for {username}:
+    - 9 Easy questions
+    - 10 Medium questions
+    - 9 Hard questions
 
-    Each boss fight session will use 10 questions from these pools, scaling difficulty based on user performance (start with medium, go easier if wrong, harder if right).
+    Each boss fight session uses 10 questions from these pools, scaling difficulty based on {username}’s answers (start with medium; go easier if wrong, harder if right).
 
-    For each question, address {username} directly, e.g., "Now, {username}, what is ...?". Vary the phrasing for each question to keep it dynamic and engaging.
-
-    Each question must have:
-    - "id": unique string (e.g., "easy_1", "medium_5")
-    - "type": "true_false", "multiple_choice", or "fill_blank"
-    - "question_text": the question itself, phrased as if the boss is speaking to {username}
-     "options": array of options (for multiple_choice only), each option should be labeled as "A.", "B.", "C.", or "D." (e.g., ["A. Option 1", "B. Option 2", ...])
-    - "correct_answer": the correct answer
-    - "explanation": explanation for the answer
+    For each question:
+    - Address {username} directly, e.g., "Now, {username}, what is ...?" and vary the phrasing.
+    - Subject: {subject}
+    - Each question must have exactly these fields:
+    - "id": a unique ID string, e.g., "easy_1", "medium_5"
+    - "type": must be **one of** "true_false", "multiple_choice", or "fill_blank"
+    - "question_text": the question phrased as the boss speaking to {username}
+    - **If type is "multiple_choice": return a list of 4 options labeled "A.", "B.", "C.", and "D."**
+    - **If type is not "multiple_choice": omit the "options" field entirely**
+    - "correct_answer": the correct answer (must match the option label for multiple choice)
+    - "explanation": a clear explanation for the answer
     - "difficulty": "easy", "medium", or "hard"
     - "topic": the relevant topic
 
     Also include:
-    - "boss_intro": a string (the boss's introduction)
-    - "quiz_title": a string
+    - "boss_intro": a dramatic introduction by the boss
+    - "quiz_title": a fitting quiz title
     - "hearts": {hearts}
     - "start_pool": "medium"
 
-    Return as JSON:
+    Return **only** the JSON object, no other text:
+
     {{
-        "boss_intro": "String",
-        "quiz_title": "String",
-        "easy_questions": [{{...}}, ...],   // 9 questions
-        "medium_questions": [{{...}}, ...], // 10 questions
-        "hard_questions": [{{...}}, ...],   // 9 questions
-        "hearts": {hearts},
-        "start_pool": "medium"
+    "boss_intro": "String",
+    "quiz_title": "String",
+    "easy_questions": [{{...}}, ...],   // exactly 9 questions
+    "medium_questions": [{{...}}, ...], // exactly 10 questions
+    "hard_questions": [{{...}}, ...],   // exactly 9 questions
+    "hearts": {hearts},
+    "start_pool": "medium"
     }}
-    Do not include any text outside the JSON object.
     """
     
 
