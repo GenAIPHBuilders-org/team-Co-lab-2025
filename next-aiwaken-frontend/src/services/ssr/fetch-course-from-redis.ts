@@ -21,7 +21,7 @@ export async function fetchSsrUserCourse(): Promise<AIContentGenerationResponse 
   );
 
   if (!response) {
-    return null;
+    return [];
   }
   return response.data;
 }

@@ -19,11 +19,19 @@ type TCourseCardProps = {
 export function CourseCard({ courseData, progressValue }: TCourseCardProps) {
   const router = useRouter()
 
+  if (!courseData || !courseData.sections) {
+    return (
+      <Card className="overflow-hidden bg-gray-800/50 border-gray-700 p-6 text-center">
+        <div className="text-gray-400">No course data available...</div>
+      </Card>
+    )
+  }
+
   const handleContinueCourse = () => {
     router.push("/dashboard/course")
   }
 
-  const getSubjectImage = (subject: string) => {
+  const getSubjectImage = (subject: string | undefined) => {
     switch (subject?.toLowerCase()) {
       case "english":
         return "https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=800&q=80"
@@ -58,25 +66,25 @@ export function CourseCard({ courseData, progressValue }: TCourseCardProps) {
 
           <div className="absolute bottom-0 left-0 right-0 p-4">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs text-gray-300 font-medium">Progress: {progressValue}%</span>
+              <span className="text-xs text-gray-300 font-medium">Progress: {progressValue ?? 0}%</span>
               <Badge variant="secondary" className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30 text-xs">
-                {courseData?.difficulty.toUpperCase()}
+                {(courseData?.difficulty ? courseData.difficulty.toUpperCase() : "-")}
               </Badge>
             </div>
-            <Progress value={progressValue} className="h-2 bg-gray-700" />
+            <Progress value={progressValue ?? 0} className="h-2 bg-gray-700" />
           </div>
         </div>
 
         <CardContent className="p-4 space-y-4">
           <div>
-            <h3 className="font-semibold text-lg text-white mb-2 line-clamp-1">{courseData?.course_title}</h3>
-            <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed">{courseData?.course_description}</p>
+            <h3 className="font-semibold text-lg text-white mb-2 line-clamp-1">{courseData?.course_title || "Untitled Course"}</h3>
+            <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed">{courseData?.course_description || "No description available."}</p>
           </div>
 
           <div className="flex items-center gap-4 text-xs text-gray-500">
             <div className="flex items-center gap-1">
               <BookOpen className="h-3 w-3" />
-              <span>{courseData?.sections?.length || 0} chapters</span>
+              <span>{courseData?.sections?.length ?? 0} chapters</span>
             </div>
             <div className="flex items-center gap-1">
               <Clock className="h-3 w-3" />
@@ -87,6 +95,7 @@ export function CourseCard({ courseData, progressValue }: TCourseCardProps) {
           <Button
             onClick={handleContinueCourse}
             className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-medium transition-all duration-300 group"
+            disabled={!courseData}
           >
             <PlayCircle className="h-4 w-4 mr-2 transition-transform group-hover:scale-110" />
             {progressValue >= 100 ? "Review Course" : "Continue Learning"}
