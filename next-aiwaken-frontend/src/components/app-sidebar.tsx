@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import {
-  Command,
   SquareTerminal,
 } from "lucide-react"
 import { NavMain } from "@/components/nav-main"
@@ -16,6 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { AIWakenIcon } from "./icons/aiwaken-icon"
 
 const data = {
   user: {
@@ -29,21 +29,17 @@ const data = {
       url: "/dashboard",
       icon: SquareTerminal,
       isActive: true,
-      // items: [
-      //   {
-      //     title: "History",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Starred",
-      //     url: "#",
-      //   },
-      //   {
-      //     title: "Settings",
-      //     url: "#",
-      //   },
-      // ],
     },
+    // {
+    //   title: "Leaderboard",
+    //   url: "/dashboard/leaderboard",
+    //   icon: Sparkles,
+    // },
+    // {
+    //   title: "Refer a Friend",
+    //   url: "/dashboard/referral",
+    //   icon: Share2,
+    // },
   ],
 }
 
@@ -54,12 +50,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       {...props}
     >
       <SidebarHeader>
-        <SidebarMenu>
+        <SidebarMenu className="flex flex-col gap-2">
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+            <SidebarMenuButton size="lg" asChild className="mt-4">
               <a href="#">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <Command className="size-4" />
+                  <AIWakenIcon width={50} height={50} />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">AIWAKEN</span>
@@ -73,7 +69,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="flex flex-col gap-4 p-2 mb-2">
         <NavUser />
       </SidebarFooter>
     </Sidebar>

@@ -3352,5 +3352,3004 @@
     "material_type_suggestion": "interactive_quiz_placeholder",
     "subject": "math",
     "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Arithmetic",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Understanding Addition",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Arithmetic",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Applying Addition with Examples",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Arithmetic",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Introduction to Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Arithmetic",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Addition and Subtraction Practice",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Identifying Shapes",
+    "step_title": "Introduction to Basic Shapes (Circle, Square, Triangle)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Identifying Shapes",
+    "step_title": "Shape Matching Game",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Measurement",
+    "topic_title": "Length and Size Comparison",
+    "step_title": "Comparing Lengths: Short, Long, Tall",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Measurement",
+    "topic_title": "Length and Size Comparison",
+    "step_title": "Comparing Sizes: Big, Small",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Place Value and Number Representation",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Practice Worksheet: Identifying Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Basic Addition and Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Applying Addition and Subtraction with Examples",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Practice Worksheet: Addition and Subtraction Problems",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Multiplication and Division",
+    "topic_title": "Understanding Multiplication",
+    "step_title": "Introduction to Multiplication",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Multiplication and Division",
+    "topic_title": "Understanding Multiplication",
+    "step_title": "Multiplication Tables (1-10)",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Multiplication and Division",
+    "topic_title": "Understanding Multiplication",
+    "step_title": "Practice Worksheet: Multiplication Problems",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Multiplication and Division",
+    "topic_title": "Understanding Division",
+    "step_title": "Introduction to Division",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Multiplication and Division",
+    "topic_title": "Understanding Division",
+    "step_title": "Division with Remainders",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Multiplication and Division",
+    "topic_title": "Understanding Division",
+    "step_title": "Practice Worksheet: Division Problems",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Geometry Basics",
+    "topic_title": "Shapes and their Properties",
+    "step_title": "Identifying Basic Shapes (Circles, Squares, Triangles)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Geometry Basics",
+    "topic_title": "Shapes and their Properties",
+    "step_title": "Understanding Shape Properties (Sides, Angles)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Geometry Basics",
+    "topic_title": "Shapes and their Properties",
+    "step_title": "Quiz: Identifying Shapes and their Properties",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Introduction to Addition and Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Applying Addition and Subtraction with Examples",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Practice Worksheet: Addition and Subtraction",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Multiplication and Division",
+    "step_title": "Introduction to Multiplication and Division",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Multiplication and Division",
+    "step_title": "Applying Multiplication and Division with Examples",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Multiplication and Division",
+    "step_title": "Video Guide: Multiplication and Division Techniques",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Basic Operations",
+    "topic_title": "Multiplication and Division",
+    "step_title": "Practice Worksheet: Multiplication and Division",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "What are Fractions?",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Visualizing Fractions",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Practice Worksheet: Identifying Fractions",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Identifying Basic Shapes",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Understanding Shape Properties (Sides, Angles)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Interactive Quiz: Shape Identification",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Counting and Number Recognition",
+    "step_title": "Introduction to Numbers 0-100",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Counting and Number Recognition",
+    "step_title": "Practice Counting Objects",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Counting and Number Recognition",
+    "step_title": "Number Recognition Game",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Adding Single-Digit Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Subtracting Single-Digit Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Addition and Subtraction",
+    "step_title": "Word Problems with Addition and Subtraction",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Exploring Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Identifying Basic Shapes (Circles, Squares, Triangles)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Exploring Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Understanding Sides and Corners",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Exploring Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Shape Sorting Activity",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "What are Fractions?",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Visualizing Fractions with Pictures",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Identifying Numerator and Denominator",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Counting Objects and Representing Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Practice Worksheet: Counting and Writing Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Number Line and Ordering",
+    "step_title": "Introducing the Number Line",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Number Line and Ordering",
+    "step_title": "Comparing Numbers (Greater Than, Less Than, Equal To)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Numbers and Counting",
+    "topic_title": "Number Line and Ordering",
+    "step_title": "Ordering Numbers on a Number Line",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Addition",
+    "step_title": "Introduction to Addition",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Addition",
+    "step_title": "Adding Numbers with Examples",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Addition",
+    "step_title": "Practice Worksheet: Addition Problems",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Subtraction",
+    "step_title": "Introduction to Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Subtraction",
+    "step_title": "Subtracting Numbers with Examples",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic",
+    "topic_title": "Subtraction",
+    "step_title": "Practice Worksheet: Subtraction Problems",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Shapes and Patterns",
+    "topic_title": "Identifying Basic Shapes",
+    "step_title": "Introduction to Basic Shapes (Circle, Square, Triangle)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Shapes and Patterns",
+    "topic_title": "Identifying Basic Shapes",
+    "step_title": "Recognizing Shapes in Everyday Objects",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Shapes and Patterns",
+    "topic_title": "Identifying Basic Shapes",
+    "step_title": "Interactive Quiz: Shape Identification",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction to Whole Numbers",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Place Value and Number Representation",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Practice Worksheet: Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Addition and Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Multiplication and Division",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Practice Worksheet: Arithmetic Operations",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Identifying Basic Shapes (Circles, Squares, Triangles)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Understanding Angles",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Practice Worksheet: Identifying Shapes",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Working with Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Introduction to Fractions: Numerator and Denominator",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Working with Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Visualizing Fractions",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Working with Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Practice Worksheet: Fractions",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Error generating PDF content.",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Error generating PDF content.",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Error generating PDF content.",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": "Downloadable PDF: Introduction_to_Whole_Numbers.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Counting and Number Recognition",
+    "step_title": "Introduction to Numbers 0-100",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Counting and Number Recognition",
+    "step_title": "Practice Counting Objects",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Counting and Number Recognition",
+    "step_title": "Number Recognition Game",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Place Value (Ones, Tens, Hundreds)",
+    "step_title": "Understanding Place Value",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Place Value (Ones, Tens, Hundreds)",
+    "step_title": "Place Value Activities",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Understanding Whole Numbers",
+    "topic_title": "Place Value (Ones, Tens, Hundreds)",
+    "step_title": "Place Value Quiz",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic Operations",
+    "topic_title": "Addition",
+    "step_title": "Introduction to Addition",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic Operations",
+    "topic_title": "Addition",
+    "step_title": "Adding Single-Digit Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic Operations",
+    "topic_title": "Addition",
+    "step_title": "Adding Larger Numbers",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic Operations",
+    "topic_title": "Subtraction",
+    "step_title": "Introduction to Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic Operations",
+    "topic_title": "Subtraction",
+    "step_title": "Subtracting Single-Digit Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Arithmetic Operations",
+    "topic_title": "Subtraction",
+    "step_title": "Subtracting Larger Numbers",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "What are Fractions?",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Identifying Numerators and Denominators",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Fractions",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Fraction Practice",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Shapes",
+    "step_title": "Identifying Basic Shapes",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Shapes",
+    "step_title": "Drawing Shapes",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Installing Python",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Choosing an IDE (VS Code, Thonny)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Running your first Python code",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Introduction to Variables and Assignment",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Numbers (Integers, Floats)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Strings and String Manipulation",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Boolean Values",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Understanding Conditional Logic",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Applying if, elif, else statements",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Practice Exercises: Conditional Statements",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Loops (for and while loops)",
+    "step_title": "Iterating with for loops",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Loops (for and while loops)",
+    "step_title": "Using while loops for conditional iteration",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Loops (for and while loops)",
+    "step_title": "Practice Exercises: Loops",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Functions and Data Structures",
+    "topic_title": "Defining and Calling Functions",
+    "step_title": "Introduction to Functions",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Functions and Data Structures",
+    "topic_title": "Defining and Calling Functions",
+    "step_title": "Defining Functions with Parameters and Return Values",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Functions and Data Structures",
+    "topic_title": "Defining and Calling Functions",
+    "step_title": "Practice Exercises: Functions",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Functions and Data Structures",
+    "topic_title": "Lists and Tuples",
+    "step_title": "Introduction to Lists",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Functions and Data Structures",
+    "topic_title": "Lists and Tuples",
+    "step_title": "Working with Tuples",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Functions and Data Structures",
+    "topic_title": "Lists and Tuples",
+    "step_title": "Quiz: Lists and Tuples",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Installing Python",
+    "content": "Installing Python is like giving your computer the ability to understand and run Python code.  Think of it as downloading a special program that acts as a translator between you (writing code) and your computer (doing the work).  Without Python installed, your computer won't know what to do with your Python scripts.  \n\nYou download the installer from the official Python website (python.org).  This installer is a file that, when run, copies all the necessary Python files onto your computer.  After installation, you'll have access to Python through a command prompt or terminal (a text-based interface where you can type commands), or you can use a more user-friendly Integrated Development Environment (IDE) like Thonny or VS Code, which help you write, run, and debug your code.  The installation process varies slightly depending on your operating system (Windows, macOS, Linux), but the basic idea is the same: get the installer, run it, and follow the on-screen instructions.",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Choosing an IDE (VS Code, Thonny)",
+    "content": "When you're learning Python, you need a place to write your code and run it.  This place is called an Integrated Development Environment, or IDE. Think of it like a word processor, but specifically designed for programming.  Two popular choices for beginners are VS Code and Thonny.\n\nThonny is a very simple IDE, perfect for absolute beginners. It's easy to understand and use, with fewer features to get confused by.  It's like a friendly guide that holds your hand through the early stages of learning.\n\nVS Code is a more powerful and versatile IDE. It can be used for many programming languages, not just Python. It has lots of features that become useful as you get more experienced, but it can feel a bit overwhelming at first. It's like a powerful tool that you'll learn to master as you grow as a programmer.\n\nChoosing between them depends on your comfort level. If you're completely new to programming, Thonny is a great starting point.  If you don't mind a slightly steeper learning curve and want something that will grow with you, VS Code is a good option.  You can always switch later if you find one isn't working for you!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Running your first Python code",
+    "content": "https://www.youtube.com/watch?v=D2cwvpJSBX4",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Introduction to Variables and Assignment",
+    "content": "##  Variables: Your Python Backpack!\n\nImagine you're going on a Python adventure. You'll need a backpack to carry all your stuff, right?  In Python, **variables** are like your trusty backpack. They're containers where you store information – numbers, words, even more complex stuff later on!\n\n**What's in a Name (or a Variable)?**\n\nWe give our backpacks names, don't we?  Similarly, we give our variables names so we can easily refer to them.  These names follow some simple rules:\n\n* **Start with a letter or underscore (_):**  `my_backpack`, `age`, `_secret_number` are all good.\n* **Use only letters, numbers, and underscores:** `myBag2024` is okay, but `my bag` is not (spaces are no-nos!).\n* **Be descriptive:**  `user_age` is better than `x` because it tells you what the variable holds.\n\n**Assignment: Packing Your Backpack**\n\nThe act of putting stuff into your backpack is called \"assignment\" in Python. We use the `=` sign to assign a value to a variable.\n\n```python\n# Assigning a number (your age!)\nage = 25 \n\n# Assigning some text (your name!)\nname = \"Alice\"\n\n# Assigning a more mysterious item...\nmystery_item = None  #  This is like an empty space in your backpack for now!\n```\n\nThe code above does the following:\n\n1.  `age = 25`: We create a backpack named `age` and put the number 25 inside.\n2.  `name = \"Alice\"`: We create a backpack named `name` and put the text \"Alice\" inside. Notice the text is in quotes!\n3.  `mystery_item = None`: We create a backpack named `mystery_item`, but for now, it's empty.  `None` is a special Python value that represents the absence of a value. It's like saying \"I haven't found anything to put in this pocket yet!\"\n\n**Accessing Your Backpack's Contents**\n\nTo see what's inside your backpack, just type the name of the variable:\n\n\n```python\nprint(age)   # Output: 25\nprint(name)  # Output: Alice\nprint(mystery_item) # Output: None\n```\n\n`print()` is a Python command that shows the contents of a variable on the screen.\n\n**Data Types: What Kind of Stuff Can You Carry?**\n\nYour backpack can hold different types of items.  In Python, these are called **data types**.  We've already seen two:\n\n* **Integer (`int`):** Whole numbers (like `25`, `-10`, `0`).\n* **String (`str`):** Text (always enclosed in quotes, like `\"Alice\"`, `\"Hello, world!\"`).\n\nThere are many more data types, but we'll explore those later!  For now, focus on understanding variables and assignment – it's the foundation of all your Python adventures!\n\nRemember:  Your Python code is a journey.  Start with simple variables and assignment, and gradually add more complex elements as you build your skills. Happy coding!",
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Numbers (Integers, Floats)",
+    "content": "In Python, numbers are one of the fundamental data types you'll use to represent numerical values.  There are two main types of numbers we'll focus on at the beginning: integers and floats.\n\n* **Integers (int):** These are whole numbers without any fractional part.  They can be positive, negative, or zero.  Examples: -3, 0, 10, 1000.\n\n* **Floats (float):** These are numbers with a decimal point.  They represent real numbers.  Examples: 3.14, -2.5, 0.0, 10.0.\n\nIt's important to note the difference because Python treats them slightly differently in calculations.  For example, dividing two integers will sometimes result in a float, even if the result is a whole number (to maintain precision). \n\nHere are some simple examples in Python:\n```python\ninteger_variable = 10\nfloat_variable = 3.14\nprint(type(integer_variable))  # Output: <class 'int'>\nprint(type(float_variable))  # Output: <class 'float'>\n```\nThis shows how Python identifies the data type automatically. You can use the `type()` function to check the data type of a variable at any time. ",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Loops (for and while loops)",
+    "step_title": "Practice Exercises: Loops",
+    "content": "Downloadable PDF: Practice Exercises: Loops",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Defining and Calling Functions",
+    "step_title": "Practice Exercises: Functions",
+    "content": "Downloadable PDF: Practice Exercises: Functions",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Lists and Tuples",
+    "step_title": "Quiz: Lists and Tuples",
+    "content": "An interactive quiz for 'Quiz: Lists and Tuples' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Practice Exercises: Conditional Statements",
+    "content": "Downloadable PDF: Practice Exercises: Conditional Statements",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Lists and Tuples",
+    "step_title": "Quiz: Lists and Tuples",
+    "content": "An interactive quiz for 'Quiz: Lists and Tuples' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Lists and Tuples",
+    "step_title": "Quiz: Lists and Tuples",
+    "content": "An interactive quiz for 'Quiz: Lists and Tuples' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Installing Python",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Choosing an IDE (VS Code, PyCharm, etc.)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Running your first Python program",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Introduction to variables and data types (integers, floats, strings, booleans)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Working with operators (+, -, *, /, %, //, **)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Practice: Simple arithmetic calculations",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow and Loops",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Understanding conditional logic",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow and Loops",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Applying if-else statements with examples",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow and Loops",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Practice: Building a simple decision-making program",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow and Loops",
+    "topic_title": "Loops (for and while)",
+    "step_title": "Introduction to for loops (iterating over sequences)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow and Loops",
+    "topic_title": "Loops (for and while)",
+    "step_title": "Introduction to while loops (repeating until a condition is met)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow and Loops",
+    "topic_title": "Loops (for and while)",
+    "step_title": "Practice: Working with loops to process data",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Lists",
+    "step_title": "Creating and accessing lists",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Lists",
+    "step_title": "List methods (append, insert, remove, etc.)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Lists",
+    "step_title": "Practice: List manipulation exercises",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Dictionaries",
+    "step_title": "Understanding key-value pairs",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Dictionaries",
+    "step_title": "Accessing and modifying dictionary elements",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Dictionaries",
+    "step_title": "Practice: Building a simple dictionary-based program",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Installing Python",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Choosing an IDE (VS Code, PyCharm)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Running your first Python script",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Introduction to variables and assignment",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Understanding different data types (integers, floats, strings, booleans)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Python",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Practice with data type conversion",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Understanding conditional logic",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Applying conditional statements with examples",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Conditional Statements (if, elif, else)",
+    "step_title": "Practice exercises on conditional statements",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Loops (for and while)",
+    "step_title": "Iterating with for loops",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Loops (for and while)",
+    "step_title": "Using while loops for conditional iteration",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Control Flow",
+    "topic_title": "Loops (for and while)",
+    "step_title": "Practice problems involving loops",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Lists",
+    "step_title": "Introduction to Lists and their operations",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Lists",
+    "step_title": "List manipulation: append, insert, remove, pop",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Data Structures",
+    "topic_title": "Lists",
+    "step_title": "List comprehensions",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Setting up your Python Environment",
+    "step_title": "Running your first Python script",
+    "content": "https://www.youtube.com/watch?v=D2cwvpJSBX4",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Lists",
+    "step_title": "List manipulation: append, insert, remove, pop",
+    "content": "https://www.youtube.com/watch?v=0yySumZTxJ0",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Loops (for and while)",
+    "step_title": "Using while loops for conditional iteration",
+    "content": "https://www.youtube.com/watch?v=rRTjPnVooxE",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Practice with data type conversion",
+    "content": "An interactive quiz for 'Practice with data type conversion' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Practice with data type conversion",
+    "content": "An interactive quiz for 'Practice with data type conversion' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Practice with data type conversion",
+    "content": "An interactive quiz for 'Practice with data type conversion' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Practice with data type conversion",
+    "content": "An interactive quiz for 'Practice with data type conversion' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Syntax and Data Types",
+    "step_title": "Practice with data type conversion",
+    "content": "An interactive quiz for 'Practice with data type conversion' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Introduction to Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Place Value and Number Representation",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Understanding Whole Numbers",
+    "step_title": "Practice Worksheet: Whole Numbers",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Addition and Subtraction",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Multiplication and Division",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Video Guide: Solving Word Problems",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Whole Numbers and Operations",
+    "topic_title": "Basic Arithmetic Operations",
+    "step_title": "Interactive Quiz: Arithmetic Operations",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Fractions and Decimals",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Introduction to Fractions",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Fractions and Decimals",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Equivalent Fractions",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Fractions and Decimals",
+    "topic_title": "Understanding Fractions",
+    "step_title": "Adding and Subtracting Fractions",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Fractions and Decimals",
+    "topic_title": "Understanding Decimals",
+    "step_title": "Introduction to Decimals",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Fractions and Decimals",
+    "topic_title": "Understanding Decimals",
+    "step_title": "Converting Fractions to Decimals",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Fractions and Decimals",
+    "topic_title": "Understanding Decimals",
+    "step_title": "Adding and Subtracting Decimals",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Identifying Basic Shapes",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Basic Geometry",
+    "topic_title": "Shapes and Their Properties",
+    "step_title": "Understanding Perimeter and Area",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Mathematics",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Scientific Method",
+    "topic_title": "What is Science?",
+    "step_title": "Introduction to Science",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Scientific Method",
+    "topic_title": "What is Science?",
+    "step_title": "Science in Everyday Life",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Scientific Method",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Understanding the Scientific Method",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Scientific Method",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Applying the Scientific Method: Example",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Scientific Method",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Practice Worksheet: Designing an Experiment",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "States of Matter",
+    "topic_title": "Solids, Liquids, and Gases",
+    "step_title": "Identifying States of Matter",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "States of Matter",
+    "topic_title": "Solids, Liquids, and Gases",
+    "step_title": "Properties of Solids, Liquids, and Gases",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "States of Matter",
+    "topic_title": "Changes in State",
+    "step_title": "Melting, Freezing, Boiling, Condensation",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "States of Matter",
+    "topic_title": "Changes in State",
+    "step_title": "Quiz: States of Matter",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Simple Machines",
+    "topic_title": "Introduction to Simple Machines",
+    "step_title": "What are Simple Machines?",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Simple Machines",
+    "topic_title": "Introduction to Simple Machines",
+    "step_title": "Examples of Simple Machines",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Changes in State",
+    "step_title": "Quiz: States of Matter",
+    "content": "An interactive quiz for 'Quiz: States of Matter' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Science?",
+    "step_title": "Introduction to Science",
+    "content": "Science is a way of learning about the world around us.  It's like being a detective, but instead of solving crimes, we solve mysteries about nature!  Scientists ask questions about things they see, like 'Why is the sky blue?' or 'How do plants grow?'. Then, they try to answer these questions by making careful observations, doing experiments, and testing their ideas.  If their experiments show their idea is wrong, they change their idea and try again.  Science isn't about having all the answers right away; it's about learning and figuring things out step-by-step. It's a process of asking questions, exploring, and discovering new things about the universe!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Science?",
+    "step_title": "Science in Everyday Life",
+    "content": "Science is all around us!  It's not just in a lab coat and goggles.  'Science in everyday life' means noticing how things work and why they happen, just like detectives solve mysteries.  Think about cooking – measuring ingredients is like using precise measurements in a science experiment. Riding a bike uses physics – balance and motion.  Even brushing your teeth is science because it's about cleaning using chemicals.  Science helps us understand the world and make things better, from the food we eat to the phone we use.  It's about asking 'why' and 'how' and finding answers through observation and testing.",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Understanding the Scientific Method",
+    "content": "The scientific method is like a recipe for solving mysteries about the world! It's a way of asking questions and finding answers using careful steps.  Let's look at those steps:\n\n1. **Ask a Question:**  Start with a question about something you observe. For example, \"Does watering plants more often make them grow taller?\"\n\n2. **Do Background Research:**  Before you start experimenting, find out what scientists already know about your question.  Reading books or looking online can help.\n\n3. **Form a Hypothesis:** A hypothesis is an educated guess, a possible answer to your question. It's a statement you can test.  For our example, a hypothesis might be: \"Plants watered more often will grow taller.\"\n\n4. **Test Your Hypothesis (Experiment):** This is where you design and conduct an experiment.  You need to carefully control things to only change one thing (your variable – in this case, how much you water the plants) and keep everything else the same (like the type of plant, the amount of sunlight, the type of soil). You'll need to observe and record your results.\n\n5. **Analyze Your Data:** After your experiment, look at the results you recorded. Did the plants watered more often grow taller? Did your experiment support your hypothesis?\n\n6. **Draw a Conclusion:** Based on your analysis, decide whether your hypothesis was correct or incorrect.  It's okay if your hypothesis was wrong! That's part of science. Even if your hypothesis was incorrect, you still learned something.\n\n7. **Communicate Your Results:** Share what you learned with others! You can tell your friends, write a report, or even present your findings to a science class.",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Applying the Scientific Method: Example",
+    "content": "https://www.youtube.com/watch?v=qQBZbinoOrI",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Applying the Scientific Method: Example",
+    "content": "https://www.youtube.com/watch?v=qQBZbinoOrI",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Practice Worksheet: Designing an Experiment",
+    "content": "Downloadable PDF: Practice Worksheet: Designing an Experiment",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "The Steps of the Scientific Method",
+    "step_title": "Practice Worksheet: Designing an Experiment",
+    "content": "Downloadable PDF: Practice Worksheet: Designing an Experiment",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Advanced Data Structures",
+    "topic_title": "Efficient List Manipulation",
+    "step_title": "Introduction to List Comprehensions and Generator Expressions",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures",
+    "topic_title": "Efficient List Manipulation",
+    "step_title": "Applying List Comprehensions for Data Processing",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures",
+    "topic_title": "Efficient List Manipulation",
+    "step_title": "Optimizing List Operations with Numpy",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures",
+    "topic_title": "Dictionaries and Set Operations",
+    "step_title": "Advanced Dictionary Methods and Usage",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures",
+    "topic_title": "Dictionaries and Set Operations",
+    "step_title": "Set Operations and Their Applications",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures",
+    "topic_title": "Dictionaries and Set Operations",
+    "step_title": "Practice: Dictionary and Set based Problem Solving",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Inheritance and Polymorphism",
+    "step_title": "Understanding Inheritance Mechanisms",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Inheritance and Polymorphism",
+    "step_title": "Polymorphism and Method Overriding",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Inheritance and Polymorphism",
+    "step_title": "Practice: Designing a Class Hierarchy",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Defining Abstract Classes in Python",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Implementing Interfaces using Abstract Base Classes (ABCs)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Creating and Using Modules",
+    "step_title": "Structuring Python Code into Modules",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Creating and Using Modules",
+    "step_title": "Importing and Using External Modules",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Creating and Using Modules",
+    "step_title": "Creating a reusable module",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Working with Packages",
+    "step_title": "Organizing code into packages",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Working with Packages",
+    "step_title": "Installing and using external packages via pip",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Dictionaries and Set Operations",
+    "step_title": "Practice: Dictionary and Set based Problem Solving",
+    "content": "Downloadable PDF: Practice:_Dictionary_and_Set_based_Problem_Solving.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Working with Packages",
+    "step_title": "Installing and using external packages via pip",
+    "content": "https://www.youtube.com/watch?v=mdxizwKE-Z8",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Efficient List Manipulation",
+    "step_title": "Introduction to List Comprehensions and Generator Expressions",
+    "content": "Let's delve into the elegant world of list comprehensions and generator expressions in Python, focusing on their efficiency in list manipulation beyond the basic introductory level.  These aren't just syntactic sugar; they offer significant performance advantages, especially when dealing with large datasets.  Understanding their nuances is crucial for writing optimized Python code.\n\n**List Comprehensions:** These are concise ways to create lists based on existing iterables (lists, tuples, etc.). They're essentially a one-liner for a `for` loop with an optional conditional statement.  But their power lies in their optimized implementation.  Python internally optimizes list comprehensions, often making them faster than equivalent `for` loops. \n\nBeyond the basics (e.g., `[x**2 for x in range(10)]`), consider nested list comprehensions for multi-dimensional structures:\n\n```python\nmatrix = [[i * j for j in range(3)] for i in range(3)]  # Creates a 3x3 multiplication table\n```\n\nAdvanced techniques involve more complex expressions within the comprehension:  \n\n```python\n#Filtering and mapping simultaneously\nwords = ['hello', 'world', 'python']\nfiltered_words = [word.upper() for word in words if len(word) > 4]\n```\n\n**Generator Expressions:**  Generator expressions achieve even greater efficiency, especially when dealing with massive datasets that wouldn't fit comfortably in memory. They use the same syntax as list comprehensions, but instead of creating an entire list in memory at once, they yield one element at a time as needed. This is achieved by using parentheses `()` instead of square brackets `[]`.\n\n```python\n#List comprehension (consumes memory for the entire list):\nlarge_squares = [x**2 for x in range(1000000)]\n\n#Generator expression (memory-efficient, yields values on demand):\nlarge_squares_gen = (x**2 for x in range(1000000))\n\n#Iterate through the generator, processing one element at a time\nfor square in large_squares_gen:\n    #Process 'square'\n    pass\n```\n\n**Key Efficiency Differences:**\n\n* **Memory Consumption:** Generator expressions are significantly more memory-efficient than list comprehensions for large datasets.\n* **Evaluation:** List comprehensions evaluate immediately, creating the full list in memory. Generator expressions evaluate lazily—only when an element is requested.\n* **Use Cases:**  Use list comprehensions for smaller datasets where the entire list is needed at once. Use generator expressions for larger datasets where memory efficiency and on-demand processing are paramount.\n\nMastering list comprehensions and generator expressions is key to writing Pythonic and efficient code.  They're tools that go far beyond basic list manipulation; they form the bedrock of efficient data processing.",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Inheritance and Polymorphism",
+    "step_title": "Polymorphism and Method Overriding",
+    "content": "https://www.youtube.com/watch?v=tHN8I_4FIt8",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstract Classes and Interfaces",
+    "step_title": "Quiz: Testing Understanding of ABCs",
+    "content": "An interactive quiz for 'Quiz: Testing Understanding of ABCs' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Efficient Sorting and Searching Algorithms",
+    "step_title": "Introduction to Time and Space Complexity",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Efficient Sorting and Searching Algorithms",
+    "step_title": "Implementing Merge Sort and Quick Sort",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Efficient Sorting and Searching Algorithms",
+    "step_title": "Binary Search and its Applications",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Efficient Sorting and Searching Algorithms",
+    "step_title": "Practice Problems: Sorting and Searching",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Advanced Use of Dictionaries and Sets",
+    "step_title": "Dictionary Comprehensions and Advanced Methods",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Advanced Use of Dictionaries and Sets",
+    "step_title": "Set Operations and Applications",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Advanced Use of Dictionaries and Sets",
+    "step_title": "Using Dictionaries and Sets for Efficient Data Management",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Inheritance and Polymorphism",
+    "step_title": "Understanding Inheritance: Single, Multiple, and Multilevel",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Inheritance and Polymorphism",
+    "step_title": "Polymorphism and Method Overriding",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Inheritance and Polymorphism",
+    "step_title": "Practical Example: Designing a Class Hierarchy",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Abstraction and Encapsulation",
+    "step_title": "Principles of Abstraction and Encapsulation",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Abstraction and Encapsulation",
+    "step_title": "Implementing Abstract Classes and Interfaces",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) in Depth",
+    "topic_title": "Abstraction and Encapsulation",
+    "step_title": "Quiz: OOP Concepts",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Control Flow and Error Handling",
+    "topic_title": "Context Managers and 'with' statement",
+    "step_title": "Understanding Context Managers",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Control Flow and Error Handling",
+    "topic_title": "Context Managers and 'with' statement",
+    "step_title": "Creating Custom Context Managers",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Control Flow and Error Handling",
+    "topic_title": "Context Managers and 'with' statement",
+    "step_title": "Working with Files Efficiently using 'with'",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Control Flow and Error Handling",
+    "topic_title": "Exception Handling Best Practices",
+    "step_title": "Advanced Exception Handling Techniques",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Control Flow and Error Handling",
+    "topic_title": "Exception Handling Best Practices",
+    "step_title": "Custom Exceptions and their Use Cases",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Control Flow and Error Handling",
+    "topic_title": "Exception Handling Best Practices",
+    "step_title": "Debugging and Troubleshooting Exceptions",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Abstraction and Encapsulation",
+    "step_title": "Quiz: OOP Concepts",
+    "content": "An interactive quiz for 'Quiz: OOP Concepts' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Working with Heaps and Priority Queues",
+    "step_title": "Introduction to Heaps and Priority Queues",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Working with Heaps and Priority Queues",
+    "step_title": "Implementing Heaps in Python using `heapq`",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Working with Heaps and Priority Queues",
+    "step_title": "Applying Heaps to solve Dijkstra's Algorithm",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Working with Heaps and Priority Queues",
+    "step_title": "Practice Problems: Heap-based solutions",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Understanding and Implementing Graphs",
+    "step_title": "Graph Representations (Adjacency Matrix, Adjacency List)",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Understanding and Implementing Graphs",
+    "step_title": "Graph Traversal Algorithms (BFS, DFS)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Understanding and Implementing Graphs",
+    "step_title": "Implementing Graph Algorithms in Python",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Advanced Data Structures and Algorithms",
+    "topic_title": "Understanding and Implementing Graphs",
+    "step_title": "Practice Problems: Graph Traversal and Shortest Path",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) Advanced Techniques",
+    "topic_title": "Advanced Inheritance and Polymorphism",
+    "step_title": "Abstract Base Classes (ABCs)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) Advanced Techniques",
+    "topic_title": "Advanced Inheritance and Polymorphism",
+    "step_title": "Multiple Inheritance and its complexities",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) Advanced Techniques",
+    "topic_title": "Advanced Inheritance and Polymorphism",
+    "step_title": "Polymorphic method overriding and its applications",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) Advanced Techniques",
+    "topic_title": "Design Patterns in Python",
+    "step_title": "Introduction to common design patterns (Singleton, Factory)",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) Advanced Techniques",
+    "topic_title": "Design Patterns in Python",
+    "step_title": "Implementing design patterns in Python examples",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Object-Oriented Programming (OOP) Advanced Techniques",
+    "topic_title": "Design Patterns in Python",
+    "step_title": "Case studies: choosing the right design pattern",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Creating and Using Your Own Modules and Packages",
+    "step_title": "Structuring Python Projects",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Creating and Using Your Own Modules and Packages",
+    "step_title": "Creating and Importing Modules",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "Modules and Packages",
+    "topic_title": "Creating and Using Your Own Modules and Packages",
+    "step_title": "Packaging your code for distribution",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Working with Heaps and Priority Queues",
+    "step_title": "Introduction to Heaps and Priority Queues",
+    "content": "Greetings, adventurer! I'm Grungle, the most mischievous goblin this side of the Whispering Woods! And I've got a challenge for you, a *deliciously* tricky one, involving… *drumroll please*… Introduction to Heaps and Priority Queues! You see, I've been guarding this ancient knowledge for centuries, using it to build the most magnificent (and slightly sticky) traps imaginable. But you, you intrepid learner, you're going to try to steal it right from under my pointy nose! Think you've got what it takes to outsmart a goblin? Prepare for a thrilling quest! This learning step will reveal the secrets of Heaps and Priority Queues, but be warned: Grungle's puzzles are notoriously fiendish. Let's see if you can conquer them all!\n\nSo, what are heaps and priority queues?  Let's start with the heap.  Imagine a special tree-like structure, a **binary heap**, where each node's value is greater than or equal to (for a *max-heap*) or less than or equal to (for a *min-heap*) the values of its children.  This property, called the **heap property**, is what makes heaps so powerful.  It ensures that the root node always holds the largest (max-heap) or smallest (min-heap) element in the entire structure.  This 'top-down' arrangement gives us incredibly efficient access to the extreme elements.\n\nNow, a **priority queue** is an abstract data type that operates on the principle of 'first in, highest priority out'. It's not a specific data structure, but a *behaviour*. A heap is a particularly efficient way to *implement* a priority queue.  Think of it like this: the heap is the engine, and the priority queue is the car it powers. You can use other structures to implement a priority queue (like a sorted list), but heaps are often superior in terms of performance for frequent insertions and deletions.\n\nIn Python, the `heapq` module provides functions to work with min-heaps (it's easy to adapt for max-heaps by negating values).  Key functions include `heappush` (add an element while maintaining the heap property), `heappop` (remove the smallest element), `heapify` (transform a list into a heap), and `nlargest`/`nsmallest` (efficiently find the N largest/smallest elements).  Understanding how these functions interact with the underlying heap structure is crucial.  This involves grasping the process of heapification – maintaining the heap property after insertion or deletion – which often involves 'trickling' elements down or up the heap to their correct positions.  Advanced topics include understanding the time complexity of these operations (O(log n) for most heap operations) and the space complexity (O(n)).\n\nThis 'adventure' requires not just memorizing functions, but understanding their underlying algorithmic principles. The true challenge lies in applying this knowledge to solve complex problems involving sorting, scheduling, and finding optimal solutions in graph algorithms – where Grungle's traps await!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Working with Heaps and Priority Queues",
+    "step_title": "Applying Heaps to solve Dijkstra's Algorithm",
+    "content": "https://www.youtube.com/watch?v=pLIajuc31qk",
+    "material_type_suggestion": "youtube_video",
+    "subject": "Basic Python",
+    "difficulty": "advanced"
+  },
+  {
+    "section_title": "The Alphabet and Basic Sounds",
+    "topic_title": "The English Alphabet",
+    "step_title": "Introduction to the Alphabet",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Alphabet and Basic Sounds",
+    "topic_title": "The English Alphabet",
+    "step_title": "Pronunciation of Each Letter",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Alphabet and Basic Sounds",
+    "topic_title": "Basic Vowel and Consonant Sounds",
+    "step_title": "Identifying Vowel and Consonant Sounds",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "The Alphabet and Basic Sounds",
+    "topic_title": "Basic Vowel and Consonant Sounds",
+    "step_title": "Practice with Simple Words",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Basic Grammar",
+    "topic_title": "Sentence Structure (Subject-Verb)",
+    "step_title": "Understanding Subject and Verb",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Basic Grammar",
+    "topic_title": "Sentence Structure (Subject-Verb)",
+    "step_title": "Creating Simple Sentences",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Basic Grammar",
+    "topic_title": "Present Tense Verbs",
+    "step_title": "Introduction to Present Simple Tense",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Basic Grammar",
+    "topic_title": "Present Tense Verbs",
+    "step_title": "Practice with Present Simple Tense Verbs",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Essential Vocabulary",
+    "topic_title": "Greetings and Introductions",
+    "step_title": "Learning Common Greetings",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Essential Vocabulary",
+    "topic_title": "Greetings and Introductions",
+    "step_title": "Practicing Introductions",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Essential Vocabulary",
+    "topic_title": "Everyday Objects and Actions",
+    "step_title": "Vocabulary Flashcards",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Essential Vocabulary",
+    "topic_title": "Everyday Objects and Actions",
+    "step_title": "Building Sentences with New Vocabulary",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Basic Vowel and Consonant Sounds",
+    "step_title": "Practice with Simple Words",
+    "content": "An interactive quiz for 'Practice with Simple Words' will be available here.",
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Present Tense Verbs",
+    "step_title": "Practice with Present Simple Tense Verbs",
+    "content": "Downloadable PDF: Practice_with_Present_Simple_Tense_Verbs.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Life?",
+    "step_title": "Introduction to Living Things",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to understand what makes something ALIVE!  Think of it like this:  Everything in the world can be divided into two big groups: living things and non-living things.  \n\n**What makes something ALIVE?**  Living things do some pretty amazing things that non-living things can't!  They have some super-powers, like:\n\n* **They GROW:**  Like a tiny sprout becoming a giant tree, or a tadpole turning into a frog!  You're growing too, even if you don't notice it every day.\n* **They MOVE:**  This doesn't always mean running around! Plants move towards the sun, and even tiny bacteria swim around!\n* **They REPRODUCE:**  That means they make more of themselves!  A mommy bird lays eggs that hatch into baby birds, and flowers make seeds that grow into new flowers.\n* **They RESPOND:**  Living things react to their surroundings. If you touch a plant, it might not run away, but it *might* slightly change its position!  If you touch a hot stove, you'll pull your hand away quickly – that's a response!\n* **They NEED ENERGY:**  All living things need food or sunlight for energy, just like you need to eat to play and grow.\n\n**Let's test it!**  Is a rock alive?  No!  It doesn't grow, move, reproduce, or respond much. It doesn't need energy in the same way a living thing does. But a cute little puppy?  YES!  It grows, moves, will hopefully reproduce someday, and responds to your cuddles!\n\nSo, the next time you see something, ask yourself: Does it grow, move, reproduce, respond, and need energy? If yes, it's probably a living thing!  Try it out – I dare you!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Life?",
+    "step_title": "Characteristics of Living Organisms",
+    "content": "C:\\Users\\brian\\team-Co-lab-2025\\fast-aiwaken-be\\generated_pdfs\\Characteristics_of_Living_Organisms.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Life?",
+    "step_title": "Practice Worksheet: Identifying Living Things",
+    "content": "C:\\Users\\brian\\team-Co-lab-2025\\fast-aiwaken-be\\generated_pdfs\\Practice_Worksheet:_Identifying_Living_Things.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Plant Life",
+    "step_title": "Parts of a Plant",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to learn about the parts of a plant!  Think of a plant like a tiny, amazing factory that makes its own food.  It has different parts, each with a special job:\n\n* **Roots:** These are usually hidden underground! They're like the plant's drinking straws, sucking up water and nutrients from the soil.  They also hold the plant firmly in the ground so it doesn't topple over!\n\n* **Stem:** This is like the plant's backbone.  It supports the plant, holding up the leaves and flowers.  It also acts like a highway, transporting water and nutrients from the roots up to the leaves and flowers, and food made by the leaves down to the rest of the plant.\n\n* **Leaves:** These are the plant's food factories! They use sunlight, water, and air to make food through a process called photosynthesis.  They're usually green because of a special ingredient called chlorophyll.\n\n* **Flower:**  (Not all plants have flowers!)  Flowers are usually colorful and pretty.  They're important for making seeds, which allow the plant to have babies (new plants!).\n\n* **Fruit:** (Not all plants have fruit!)  The fruit often contains the seeds. Think apples, oranges, tomatoes – they're all fruits!\n\n* **Seeds:** These are tiny little packages containing everything a new plant needs to grow.  They're like the plant's babies!\n\nCan you point to each part on a real plant, or even draw one and label it?  If you can, you've mastered the challenge!  Hee hee hee!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Plant Life",
+    "step_title": "Plant Life Cycle",
+    "content": "Hee hee hee!  Greetings, puny human! I'm Fizzwick, a mischievous goblin, and I've got a challenge for you!  Can you *truly* master the secrets of the Plant Life Cycle?  If you can, you might just escape my mischievous pranks!  Let's see...\n\n**The Amazing Plant Life Cycle!**\n\nPlants, unlike us goblins (who just… *appear*!), go through a really cool journey called a life cycle.  Think of it like a magical adventure with four main stages:\n\n1. **Seed:**  This is the beginning!  Imagine a tiny sleeping plant, all curled up and waiting for its chance to shine. Seeds come in all shapes and sizes – some are small like dust, others are big like beans! They need the right conditions – water, warmth, and soil – to wake up.  *Can you think of some seeds you've seen or eaten?* (Pause for the human to answer).\n\n\n2. **Sprout (or Germination):** Once the seed gets enough water and warmth, *poof!*  A tiny root pushes down into the soil, grabbing water and nutrients.  Then, a little shoot pushes *up* towards the sun, reaching for light! This is called germination.  *Imagine being a tiny sprout, pushing your way through the dark soil! What do you think it feels like?* (Pause for the human to answer).\n\n\n3. **Growth:**  Yay! The sprout is now a seedling!  It grows taller, stronger, and develops leaves.  The leaves are like solar panels – they use sunlight, water, and air to make food for the plant through a process called photosynthesis. It's like magic, but it's science!  *What do you think plants use the food they make for?* (Pause for the human to answer).\n\n\n4. **Reproduction:**  This is the final stage!  The grown plant produces flowers, fruits, or seeds.  Flowers attract insects and birds who help spread pollen, which is necessary for the plant to make new seeds.  Fruits protect the seeds and help them spread to new places. *Can you name some fruits or vegetables that contain seeds?* (Pause for the human to answer).  These new seeds then start the whole cycle all over again!\n\n\n**So, there you have it! The amazing plant life cycle!**\n\nDid you master it?  I'll give you one final, goblin-sized test!  Draw your own picture of a plant in each stage of its life cycle.  If you do it well enough... maybe, *just maybe*, I won't turn your homework into toadstools.  Hee hee hee!\n\n\n**(Note for the human:  Encourage the human to actively participate in answering the questions and drawing the pictures. This makes the learning process more interactive and fun!)**",
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "States of Matter",
+    "step_title": "Solids, Liquids, and Gases",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to understand the three main states of matter: solids, liquids, and gases!  Think of it like this:\n\n**1. Solids:** Imagine a tightly packed group of goblins all holding hands, marching in a neat line.  They can't move around much, they keep their shape, and they take up a specific amount of space.  That's a solid!  Like a rock, a toy, or even... a goblin-shaped cookie!  They have a definite shape and volume.\n\n**2. Liquids:** Now imagine those goblins letting go of hands and jostling around, still close together but able to slide past each other. They fill the bottom of whatever container they're in. That's a liquid!  Like water, juice, or even melted goblin gold!  They have a definite volume but take the shape of their container.\n\n**3. Gases:**  Okay, now those goblins are bouncing all over the place, zooming around in every direction! They are spread far apart and fill any space available. That's a gas!  Like air, the wind, or even... goblin farts (don't smell them!). They don't have a definite shape or volume.\n\nCan you think of other examples of solids, liquids, and gases?  Let's see how clever you are!  If you get it right, you win... nothing! But you'll have conquered my goblin challenge! Hee hee hee!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "States of Matter",
+    "step_title": "Interactive Quiz: States of Matter",
+    "content": [
+      {
+        "question_text": "Which state of matter has a definite shape and volume?",
+        "options": [
+          "Liquid",
+          "Gas",
+          "Solid",
+          "Plasma"
+        ],
+        "correct_answer": "Solid",
+        "explanation": "Solids have a fixed shape and volume because their particles are closely packed and have strong intermolecular forces."
+      },
+      {
+        "question_text": "Which state of matter has a definite volume but takes the shape of its container?",
+        "options": [
+          "Solid",
+          "Gas",
+          "Plasma",
+          "Liquid"
+        ],
+        "correct_answer": "Liquid",
+        "explanation": "Liquids have a definite volume because their particles are close together, but they can move around and take the shape of their container."
+      },
+      {
+        "question_text": "Which state of matter has neither a definite shape nor a definite volume?",
+        "options": [
+          "Solid",
+          "Liquid",
+          "Plasma",
+          "Gas"
+        ],
+        "correct_answer": "Gas",
+        "explanation": "Gases have neither a definite shape nor volume because their particles are far apart and move randomly."
+      },
+      {
+        "question_text": "Which state of matter is made up of highly energized ions and electrons?",
+        "options": [
+          "Solid",
+          "Liquid",
+          "Gas",
+          "Plasma"
+        ],
+        "correct_answer": "Plasma",
+        "explanation": "Plasma is a state of matter where electrons are stripped from atoms, forming ions and free electrons. This occurs at very high temperatures."
+      },
+      {
+        "question_text": "The process of a liquid turning into a gas is called:",
+        "options": [
+          "Freezing",
+          "Melting",
+          "Condensation",
+          "Vaporization"
+        ],
+        "correct_answer": "Vaporization",
+        "explanation": "Vaporization is the phase transition from liquid to gas.  This can occur through boiling or evaporation."
+      }
+    ],
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Gravity",
+    "step_title": "Understanding Gravity",
+    "content": "Hee hee hee!  Greetings, puny human! I'm Grungle, a mischievously clever goblin, and I challenge you to understand the mighty power of... *GRAVITY!*  Think you can handle it?  Let's see...\n\n**Understanding Gravity:  The Great Downward Pull!**\n\nImagine you're holding a juicy, delicious apple (my favorite!).  You let go... *WHOOSH!*  It falls to the ground, right?  That, my friend, is gravity in action!\n\nGravity is a **force**, an invisible pull that attracts everything towards each other.  Think of it like a giant, invisible net stretching across the entire universe, pulling everything closer.\n\n**Let's do a little experiment!**\n\n1. **Find a small, light object:** A feather, a crumpled piece of paper, a tiny toy – anything will do!\n2. **Hold it up:** Feel the object in your hand.  You're using your own strength to *resist* gravity.\n3. **Let it go!**  *Whoosh!*  Gravity takes over!  It pulls the object down to the ground.\n\n**Why does it fall down?**\n\nThe Earth, our giant planet, is incredibly massive.  Its enormous size creates a super strong gravitational pull.  That's why everything on Earth is pulled towards its center – the ground!\n\n**But...wait!**  The apple pulls on the Earth too!  It's just that the Earth is SO much bigger and stronger that we don't notice the apple pulling *it*.  It's like a tiny ant trying to pull a huge elephant – the ant won't budge the elephant, but the elephant will definitely feel the ant!\n\n**Bigger objects = Stronger pull:**  The more massive something is, the stronger its gravitational pull.  That's why the Earth pulls us down, but the Moon pulls the Earth and the oceans, creating tides!\n\n**Think about it:**\n\n* Why do astronauts float in space?  Because they're far away from the strong gravity of the Earth.  Space is almost gravity-free!\n* Why do things fall faster from high up than if you drop them from your hand?  Because gravity has more time to pull them down!\n\n\nSo, human, have you mastered the mighty power of gravity?  I hope so!  If not, try the experiments again, and think about it some more.  Remember, even goblins need to understand gravity to avoid falling into treacherous pits!  Hee hee hee!  *Grungle vanishes in a puff of green smoke*",
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Gravity",
+    "step_title": "Gravity's Effect on Objects",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to understand gravity!  Think of gravity as an invisible force that pulls everything towards the ground.  Everything!  You, me, that juicy apple you're eyeing... even me, despite my attempts to float on magic mushrooms (they don't work, by the way!).\n\nImagine you're holding a bouncy ball.  What happens when you let go?  *Whoosh!*  It falls down, right? That's gravity at work! The Earth, being super duper massive, pulls the ball towards it.\n\nThe heavier something is, the stronger gravity pulls it.  A bowling ball will fall faster than a feather (unless you do it in a vacuum, where there's no air to slow the feather down – that's another magic trick!).\n\nLet's try a little experiment! Find a small object – a marble, a button, anything. Drop it from different heights. What do you notice? The higher you drop it from, the faster it falls before it hits the ground! That’s because gravity has more time to pull it down.\n\nSo remember: Gravity is a pulling force that makes things fall towards the ground. The heavier the object, the stronger the pull, and the higher it falls from, the faster it goes!  Have fun exploring this invisible force!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Weather",
+    "step_title": "Types of Weather",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to learn about weather!  Weather is what's happening in the sky above us right now – sunny, rainy, windy, or something else entirely!\n\nThere are many types of weather, but let's focus on some of the main ones:\n\n* **Sunny:**  Think bright, warm sunshine!  Perfect for playing outside.  ☀️\n* **Rainy:**  When the clouds get too full of water, they let it pour down as rain!  Remember your umbrella! ☔\n* **Cloudy:**  Lots of fluffy clouds in the sky.  Sometimes cloudy days are still nice, but sometimes they mean rain is coming. ☁️\n* **Windy:**  When the air moves quickly, we feel wind.  Sometimes it's a gentle breeze, and sometimes it's a strong gust that can blow things around! 💨\n* **Snowy:** When it's very cold, the water in the clouds freezes into tiny ice crystals and falls as snow! ❄️\n\nCan you think of any other types of weather?  Maybe you've seen a thunderstorm with lightning and thunder ⚡️⛈️ or even a foggy day where it's hard to see!  Weather changes all the time, and it's fun to watch and learn about it!\n\nNow, let's see if you can match these weather types with pictures!  I'll show you some pictures later and you can tell me what type of weather each one shows.",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "What is Life?",
+    "step_title": "Introduction to Living Things",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "What is Life?",
+    "step_title": "Characteristics of Living Organisms",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "What is Life?",
+    "step_title": "Practice Worksheet: Identifying Living Things",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "Plant Life",
+    "step_title": "Parts of a Plant",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "Plant Life",
+    "step_title": "Photosynthesis Explained",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "Plant Life",
+    "step_title": "Plant Life Cycle",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Exploring Matter (Chemistry)",
+    "topic_title": "States of Matter",
+    "step_title": "Solids, Liquids, and Gases",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Exploring Matter (Chemistry)",
+    "topic_title": "States of Matter",
+    "step_title": "Changes in State",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Exploring Matter (Chemistry)",
+    "topic_title": "States of Matter",
+    "step_title": "Interactive Quiz: States of Matter",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Forces and Motion (Physics)",
+    "topic_title": "Gravity",
+    "step_title": "Understanding Gravity",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Forces and Motion (Physics)",
+    "topic_title": "Gravity",
+    "step_title": "Gravity's Effect on Objects",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Our Earth and Space",
+    "topic_title": "Weather",
+    "step_title": "Types of Weather",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Our Earth and Space",
+    "topic_title": "Weather",
+    "step_title": "The Water Cycle",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
   }
 ]

@@ -3,10 +3,11 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
 from sqlalchemy.orm import Session
 from datetime import datetime
+import uuid
 
 from app.database import SessionLocal
-from app.schemas.token import TokenData
-from app.models.userModel import User
+from app.schemas.token_schema import TokenData
+from app.models.user_model import User
 from app.controller.user_controller import get_user_by_id
 from app.config import settings
 
@@ -38,8 +39,8 @@ def get_current_user(
         user_id: str = payload.get("sub")
         if user_id is None:
             raise credentials_exception
-        token_data = TokenData(user_id=int(user_id))
-    except JWTError:
+        token_data = TokenData(user_id=uuid.UUID(user_id))
+    except (JWTError, ValueError):
         raise credentials_exception
     
     user = get_user_by_id(db, user_id=token_data.user_id)

@@ -4,6 +4,12 @@ from app.api.endpoints import auth
 from app.config import settings
 from app.database import Base, engine
 from app.api.endpoints import companion_interaction
+from app.api.endpoints.v1 import user
+from app.api.endpoints.v1 import user_preferences
+from app.middleware import register_middlewares
+from app.api.endpoints.v1 import user_stats
+from app.api.endpoints.v1 import daily_rewards
+from app.api.endpoints.v1 import topics
 
 # Create tables
 Base.metadata.create_all(bind=engine)
@@ -15,12 +21,11 @@ app = FastAPI(
     redoc_url="/redoc",  
 )
 
-# Set up CORS
 origins = [
     "http://localhost",
     "http://localhost:3000",
     "http://localhost:8000",
-    "http://127.0.0.1:3000",  # ADD THIS
+    "http://127.0.0.1:3000",  
     "http://127.0.0.1:8000", 
 ]
 
@@ -32,8 +37,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Register custom middlewares
+register_middlewares(app)
+
 # Include routers
 app.include_router(auth.router, prefix=f"{settings.API_V1_STR}/authentication", tags=["auth"])
+app.include_router(companion_interaction.router, prefix=f"{settings.API_V1_STR}/companion")
+app.include_router(user.router, prefix=f"{settings.API_V1_STR}/user")
+app.include_router(user_preferences.router, prefix=f"{settings.API_V1_STR}/preferences")
+app.include_router(user_stats.router, prefix=f"{settings.API_V1_STR}/user_stats")
+app.include_router(daily_rewards.router, prefix=f"{settings.API_V1_STR}/daily-rewards")
+app.include_router(topics.router, prefix=f"{settings.API_V1_STR}/topics", tags=["topics"])
 
 @app.get("/")
 def root():
@@ -41,4 +55,3 @@ def root():
 
 
 # companion interaction router
-app.include_router(companion_interaction.router, prefix="/api/v1/companion")

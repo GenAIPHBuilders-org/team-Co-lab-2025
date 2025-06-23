@@ -7,7 +7,6 @@ import kent from "./lottie-json/kent.json";
 import robot from "./lottie-json/robot.json";
 import ryan from "./lottie-json/ryan.json";
 
-
 interface CompanionAvatarProps {
   name: string
   className?: string

@@ -2,7 +2,7 @@ from logging.config import fileConfig
 from app.db.models import Base, Course, Section, Topic, Step
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from app.models.userModel import User
+from app.models.user_model import User
 
 from alembic import context
 

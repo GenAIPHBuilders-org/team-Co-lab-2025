@@ -1,9 +1,12 @@
 from typing import Optional
 from sqlalchemy.orm import Session
 import re
-from app.models.userModel import User
-from app.schemas.userSchema import UserCreate
+from app.models.user_model import User
+from app.schemas.user_schema import UserCreate
 from app.security import get_password_hash, verify_password
+import uuid
+from app.models.user_stats_model import UserStats
+from datetime import datetime
 
 def get_user_by_email(db: Session, email: str) -> Optional[User]:
     return db.query(User).filter(User.email == email).first()
@@ -11,20 +14,40 @@ def get_user_by_email(db: Session, email: str) -> Optional[User]:
 def get_user_by_username(db: Session, username: str) -> Optional[User]:
     return db.query(User).filter(User.username == username).first()
 
-def get_user_by_id(db: Session, user_id: int) -> Optional[User]:
+def get_user_by_id(db: Session, user_id: uuid.UUID) -> Optional[User]:
     return db.query(User).filter(User.id == user_id).first()
 
 def create_user(db: Session, user_in: UserCreate) -> User:
-    db_user = User(
-        email=user_in.email,
-        username=user_in.username,
-        hashed_password=get_password_hash(user_in.password),
-        is_active=True,
-    )
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
+    try:
+        db_user = User(
+            email=user_in.email,
+            username=user_in.username,
+            hashed_password=get_password_hash(user_in.password),
+            is_active=True,
+        )
+        db.add(db_user)
+        db.commit()
+        db.refresh(db_user)
+        
+        stats = UserStats(
+            user_id=db_user.id,
+            streak=0,
+            coins=5,
+            heart=5,
+            level=1,
+            experience=1,
+            experience_to_next_level=100
+        )
+        db.add(stats)
+        db.commit()
+        db.refresh(stats)
+        
+        return db_user
+    except Exception as e:
+        db.rollback()
+        print(f"Error creating user: {str(e)}")
+        print(f"Error type: {type(e)}")
+        raise e
 
 def authenticate_user(db: Session, credentials: dict) -> Optional[User]:
     username = credentials.get("username")
@@ -43,8 +66,9 @@ def authenticate_user(db: Session, credentials: dict) -> Optional[User]:
 
     return user
 
-def is_email(value: str) -> bool:
-    return re.match(r"[^@]+@[^@]+\.[^@]+", value) is not None
+def is_email(text: str) -> bool:
+    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    return bool(re.match(email_pattern, text))
 
 def setNewUser(db: Session, user: User) -> None:
     user.is_new_user = False
@@ -52,24 +76,6 @@ def setNewUser(db: Session, user: User) -> None:
     db.refresh(user)
 
 def update_user_companion(db: Session, user: User, companion_name: str) -> User:
-    """
-    Updates the selected companion name for a given user.
-
-    This function modifies the `selected_companion` field of the provided `User` instance,
-    commits the change to the database, and refreshes the instance to reflect the updated state.
-
-    Args:
-        db (Session): The SQLAlchemy database session.
-        user (User): The user object to update.
-        companion_name (str): The new companion name to assign to the user.
-
-    Returns:
-        User: The updated user object with the new companion name.
-
-    Side Effects:
-        - Commits changes to the database.
-        - Refreshes the user instance to ensure it reflects the persisted data.
-    """
     user.selected_companion = companion_name
     db.commit()
     db.refresh(user)

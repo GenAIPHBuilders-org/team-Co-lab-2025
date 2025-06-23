@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Check } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { CompanionAvatar } from "./companion-avatar"
+import { Badge } from "./ui/badge"
 
 type Companion = {
   title: string
@@ -25,7 +26,7 @@ interface CompanionSelectionProps {
 }
 
 export function CompanionSelection({ onSelect, selectedCompanion }: CompanionSelectionProps) {
-  const [companions,] = useState<CompanionsData["companions"]>({
+  const [companions, setCompanions] = useState<CompanionsData["companions"]>({
     Gabriel: {
       title: "The Curious Thinker",
       personality: "Gabriel is curious, thoughtful, and enjoys exploring the 'why' behind concepts",
@@ -48,7 +49,18 @@ export function CompanionSelection({ onSelect, selectedCompanion }: CompanionSel
     },
   })
 
-  // Get companion color based on name
+  const handleSelect = (companionName: string) => {
+    setCompanions(companions)
+    onSelect(companionName)
+    localStorage.setItem("selectedCompanion", companionName)
+  }
+  useEffect(() => {
+    const savedCompanion = localStorage.getItem("selectedCompanion")
+    if (savedCompanion && !selectedCompanion) {
+      onSelect(savedCompanion)
+    }
+  }, [onSelect, selectedCompanion])
+
   const getCompanionColor = (name: string) => {
     switch (name) {
       case "Gabriel":
@@ -65,34 +77,57 @@ export function CompanionSelection({ onSelect, selectedCompanion }: CompanionSel
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {Object.entries(companions).map(([name, details]) => (
-        <motion.div key={name} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Card
-            className={cn(
-              "p-4 cursor-pointer border-2 transition-all duration-200",
-              getCompanionColor(name),
-              selectedCompanion === name ? "shadow-md" : "hover:shadow-sm",
-            )}
-            onClick={() => onSelect(name)}
+    <div className="grid grid-cols-2 gap-6 w-full">
+      <AnimatePresence>
+        {Object.entries(companions).map(([name, details]) => (
+          <motion.div
+            key={name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="flex flex-col items-center text-center mb-3">
-              <CompanionAvatar name={name} className="mb-3" />
-              <div className="flex items-center justify-center">
-                <h3 className="font-bold text-lg">{name}</h3>
-                {selectedCompanion === name && (
-                  <div className="h-5 w-5 rounded-full bg-[#9F8DFC] flex items-center justify-center ml-2">
-                    <Check className="h-3 w-3 text-white" />
+            <Card
+              className={cn(
+                "p-3 w-full cursor-pointer border-2 transition-all duration-200 h-full",
+                getCompanionColor(name),
+                selectedCompanion === name ? "ring-2 ring-[#9F8DFC] shadow-lg" : "hover:shadow-md",
+              )}
+              onClick={() => handleSelect(name)}
+            >
+              <div className="flex flex-col items-center text-center gap-4">
+                <div className="flex-shrink-0">
+                  <CompanionAvatar name={name} className="mb-1" size="lg" />
+                </div>
+                <div className="flex-grow w-full">
+                  <div className="flex flex-col items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-bold text-xl">{name}</h3>
+                      <AnimatePresence>
+                        {selectedCompanion === name && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0 }}
+                            className="h-5 w-5 rounded-full bg-[#9F8DFC] flex items-center justify-center"
+                          >
+                            <Check className="h-3 w-3 text-white" />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                    <p className="text-base text-muted-foreground">{details.title}</p>
                   </div>
-                )}
+                  <p className="text-sm mb-2">{details.personality}</p>
+                  <Badge variant="outline" className={`text-xs text-muted-foreground ${getCompanionColor(name)}`}>Motivation style: {details.motivation_style}</Badge>
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground">{details.title}</p>
-            </div>
-            <p className="mt-3 text-sm">{details.personality}</p>
-            <p className="mt-2 text-xs text-muted-foreground">Motivation style: {details.motivation_style}</p>
-          </Card>
-        </motion.div>
-      ))}
+            </Card>
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
   )
 }

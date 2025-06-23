@@ -1,4 +1,9 @@
-import { Calculator, FlaskRoundIcon as Flask, Star } from "lucide-react";
+import {
+  BookOpen,
+  Calculator as CalculatorIcon,
+  Code,
+  FlaskRound,
+} from "lucide-react";
 import { Difficulty, DifficultyConfig, Topic } from "@/types/topic";
 
 export const difficultyMap: Record<Difficulty, DifficultyConfig> = {
@@ -7,33 +12,18 @@ export const difficultyMap: Record<Difficulty, DifficultyConfig> = {
     color: "bg-green-100",
     textColor: "text-green-700",
     level: 1,
-    stats: {
-      strength: 3,
-      intelligence: 5,
-      endurance: 4,
-    },
   },
   intermediate: {
     label: "Intermediate",
     color: "bg-amber-100",
     textColor: "text-amber-700",
     level: 5,
-    stats: {
-      strength: 6,
-      intelligence: 8,
-      endurance: 7,
-    },
   },
   advanced: {
     label: "Advanced",
     color: "bg-red-100",
     textColor: "text-red-700",
     level: 10,
-    stats: {
-      strength: 9,
-      intelligence: 12,
-      endurance: 10,
-    },
   },
 };
 
@@ -41,18 +31,18 @@ export const topics: Topic[] = [
   {
     id: 1,
     name: "Mathematics",
-    icon: Calculator,
+    icon: CalculatorIcon,
     color: "bg-orange-100 text-orange-600",
     locked: false,
     difficulty: "beginner",
     description:
       "Master the fundamentals of mathematics including arithmetic, algebra, and basic geometry.",
-    rewards: ["AI Companion", "200 XP", "Math Wizard Badge"],
+    rewards: ["50 Coins", "200 XP", "Math Wizard Badge"],
   },
   {
     id: 2,
     name: "Science",
-    icon: Flask,
+    icon: FlaskRound,
     color: "bg-green-100 text-green-600",
     locked: false,
     difficulty: "beginner",
@@ -67,7 +57,7 @@ export const topics: Topic[] = [
   {
     id: 3,
     name: "English",
-    icon: Star,
+    icon: BookOpen,
     color: "bg-blue-100 text-blue-600",
     locked: false,
     difficulty: "beginner",
@@ -78,7 +68,7 @@ export const topics: Topic[] = [
   {
     id: 4,
     name: "Basic Python",
-    icon: Flask,
+    icon: Code,
     color: "bg-purple-100 text-purple-600",
     locked: false,
     difficulty: "advanced",

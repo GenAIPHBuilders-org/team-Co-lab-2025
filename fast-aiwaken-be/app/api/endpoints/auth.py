@@ -2,15 +2,20 @@ from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
-from app.models.userModel import LoginRequest
+from app.models.user_model import LoginRequest
 
 from app.controller import user_controller as user_service
-from app.schemas.userSchema import User, UserCreate
-from app.schemas.token import TokenizedUser
+from app.schemas.user_schema import User, UserCreate
+from app.schemas.token_schema import TokenizedUser
 from app.dependencies import get_db, get_current_user
 from app.security import create_access_token
 from app.config import settings
 from app.exceptions import DuplicateEmailError, DuplicateUsernameError, InvalidCredentialsError, InactiveUserError
+from app.services.preferences_service import PreferencesService
+from app.services.stats_service import StatsService
+from app.services.topic_service import TopicService
+from app.models.user_achievements_model import UserAchievements as UserAchievement
+from typing import List
 
 router = APIRouter(tags=["auth"])
 
@@ -33,7 +38,7 @@ def register(
     return user
 
 @router.post("/login", response_model=TokenizedUser)
-def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> TokenizedUser:
+async def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> TokenizedUser:
 
     user_obj = user_service.authenticate_user(
         db, credentials.dict()
@@ -50,21 +55,47 @@ def login(credentials: LoginRequest, db: Session = Depends(get_db)) -> Tokenized
         subject=user_obj.id, expires_delta=access_token_expires
     )
     
+    preferences_service = PreferencesService(db)
+    stats_service = StatsService(db)
+    stats = None
+    preferences = None
+    try:
+        stats = stats_service.get_user_stats(user_obj.id)
+        preferences = await preferences_service.get_user_preferences(user_obj.id)
+    except HTTPException:
+        pass
+    
     return {
         "user": user_obj,
         "access_token": access_token,
         "token_type": "Bearer",
+        "preferences": preferences,
+        "stats": stats
     }
 
 @router.get("/tokenized-user", response_model=TokenizedUser)
-def get_current_user_info(
+async def get_current_user_info(
     current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ) -> TokenizedUser:
     access_token = create_access_token(subject=current_user.id)
+    
+    preferences_service = PreferencesService(db)
+    stats_service = StatsService(db)
+    preferences = None
+    stats = None
+    try:
+        stats = stats_service.get_user_stats(current_user.id)
+        preferences = await preferences_service.get_user_preferences(current_user.id)
+    except HTTPException:
+        pass
+    
     return {
         "user": current_user,
         "access_token": access_token,
         "token_type": "Bearer",
+        "preferences": preferences,
+        "stats": stats,
     }
 
 @router.post("/set-new-user-status", response_model=User)

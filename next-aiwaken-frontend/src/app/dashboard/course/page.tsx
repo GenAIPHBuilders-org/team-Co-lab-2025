@@ -1,30 +1,39 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronDown, ChevronRight, ArrowLeft, BookOpen, Video, FileText, PenTool } from "lucide-react"
+import { ChevronDown, ChevronRight, ArrowLeft, BookOpen, Video, FileText, PenTool, Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { useGetCourseSummaryConclusion, useGetLearningStepContent, useGetLearningStepQuiz } from "@/(features)/course-action"
-import { VideoPlayer, VideoPlayerProps } from "@/components/video-player"
-import { TokenStorage } from "@/lib/token-storage"
-import { CompanionAvatar } from "@/components/companion-avatar"
+import { useGetCourseSummaryConclusion } from "@/(features)/course-action"
+import { VideoPlayer } from "@/components/video-player"
 import ReactMarkdown from 'react-markdown';
 import { LearningStepQuiz } from "@/components/learning-step-quiz"
+import { VideoPlayerProps } from "@/types/video-player"
+import { CompanionGuide } from "@/components/companion-guide"
+import AnimationVariants from "@/lib/animations"
+import {
+  AIContentGenerationResponseSection,
+  AIContentGenerationResponseTopic,
+  AIContentGenerationResponseLearningStep
+} from "@/types/course"
+import { useAuthentication } from "@/contexts/auth-context"
+import { useCourseContext } from "@/contexts/course-context"
+import { TokenStorage } from "@/lib/token-storage"
 
 export default function CoursePage() {
-  const quizData = TokenStorage.getLearningStepQuiz()
-  const { getLearningStepQuizAsync, isPending: quizLoading } = useGetLearningStepQuiz();
+  const [loadingContent, setLoadingContent] = useState<boolean>(false);
   const { getCourseSummaryConclusionAsync, isPending: loading } = useGetCourseSummaryConclusion();
-  const courseData = TokenStorage.getCourseData();
-  const { data, getLearningStepContentAsync, isPending } = useGetLearningStepContent();
+  const { course: courseData } = useCourseContext();
   const router = useRouter()
-  const companion = TokenStorage.getUserCompanion();
+  const { user } = useAuthentication();
+  const companion = user?.preferences.companion
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({})
   const [expandedTopics, setExpandedTopics] = useState<Record<string, boolean>>({})
   const [selectedStep, setSelectedStep] = useState<string | null>(null)
+  const hasBossBattle = TokenStorage.getSummaryConclusion();
 
   const toggleSection = (sectionId: string) => {
     setExpandedSections((prev) => ({
@@ -37,26 +46,14 @@ export default function CoursePage() {
     setExpandedTopics((prev) => ({
       ...prev,
       [topicId]: !prev[topicId],
-    }
-    ))
+    }))
   }
 
-  async function generateQuiz(params: LearningStepQuizParams) {
-    try {
-      await getLearningStepQuizAsync(params);
-    } catch (error) {
-      console.error("Error generating quiz:", error)
-    }
-  }
-
-  const selectStep = async (stepId: string, data: LearningStepContentParams) => {
+  const selectStep = async (stepId: string) => {
     try {
       setSelectedStep(stepId)
-      await getLearningStepContentAsync(data);
-
     } catch (error) {
       console.error("Error fetching content:", error)
-
     }
   }
 
@@ -76,172 +73,122 @@ export default function CoursePage() {
     }
   }
 
+  const getStep = () => {
+    return courseData?.sections
+      .flatMap((s: AIContentGenerationResponseSection) => s.topics)
+      .flatMap((t: AIContentGenerationResponseTopic) => t.learning_steps)
+      .find((s: AIContentGenerationResponseLearningStep) => s.step_id === selectedStep);
+  }
+
+  useEffect(() => {
+    if (selectedStep) {
+      setLoadingContent(true)
+      const timer = setTimeout(() => {
+        setLoadingContent(false)
+      }, 1500)
+
+      return () => clearTimeout(timer)
+    }
+  }, [selectedStep])
+
   const getContentByMaterialType = (materialType: string) => {
+    const step = getStep();
     switch (materialType) {
       case "text_with_image":
-        return (
-          <div className="flex flex-col items-center w-full">
-            <div className="flex items-center gap-4 mb-6 w-full">
-              <div className="relative">
-                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
-                  Guide
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">{companion}</span>
-                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-              </div>
-            </div>
-            <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
-              {data?.content
-                .split("\n\n")
-                .map((paragraph: string, idx: number) => (
-                  <div className="w-full flex flex-col space-y-2 mb-6" key={idx}>
-                    <ReactMarkdown >
-                      {paragraph}
-                    </ReactMarkdown>
-                  </div>
-                ))}
-            </div>
-          </div>
-        )
       case "text":
         return (
           <div className="flex flex-col items-center w-full">
-            <div className="flex items-center gap-4 mb-6 w-full">
-              <div className="relative">
-                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
-                  Guide
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">{companion}</span>
-                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-              </div>
-            </div>
+            <CompanionGuide companion={companion as string} />
             <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
-              {data?.content
-                .split("\n\n")
-                .map((paragraph: string, idx: number) => (
-                  <div className="w-full flex flex-col space-y-2 mb-6" key={idx}>
-                    <ReactMarkdown >
-                      {paragraph}
-                    </ReactMarkdown>
-                  </div>
-                ))}
-            </div>
-          </div>
-        )
-      case "youtube_video":
-        return (
-          <VideoPlayer {...data as VideoPlayerProps} />
-        )
-      case "pdf_document":
-        return (
-          <div className="flex flex-col items-center w-full">
-            <div className="flex items-center gap-4 mb-6 w-full">
-              <div className="relative">
-                <CompanionAvatar name={companion as string} size="lg" className="shadow-lg border-2 border-[#9F8DFC]" />
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#9F8DFC] text-white text-xs px-2 py-0.5 rounded-full shadow">
-                  Guide
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">{companion}</span>
-                <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-                <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
-              </div>
-            </div>
-            <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
-              {data?.pdf_description && (
-                <div className="w-full flex flex-col space-y-2 mb-6">
-                  <ReactMarkdown>
-                    {data.pdf_description}
-                  </ReactMarkdown>
-                </div>
-              )}
-              {data?.content
-                .split("\n\n")
-                .map((paragraph: string, idx: number) => (
+              {typeof step?.content.content === "string"
+                ? step.content.content.split("\n\n").map((paragraph: string, idx: number) => (
                   <div className="w-full flex flex-col space-y-2 mb-6" key={idx}>
                     <ReactMarkdown>
                       {paragraph}
                     </ReactMarkdown>
                   </div>
-                ))}
+                ))
+                : null}
+            </div>
+          </div>
+        )
+      case "youtube_video":
+        return (
+          <div className="flex flex-col items-center w-full">
+            {step && step.content && step.content.video_details && isAllowedType(step.content.type) ? (
+              <VideoPlayer
+                type={step.content.type}
+                content={step.content.video_details.url}
+                accompanying_text={step.content.accompanying_text ?? ''}
+                video_details={{
+                  title: step.content.video_details.title,
+                  link: step.content.video_details.url,
+                  thumbnail: step.content.video_details.thumbnail,
+                  video_id: step.content.video_details.video_id
+                }}
+                image_description={step.content.image_description ?? null}
+                pdf_description={step.content.pdf_description ?? null}
+              />
+            ) : null}
+          </div>
+        )
+      case "pdf_document":
+        return (
+          <div className="flex flex-col items-center w-full">
+            <CompanionGuide companion={companion as string} />
+            <div className="w-full max-w-2xl bg-gray-900/70 rounded-xl p-6 shadow-lg border border-gray-700">
+              {step?.content.pdf_description && (
+                <div className="w-full flex flex-col space-y-2 mb-6">
+                  <ReactMarkdown>
+                    {step.content.pdf_description}
+                  </ReactMarkdown>
+                </div>
+              )}
+              {typeof step?.content.content === "string"
+                ? step.content.content.split("\n\n").map((paragraph: string, idx: number) => (
+                  <div className="w-full flex flex-col space-y-2 mb-6" key={idx}>
+                    <ReactMarkdown>
+                      {paragraph}
+                    </ReactMarkdown>
+                  </div>
+                ))
+                : null}
             </div>
           </div>
         )
       case "interactive_quiz_placeholder":
+        const quizDataArr = Array.isArray(step?.content?.content) ? step.content.content : undefined;
         return (
           <div className="flex flex-col items-center w-full">
-            {!quizData ? (
-              <Button
-                onClick={() => generateQuiz({
-                  subject: courseData?.subject as string,
-                  topic_title: courseData?.sections
-                    .flatMap((s) => s.topics)
-                    .find((t) => t.learning_steps.some((s) => s.step_id === selectedStep))?.topic_title ?? "",
-                  step_title: courseData?.sections
-                    .flatMap((s) => s.topics)
-                    .flatMap((t) => t.learning_steps)
-                    .find((s) => s.step_id === selectedStep)?.step_title ?? "",
-                  difficulty: courseData?.difficulty ?? "easy",
-                  enemy_theme: "a mischievous goblin"
-                })}
-                variant="default"
-                loading={quizLoading}
-                className="w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80">
-                Generate Quiz
-              </Button>
-            )
-              : (
-                <LearningStepQuiz />
-              )
-            }
-            {quizLoading && (
-              <div className="mt-4 p-1 animate-spin drop-shadow-2xl bg-gradient-to-bl from-pink-400 via-purple-400 to-indigo-600 md:w-12 md:h-12 h-12 w-12 aspect-square rounded-full">
-                <div className="rounded-full h-full w-full bg-gradient-to-b from-gray-900 to-gray-950 background-blur-md"></div>
-              </div>
-            )}
+            {quizDataArr ? (
+              <LearningStepQuiz quizData={quizDataArr as unknown as QuizQuestion[]} />
+            ) : null}
           </div>
         )
     }
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 10, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 100 },
-    },
-  }
-
-  async function handleCourseConclusion(params: CourseConclusionParams) {
+  async function handleCourseConclusion() {
     try {
-      await getCourseSummaryConclusionAsync(params);
-      router.push("/dashboard/quiz");
+      await getCourseSummaryConclusionAsync();
+      router.push("/dashboard/boss-battle");
     } catch (error) {
       console.error("Error fetching course conclusion:", error);
     }
   }
 
   if (courseData === null) return null;
+
+  const allowedTypes: VideoPlayerProps["type"][] = [
+    "youtube_video",
+    "text",
+    "text_with_image",
+    "interactive_quiz_placeholder",
+    "pdf_document"
+  ];
+  function isAllowedType(type: unknown): type is VideoPlayerProps["type"] {
+    return typeof type === 'string' && allowedTypes.includes(type as VideoPlayerProps["type"]);
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 p-4 md:p-6">
@@ -264,12 +211,12 @@ export default function CoursePage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <motion.div className="space-y-4" variants={containerVariants} initial="hidden" animate="visible">
-                {courseData.sections.map((section, sectionIndex) => (
+              <motion.div className="space-y-4" variants={AnimationVariants.containerVariants} initial="hidden" animate="visible">
+                {courseData.sections.map((section: AIContentGenerationResponseSection, sectionIndex: number) => (
                   <motion.div
                     key={section.section_id}
                     className="border border-gray-700 rounded-lg overflow-hidden"
-                    variants={itemVariants}
+                    variants={AnimationVariants.itemVariants}
                   >
                     <div
                       className="flex items-center justify-between p-3 bg-gray-800/70 cursor-pointer"
@@ -290,7 +237,7 @@ export default function CoursePage() {
 
                     {expandedSections[section.section_id] && (
                       <div className="p-3 space-y-3 bg-gray-800/30">
-                        {section.topics.map((topic, topicIndex) => (
+                        {section.topics.map((topic: AIContentGenerationResponseTopic, topicIndex: number) => (
                           <div key={topic.topic_id} className="border border-gray-700/50 rounded-lg overflow-hidden">
                             <div
                               className="flex items-center justify-between p-2 bg-gray-800/50 cursor-pointer"
@@ -306,26 +253,18 @@ export default function CoursePage() {
                                 <ChevronDown className="h-3 w-3 text-gray-400" />
                               ) : (
                                 <ChevronRight className="h-3 w-3 text-gray-400" />
-                              )}
-                            </div>
+                              )}                            </div>
 
                             {expandedTopics[topic.topic_id] && (
                               <div className="p-2 space-y-2 bg-gray-800/20">
-                                {topic.learning_steps.map((step, stepIndex) => (
+                                {topic.learning_steps.map((step: AIContentGenerationResponseLearningStep) => (
                                   <div
                                     key={step.step_id}
                                     className={`flex items-center p-2 rounded-md cursor-pointer text-xs ${selectedStep === step.step_id
                                       ? "bg-[#9F8DFC]/20 text-[#9F8DFC]"
                                       : "text-gray-300 hover:bg-gray-700/30"
                                       }`}
-                                    onClick={() => selectStep(step.step_id, {
-                                      companion_name: companion as string,
-                                      subject: courseData.subject,
-                                      difficulty: courseData.difficulty,
-                                      material_type_suggestion: topic.learning_steps[stepIndex].material_type_suggestion,
-                                      step_title: topic.learning_steps[stepIndex].step_title,
-                                      topic_title: topic.topic_title,
-                                    })}
+                                    onClick={() => selectStep(step.step_id)}
                                   >
                                     <div className="mr-2">{getMaterialIcon(step.material_type_suggestion)}</div>
                                     <span>{step.step_title}</span>
@@ -340,26 +279,28 @@ export default function CoursePage() {
                   </motion.div>
                 ))}
               </motion.div>
-              <Button
-                variant="outline"
-                className="mt-4 w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80"
-                loading={loading}
-                disabled={loading}
-                onClick={() => handleCourseConclusion({
-                  course_title: courseData.course_title,
-                  difficulty: courseData.difficulty,
-                  subject: courseData.subject,
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  sections_data_json: JSON.stringify(courseData.sections) as any,
-                })}
-              >
-                Boss Battle
-              </Button>
+              {hasBossBattle ? (
+                <Button
+                  variant="outline"
+                  className="mt-4 w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80"
+                  onClick={() => router.push("/dashboard/boss-battle")}
+                >
+                  Continue
+                </Button>
+              ) : (
+                <Button
+                  variant="outline"
+                  className="mt-4 w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80"
+                  loading={loading}
+                  disabled={loading}
+                  onClick={handleCourseConclusion}
+                >
+                  Boss Battle
+                </Button>
+              )}
             </CardContent>
-
           </Card>
         </div>
-
         <div className="md:col-span-2">
           <Card className="bg-gray-800/50 border-gray-700 h-full">
             <CardHeader>
@@ -372,33 +313,30 @@ export default function CoursePage() {
                     <div className="w-16 h-16 rounded-full bg-[#9F8DFC]/20 flex items-center justify-center mb-4">
                       {getMaterialIcon(
                         courseData.sections
-                          .flatMap((s) => s.topics)
-                          .flatMap((t) => t.learning_steps)
-                          .find((s) => s.step_id === selectedStep)?.material_type_suggestion || "",
+                          .flatMap((s: AIContentGenerationResponseSection) => s.topics)
+                          .flatMap((t: AIContentGenerationResponseTopic) => t.learning_steps)
+                          .find((s: AIContentGenerationResponseLearningStep) => s.step_id === selectedStep)?.material_type_suggestion || "",
                       )}
                     </div>
                     <h3 className="text-lg font-medium text-white mb-2">
                       {
                         courseData.sections
-                          .flatMap((s) => s.topics)
-                          .flatMap((t) => t.learning_steps)
-                          .find((s) => s.step_id === selectedStep)?.step_title
+                          .flatMap((s: AIContentGenerationResponseSection) => s.topics)
+                          .flatMap((t: AIContentGenerationResponseTopic) => t.learning_steps)
+                          .find((s: AIContentGenerationResponseLearningStep) => s.step_id === selectedStep)?.step_title
                       }
                     </h3>
                     <div className="prose prose-lg max-w-3xl mx-auto space-y-4">
-                      {isPending ? (
-                        <div
-                          className="p-1 animate-spin drop-shadow-2xl bg-gradient-to-bl from-pink-400 via-purple-400 to-indigo-600 md:w-12 md:h-12 h-12 w-12 aspect-square rounded-full"
-                        >
-                          <div
-                            className="rounded-full h-full w-full bg-gradient-to-b from-gray-900 to-gray-950 background-blur-md"
-                          ></div>
-                        </div>
-                      ) : (
+                      {loadingContent ? <div className="flex items-center justify-center h-full">
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      </div> :
                         <>
-                          {getContentByMaterialType(data?.type as string)}
+                          {getContentByMaterialType(courseData.sections
+                            .flatMap((s: AIContentGenerationResponseSection) => s.topics)
+                            .flatMap((t: AIContentGenerationResponseTopic) => t.learning_steps)
+                            .find((s: AIContentGenerationResponseLearningStep) => s.step_id === selectedStep)?.content.type || "")}
                         </>
-                      )}
+                      }
                     </div>
                   </div>
                 </div>

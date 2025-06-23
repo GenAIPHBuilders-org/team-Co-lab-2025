@@ -126,3 +126,18 @@ export const useGetTips = () => {
     error,
   };
 };
+
+export const useGetCourseSuggestion = () => {
+  const { data, isLoading, error } = useQuery<AICourseSuggestionResponse>({
+    queryKey: ["course-suggestion"],
+    queryFn: async () => {
+      const response = await CompanionService.getCourseSuggestion();
+      return response;
+    },
+  });
+  return {
+    courseSuggestion: data,
+    isLoading,
+    error,
+  };
+};

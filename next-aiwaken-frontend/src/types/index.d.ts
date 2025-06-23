@@ -15,7 +15,7 @@ declare global {
 
   type TUser = {
     user: {
-      id: number;
+      id: string;
       username: string;
       email: string;
       is_active: boolean;
@@ -30,6 +30,7 @@ declare global {
     login: (username: string, password: string) => Promise<void>;
     handleLogout: () => void;
     isAuthenticated: boolean;
+    isLoading: boolean;
   };
 
   interface CourseData {
@@ -174,6 +175,8 @@ declare global {
   }
 
   interface QuizQuestion {
+    monster_intro: string;
+    incorrect_explanation: Record<string, string>;
     question_text: string;
     options: string[];
     correct_answer: string;
@@ -234,5 +237,23 @@ declare global {
 
   interface TipsResponse {
     tips: string;
+  }
+
+  interface IconProps extends React.SVGProps<SVGSVGElement> {
+    width?: number | string;
+    height?: number | string;
+    className?: string;
+    style?: React.CSSProperties;
+  }
+
+  type CourseSuggestion = {
+    subject: string;
+    course_title: string;
+    course_description: string;
+  };
+
+  interface AICourseSuggestionResponse {
+    intro: string;
+    suggestions: CourseSuggestion[];
   }
 }

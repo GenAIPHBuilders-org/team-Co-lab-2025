@@ -1,25 +1,22 @@
-"use client";
-import { useAuthentication } from "@/context/auth-context";
 import { AppSidebar } from "./app-sidebar";
 import { SiteHeader } from "./site-header";
 import { SidebarInset, SidebarProvider } from "./ui/sidebar";
-import { motion } from "framer-motion";
+import { fetchDailyRewards } from "@/services/ssr/fetch-daily-rewards";
 
-export function AuthLayout({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuthentication();
-
+type AuthLayoutProps = {
+  isAuthenticated: boolean
+  children: React.ReactNode
+}
+export async function AuthLayout({ children, isAuthenticated }: AuthLayoutProps) {
+  const dailyRewards = await fetchDailyRewards();
+  console.log("dailyRewards", dailyRewards);
   if (!isAuthenticated) return null;
+  if (!dailyRewards) return null;
 
   return (
     <div className="[--header-height:calc(--spacing(14))] ">
       <SidebarProvider className="flex flex-col">
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <SiteHeader />
-        </motion.div>
+        <SiteHeader dailyRewards={dailyRewards} />
         <div className="flex flex-1">
           <AppSidebar collapsible="icon" />
           <SidebarInset>{children}</SidebarInset>
