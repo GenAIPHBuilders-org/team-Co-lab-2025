@@ -181,6 +181,7 @@ class CoursePrompts:
 
         return base_prompt
 
+    # generate course summary (needs revision)
     def generate_course_summary_and_quiz(self, course_title: str, sections_data: List[Dict], enemy_theme: Optional[str] = "a mysterious challenger") -> str:
       topic_titles_covered = []
       for section in sections_data:
@@ -240,6 +241,52 @@ class CoursePrompts:
               "topic": "Geography"
           }}
       """
+    # course suggestion prompt
+    @staticmethod
+    def suggested_course(username: str, motivational_level: str, learning_goal: str, age_range: str, 
+                        explanation_depth: str, learning_style: str) -> str:
+        return f"""
+        Return your response as a valid JSON object with two fields:
+        - "intro": A friendly, dynamic greeting to {username} encouraging them to try the suggested courses. Example: "Hello {username}! Based on your learning profile, here are some courses you might love."
+        - "suggestions": An array of at least 3 course suggestions, each with "subject", "course_title", and "course_description".
+
+        Each suggestion must include:
+        - "subject": The main subject area (e.g., "Mathematics", "Biology", "History")
+        - "course_title": A catchy, engaging title
+        - "course_description": 2-3 sentences explaining what the course covers and why it fits the user's profile
+
+        The suggestions must be tailored to this user's profile:
+        - Age Range: {age_range}
+        - Motivational Level: {motivational_level}
+        - Primary Learning Goal: {learning_goal}
+        - Desired Explanation Depth: {explanation_depth}
+        - Preferred Learning Style: {learning_style}
+
+        Example response:
+        {{
+          "intro": "Hello {username}! Based on your learning style and goals, here are some courses you should try.",
+          "suggestions": [
+            {{
+              "subject": "Mathematics",
+              "course_title": "Mastering Algebra for Visual Learners",
+              "course_description": "A course designed for visual learners who want to build strong algebra skills with lots of diagrams and interactive examples. Perfect for students aiming to pass exams with confidence."
+            }},
+            {{
+              "subject": "Biology",
+              "course_title": "Life Science Adventures",
+              "course_description": "Explore the wonders of biology through hands-on experiments and engaging stories. Ideal for curious minds who love to learn by doing."
+            }},
+            {{
+              "subject": "History",
+              "course_title": "World History Through Stories",
+              "course_description": "Travel through time and discover key historical events with interactive storytelling and visual timelines. Great for learners who enjoy narrative and context."
+            }}
+          ]
+        }}
+
+        Do not include any text outside the JSON object.
+        """
+
 
 
     
