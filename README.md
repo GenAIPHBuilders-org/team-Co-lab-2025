@@ -1,48 +1,33 @@
-# Team CoLab 2025
+# 🚀 Team CoLab 2025 — AIWAKEN: Your Personalized AI Education Companion
 
 🧠 AIWAKEN: Your Personalized AI Education Companion
-AIWAKEN is an AI-powered learning platform designed to deliver a dynamic and personalized educational experience. Built with a focus on adaptability and engagement, the platform allows users to:
+AIWAKEN is an AI-powered gamified learning platform designed to deliver a dynamic and personalized educational experience for learners of all levels. It combines contextual hints, coaching, adaptive content, and a fun, companion-based approach to keep students engaged and motivated. 
 
-✨ Key Features
-🎯 Topic Selection & Course Generation
-Choose from curated learning paths in Math, Science, and Basic Python, dynamically generated to match user interests.
+# 📌 Project Description
+Empower learners with an AI companion that dynamically generates study paths, delivers diverse materials, and adapts to user progress.
+# ✨ Key Features
 
-🧑‍🏫 AI Companions
-Select a unique learning companion—each with a distinct personality—to guide you throughout your journey with:
+* 🎯 Personalized course generation based on user preferences
 
-💬 Motivational messages
+* 🎚️ Dynamic difficulty levels based on user performance
 
-🧩 Contextual hints
+* 🤖 AI companion that guides, tests, and assists you with unique personality traits
 
-💡 Study tips and feedback
+* 💬 Contextual hints & motivational messages
 
-📚 Diverse Learning Materials
-Engage with a variety of content formats:
+* 🧠 Boss Battles to challenge your knowledge
 
-🎥 Videos
+* 🏅 Rewards upon course completion
 
-📄 PDFs
+* ❓ Quizzes to assess learning
 
-📝 Text lessons
-
-❓ Quizzes
-
-🧠 "Boss Battles" (Gamified Challenges)
-
-🎓 Companion-Driven Learning Experience
-The AI companion adapts its guidance based on your pace, preferences, and performance, helping maintain focus and motivation.
+* 🎁 Daily rewards, streak tracking, hearts, and coins to boost engagement
 ## Developers
 
 - [@be3jaay](https://github.com/be3jaay) | [LinkedIn](https://www.linkedin.com/in/this-is-brian/)
 - [@KentAcebedo](https://github.com/KentAcebedo)
 - [@nasolgabriel](https://github.com/nasolgabriel)
 - [@ryan](https://github.com/Pekatsou)
-
-  ## Tech Stack
-
-**Client:** Next JS, TypeScript, Zod, ShadCN, Framer Motion, 
-
-**Server:** FastAPI, Python, GEMINI AI, PostgreSQL 
 
 ## 🚀 Getting Started after Installation Next JS (Quick Summary)
 ```bash
@@ -76,10 +61,105 @@ The AI companion adapts its guidance based on your pace, preferences, and perfor
 ```bash
   Add env for API keys
 ```
+# ⚙️ Setup Instructions
 
-## Demo
+✅ Requirements
 
-https://www.canva.com/design/DAGoViCQVPQ/S7JoFVwoQ2zs84zL5Yz6rQ/edit
+Client:
+
+*    Node.js ≥ 18
+
+*    npm
+
+*    Next.js, TypeScript, Zod, ShadCN, Framer Motion
+
+Server:
+
+*    Python ≥ 3.9
+
+*    FastAPI
+
+*   PostgreSQL or SQLite (fallback)
+
+*   GEMINI AI API key
+
+*   YouTube API key
+
+# 🚀 Usage Guide
+
+📚 Trigger a Learning Session:
+
+        1. Visit the front-end in your browser.
+
+        2. Select your desired subject and companion.
+
+        3. Start learning, take quizzes, and battle the boss!
+
+🧪 Test the Agent:
+
+        1. Change topics and observe dynamic course generation.
+
+        2. Try different companions to see unique hints and messages.
+
+        3. Use console logs or FastAPI docs (/docs) to inspect back-end tasks and API calls.
+
+# 🧰 Additional Setup: Redis Installation & Usage
+
+🧱 Install Redis for Windows
+
+* Go to: https://github.com/tporadowski/redis/releases
+
+* Download the latest .zip or .msi release under Assets
+
+* Extract or install Redis to a directory, e.g., C:\Program Files\Redis
+
+* ⚙️ Add Redis to Environment Variables
+
+* Open System Properties → Environment Variables
+
+* Under System Variables, find and select Path, then click Edit
+
+* Add the path to the Redis bin folder (e.g., C:\Program Files\Redis)
+
+* Click OK to save
+
+# ✅ Verify Redis Installation
+
+*  Restart your terminal and run:
+
+*  redis-server
+
+*  📦 Accessing Cached Course Data
+
+*  To check or retrieve cached course content:
+
+*  redis-cli
+
+Then run:
+
+*  GET /api/v1/companion/structure/cache:<userId>
+
+# 🧩 Core Components
+
+Agent Logic: Responsible for planning, reasoning, and tracking user learning progress
+
+LLM & External APIs: Uses GEMINI AI for natural language tasks and YouTube API for educational videos
+
+State Management: Handles user profiles
+
+# 📂 Execution Script / Entry Points
+
+next-aiwaken-frontend
+
+Runs the React/Next.js client (npm run dev)
+
+fast-aiwaken-be
+
+Runs the FastAPI back-end (uvicorn main:app --reload)
+
+.env files
+
+Store secrets and configuration
 
 
 ## Front-end Environment Variables
@@ -104,3 +184,20 @@ To run this project, you will need to add the following environment variables to
 `REFRESH_TOKEN_EXPIRE_DAYS`
 `YOUTUBE_API_KEY`
 `GEMINI_API_KEY`
+
+
+# ✅ Code Quality & Best Practices
+
+🔑 Secrets managed via .env files — never commit secrets
+
+📁 Organized structure for front-end and back-end
+
+🗒️ Clear variable naming and comments where needed
+
+📃 Docstrings and type hints for maintainability
+
+🧹 Avoid hardcoded paths
+## Demo
+
+https://www.canva.com/design/DAGoViCQVPQ/S7JoFVwoQ2zs84zL5Yz6rQ/edit
+
