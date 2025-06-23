@@ -12,6 +12,7 @@ from app.core.llm.youtube_client import YouTubeAPI
 from app.core.prompt_engineering.course_prompts import CoursePrompts
 from app.core.prompt_engineering.quiz_prompts import generate_quiz_hint, retrieve_relevant_context
 from app.core.prompt_engineering.tips_prompts import generate_tips_prompt
+from app.core.prompt_engineering.boss_prompts import generate_boss_prompt
 from collections import defaultdict
 
 
@@ -52,6 +53,28 @@ class LLMClient:
         )
         return context
 
+    # course suggestion section
+    def generate_suggestions(self, username: str, motivational_level: str, learning_goal: str, 
+                            age_range: str, explanation_depth: str, learning_style: str) -> List[str]:
+
+        prompt = CoursePrompts.suggested_course(
+        username=username,
+        motivational_level=motivational_level,
+        learning_goal=learning_goal,
+        age_range=age_range,
+        explanation_depth=explanation_depth,
+        learning_style=learning_style
+        )
+
+        response = self.generate_content(prompt, is_json_output=True)
+
+        if isinstance(response, str):
+            try: 
+                return json.loads(response)
+            except Exception as e:
+                print(f" #6 Error {e}")
+        return response
+        
     # course outline section
     def generate_structured_course(self, subject: str, difficulty: str, username:str, companion_name:str,
                                     age_range: str, motivational_level: str, learning_goal: str,
@@ -239,118 +262,14 @@ class LLMClient:
         prompt = generate_course_prompt(subject, topic_title, step_title, difficulty)
         return self.generate_content(prompt)
 
-    # summary and boss section
-    def generate_course_summary_and_quiz(self, course_title: str, subject: str, difficulty: str,
-                                        sections_data: List[Dict], course_id: str,
-                                        enemy_theme: Optional[str] = "a mysterious challenger") -> Dict[str, Any]:
-        
-        # Generate regular quiz
-        prompts = CoursePrompts(subject, difficulty)
-        prompt = prompts.generate_course_summary_and_quiz(course_title, sections_data, enemy_theme)
-        quiz_data = self.generate_content(prompt, is_json_output=True)
-        
-        # Store weak topics baseline
-        tracker = self.rag_memory.get_progress_tracker(course_id)
-        for section in sections_data:
-            for topic in section.get("topics", []):
-                tracker.update_weak_topic(topic.get("topic_title", ""), 0)
-        
-        return quiz_data
-
-    def analyze_boss_performance(self, user_answers: Dict, quiz_data: Dict, course_id: str) -> Dict:
-        """
-        Analyze boss battle performance
-        :param user_answers: {question_id: user_answer}
-        :param quiz_data: Full quiz JSON
-        :return: {
-            "strengths": [topics],
-            "weaknesses": {topic: count},
-            "common_mistakes": [mistake_descriptions],
-            "accuracy": float
-        }
-        """
-        analysis = {
-            "strengths": [],
-            "weaknesses": defaultdict(int),
-            "common_mistakes": [],
-            "accuracy": 0.0,
-            "correct_count": 0
-        }
-        
-        tracker = self.rag_memory.get_progress_tracker(course_id)
-        total = len(user_answers)
-        
-        for q_id, user_ans in user_answers.items():
-            question = next((q for q in quiz_data["quiz"] if q["id"] == q_id), None)
-            if not question:
-                continue
-                
-            topic = question.get("topic", "Unknown")
-            correct_ans = question["correct_answer"]
-            
-            # Normalize answers for comparison
-            norm_user = user_ans.strip().lower()
-            norm_correct = correct_ans.strip().lower()
-            
-            if norm_user == norm_correct:
-                analysis["correct_count"] += 1
-                analysis["strengths"].append(topic)
-            else:
-                tracker.update_weak_topic(topic)
-                analysis["weaknesses"][topic] += 1
-                analysis["common_mistakes"].append(
-                    f"Confused '{user_ans}' with '{correct_ans}' in {topic}"
-                )
-        
-        analysis["accuracy"] = analysis["correct_count"] / total if total > 0 else 0
-        analysis["strengths"] = list(set(analysis["strengths"]))
-        
-        return analysis
-
-
-    def generate_adaptive_boss_quiz(self, subject: str, difficulty: str, 
-                                    enemy_theme: str, course_id: str) -> Dict:
-        """Generate boss quiz focused on weak areas"""
-        tracker = self.rag_memory.get_progress_tracker(course_id)
-        weak_topics = [t[0] for t in tracker.get_top_weak_topics(3)]
-        
-        if not weak_topics:
-            weak_topics = ["core concepts"]
-        
-        prompt = f"""
-        Create a challenging boss battle quiz for {subject} ({difficulty} level) 
-        focused on these areas: {', '.join(weak_topics)}
-        Enemy Theme: {enemy_theme}
-        
-        Include 20 questions with:
-        - 5 True/False
-        - 10 Multiple Choice (options: A, B, C)
-        - 5 Fill-in-the-Blank (max 10 letters)
-        
-        For each question:
-        1. Make it challenging but fair
-        2. Include explanation for correct answer
-        3. Phrase questions from {enemy_theme}'s perspective
-        4. Add "topic" field indicating the relevant topic
-        
-        Return as JSON:
-        {{
-            "quiz_title": "String",
-            "questions": [
-                {{
-                    "id": "q1",
-                    "type": "true_false/multiple_choice/fill_blank",
-                    "question_text": "String",
-                    "options": ["A: ...", "B: ...", "C: ..."]  // for MC only,
-                    "correct_answer": "String",
-                    "explanation": "String",
-                    "difficulty": "easy/medium/hard",
-                    "topic": "String"
-                }},
-                ... // 4 more questions
-            ]
-        }}
-        """
-        return self.generate_content(prompt, is_json_output=True)
+    # generate boss battle
+    def generate_boss_battle(self, user_info: Dict[str, Any], rag_entries: List[Dict[str, Any]],
+                            hearts: int) -> str:
+        rag_entries = self.rag_memory.retrieve(filter_fn=None, max_items=100)
+        return generate_boss_prompt(
+            user_info = user_info,
+            rag_entries = rag_entries,
+            hearts=hearts,
+        )
 
 llm_client = LLMClient()

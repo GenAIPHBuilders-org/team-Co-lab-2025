@@ -17,29 +17,59 @@ from fastapi.responses import FileResponse
 from app.core.utils.redis_client import store_in_redis, get_from_redis
 from app.services.preferences_service import PreferencesService
 from app.schemas.bossBattleSchema import BossSubmission, AdaptiveQuizRequest
+from app.models.user_stats_model import UserStats
+from app.core.utils.xp_calculations import xp_calculations
+from app.models.course_model import CourseStructureRequest
+from app.models.quiz_model import QuizHintRequest
+
 
 router = APIRouter()
 
-# quiz hint request model
-class QuizHintRequest(BaseModel):
-    quiz_question: str
-    topic_title: str
 
 # --- Course Section ---
+
+# course suggestion
+@router.get("/course/suggestion", response_model=Dict[str, Any])
+async def get_suggested_courses(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    user_id = current_user.id
+    username = current_user.username
+
+    # user preferences
+    preferences_service = PreferencesService(db)
+    preferences = await preferences_service.get_user_preferences(user_id)
+    if not preferences:
+        raise HTTPException(status_code=404, detail="User preferences not found.")
+
+    result = llm_client.generate_suggestions(
+        username=username,
+        motivational_level=preferences.motivation_level,
+        learning_goal=preferences.learning_goal,
+        explanation_depth=preferences.explanation_depth,
+        learning_style=preferences.learning_style,
+        age_range=preferences.age_range
+    )
+    return result
+    
+
 # course structure
-@router.get("/course/structure", response_model=Dict[str, Any])
+@router.post("/course/structure", response_model=Dict[str, Any])
 async def get_course_structure(
-    subject: str = Query(..., description="The subject of the course, e.g., 'mathematics'"),
-    difficulty: str = Query(..., description="The difficulty level, e.g., 'easy'"),
+    request: CourseStructureRequest,
     current_user: User = Depends(get_current_user), 
     db: Session = Depends(get_db)
 ):
+    subject = request.subject
+    difficulty = request.difficulty
+
     # user details
     user_id = current_user.id
     username = current_user.username
 
     # redis key for user-specific course
-    redis_key = f"course:{user_id}:{subject}:{difficulty}"
+    redis_key = f"course:{user_id}"
     
     # cached course retrieval
     cached_course = get_from_redis(redis_key)
@@ -82,10 +112,10 @@ async def get_course_structure(
 
     store_in_redis(redis_key, course_structure, ttl=3600)
     print(f"Stored course structure in cache for {username}:{redis_key}")
-
     return course_structure
 
 # --- Course Utils ---
+
 # course motivation
 @router.get("/course/quiz_motivation", response_model=Dict[str, Any])
 async def get_quiz_motivation(
@@ -159,19 +189,15 @@ async def get_course_conclusion_api(
         raise HTTPException(status_code=500, detail=f"Failed to generate course conclusion: {conclusion_data.get('error', 'Unknown LLM error')}")
     if not conclusion_data.get("summary") or not conclusion_data.get("quiz"):
         raise HTTPException(status_code=500, detail="Generated course conclusion is invalid or incomplete.")
-
-    # Add course_id and topics_covered to response
+        
     conclusion_data["course_id"] = course_id
     conclusion_data["topics_covered"] = topics_covered
     return conclusion_data
 
-# quiz submission
-@router.post("/quiz/submit", response_model=Dict[str, Any])
-async def submit_quiz_answer():
-    # TODO: Implement quiz submission logic
-    pass
+
 
 # --- Companion Section ---
+
 # companion details
 @router.get("/companion/details", response_model=Dict[str, Any])
 async def get_companion_details():
@@ -217,62 +243,105 @@ def get_quiz_hint(request: QuizHintRequest):
     return {"hint": hint}
 
 # --- Boss Battle Section ---
+
+# submit boss answer
 @router.post("/boss/submit", response_model=Dict[str, Any])
 async def submit_boss_battle(
     submission: BossSubmission,
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    # Analyze performance
-    analysis = llm_client.analyze_boss_performance(
-        user_answers=submission.user_answers,
-        quiz_data=submission.quiz_data,
-        course_id=str(submission.course_id)
+    
+
+    user_id = current_user.id
+
+    user_stats = db.query(UserStats).filter_by(user_id=user_id).first()
+    if not user_stats:
+        raise HTTPException(status_code=404, detail="User stats not found.")
+    correct_answers = {}
+
+    for pool in ["easy_questions", "medium_questions", "hard_questions"]:
+        for q in submission.quiz_data.get(pool, []):
+            correct_answers[q["id"]] = q["correct_answer"]
+        
+    total = len(submission.user_answers)
+    def normalize(val):
+        if isinstance(val, bool):
+            return str(val).lower()
+        if val is None:
+            return ""
+        return str(val).strip().lower()
+
+    correct = sum(
+        1 for question_id, user_answer in submission.user_answers.items()
+        if normalize(user_answer) == normalize(correct_answers.get(question_id))
     )
+
+    percent = (correct / total) * 100 if total else 0
     
-    # Update user stats
-    if analysis["accuracy"] == 1.0:
-        current_user.boss_wins += 1
-    else:
-        current_user.boss_losses += 1
-    
-    # Update weak topics
-    current_user.weak_topics = analysis["weaknesses"]
-    
-    db.commit()
-    db.refresh(current_user)
-    
-    # Generate feedback
-    companion_name = current_user.selected_companion or "Gabriel"
-    feedback = CompanionLogic.generate_boss_feedback(analysis, companion_name)
+    if percent < 80:
+        if user_stats.heart > 0:
+            user_stats.heart -= 1
+            db.commit()
+        else:
+            raise HTTPException(status_code=400, detail="No heart left. You cannot submit answers.")
     
     return {
-        "feedback": feedback,
-        "analysis": analysis,
-        "passed": analysis["accuracy"] == 1.0
+        "score" : percent,
+        "correct" : correct,
+        "total" : total,
+        "heart_left" : user_stats.heart,
+        "passed" : percent >= 80
     }
 
-@router.post("/boss/retry", response_model=Dict[str, Any])
-async def get_adaptive_boss_quiz(
-    request: AdaptiveQuizRequest
-):
-    return llm_client.generate_adaptive_boss_quiz(
-        subject=request.subject,
-        difficulty=request.difficulty,
-        enemy_theme=request.enemy_theme,
-        course_id=str(request.course_id)
+
+    
+@router.get("/boss/prompt", response_model=Dict[str, Any])
+async def get_boss_prompt(current_user: User = Depends(get_current_user),
+                           db: Session = Depends(get_db)):
+
+    user_id = current_user.id
+    username = current_user.username
+
+    user_stats = db.query(UserStats).filter_by(user_id=user_id).first()
+    if not user_stats:
+        raise HTTPException(status_code=404, detail="User stats not found.")
+    hearts = user_stats.heart
+
+    rag_entries = llm_client.rag_memory.retrieve(filter_fn=None, max_items=100)
+
+    user_info = {
+        "username" : username,
+        "user_id": user_id,
+    }
+
+    prompt = llm_client.generate_boss_battle(
+        user_info=user_info,
+        rag_entries=rag_entries,
+        hearts=hearts
     )
 
+    boss_quiz_response = llm_client.generate_content(prompt, is_json_output=True)
+    if isinstance(boss_quiz_response, str):
+        try:
+            boss_quiz = json.loads(boss_quiz_response)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to parse LLM response: {e}")
+    else:
+        boss_quiz = boss_quiz_response
+
+    return boss_quiz
+
+
 # --- Memory Section ---
+
 # clear redis cache
 @router.delete("/course/clear/cache", response_model=Dict[str, str])
 async def clear_course_cache(
-    subject: str = Query(..., description="The subject of the course"),
-    difficulty: str = Query(..., description="The difficulty level of the course"),
     current_user: User = Depends(get_current_user)
 ):
     user_id = current_user.id
-    redis_key = f"course:{user_id}:{subject}:{difficulty}"
+    redis_key = f"course:{user_id}"
     
     # Import redis_client for cache clearing
     from app.core.utils.redis_client import redis_client
@@ -282,15 +351,15 @@ async def clear_course_cache(
 # course cache
 @router.get("/course/structure/cache", response_model=Dict[str, Any])
 async def get_course_cache(
-    subject: str = Query(..., description="The subject of the course"),
-    difficulty: str = Query(..., description="The difficulty level of the course"),
     current_user: User = Depends(get_current_user)
 ):
     user_id = current_user.id
     # redis key for user-specific course
-    redis_key = f"course:{user_id}:{subject}:{difficulty}"
+    redis_key = f"course:{user_id}"
     cached_course = get_from_redis(redis_key)
     
     if not cached_course:
         raise HTTPException(status_code=404, detail=f"No cached course found for {redis_key}") 
     return cached_course
+
+
