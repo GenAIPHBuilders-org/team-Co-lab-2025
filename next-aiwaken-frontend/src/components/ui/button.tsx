@@ -86,9 +86,7 @@ function Button({
     >
       {loading
         ? <Spinner /> : (
-          <>
-            {children}
-          </>
+          children
         )}
     </Comp>
   )
