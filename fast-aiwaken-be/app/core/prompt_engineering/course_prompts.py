@@ -177,3 +177,118 @@ class CoursePrompts:
 
             Do not include any text outside the JSON object.
             """
+
+
+        return base_prompt
+
+    # generate course summary (needs revision)
+    def generate_course_summary_and_quiz(self, course_title: str, sections_data: List[Dict], enemy_theme: Optional[str] = "a mysterious challenger") -> str:
+      topic_titles_covered = []
+      for section in sections_data:
+          for topic in section.get("topics", []):
+              topic_titles_covered.append(topic.get("topic_title", "Unknown Topic"))
+      
+      topics_string = ", ".join(list(set(topic_titles_covered))) if topic_titles_covered else "various concepts"
+
+      return f"""
+      You are creating a conclusion for an educational course.
+      Course Title: "{course_title}"
+      Subject: "{self.subject}"
+      Difficulty: "{self.difficulty}"
+      Topics Covered: {topics_string}
+      Enemy Theme for Quiz: "{enemy_theme}"
+
+      Generate the following as a single JSON object:
+      1.  "summary": A concise and encouraging summary of the course (2-3 paragraphs)
+      2.  "quiz": An array of 5 quiz questions with these types:
+          - 2 True/False questions
+          - 2 Multiple Choice questions (with 3 options: A, B, C)
+          - 1 Fill-in-the-Blank question (max 10 letters)
+          
+          Each question should:
+          - Be relevant to the topics covered
+          - Be themed as if posed by '{enemy_theme}'
+          - Include:
+              "type": "true_false/multiple_choice/fill_blank"
+              "question_text": "String"
+              "options": ["A: Option1", "B: Option2", "C: Option3"] (only for multiple_choice)
+              "correct_answer": "String"
+              "explanation": "String (1-2 sentences)"
+              "difficulty": "easy/medium/hard"
+              "topic": "String"
+              
+          Fill-in-the-Blank format: 
+          - Represent blanks with 5-10 underscores (_____)
+          - Answers should be short (max 10 letters)
+          
+          Example True/False:
+          {{
+              "type": "true_false",
+              "question_text": "The {enemy_theme} challenges you: 'Water boils at 100°C at sea level. True or false?'",
+              "correct_answer": "True",
+              "explanation": "Water boils at 100°C at standard atmospheric pressure.",
+              "difficulty": "easy",
+              "topic": "Physics"
+          }}
+          
+          Example Fill-in-the-Blank:
+          {{
+              "type": "fill_blank",
+              "question_text": "The {enemy_theme} hisses: 'The capital of France is _______.'",
+              "correct_answer": "Paris",
+              "explanation": "Paris has been the capital since 508 AD.",
+              "difficulty": "easy",
+              "topic": "Geography"
+          }}
+      """
+    # course suggestion prompt
+    @staticmethod
+    def suggested_course(username: str, motivational_level: str, learning_goal: str, age_range: str, 
+                        explanation_depth: str, learning_style: str) -> str:
+        return f"""
+        Return your response as a valid JSON object with two fields:
+        - "intro": A friendly, dynamic greeting to {username} encouraging them to try the suggested courses. Example: "Hello {username}! Based on your learning profile, here are some courses you might love."
+        - "suggestions": An array of at least 3 course suggestions, each with "subject", "course_title", and "course_description".
+
+        Each suggestion must include:
+        - "subject": The main subject area (e.g., "Mathematics", "Biology", "History")
+        - "course_title": A catchy, engaging title
+        - "course_description": 2-3 sentences explaining what the course covers and why it fits the user's profile
+
+        The suggestions must be tailored to this user's profile:
+        - Age Range: {age_range}
+        - Motivational Level: {motivational_level}
+        - Primary Learning Goal: {learning_goal}
+        - Desired Explanation Depth: {explanation_depth}
+        - Preferred Learning Style: {learning_style}
+
+        Example response:
+        {{
+          "intro": "Hello {username}! Based on your learning style and goals, here are some courses you should try.",
+          "suggestions": [
+            {{
+              "subject": "Mathematics",
+              "course_title": "Mastering Algebra for Visual Learners",
+              "course_description": "A course designed for visual learners who want to build strong algebra skills with lots of diagrams and interactive examples. Perfect for students aiming to pass exams with confidence."
+            }},
+            {{
+              "subject": "Biology",
+              "course_title": "Life Science Adventures",
+              "course_description": "Explore the wonders of biology through hands-on experiments and engaging stories. Ideal for curious minds who love to learn by doing."
+            }},
+            {{
+              "subject": "History",
+              "course_title": "World History Through Stories",
+              "course_description": "Travel through time and discover key historical events with interactive storytelling and visual timelines. Great for learners who enjoy narrative and context."
+            }}
+          ]
+        }}
+
+        Do not include any text outside the JSON object.
+        """
+
+
+
+    
+    
+     

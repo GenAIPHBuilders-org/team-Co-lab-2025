@@ -1,10 +1,8 @@
-import { TGetUserAchievementsResponse } from "../topic-service";
-import { cookies } from "next/headers";
+"use server";
 import axios from "axios";
+import { cookies } from "next/headers";
 
-export async function fetchSsrUserAchievements(): Promise<
-  TGetUserAchievementsResponse[] | null
-> {
+export async function fetchSsrCourseSuggestion(): Promise<AICourseSuggestionResponse | null> {
   const cookie = await cookies();
   const accessToken = cookie.get("access_token")?.value;
 
@@ -13,7 +11,7 @@ export async function fetchSsrUserAchievements(): Promise<
   }
 
   const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/v1/topics/achievements`,
+    `${process.env.NEXT_PUBLIC_API_URL}/v1/companion/course/suggestion`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,

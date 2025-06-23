@@ -1,3 +1,4 @@
+import { IBossBattleAIGeneratedQuestion } from "@/app/dashboard/boss-battle/constant";
 import ApiService from "../api-services";
 
 class CourseService {
@@ -5,7 +6,7 @@ class CourseService {
     subject: string,
     difficulty: string
   ): Promise<CourseOutline> {
-    return await ApiService.get<CourseOutline>(
+    return await ApiService.post<CourseOutline>(
       "/v1/companion/course/structure",
       {
         subject,
@@ -32,19 +33,9 @@ class CourseService {
     );
   }
 
-  public static async getCourseSummaryConclusion(
-    params: CourseConclusionParams
-  ): Promise<CourseConclusion> {
-    const query = new URLSearchParams({
-      course_title: params.course_title,
-      subject: params.subject,
-      difficulty: params.difficulty,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      sections_data_json: params.sections_data_json as any,
-    });
-
-    return await ApiService.post<CourseConclusion>(
-      `/v1/companion/course/conclusion?${query.toString()}`
+  public static async getCourseSummaryConclusion(): Promise<IBossBattleAIGeneratedQuestion> {
+    return await ApiService.get<IBossBattleAIGeneratedQuestion>(
+      "/v1/companion/boss/prompt"
     );
   }
 }

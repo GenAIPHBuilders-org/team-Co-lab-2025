@@ -245,4 +245,15 @@ declare global {
     className?: string;
     style?: React.CSSProperties;
   }
+
+  type CourseSuggestion = {
+    subject: string;
+    course_title: string;
+    course_description: string;
+  };
+
+  interface AICourseSuggestionResponse {
+    intro: string;
+    suggestions: CourseSuggestion[];
+  }
 }

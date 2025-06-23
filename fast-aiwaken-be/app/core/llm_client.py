@@ -15,6 +15,9 @@ from fastapi import Depends
 from app.models.user_model import User
 from app.dependencies import get_current_user, get_db
 from sqlalchemy.orm import Session
+from app.core.prompt_engineering.boss_prompts import generate_boss_prompt
+from collections import defaultdict
+
 
 
 
@@ -53,6 +56,28 @@ class LLMClient:
         )
         return context
 
+    # course suggestion section
+    def generate_suggestions(self, username: str, motivational_level: str, learning_goal: str, 
+                            age_range: str, explanation_depth: str, learning_style: str) -> List[str]:
+
+        prompt = CoursePrompts.suggested_course(
+        username=username,
+        motivational_level=motivational_level,
+        learning_goal=learning_goal,
+        age_range=age_range,
+        explanation_depth=explanation_depth,
+        learning_style=learning_style
+        )
+
+        response = self.generate_content(prompt, is_json_output=True)
+
+        if isinstance(response, str):
+            try: 
+                return json.loads(response)
+            except Exception as e:
+                print(f" #6 Error {e}")
+        return response
+        
     # course outline section
     def generate_structured_course(self, subject: str, difficulty: str, username:str, companion_name:str,
                                     age_range: str, motivational_level: str, learning_goal: str,
@@ -241,14 +266,14 @@ class LLMClient:
         prompt = generate_tips_prompt(subject, topic_title, step_title, difficulty, username)
         return self.generate_content(prompt)
 
-    # summary and boss section
-    def generate_course_summary_and_quiz(self, course_title: str, subject: str, difficulty: str,
-                                         sections_data: List[Dict], enemy_theme: Optional[str] = "a mysterious challenger") -> Dict[str, Any]:
-        prompts = CoursePrompts(subject, difficulty)
-        prompt = prompts.generate_course_summary_and_quiz(course_title, sections_data, enemy_theme)
-        response = self.generate_content(prompt, is_json_output=True)
-
-        return response
-
+    # generate boss battle
+    def generate_boss_battle(self, user_info: Dict[str, Any], rag_entries: List[Dict[str, Any]],
+                            hearts: int) -> str:
+        rag_entries = self.rag_memory.retrieve(filter_fn=None, max_items=100)
+        return generate_boss_prompt(
+            user_info = user_info,
+            rag_entries = rag_entries,
+            hearts=hearts,
+        )
 
 llm_client = LLMClient()

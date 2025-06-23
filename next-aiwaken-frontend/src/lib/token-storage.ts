@@ -1,3 +1,4 @@
+import { IBossBattleAIGeneratedQuestion } from "@/app/dashboard/boss-battle/constant";
 import { AIContentGenerationResponse } from "@/types/course";
 import Cookies from "js-cookie";
 
@@ -65,7 +66,7 @@ export class TokenStorage {
       return null;
     }
   }
-  static getSummaryConclusion(): CourseConclusion | null {
+  static getSummaryConclusion(): IBossBattleAIGeneratedQuestion | null {
     if (typeof window === "undefined") {
       return null;
     }

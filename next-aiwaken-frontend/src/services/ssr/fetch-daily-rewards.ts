@@ -22,7 +22,7 @@ export async function fetchDailyRewards(): Promise<TDailyRewardResponse | null> 
   );
 
   if (!response.ok) {
-    throw new Error("Failed to fetch daily rewards");
+    return null;
   }
 
   const data = await response.json();

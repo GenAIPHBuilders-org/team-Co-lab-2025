@@ -9,7 +9,7 @@ export function ComingSoon() {
         This feature is currently under construction.
       </p>
       <p className="text-lg text-slate-400">
-        We're working hard to bring it to you soon.
+        We&apos;re working hard to bring it to you soon.
       </p>
     </div>
   );

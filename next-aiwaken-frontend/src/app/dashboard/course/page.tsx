@@ -9,7 +9,6 @@ import { ChevronDown, ChevronRight, ArrowLeft, BookOpen, Video, FileText, PenToo
 import { useRouter } from "next/navigation"
 import { useGetCourseSummaryConclusion } from "@/(features)/course-action"
 import { VideoPlayer } from "@/components/video-player"
-import { TokenStorage } from "@/lib/token-storage"
 import ReactMarkdown from 'react-markdown';
 import { LearningStepQuiz } from "@/components/learning-step-quiz"
 import { VideoPlayerProps } from "@/types/video-player"
@@ -21,11 +20,12 @@ import {
   AIContentGenerationResponseLearningStep
 } from "@/types/course"
 import { useAuthentication } from "@/contexts/auth-context"
+import { useCourseContext } from "@/contexts/course-context"
 
 export default function CoursePage() {
   const [loadingContent, setLoadingContent] = useState<boolean>(false);
   const { getCourseSummaryConclusionAsync, isPending: loading } = useGetCourseSummaryConclusion();
-  const courseData = TokenStorage.getCourseData();
+  const { course: courseData } = useCourseContext();
   const router = useRouter()
   const { user } = useAuthentication();
   const companion = user?.preferences.companion
@@ -166,10 +166,10 @@ export default function CoursePage() {
     }
   }
 
-  async function handleCourseConclusion(params: CourseConclusionParams) {
+  async function handleCourseConclusion() {
     try {
-      await getCourseSummaryConclusionAsync(params);
-      router.push("/dashboard/quiz");
+      await getCourseSummaryConclusionAsync();
+      router.push("/dashboard/boss-battle");
     } catch (error) {
       console.error("Error fetching course conclusion:", error);
     }
@@ -282,13 +282,7 @@ export default function CoursePage() {
                 className="mt-4 w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80"
                 loading={loading}
                 disabled={loading}
-                onClick={() => handleCourseConclusion({
-                  course_title: courseData.course_title,
-                  difficulty: courseData.difficulty,
-                  subject: courseData.subject,
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  sections_data_json: JSON.stringify(courseData.sections) as any,
-                })}
+                onClick={handleCourseConclusion}
               >
                 Boss Battle
               </Button>

@@ -14,6 +14,8 @@ import { CompanionProvider } from "@/contexts/companion-context";
 import { fetchLatestUserTopics } from "@/services/ssr/fetch-latest-course";
 import { LatestCourseProvider } from "@/contexts/latest-course-context";
 import { TTopics } from "@/services/topic-service";
+import { fetchSsrUserCourse } from "@/services/ssr/fetch-course-from-redis";
+import { CourseProvider } from "@/contexts/course-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +39,7 @@ export default async function RootLayout({
 }>) {
   const data = await getServerAuthSession();
   const latestUserTopic = await fetchLatestUserTopics();
+  const courseData = await fetchSsrUserCourse();
 
   if (data?.user.is_new_user) {
     return (
@@ -84,7 +87,9 @@ export default async function RootLayout({
                   <CompanionProvider>
                     <AuthLayout isAuthenticated={data?.user.is_active}>
                       <LatestCourseProvider data={latestUserTopic as TTopics}>
-                        {children}
+                        <CourseProvider data={courseData}>
+                          {children}
+                        </CourseProvider>
                       </LatestCourseProvider>
                     </AuthLayout>
                   </CompanionProvider>

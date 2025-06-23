@@ -11,15 +11,15 @@ import { useRouter } from "next/navigation"
 import { Eye, BookOpen } from "lucide-react"
 import type { TTopics } from "@/services/topic-service"
 import { useFetchAllTopics, useStartCourse } from "@/(features)/topic-action"
-import { TokenStorage } from "@/lib/token-storage"
 import { CourseCard } from "./course-card"
 import type { Course } from "@/app/dashboard/course-structure/mock"
 import { TopicModal } from "./dialog/topic-modal"
+import { useCourseContext } from "@/contexts/course-context"
 
 export function TopicSelectionCard() {
   const [progressValue, setProgressValue] = useState<number | null>(null)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const courseData = TokenStorage.getCourseData()
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const { course: courseData } = useCourseContext()
   const { allAvailableTopic } = useFetchAllTopics()
   const { generateCourseAsync, isPending } = useGenerateCourse()
   const [selectedTopic] = useState<string | null>(null)

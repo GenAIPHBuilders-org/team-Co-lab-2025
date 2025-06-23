@@ -9,34 +9,55 @@ import { Label } from "@/components/ui/label"
 import { Heart, BookOpen, Brain } from "lucide-react"
 import { motion } from "framer-motion"
 import { RobotGuide } from "@/components/robot-guide"
-import { IBossBattleQuestionTypeResponse, quizData } from "./constant"
+import { IBossBattleQuestionTypeResponse } from "./constant"
 import { TypingAnimation } from "@/components/magicui/typing-animation"
+import { TokenStorage } from "@/lib/token-storage"
 
 export default function Component() {
   const [gameState, setGameState] = useState<"intro" | "playing" | "gameOver">("intro")
   const [currentDifficulty, setCurrentDifficulty] = useState<"easy" | "medium" | "hard">("medium")
-  const [hearts, setHearts] = useState(quizData.hearts)
+  const quizData = TokenStorage.getSummaryConclusion()
+
+  const [hearts, setHearts] = useState(quizData?.hearts || 0)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [usedQuestions, setUsedQuestions] = useState<Set<string>>(new Set())
   const [userAnswer, setUserAnswer] = useState("")
   const [questionsAnswered, setQuestionsAnswered] = useState(0)
   const [showFeedback, setShowFeedback] = useState(false)
   const [isCorrect, setIsCorrect] = useState(false)
+  const [correctAnswers, setCorrectAnswers] = useState(0)
+
+  const rewards = [
+    "150 Coins",
+    "500 XP",
+    "Algebra Gods Badge"
+  ];
+  const MAX_QUESTIONS = 10;
+  const PASSING_RATE = 0.8;
 
   const getCurrentQuestionPool = () => {
     switch (currentDifficulty) {
       case "easy":
-        return quizData.easy_questions
+        return quizData?.easy_questions || []
       case "medium":
-        return quizData.medium_questions
+        return quizData?.medium_questions || []
       case "hard":
-        return quizData.hard_questions
+        return quizData?.hard_questions || []
     }
+  }
+
+  if (!quizData) {
+    return null
   }
 
   const getAvailableQuestions = () => {
     const pool = getCurrentQuestionPool()
-    return pool.filter((q) => !usedQuestions.has(q.id))
+    const remaining = pool.filter((q) => !usedQuestions.has(q.id))
+    if (questionsAnswered >= MAX_QUESTIONS) return []
+    if (questionsAnswered + remaining.length > MAX_QUESTIONS) {
+      return remaining.slice(0, MAX_QUESTIONS - questionsAnswered)
+    }
+    return remaining
   }
 
   const getCurrentQuestion = () => {
@@ -71,6 +92,8 @@ export default function Component() {
 
     if (!correct) {
       setHearts((prev) => prev - 1)
+    } else {
+      setCorrectAnswers((prev) => prev + 1)
     }
 
     adjustDifficulty(correct)
@@ -82,7 +105,7 @@ export default function Component() {
       setShowFeedback(false)
       setUserAnswer("")
 
-      if (hearts <= 1 && !correct) {
+      if ((hearts <= 1 && !correct) || questionsAnswered + 1 >= MAX_QUESTIONS) {
         setGameState("gameOver")
       } else {
         const availableQuestions = getAvailableQuestions().filter((q) => q.id !== currentQuestion.id)
@@ -110,6 +133,7 @@ export default function Component() {
     setUserAnswer("")
     setQuestionsAnswered(0)
     setShowFeedback(false)
+    setCorrectAnswers(0)
   }
 
   const renderQuestion = (question: IBossBattleQuestionTypeResponse) => {
@@ -205,11 +229,22 @@ export default function Component() {
             <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-2 text-white">
                 <Heart className="w-4 h-4 text-red-500" />
-                <span>Required Hearts: {quizData.hearts}</span>
+                <span>Required Hearts: 10</span>
               </div>
               <div className="flex items-center gap-2 text-white">
                 <Brain className="w-4 h-4 text-blue-500" />
                 <span>Adaptive Difficulty</span>
+              </div>
+              <div className="col-span-2 flex flex-col items-center mt-2">
+                <span className="text-white font-semibold">Boss Rewards:</span>
+                <ul className="text-purple-300 mt-1">
+                  {rewards.map((reward, idx) => (
+                    <li key={idx}>• {reward}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="col-span-2 flex flex-col items-center mt-2">
+                <span className="text-white font-semibold">Passing Rate: 80% (8/10 correct)</span>
               </div>
             </div>
             <Button
@@ -225,6 +260,7 @@ export default function Component() {
   }
 
   if (gameState === "gameOver") {
+    const passed = correctAnswers >= Math.ceil(PASSING_RATE * MAX_QUESTIONS)
     return (
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950  flex items-center justify-center p-4">
         <Card className="w-full max-w-2xl bg-gray-800/95 backdrop-blur-sm shadow-2xl">
@@ -237,10 +273,24 @@ export default function Component() {
           <CardContent className="space-y-6 text-center">
             <div className="bg-gray-700 p-6 rounded-lg">
               <p className="text-lg text-gray-300 mb-4">
-                Professor Syntax says: "Well fought, Jelal! You have shown determination in the face of grammatical
-                adversity."
+                Professor Syntax says: &quot;Well fought, Jelal! You have shown determination in the face of grammatical
+                adversity.&quot;
               </p>
               <div className="text-2xl font-bold text-purple-600">Questions Answered: {questionsAnswered}</div>
+              <div className="text-2xl font-bold text-green-400 mt-2">Correct Answers: {correctAnswers} / {MAX_QUESTIONS}</div>
+              <div className={`text-xl font-bold mt-2 ${passed ? "text-green-400" : "text-red-400"}`}>
+                {passed ? "Congratulations! You passed the Boss Battle!" : "You did not pass. Try again!"}
+              </div>
+              {passed && (
+                <div className="mt-4">
+                  <span className="text-white font-semibold">Rewards:</span>
+                  <ul className="text-purple-300 mt-1">
+                    {rewards.map((reward, idx) => (
+                      <li key={idx}>• {reward}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
             <Button
               onClick={resetGame}
@@ -301,7 +351,6 @@ export default function Component() {
         </>
       ) :
         <>
-
           <RobotGuide message={currentQuestion.explanation} />
           <Card className={`w-full max-w-4xl rounded-xl border-l-4 ${isCorrect ? "bg-green-700 border-green-600" : "bg-transparent border-red-600"}`}>
             <CardContent className="p-6">

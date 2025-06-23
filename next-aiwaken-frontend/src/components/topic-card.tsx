@@ -145,7 +145,6 @@ export function TopicCard({ topic, isSelected, onClick }: TopicCardProps) {
         )}
       </Button>
 
-      {/* Hover tooltip for locked topics */}
       {topic.locked && (
         <div className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <motion.div
