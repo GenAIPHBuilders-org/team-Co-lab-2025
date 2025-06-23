@@ -11,10 +11,27 @@ from app.models.user_achievements_model import UserAchievements as UserAchieveme
 from app.schemas.topic_schema import TopicCreate, TopicResponse, UserTopicProgressResponse
 from fastapi import HTTPException
 import uuid
+from app.static_data.topic_data import INITIAL_TOPICS
 
 class TopicService:
     def __init__(self, db: Session):
         self.db = db
+        self._initialize_topics_if_empty()
+
+    def _initialize_topics_if_empty(self):
+        if self.db.query(Topic).count() == 0:
+            for topic_data in INITIAL_TOPICS:
+                topic = Topic(
+                    name=topic_data["name"],
+                    icon=topic_data["icon"],
+                    color=topic_data["color"],
+                    difficulty=topic_data["difficulty"],
+                    description=topic_data["description"],
+                    rewards=topic_data["rewards"],
+                    min_level_required=topic_data["min_level_required"]
+                )
+                self.db.add(topic)
+            self.db.commit()
 
     def create_topic(self, topic_data: TopicCreate) -> Topic:
         """Create a new topic"""

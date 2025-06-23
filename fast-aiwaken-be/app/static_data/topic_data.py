@@ -29,15 +29,6 @@ INITIAL_TOPICS = [
         "min_level_required": 1
     },
     {
-        "name": "Basic Python",
-        "icon": "Code",
-        "color": "bg-purple-100 text-purple-600",
-        "difficulty": "advanced",
-        "description": "Learn the basics of Python programming including syntax, variables, and simple logic.",
-        "rewards": ["Python Novice Badge", "200 XP", "Code Starter Pack"],
-        "min_level_required": 5
-    },
-    {
         "name": "History",
         "icon": "BookOpen",
         "color": "bg-yellow-100 text-yellow-600",
@@ -46,51 +37,6 @@ INITIAL_TOPICS = [
         "rewards": ["History Buff Badge", "150 XP", "Time Traveler"],
         "min_level_required": 1
     },
-    {
-        "name": "Geography",
-        "icon": "Globe",
-        "color": "bg-teal-100 text-teal-600",
-        "difficulty": "beginner",
-        "description": "Discover the world's countries, capitals, and geographical features.",
-        "rewards": ["World Explorer Badge", "150 XP", "Map Master"],
-        "min_level_required": 1
-    },
-    {
-        "name": "Art & Design",
-        "icon": "Palette",
-        "color": "bg-pink-100 text-pink-600",
-        "difficulty": "intermediate",
-        "description": "Express your creativity through various art forms and design principles.",
-        "rewards": ["Creative Genius Badge", "250 XP", "Artistic Vision"],
-        "min_level_required": 3
-    },
-    {
-        "name": "Music Theory",
-        "icon": "Music",
-        "color": "bg-indigo-100 text-indigo-600",
-        "difficulty": "intermediate",
-        "description": "Learn the fundamentals of music theory, notation, and composition.",
-        "rewards": ["Music Maestro Badge", "250 XP", "Harmony Master"],
-        "min_level_required": 3
-    },
-    {
-        "name": "Advanced Mathematics",
-        "icon": "Function",
-        "color": "bg-red-100 text-red-600",
-        "difficulty": "advanced",
-        "description": "Dive deep into calculus, trigonometry, and advanced mathematical concepts.",
-        "rewards": ["Math Genius Badge", "300 XP", "Calculus Master"],
-        "min_level_required": 8
-    },
-    {
-        "name": "Web Development",
-        "icon": "Monitor",
-        "color": "bg-cyan-100 text-cyan-600",
-        "difficulty": "advanced",
-        "description": "Build modern websites using HTML, CSS, and JavaScript.",
-        "rewards": ["Web Developer Badge", "300 XP", "Code Craftsman"],
-        "min_level_required": 6
-    }
 ]
 
 # Difficulty configuration mapping

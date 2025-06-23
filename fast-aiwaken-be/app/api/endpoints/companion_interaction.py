@@ -37,21 +37,41 @@ async def get_suggested_courses(
     user_id = current_user.id
     username = current_user.username
 
-    # user preferences
     preferences_service = PreferencesService(db)
-    preferences = await preferences_service.get_user_preferences(user_id)
-    if not preferences:
-        raise HTTPException(status_code=404, detail="User preferences not found.")
+    try:
+        preferences = await preferences_service.get_user_preferences(user_id)
+    except Exception as e:
+        return {
+            "suggestions": [],
+            "error": "Could not retrieve user preferences. Please try again later."
+        }
 
-    result = llm_client.generate_suggestions(
-        username=username,
-        motivational_level=preferences.motivation_level,
-        learning_goal=preferences.learning_goal,
-        explanation_depth=preferences.explanation_depth,
-        learning_style=preferences.learning_style,
-        age_range=preferences.age_range
-    )
+    if not preferences:
+        return {
+            "suggestions": [],
+            "error": "User preferences not found. Please set your preferences to get suggestions."
+        }
+
+    try:
+        result = llm_client.generate_suggestions(
+            username=username,
+            motivational_level=preferences.motivation_level,
+            learning_goal=preferences.learning_goal,
+            explanation_depth=preferences.explanation_depth,
+            learning_style=preferences.learning_style,
+            age_range=preferences.age_range
+        )
+    except Exception as e:
+        return {
+            "suggestions": [],
+            "error": "Failed to generate course suggestions. Please try again later."
+        }
     
+    if not result or "suggestions" not in result:
+        return {
+            "suggestions": [],
+            "error": "No suggestions available at this time."
+        }
     return result
     
 
@@ -366,8 +386,8 @@ async def get_course_cache(
     cached_course = get_from_redis(redis_key)
     
     if not cached_course:
-        # Fallback to empty array if not found
-        return []
+        # Fallback to empty dict if not found, to match response_model
+        return {}
     return cached_course
 
 
