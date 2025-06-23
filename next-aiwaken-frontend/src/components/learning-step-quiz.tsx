@@ -46,6 +46,7 @@ export function LearningStepQuizContent({ quizData, companion }: { quizData: Qui
     startQuiz,
     restartQuiz,
     getBossState,
+    closeExplanation,
   } = useQuizState({ quizData })
   const [motivationText, setMotivationText] = useState<string>("")
   const [showMotivation, setShowMotivation] = useState<boolean>(false)
@@ -106,7 +107,7 @@ export function LearningStepQuizContent({ quizData, companion }: { quizData: Qui
         if (mounted && gameState === "playing") {
           showMotivationPopup()
         }
-      }, 30000)
+      }, 20000)
     }
 
     if (gameState === "playing" && mounted) {
@@ -209,12 +210,14 @@ export function LearningStepQuizContent({ quizData, companion }: { quizData: Qui
                   selectedAnswer={selectedAnswer as string}
                   companion={companion}
                   showExplanation={showExplanation}
+                  onClose={closeExplanation}
                 />
               ) : (
                 <QuizExplanation
                   explanation={currentQuestion.explanation}
                   companion={companion}
                   showExplanation={showExplanation}
+                  onClose={closeExplanation}
                 />
               )}
             </div>
@@ -225,7 +228,7 @@ export function LearningStepQuizContent({ quizData, companion }: { quizData: Qui
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: 50 }}
                   transition={{ duration: 0.4, type: "spring" }}
-                  className="fixed bottom-6 right-6 z-50 max-w-sm"
+                  className="fixed bottom-6 right-6 z-50 max-w-md"
                 >
                   <Card className="bg-gradient-to-br from-purple-900/95 to-pink-900/95 border-purple-400 text-white shadow-2xl">
                     <CardHeader className="pb-2">

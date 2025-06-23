@@ -166,6 +166,20 @@ class TopicService:
             self.db.rollback()
             raise HTTPException(status_code=500, detail=f"Failed to delete topic: {str(e)}")
 
+    def get_latest_topic(self, user_id: UUID) -> Optional[TopicResponse]:
+        """Get the topic that was most recently started by a user"""
+        try:
+            latest_progress = self.db.query(UserTopicProgress).filter(
+                UserTopicProgress.user_id == user_id
+            ).order_by(UserTopicProgress.started_at.desc()).first()
+
+            if not latest_progress:
+                return None
+
+            return self.get_topic_by_id(latest_progress.topic_id, user_id)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to fetch latest topic: {str(e)}")
+
     def start_topic(self, user_id: UUID, topic_id: UUID) -> UserTopicProgressResponse:
         """Start a topic for a user"""
         try:

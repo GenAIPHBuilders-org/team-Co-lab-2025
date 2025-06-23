@@ -9,9 +9,10 @@ import { ArrowLeft, Search, Grid, List } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { AllTopicsGrid } from "@/components/all-topics-grid";
 import { useGenerateCourse } from "@/(features)/course-action";
-import { TopicModal } from "@/components/topic-modal";
 import { useFetchAllTopics } from "@/(features)/topic-action";
 import { TTopics } from "@/services/topic-service";
+import { useLatestCourse } from "@/contexts/latest-course-context";
+import { TopicModal } from "@/components/dialog/topic-modal";
 
 export default function AllTopicsPage() {
   const router = useRouter();
@@ -22,9 +23,8 @@ export default function AllTopicsPage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState<TTopics | null>(null);
-
   const data = allAvailableTopic.topics
-
+  const { latestCourse } = useLatestCourse();
   const filteredTopics = data.filter((topic) => {
     const matchesSearch = topic.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       topic.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -33,7 +33,7 @@ export default function AllTopicsPage() {
   });
 
   const handleTopicClick = (topic: TTopics) => {
-    if (!topic.locked) {
+    if (!topic.locked || latestCourse?.is_completed === false) {
       setSelectedTopic(topic);
       setModalOpen(true);
     }

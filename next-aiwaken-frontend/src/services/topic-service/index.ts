@@ -79,6 +79,10 @@ class TopicService {
       `${process.env.NEXT_PUBLIC_API_URL}/v1/topics/${topic_id}/start`
     );
   }
+
+  public static async getAllCompletedTopic(): Promise<TGetAllTopicResponse> {
+    return await ApiService.get("/v1/topics/completed");
+  }
 }
 
 export default TopicService;

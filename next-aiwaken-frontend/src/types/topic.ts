@@ -35,7 +35,11 @@ export interface TopicModalProps {
   topic: TTopics | null;
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: (subject: string, difficulty: string) => Promise<void>;
+  onConfirm: (
+    subject: string,
+    difficulty: string,
+    topicId: string
+  ) => Promise<void>;
   isPending: boolean;
 }
 

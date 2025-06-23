@@ -173,7 +173,7 @@ export function TopicModal({ topic, isOpen, onClose, onConfirm, isPending }: Top
                     transition={{ delay: 0.9 }}
                   >
                     <Button
-                      onClick={() => onConfirm(topic.name, topic.difficulty)}
+                      onClick={() => onConfirm(topic.name, topic.difficulty, topic.id)}
                       disabled={isPending}
                       className="relative overflow-hidden bg-gradient-to-r from-[#9F8DFC] to-[#9F8DFC] text-white hover:from-[#9F8DFC] hover:to-[#9F8DFC]"
                     >

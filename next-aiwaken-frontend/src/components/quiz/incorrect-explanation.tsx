@@ -1,13 +1,14 @@
 import { CompanionAvatar } from "@/components/companion-avatar"
 import { XCircle } from "lucide-react"
 import { TypingAnimation } from "@/components/magicui/typing-animation"
-import { AnimatedModal } from "@/components/ui/animated-modal"
+import { AnimatedModal } from "@/components/dialog/animated-modal"
 
 interface IncorrectExplanationProps {
   incorrectExplanation: Record<string, string>
   selectedAnswer: string
   companion: string
   showExplanation: boolean
+  onClose: () => void
 }
 
 export function IncorrectExplanation({
@@ -15,12 +16,14 @@ export function IncorrectExplanation({
   selectedAnswer,
   companion,
   showExplanation,
+  onClose,
 }: IncorrectExplanationProps) {
   if (!showExplanation || !selectedAnswer || !incorrectExplanation[selectedAnswer]) return null
 
   return (
     <AnimatedModal
       isOpen={showExplanation}
+      onClose={onClose}
       showCloseButton={true}
       size="xl"
     >

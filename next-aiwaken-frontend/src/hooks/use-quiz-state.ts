@@ -94,6 +94,10 @@ export function useQuizState({ quizData, onComplete }: UseQuizStateProps) {
     return "critical";
   }, [bossHealth]);
 
+  const closeExplanation = useCallback(() => {
+    setShowExplanation(false);
+  }, []);
+
   return {
     currentQuestion,
     currentQuestionIndex,
@@ -110,5 +114,6 @@ export function useQuizState({ quizData, onComplete }: UseQuizStateProps) {
     startQuiz,
     restartQuiz,
     getBossState,
+    closeExplanation,
   };
 }

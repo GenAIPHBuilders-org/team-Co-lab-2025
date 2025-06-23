@@ -11,6 +11,9 @@ import Loading from "./loading";
 import DashboardLoading from "./dashboard/loading";
 import { OnboardingStepperContainer } from "@/components/onboarding-stepper/onboarding";
 import { CompanionProvider } from "@/contexts/companion-context";
+import { fetchLatestUserTopics } from "@/services/ssr/fetch-latest-course";
+import { LatestCourseProvider } from "@/contexts/latest-course-context";
+import { TTopics } from "@/services/topic-service";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +36,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const data = await getServerAuthSession();
+  const latestUserTopic = await fetchLatestUserTopics();
 
   if (data?.user.is_new_user) {
     return (
@@ -79,7 +83,9 @@ export default async function RootLayout({
                 >
                   <CompanionProvider>
                     <AuthLayout isAuthenticated={data?.user.is_active}>
-                      {children}
+                      <LatestCourseProvider data={latestUserTopic as TTopics}>
+                        {children}
+                      </LatestCourseProvider>
                     </AuthLayout>
                   </CompanionProvider>
                 </Suspense>

@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import AnimationVariants from "@/lib/animations";
 import { Lock, Star, Trophy, Zap, Heart, Calculator, Beaker } from "lucide-react";
 import { TTopics } from "@/services/topic-service";
+import { useLatestCourse } from "@/contexts/latest-course-context";
 
 interface AllTopicsGridProps {
   topics: TTopics[];
@@ -50,6 +51,8 @@ const getTopicIcon = (iconName: string) => {
 };
 
 export function AllTopicsGrid({ topics, onTopicClick }: AllTopicsGridProps) {
+  const { latestCourse } = useLatestCourse();
+
   return (
     <motion.div
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -90,7 +93,7 @@ export function AllTopicsGrid({ topics, onTopicClick }: AllTopicsGridProps) {
                     </div>
                   </div>
                 </div>
-                {topic.locked && (
+                {topic.locked || !latestCourse?.is_completed && (
                   <Lock className="h-5 w-5 text-gray-400" />
                 )}
               </div>
@@ -145,13 +148,13 @@ export function AllTopicsGrid({ topics, onTopicClick }: AllTopicsGridProps) {
 
               <Button
                 onClick={() => onTopicClick(topic)}
-                disabled={topic.locked}
-                className={`w-full ${topic.locked
+                disabled={topic.locked || !latestCourse?.is_completed}
+                className={`w-full ${topic.locked || !latestCourse?.is_completed
                   ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                   : 'bg-[#9F8DFC] hover:bg-[#9F8DFC]/80 text-white'
                   }`}
               >
-                {topic.locked ? 'Locked' : topic.is_completed ? 'Review' : 'Start Learning'}
+                {topic.locked || !latestCourse?.is_completed ? 'Locked' : topic.is_completed ? 'Review' : 'Start Learning'}
               </Button>
             </CardContent>
           </Card>

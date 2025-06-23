@@ -1,6 +1,5 @@
 from typing import List, Dict, Any
 
-# Initial topics data based on the frontend example
 INITIAL_TOPICS = [
     {
         "name": "Mathematics",

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { TGetUserAchievementsResponse } from "@/services/topic-service";
 import { Trophy } from "lucide-react";
+import { useFetchCompletedTopics } from "@/(features)/topic-action";
 
 type OverviewProps = {
   achievements: TGetUserAchievementsResponse[] | null;
@@ -13,6 +14,7 @@ type OverviewProps = {
 export const Overview = ({ achievements }: OverviewProps) => {
   const [activeTab, setActiveTab] = useState("achievements")
 
+  const { completedTopics, isLoading: isLoadingCompleted } = useFetchCompletedTopics();
 
   if (!achievements) {
     return null;
@@ -69,18 +71,42 @@ export const Overview = ({ achievements }: OverviewProps) => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {[1, 2, 3].map((_, index) => (
-                <div key={index} className="flex gap-4">
-                  <div className="flex flex-col items-center">
-                    <div className="w-2 h-2 rounded-full bg-purple-500" />
-                    {index !== 2 && <div className="w-0.5 h-12 bg-slate-700" />}
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-white">Completed Python Basics Quiz</p>
-                    <p className="text-xs text-slate-400">2 hours ago</p>
-                  </div>
+              {/* Timeline for completed topics */}
+              {isLoadingCompleted ? (
+                <div className="text-slate-400">Loading completed topics...</div>
+              ) : completedTopics && completedTopics.topics.length > 0 ? (
+                <div className="flex flex-col gap-0 relative">
+                  {completedTopics.topics.map((topic, index) => (
+                    <div key={topic.id} className="flex gap-4 items-start relative">
+                      {/* Timeline dot and line */}
+                      <div className="flex flex-col items-center">
+                        <div className="w-3 h-3 rounded-full bg-purple-500 border-2 border-purple-300 z-10 mt-2" />
+                        {index !== completedTopics.topics.length - 1 && (
+                          <div className="w-0.5 flex-1 bg-slate-700 min-h-[2.5rem]" />
+                        )}
+                      </div>
+                      {/* Topic card */}
+                      <div className="flex-1 mb-6">
+                        <div className="bg-slate-800/80 border border-slate-700 rounded-lg p-4 shadow">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className={`inline-block w-6 h-6 rounded-full ${topic.color} flex items-center justify-center text-lg font-bold`}>{topic.icon ? <span className="sr-only">{topic.icon}</span> : "📚"}</span>
+                            <span className="text-white font-semibold text-base">{topic.name}</span>
+                          </div>
+                          <div className="text-xs text-slate-400 mb-1">{topic.description}</div>
+                          <div className="flex items-center gap-2 text-xs">
+                            <span className="text-purple-400 font-semibold">{topic.completion_percentage}% completed</span>
+                            {topic.updated_at && (
+                              <span className="text-slate-500">• {new Date(topic.updated_at).toLocaleDateString()}</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              ) : (
+                <div className="text-slate-400">No completed topics yet.</div>
+              )}
             </div>
           </CardContent>
         </Card>

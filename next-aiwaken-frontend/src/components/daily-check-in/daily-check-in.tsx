@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Progress } from "../ui/progress";
 import { Badge } from "../ui/badge";
-import { AnimatedModal } from "../ui/animated-modal";
+import { AnimatedModal } from "../dialog/animated-modal";
 import { useClaimDailyReward } from "@/(features)/daily-reward-action";
 import { TDailyRewardResponse } from "@/types/services";
 

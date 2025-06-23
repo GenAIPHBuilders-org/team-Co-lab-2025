@@ -132,6 +132,22 @@ async def get_topics_by_difficulty(
         total=len(filtered_topics)
     )
 
+@router.get("/latest", response_model=TopicResponse)
+async def get_latest_topic(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """
+    Get the most recently accessed topic for the current user
+    """
+    topic_service = TopicService(db)
+    latest_topic = topic_service.get_latest_topic(current_user.id)
+    
+    if not latest_topic:
+        raise HTTPException(status_code=404, detail="No topics have been accessed yet")
+        
+    return latest_topic
+
 @router.get("/progress/all", response_model=List[UserTopicProgressResponse])
 async def get_user_topic_progress(
     current_user: User = Depends(get_current_user),

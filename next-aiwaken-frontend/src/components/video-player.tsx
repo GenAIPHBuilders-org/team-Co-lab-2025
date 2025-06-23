@@ -39,7 +39,7 @@ export function VideoPlayer({
   const companion = user?.preferences.companion
 
   return (
-    <div className="w-full ">
+    <div className="w-[40rem]  ">
       <div className="hidden md:block mb-4">
         <Card className="h-full bg-gray-800/50 border-gray-700">
           <CardContent className="p-4">

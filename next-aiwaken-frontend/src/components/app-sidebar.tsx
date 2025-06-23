@@ -2,8 +2,6 @@
 
 import * as React from "react"
 import {
-  Share2,
-  Sparkles,
   SquareTerminal,
 } from "lucide-react"
 import { NavMain } from "@/components/nav-main"
@@ -32,16 +30,16 @@ const data = {
       icon: SquareTerminal,
       isActive: true,
     },
-    {
-      title: "Leaderboard",
-      url: "/dashboard/leaderboard",
-      icon: Sparkles,
-    },
-    {
-      title: "Refer a Friend",
-      url: "/dashboard/referral",
-      icon: Share2,
-    },
+    // {
+    //   title: "Leaderboard",
+    //   url: "/dashboard/leaderboard",
+    //   icon: Sparkles,
+    // },
+    // {
+    //   title: "Refer a Friend",
+    //   url: "/dashboard/referral",
+    //   icon: Share2,
+    // },
   ],
 }
 

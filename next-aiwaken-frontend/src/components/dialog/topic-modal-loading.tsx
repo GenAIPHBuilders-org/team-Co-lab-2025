@@ -1,10 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
-import { LottieAnimation } from "./ui/lottie";
+
 import { Loader2 } from "lucide-react";
 import AnimationVariants from "@/lib/animations";
 import yo from "@/components/lottie-json/yo.json";
 import { useRandomMessage } from "@/hooks/use-random-message";
+import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
+import { LottieAnimation } from "../ui/lottie";
 
 
 const loadingMessages = [
@@ -66,7 +67,6 @@ export const TopicModalLoading = ({ isOpen, onClose }: TopicModalLoadingProps) =
               >
                 <DialogTitle className="text-xl font-bold text-[#9F8DFC] mb-4">
                   GENERATING CONTENT
-
                 </DialogTitle>
 
                 <motion.div

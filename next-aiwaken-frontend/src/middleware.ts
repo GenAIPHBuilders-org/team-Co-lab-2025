@@ -28,10 +28,11 @@ const PRIVATE_PATHS = [
   "/dashboard/course-quiz",
   "/dashboard/shop",
   "/dashboard/daily-quest",
-  "/dashboard/user-profile",
+  "/dashboard/achievements",
   "/dashboard/leaderboard",
   "/dashboard/referral",
   "/dashboard/all-topics",
+  "/dashboard/boss-battle",
 ];
 
 export async function middleware(request: NextRequest) {
