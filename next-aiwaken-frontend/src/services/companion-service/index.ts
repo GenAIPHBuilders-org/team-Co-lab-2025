@@ -40,6 +40,10 @@ class CompanionService {
       difficulty: params.difficulty,
     });
   }
+
+  public static async getCourseSuggestion(): Promise<AICourseSuggestionResponse> {
+    return await ApiService.get("/v1/companion/course/suggestion");
+  }
 }
 
 export default CompanionService;

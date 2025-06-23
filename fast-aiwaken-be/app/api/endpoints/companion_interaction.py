@@ -51,6 +51,7 @@ async def get_suggested_courses(
         learning_style=preferences.learning_style,
         age_range=preferences.age_range
     )
+    
     return result
     
 
@@ -110,7 +111,7 @@ async def get_course_structure(
     if not course_structure.get("sections"):
         raise HTTPException(status_code=500, detail="Generated course structure is invalid or incomplete.")
 
-    store_in_redis(redis_key, course_structure, ttl=3600)
+    store_in_redis(redis_key, course_structure, ttl=-1)
     print(f"Stored course structure in cache for {username}:{redis_key}")
     return course_structure
 
@@ -365,7 +366,8 @@ async def get_course_cache(
     cached_course = get_from_redis(redis_key)
     
     if not cached_course:
-        raise HTTPException(status_code=404, detail=f"No cached course found for {redis_key}") 
+        # Fallback to empty array if not found
+        return []
     return cached_course
 
 

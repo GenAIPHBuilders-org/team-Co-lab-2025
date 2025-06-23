@@ -21,6 +21,7 @@ import {
 } from "@/types/course"
 import { useAuthentication } from "@/contexts/auth-context"
 import { useCourseContext } from "@/contexts/course-context"
+import { TokenStorage } from "@/lib/token-storage"
 
 export default function CoursePage() {
   const [loadingContent, setLoadingContent] = useState<boolean>(false);
@@ -32,6 +33,7 @@ export default function CoursePage() {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({})
   const [expandedTopics, setExpandedTopics] = useState<Record<string, boolean>>({})
   const [selectedStep, setSelectedStep] = useState<string | null>(null)
+  const hasBossBattle = TokenStorage.getSummaryConclusion();
 
   const toggleSection = (sectionId: string) => {
     setExpandedSections((prev) => ({
@@ -277,15 +279,25 @@ export default function CoursePage() {
                   </motion.div>
                 ))}
               </motion.div>
-              <Button
-                variant="outline"
-                className="mt-4 w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80"
-                loading={loading}
-                disabled={loading}
-                onClick={handleCourseConclusion}
-              >
-                Boss Battle
-              </Button>
+              {hasBossBattle ? (
+                <Button
+                  variant="outline"
+                  className="mt-4 w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80"
+                  onClick={() => router.push("/dashboard/boss-battle")}
+                >
+                  Continue
+                </Button>
+              ) : (
+                <Button
+                  variant="outline"
+                  className="mt-4 w-full bg-[#9F8DFC] text-white hover:bg-[#9F8DFC]/80"
+                  loading={loading}
+                  disabled={loading}
+                  onClick={handleCourseConclusion}
+                >
+                  Boss Battle
+                </Button>
+              )}
             </CardContent>
           </Card>
         </div>

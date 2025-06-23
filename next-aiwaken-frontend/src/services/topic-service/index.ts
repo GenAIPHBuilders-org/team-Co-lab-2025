@@ -67,6 +67,7 @@ class TopicService {
     return await ApiService.put(
       `${process.env.NEXT_PUBLIC_API_URL}/v1/topics/${topic_id}/progress`,
       {
+        topic_id: topic_id,
         completion_percentage,
       }
     );
@@ -82,6 +83,10 @@ class TopicService {
 
   public static async getAllCompletedTopic(): Promise<TGetAllTopicResponse> {
     return await ApiService.get("/v1/topics/completed");
+  }
+
+  public static async getCourseSuggestion(): Promise<AICourseSuggestionResponse> {
+    return await ApiService.get("/v1/companion/course/suggestion");
   }
 }
 

@@ -20,4 +20,4 @@ def store_in_redis(key:str, value: Dict[str, Any], ttl: int =-1):
 # retrieve the data
 def get_from_redis(key: str) -> Dict[str, Any]:
     value = redis_client.get(key)
-    return json.loads(value) if value else None
+    return json.loads(value) if value else None 

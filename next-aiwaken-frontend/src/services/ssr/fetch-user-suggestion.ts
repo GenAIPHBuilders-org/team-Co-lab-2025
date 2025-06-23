@@ -22,6 +22,6 @@ export async function fetchSsrCourseSuggestion(): Promise<AICourseSuggestionResp
   if (!response) {
     return null;
   }
-
+  console.log("response.data", response.data);
   return response.data;
 }

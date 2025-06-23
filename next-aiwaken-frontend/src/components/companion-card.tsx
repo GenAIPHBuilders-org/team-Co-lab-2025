@@ -4,16 +4,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CompanionAvatar } from "./companion-avatar"
 import { motion } from "framer-motion"
-import { Sparkles, Heart, Target } from "lucide-react"
+import { Sparkles, Heart, Target, BookOpen } from "lucide-react"
 import { useAuthentication } from "@/contexts/auth-context"
+import { useGetCourseSuggestion } from "@/(features)/companion-action"
 
 interface CompanionCardProps {
   className?: string
 }
 
+
 export function CompanionCard({ className }: CompanionCardProps) {
   const { user } = useAuthentication();
   const companion = user?.preferences.companion
+  const { courseSuggestion, isLoading, error } = useGetCourseSuggestion();
+
 
   const companionData = {
     Gabriel: {
@@ -62,7 +66,7 @@ export function CompanionCard({ className }: CompanionCardProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Card className={`bg-gradient-to-br h-full from-gray-800/50 to-gray-900/50 border-gray-700/50 ${getCompanionColor(companion as string)} ${className}`}>
+      <Card className={`bg-gradient-to-br w-[40rem] h-full from-gray-800/50 to-gray-900/50 border-gray-700/50 ${getCompanionColor(companion as string)} ${className}`}>
         <CardHeader className="pb-3">
           <CardTitle className="text-lg flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-[#9F8DFC]" />
@@ -118,6 +122,36 @@ export function CompanionCard({ className }: CompanionCardProps) {
                 />
               </div>
             </div>
+          </div>
+
+          <div className="mt-6">
+            <div className="flex items-center gap-2 mb-2">
+              <BookOpen className="h-5 w-5 text-[#9F8DFC]" />
+              <span className="text-base font-semibold text-white">Course Suggestions</span>
+            </div>
+            {isLoading ? (
+              <p className="text-sm text-gray-400">Loading suggestions...</p>
+            ) : error ? (
+              <p className="text-sm text-red-400">Failed to load suggestions.</p>
+            ) : courseSuggestion ? (
+              <>
+                <p className="text-sm text-gray-300 mb-3">{courseSuggestion.intro}</p>
+                <div className="space-y-3">
+                  {courseSuggestion.suggestions.slice(0, 2).map((suggestion, idx) => (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-lg border border-gray-700/40 bg-gray-800/40"
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge className="text-xs bg-[#9F8DFC]/20 border-[#9F8DFC]/30 text-[#9F8DFC]">{suggestion.subject}</Badge>
+                        <span className="font-semibold text-white">{suggestion.course_title}</span>
+                      </div>
+                      <p className="text-xs text-gray-300">{suggestion.course_description}</p>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : null}
           </div>
         </CardContent>
       </Card>
