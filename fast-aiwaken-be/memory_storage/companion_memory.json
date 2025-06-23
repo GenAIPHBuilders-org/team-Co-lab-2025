@@ -2789,7 +2789,12 @@
     "content": [
       {
         "question_text": "Which of the following is a mixture?",
-        "options": ["Pure water", "Table salt (NaCl)", "Oxygen gas", "Air"],
+        "options": [
+          "Pure water",
+          "Table salt (NaCl)",
+          "Oxygen gas",
+          "Air"
+        ],
         "correct_answer": "Air",
         "explanation": "Air is a mixture of various gases, including nitrogen, oxygen, and others."
       },
@@ -2828,7 +2833,12 @@
       },
       {
         "question_text": "Which of the following is NOT a mixture?",
-        "options": ["Soil", "Milk", "Gold", "Seawater"],
+        "options": [
+          "Soil",
+          "Milk",
+          "Gold",
+          "Seawater"
+        ],
         "correct_answer": "Gold",
         "explanation": "Gold is a pure element, not a mixture of substances."
       }
@@ -3123,31 +3133,56 @@
     "content": [
       {
         "question_text": "Solve for x: x + 5 = 10",
-        "options": ["x = 5", "x = 15", "x = -5", "x = 0"],
+        "options": [
+          "x = 5",
+          "x = 15",
+          "x = -5",
+          "x = 0"
+        ],
         "correct_answer": "x = 5",
         "explanation": "Subtract 5 from both sides of the equation: x + 5 - 5 = 10 - 5, which simplifies to x = 5."
       },
       {
         "question_text": "Solve for y: y - 3 = 7",
-        "options": ["y = 4", "y = 10", "y = -4", "y = -10"],
+        "options": [
+          "y = 4",
+          "y = 10",
+          "y = -4",
+          "y = -10"
+        ],
         "correct_answer": "y = 10",
         "explanation": "Add 3 to both sides of the equation: y - 3 + 3 = 7 + 3, which simplifies to y = 10."
       },
       {
         "question_text": "Solve for a: 2a = 12",
-        "options": ["a = 6", "a = 14", "a = 24", "a = 10"],
+        "options": [
+          "a = 6",
+          "a = 14",
+          "a = 24",
+          "a = 10"
+        ],
         "correct_answer": "a = 6",
         "explanation": "Divide both sides of the equation by 2: 2a / 2 = 12 / 2, which simplifies to a = 6."
       },
       {
         "question_text": "Solve for b: b / 4 = 3",
-        "options": ["b = 12", "b = 7", "b = 1", "b = -1"],
+        "options": [
+          "b = 12",
+          "b = 7",
+          "b = 1",
+          "b = -1"
+        ],
         "correct_answer": "b = 12",
         "explanation": "Multiply both sides of the equation by 4: (b / 4) * 4 = 3 * 4, which simplifies to b = 12."
       },
       {
         "question_text": "Solve for z: 5z + 2 = 17",
-        "options": ["z = 3", "z = 19", "z = 15", "z = 1"],
+        "options": [
+          "z = 3",
+          "z = 19",
+          "z = 15",
+          "z = 1"
+        ],
         "correct_answer": "z = 3",
         "explanation": "Subtract 2 from both sides: 5z = 15. Then divide both sides by 5: z = 3."
       }
@@ -6052,6 +6087,269 @@
     "content": "Downloadable PDF: Practice_with_Present_Simple_Tense_Verbs.pdf",
     "material_type_suggestion": "pdf_document",
     "subject": "English",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Life?",
+    "step_title": "Introduction to Living Things",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to understand what makes something ALIVE!  Think of it like this:  Everything in the world can be divided into two big groups: living things and non-living things.  \n\n**What makes something ALIVE?**  Living things do some pretty amazing things that non-living things can't!  They have some super-powers, like:\n\n* **They GROW:**  Like a tiny sprout becoming a giant tree, or a tadpole turning into a frog!  You're growing too, even if you don't notice it every day.\n* **They MOVE:**  This doesn't always mean running around! Plants move towards the sun, and even tiny bacteria swim around!\n* **They REPRODUCE:**  That means they make more of themselves!  A mommy bird lays eggs that hatch into baby birds, and flowers make seeds that grow into new flowers.\n* **They RESPOND:**  Living things react to their surroundings. If you touch a plant, it might not run away, but it *might* slightly change its position!  If you touch a hot stove, you'll pull your hand away quickly – that's a response!\n* **They NEED ENERGY:**  All living things need food or sunlight for energy, just like you need to eat to play and grow.\n\n**Let's test it!**  Is a rock alive?  No!  It doesn't grow, move, reproduce, or respond much. It doesn't need energy in the same way a living thing does. But a cute little puppy?  YES!  It grows, moves, will hopefully reproduce someday, and responds to your cuddles!\n\nSo, the next time you see something, ask yourself: Does it grow, move, reproduce, respond, and need energy? If yes, it's probably a living thing!  Try it out – I dare you!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Life?",
+    "step_title": "Characteristics of Living Organisms",
+    "content": "C:\\Users\\brian\\team-Co-lab-2025\\fast-aiwaken-be\\generated_pdfs\\Characteristics_of_Living_Organisms.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "What is Life?",
+    "step_title": "Practice Worksheet: Identifying Living Things",
+    "content": "C:\\Users\\brian\\team-Co-lab-2025\\fast-aiwaken-be\\generated_pdfs\\Practice_Worksheet:_Identifying_Living_Things.pdf",
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Plant Life",
+    "step_title": "Parts of a Plant",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to learn about the parts of a plant!  Think of a plant like a tiny, amazing factory that makes its own food.  It has different parts, each with a special job:\n\n* **Roots:** These are usually hidden underground! They're like the plant's drinking straws, sucking up water and nutrients from the soil.  They also hold the plant firmly in the ground so it doesn't topple over!\n\n* **Stem:** This is like the plant's backbone.  It supports the plant, holding up the leaves and flowers.  It also acts like a highway, transporting water and nutrients from the roots up to the leaves and flowers, and food made by the leaves down to the rest of the plant.\n\n* **Leaves:** These are the plant's food factories! They use sunlight, water, and air to make food through a process called photosynthesis.  They're usually green because of a special ingredient called chlorophyll.\n\n* **Flower:**  (Not all plants have flowers!)  Flowers are usually colorful and pretty.  They're important for making seeds, which allow the plant to have babies (new plants!).\n\n* **Fruit:** (Not all plants have fruit!)  The fruit often contains the seeds. Think apples, oranges, tomatoes – they're all fruits!\n\n* **Seeds:** These are tiny little packages containing everything a new plant needs to grow.  They're like the plant's babies!\n\nCan you point to each part on a real plant, or even draw one and label it?  If you can, you've mastered the challenge!  Hee hee hee!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Plant Life",
+    "step_title": "Plant Life Cycle",
+    "content": "Hee hee hee!  Greetings, puny human! I'm Fizzwick, a mischievous goblin, and I've got a challenge for you!  Can you *truly* master the secrets of the Plant Life Cycle?  If you can, you might just escape my mischievous pranks!  Let's see...\n\n**The Amazing Plant Life Cycle!**\n\nPlants, unlike us goblins (who just… *appear*!), go through a really cool journey called a life cycle.  Think of it like a magical adventure with four main stages:\n\n1. **Seed:**  This is the beginning!  Imagine a tiny sleeping plant, all curled up and waiting for its chance to shine. Seeds come in all shapes and sizes – some are small like dust, others are big like beans! They need the right conditions – water, warmth, and soil – to wake up.  *Can you think of some seeds you've seen or eaten?* (Pause for the human to answer).\n\n\n2. **Sprout (or Germination):** Once the seed gets enough water and warmth, *poof!*  A tiny root pushes down into the soil, grabbing water and nutrients.  Then, a little shoot pushes *up* towards the sun, reaching for light! This is called germination.  *Imagine being a tiny sprout, pushing your way through the dark soil! What do you think it feels like?* (Pause for the human to answer).\n\n\n3. **Growth:**  Yay! The sprout is now a seedling!  It grows taller, stronger, and develops leaves.  The leaves are like solar panels – they use sunlight, water, and air to make food for the plant through a process called photosynthesis. It's like magic, but it's science!  *What do you think plants use the food they make for?* (Pause for the human to answer).\n\n\n4. **Reproduction:**  This is the final stage!  The grown plant produces flowers, fruits, or seeds.  Flowers attract insects and birds who help spread pollen, which is necessary for the plant to make new seeds.  Fruits protect the seeds and help them spread to new places. *Can you name some fruits or vegetables that contain seeds?* (Pause for the human to answer).  These new seeds then start the whole cycle all over again!\n\n\n**So, there you have it! The amazing plant life cycle!**\n\nDid you master it?  I'll give you one final, goblin-sized test!  Draw your own picture of a plant in each stage of its life cycle.  If you do it well enough... maybe, *just maybe*, I won't turn your homework into toadstools.  Hee hee hee!\n\n\n**(Note for the human:  Encourage the human to actively participate in answering the questions and drawing the pictures. This makes the learning process more interactive and fun!)**",
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "States of Matter",
+    "step_title": "Solids, Liquids, and Gases",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to understand the three main states of matter: solids, liquids, and gases!  Think of it like this:\n\n**1. Solids:** Imagine a tightly packed group of goblins all holding hands, marching in a neat line.  They can't move around much, they keep their shape, and they take up a specific amount of space.  That's a solid!  Like a rock, a toy, or even... a goblin-shaped cookie!  They have a definite shape and volume.\n\n**2. Liquids:** Now imagine those goblins letting go of hands and jostling around, still close together but able to slide past each other. They fill the bottom of whatever container they're in. That's a liquid!  Like water, juice, or even melted goblin gold!  They have a definite volume but take the shape of their container.\n\n**3. Gases:**  Okay, now those goblins are bouncing all over the place, zooming around in every direction! They are spread far apart and fill any space available. That's a gas!  Like air, the wind, or even... goblin farts (don't smell them!). They don't have a definite shape or volume.\n\nCan you think of other examples of solids, liquids, and gases?  Let's see how clever you are!  If you get it right, you win... nothing! But you'll have conquered my goblin challenge! Hee hee hee!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "States of Matter",
+    "step_title": "Interactive Quiz: States of Matter",
+    "content": [
+      {
+        "question_text": "Which state of matter has a definite shape and volume?",
+        "options": [
+          "Liquid",
+          "Gas",
+          "Solid",
+          "Plasma"
+        ],
+        "correct_answer": "Solid",
+        "explanation": "Solids have a fixed shape and volume because their particles are closely packed and have strong intermolecular forces."
+      },
+      {
+        "question_text": "Which state of matter has a definite volume but takes the shape of its container?",
+        "options": [
+          "Solid",
+          "Gas",
+          "Plasma",
+          "Liquid"
+        ],
+        "correct_answer": "Liquid",
+        "explanation": "Liquids have a definite volume because their particles are close together, but they can move around and take the shape of their container."
+      },
+      {
+        "question_text": "Which state of matter has neither a definite shape nor a definite volume?",
+        "options": [
+          "Solid",
+          "Liquid",
+          "Plasma",
+          "Gas"
+        ],
+        "correct_answer": "Gas",
+        "explanation": "Gases have neither a definite shape nor volume because their particles are far apart and move randomly."
+      },
+      {
+        "question_text": "Which state of matter is made up of highly energized ions and electrons?",
+        "options": [
+          "Solid",
+          "Liquid",
+          "Gas",
+          "Plasma"
+        ],
+        "correct_answer": "Plasma",
+        "explanation": "Plasma is a state of matter where electrons are stripped from atoms, forming ions and free electrons. This occurs at very high temperatures."
+      },
+      {
+        "question_text": "The process of a liquid turning into a gas is called:",
+        "options": [
+          "Freezing",
+          "Melting",
+          "Condensation",
+          "Vaporization"
+        ],
+        "correct_answer": "Vaporization",
+        "explanation": "Vaporization is the phase transition from liquid to gas.  This can occur through boiling or evaporation."
+      }
+    ],
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Gravity",
+    "step_title": "Understanding Gravity",
+    "content": "Hee hee hee!  Greetings, puny human! I'm Grungle, a mischievously clever goblin, and I challenge you to understand the mighty power of... *GRAVITY!*  Think you can handle it?  Let's see...\n\n**Understanding Gravity:  The Great Downward Pull!**\n\nImagine you're holding a juicy, delicious apple (my favorite!).  You let go... *WHOOSH!*  It falls to the ground, right?  That, my friend, is gravity in action!\n\nGravity is a **force**, an invisible pull that attracts everything towards each other.  Think of it like a giant, invisible net stretching across the entire universe, pulling everything closer.\n\n**Let's do a little experiment!**\n\n1. **Find a small, light object:** A feather, a crumpled piece of paper, a tiny toy – anything will do!\n2. **Hold it up:** Feel the object in your hand.  You're using your own strength to *resist* gravity.\n3. **Let it go!**  *Whoosh!*  Gravity takes over!  It pulls the object down to the ground.\n\n**Why does it fall down?**\n\nThe Earth, our giant planet, is incredibly massive.  Its enormous size creates a super strong gravitational pull.  That's why everything on Earth is pulled towards its center – the ground!\n\n**But...wait!**  The apple pulls on the Earth too!  It's just that the Earth is SO much bigger and stronger that we don't notice the apple pulling *it*.  It's like a tiny ant trying to pull a huge elephant – the ant won't budge the elephant, but the elephant will definitely feel the ant!\n\n**Bigger objects = Stronger pull:**  The more massive something is, the stronger its gravitational pull.  That's why the Earth pulls us down, but the Moon pulls the Earth and the oceans, creating tides!\n\n**Think about it:**\n\n* Why do astronauts float in space?  Because they're far away from the strong gravity of the Earth.  Space is almost gravity-free!\n* Why do things fall faster from high up than if you drop them from your hand?  Because gravity has more time to pull them down!\n\n\nSo, human, have you mastered the mighty power of gravity?  I hope so!  If not, try the experiments again, and think about it some more.  Remember, even goblins need to understand gravity to avoid falling into treacherous pits!  Hee hee hee!  *Grungle vanishes in a puff of green smoke*",
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Gravity",
+    "step_title": "Gravity's Effect on Objects",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to understand gravity!  Think of gravity as an invisible force that pulls everything towards the ground.  Everything!  You, me, that juicy apple you're eyeing... even me, despite my attempts to float on magic mushrooms (they don't work, by the way!).\n\nImagine you're holding a bouncy ball.  What happens when you let go?  *Whoosh!*  It falls down, right? That's gravity at work! The Earth, being super duper massive, pulls the ball towards it.\n\nThe heavier something is, the stronger gravity pulls it.  A bowling ball will fall faster than a feather (unless you do it in a vacuum, where there's no air to slow the feather down – that's another magic trick!).\n\nLet's try a little experiment! Find a small object – a marble, a button, anything. Drop it from different heights. What do you notice? The higher you drop it from, the faster it falls before it hits the ground! That’s because gravity has more time to pull it down.\n\nSo remember: Gravity is a pulling force that makes things fall towards the ground. The heavier the object, the stronger the pull, and the higher it falls from, the faster it goes!  Have fun exploring this invisible force!",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "",
+    "topic_title": "Weather",
+    "step_title": "Types of Weather",
+    "content": "Hee hee hee!  I'm a mischievous goblin, and I challenge you to learn about weather!  Weather is what's happening in the sky above us right now – sunny, rainy, windy, or something else entirely!\n\nThere are many types of weather, but let's focus on some of the main ones:\n\n* **Sunny:**  Think bright, warm sunshine!  Perfect for playing outside.  ☀️\n* **Rainy:**  When the clouds get too full of water, they let it pour down as rain!  Remember your umbrella! ☔\n* **Cloudy:**  Lots of fluffy clouds in the sky.  Sometimes cloudy days are still nice, but sometimes they mean rain is coming. ☁️\n* **Windy:**  When the air moves quickly, we feel wind.  Sometimes it's a gentle breeze, and sometimes it's a strong gust that can blow things around! 💨\n* **Snowy:** When it's very cold, the water in the clouds freezes into tiny ice crystals and falls as snow! ❄️\n\nCan you think of any other types of weather?  Maybe you've seen a thunderstorm with lightning and thunder ⚡️⛈️ or even a foggy day where it's hard to see!  Weather changes all the time, and it's fun to watch and learn about it!\n\nNow, let's see if you can match these weather types with pictures!  I'll show you some pictures later and you can tell me what type of weather each one shows.",
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "What is Life?",
+    "step_title": "Introduction to Living Things",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "What is Life?",
+    "step_title": "Characteristics of Living Organisms",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "What is Life?",
+    "step_title": "Practice Worksheet: Identifying Living Things",
+    "content": null,
+    "material_type_suggestion": "pdf_document",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "Plant Life",
+    "step_title": "Parts of a Plant",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "Plant Life",
+    "step_title": "Photosynthesis Explained",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Introduction to Life Science (Biology)",
+    "topic_title": "Plant Life",
+    "step_title": "Plant Life Cycle",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Exploring Matter (Chemistry)",
+    "topic_title": "States of Matter",
+    "step_title": "Solids, Liquids, and Gases",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Exploring Matter (Chemistry)",
+    "topic_title": "States of Matter",
+    "step_title": "Changes in State",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Exploring Matter (Chemistry)",
+    "topic_title": "States of Matter",
+    "step_title": "Interactive Quiz: States of Matter",
+    "content": null,
+    "material_type_suggestion": "interactive_quiz_placeholder",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Forces and Motion (Physics)",
+    "topic_title": "Gravity",
+    "step_title": "Understanding Gravity",
+    "content": null,
+    "material_type_suggestion": "text",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Forces and Motion (Physics)",
+    "topic_title": "Gravity",
+    "step_title": "Gravity's Effect on Objects",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Our Earth and Space",
+    "topic_title": "Weather",
+    "step_title": "Types of Weather",
+    "content": null,
+    "material_type_suggestion": "text_with_image",
+    "subject": "Science",
+    "difficulty": "beginner"
+  },
+  {
+    "section_title": "Our Earth and Space",
+    "topic_title": "Weather",
+    "step_title": "The Water Cycle",
+    "content": null,
+    "material_type_suggestion": "youtube_video",
+    "subject": "Science",
     "difficulty": "beginner"
   }
 ]

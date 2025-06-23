@@ -1,25 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useGenerateCourse } from "@/(features)/course-action";
-import { Topic } from "@/types/topic";
-import { topics } from "@/constants/topics";
 import { TopicCard } from "./topic-card";
 import { TopicModal } from "./topic-modal";
 import { motion } from "framer-motion";
 import AnimationVariants from "@/lib/animations";
+import { useRouter } from "next/navigation";
+import { Eye } from "lucide-react";
+import { TTopics } from "@/services/topic-service";
+import { useFetchAllTopics } from "@/(features)/topic-action";
+import { TokenStorage } from "@/lib/token-storage";
+import { CourseCard } from "./course-card";
+import { Course } from "@/app/dashboard/course-structure/mock";
 
 export function TopicSelectionCard() {
+  const [progressValue, setProgressValue] = useState<number | null>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const courseData = TokenStorage.getCourseData();
+  const { allAvailableTopic } = useFetchAllTopics();
   const { generateCourseAsync, isPending } = useGenerateCourse();
-  const [selectedTopic,] = useState<number | null>(null);
+  const [selectedTopic,] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [confirmingTopic, setConfirmingTopic] = useState<Topic | null>(null);
+  const [confirmingTopic, setConfirmingTopic] = useState<TTopics | null>(null);
+  const router = useRouter();
 
-  const handleTopicClick = (topic: Topic) => {
+  const topics = allAvailableTopic.topics.slice(0, 4);
+  console.log(topics);
+  const handleTopicClick = (topic: TTopics) => {
     if (!topic.locked) {
       setConfirmingTopic(topic);
       setModalOpen(true);
@@ -36,19 +49,32 @@ export function TopicSelectionCard() {
     }
   };
 
+  const handleViewAllTopics = () => {
+    router.push("/dashboard/all-topics");
+  };
+
+
+  useEffect(() => {
+    setIsLoaded(true)
+    const timer = setTimeout(() => {
+      setProgressValue(40)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
 
   return (
     <React.Fragment>
-      <Card className="bg-gray-900 p-6 rounded-lg relative shadow-lg flex-2 h-90 overflow-hidden">
+      <Card className="bg-gray-900 p-6 rounded-lg relative shadow-lg flex-2 overflow-hidden">
         <div className="absolute -top-6 -right-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
         <div className="absolute -top-6 -left-6 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl"></div>
         <CardContent className="p-6">
           <motion.div
             className="flex items-center justify-between mb-4"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial="hidden"
             transition={{ delay: 0.2, duration: 0.5 }}
             variants={AnimationVariants.itemVariants}
+            animate={isLoaded ? "visible" : "hidden"}
           >
             <motion.h2
               className="text-2xl font-bold"
@@ -58,7 +84,7 @@ export function TopicSelectionCard() {
               Educational Topics
             </motion.h2>
             <motion.div
-              className="topic-badge"
+              className="flex items-center gap-2"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
@@ -67,12 +93,17 @@ export function TopicSelectionCard() {
                 type: "spring",
                 stiffness: 200,
               }}
-              whileHover={{
-                scale: 1.1,
-                boxShadow: "0 0 8px rgba(159, 141, 252, 0.5)",
-              }}
             >
               <span className="text-xs text-muted-foreground">Pick one</span>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleViewAllTopics}
+                className="text-[#9F8DFC] hover:text-[#9F8DFC]/80 hover:bg-[#9F8DFC]/10"
+              >
+                <Eye className="h-4 w-4 mr-1" />
+                View All
+              </Button>
             </motion.div>
           </motion.div>
           <motion.div
@@ -86,7 +117,7 @@ export function TopicSelectionCard() {
             </span>
           </motion.div>
           <motion.div
-            className="grid grid-cols-2 gap-2"
+            className="grid grid-cols-2 gap-4 h-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
@@ -100,7 +131,11 @@ export function TopicSelectionCard() {
               />
             ))}
           </motion.div>
+
         </CardContent>
+        {courseData && (
+          <CourseCard courseData={courseData as Course} progressValue={progressValue as number} />
+        )}
       </Card>
 
       <TopicModal

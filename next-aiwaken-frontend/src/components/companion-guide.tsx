@@ -1,6 +1,9 @@
+import { useAuthentication } from "@/contexts/auth-context";
 import { CompanionAvatar } from "./companion-avatar";
 
 export function CompanionGuide({ companion }: { companion: string }) {
+  const { user } = useAuthentication();
+
   return (
     <div className="flex items-center gap-4 mb-6 w-full">
       <div className="relative">
@@ -12,7 +15,7 @@ export function CompanionGuide({ companion }: { companion: string }) {
       <div className="flex flex-col">
         <span className="text-lg font-bold text-white">{companion}</span>
         <span className="text-xs text-gray-400">Your AI Learning Companion</span>
-        <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level 1</span>
+        <span className="text-xs text-[#9F8DFC] mt-1 font-semibold">Level {user?.stats.level}</span>
       </div>
     </div>
   )

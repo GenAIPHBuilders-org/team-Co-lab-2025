@@ -4,22 +4,16 @@ import confetti from "canvas-confetti";
 export type QuizState = "intro" | "playing" | "completed";
 
 export interface QuizQuestion {
+  monster_intro: string;
   question_text: string;
   options: string[];
   correct_answer: string;
   explanation: string;
-}
-
-export interface QuizData {
-  quiz: {
-    quiz: QuizQuestion[];
-  };
-  summary?: string;
-  topics_covered?: string[];
+  incorrect_explanation: Record<string, string>;
 }
 
 export interface UseQuizStateProps {
-  quizData: QuizData;
+  quizData: QuizQuestion[];
   onComplete?: (score: number, totalQuestions: number) => void;
 }
 
@@ -33,8 +27,8 @@ export function useQuizState({ quizData, onComplete }: UseQuizStateProps) {
   const [score, setScore] = useState(0);
   const [damageAnimation, setDamageAnimation] = useState(false);
 
-  const currentQuestion = quizData.quiz.quiz[currentQuestionIndex];
-  const totalQuestions = quizData.quiz.quiz.length;
+  const currentQuestion = quizData[currentQuestionIndex];
+  const totalQuestions = quizData.length;
 
   const handleAnswerSelect = useCallback(
     (answer: string) => {

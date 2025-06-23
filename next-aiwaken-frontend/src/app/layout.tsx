@@ -63,7 +63,7 @@ export default async function RootLayout({
             <AuthenticationProvider initialUser={data}>
               {!data?.user.is_active ? (
                 <React.Fragment>
-                  <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 flex items-center justify-center p-4">
+                  <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 flex items-center justify-center p-4 ">
                     <Suspense fallback={
                       <Loading />
                     }>
@@ -78,7 +78,7 @@ export default async function RootLayout({
                   }
                 >
                   <CompanionProvider>
-                    <AuthLayout>
+                    <AuthLayout isAuthenticated={data?.user.is_active}>
                       {children}
                     </AuthLayout>
                   </CompanionProvider>

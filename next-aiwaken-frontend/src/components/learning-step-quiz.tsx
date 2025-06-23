@@ -4,23 +4,24 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { Zap, Award, RefreshCcw, Sparkles, X, HelpCircle } from "lucide-react"
 import { TokenStorage } from "@/lib/token-storage"
-import { useQuizState, QuizData } from "@/hooks/use-quiz-state"
+import { useQuizState, QuizQuestion } from "@/hooks/use-quiz-state"
 import { QuizBoss } from "@/components/quiz/quiz-boss"
-import { QuizQuestion } from "@/components/quiz/quiz-question"
+import { QuizQuestion as QuizQuestionComponent } from "@/components/quiz/quiz-question"
 import { QuizExplanation } from "@/components/quiz/quiz-explanation"
+import { IncorrectExplanation } from "@/components/quiz/incorrect-explanation"
 import { CompanionProvider, useCompanion } from "@/contexts/companion-context"
 import { CompanionAvatar } from "@/components/companion-avatar"
 import { motion, AnimatePresence } from "framer-motion"
 import { MouseEvent, useCallback, useEffect, useState, useRef } from "react"
 import { useGetMotivation } from "@/(features)/companion-action"
 import { useIdleDetection } from "@/hooks/use-idle-detection"
+import { TypingAnimation } from "./magicui/typing-animation"
+import { useAuthentication } from "@/contexts/auth-context"
 
-export function LearningStepQuiz() {
-  const quizData = TokenStorage.getLearningStepQuiz()
-  const companion = TokenStorage.getUserCompanion()
-
-  if (!quizData) return null
-
+export function LearningStepQuiz({ quizData }: { quizData: QuizQuestion[] }) {
+  const { user } = useAuthentication();
+  const companion = user?.preferences.companion
+  if (!quizData || !companion) return null
   return (
     <CompanionProvider>
       <LearningStepQuizContent quizData={quizData} companion={companion as string} />
@@ -28,7 +29,7 @@ export function LearningStepQuiz() {
   )
 }
 
-function LearningStepQuizContent({ quizData, companion }: { quizData: QuizData; companion: string }) {
+export function LearningStepQuizContent({ quizData, companion }: { quizData: QuizQuestion[]; companion: string }) {
   const {
     currentQuestion,
     currentQuestionIndex,
@@ -71,8 +72,6 @@ function LearningStepQuizContent({ quizData, companion }: { quizData: QuizData; 
     difficulty: courseData.difficulty
   } : undefined
 
-  //fix the bug for motivation popup debouncing does not work
-
   const showMotivationPopup = useCallback(async () => {
     if (isCallingRef.current || !gameState || isIdle) return
     isCallingRef.current = true
@@ -107,7 +106,7 @@ function LearningStepQuizContent({ quizData, companion }: { quizData: QuizData; 
         if (mounted && gameState === "playing") {
           showMotivationPopup()
         }
-      }, 1000) // 1 second debounce
+      }, 30000)
     }
 
     if (gameState === "playing" && mounted) {
@@ -168,29 +167,57 @@ function LearningStepQuizContent({ quizData, companion }: { quizData: QuizData; 
 
         {gameState === "playing" && (
           <>
-            <QuizBoss
-              bossHealth={bossHealth}
-              currentQuestionIndex={currentQuestionIndex}
-              totalQuestions={totalQuestions}
-              damageAnimation={damageAnimation}
-              getBossState={getBossState}
-            />
-            <QuizQuestion
-              question={currentQuestion}
-              selectedAnswer={selectedAnswer}
-              isCorrect={isCorrect}
-              onAnswerSelect={handleAnswerSelect}
-              onNextQuestion={handleNextQuestion}
-              currentQuestionIndex={currentQuestionIndex}
-              totalQuestions={totalQuestions}
-              courseData={courseInfo}
-            />
-            <QuizExplanation
-              explanation={currentQuestion.explanation}
-              companion={companion}
-              showExplanation={showExplanation}
-            />
-
+            <div className="w-[45rem] mx-auto ">
+              {currentQuestion.monster_intro && (
+                <div className="mb-4">
+                  <Card className="bg-gradient-to-r from-purple-900/80 to-indigo-900/80 border-purple-400 text-white shadow-lg">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        Your AI Opponent is here!
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-purple-100 text-md">
+                        <TypingAnimation duration={20} className="text-blue-100 text-md">
+                          {currentQuestion.monster_intro}
+                        </TypingAnimation>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+              <QuizBoss
+                bossHealth={bossHealth}
+                currentQuestionIndex={currentQuestionIndex}
+                totalQuestions={totalQuestions}
+                damageAnimation={damageAnimation}
+                getBossState={getBossState}
+              />
+              <QuizQuestionComponent
+                question={currentQuestion}
+                selectedAnswer={selectedAnswer}
+                isCorrect={isCorrect}
+                onAnswerSelect={handleAnswerSelect}
+                onNextQuestion={handleNextQuestion}
+                currentQuestionIndex={currentQuestionIndex}
+                totalQuestions={totalQuestions}
+                courseData={courseInfo}
+              />
+              {isCorrect === false ? (
+                <IncorrectExplanation
+                  incorrectExplanation={currentQuestion.incorrect_explanation}
+                  selectedAnswer={selectedAnswer as string}
+                  companion={companion}
+                  showExplanation={showExplanation}
+                />
+              ) : (
+                <QuizExplanation
+                  explanation={currentQuestion.explanation}
+                  companion={companion}
+                  showExplanation={showExplanation}
+                />
+              )}
+            </div>
             <AnimatePresence>
               {showMotivation && (
                 <motion.div

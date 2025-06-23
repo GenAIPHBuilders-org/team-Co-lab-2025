@@ -23,10 +23,10 @@ export function CourseCard({
   }
 
   return (
-    <motion.div variants={AnimationVariants.itemVariants} className="w-full md:col-span-2">
+    <motion.div variants={AnimationVariants.itemVariants} className="w-full ">
       {courseData && progressValue !== null && (
         <Card className="flex-2 overflow-hidden bg-gray-900 p-6 rounded-lg relative shadow-lg hover:shadow-lg transition-shadow duration-300">
-          <div className="h-64 bg-muted/30 relative">
+          <div className="h-48 bg-muted/30 relative">
             <Image
               src={
                 (() => {

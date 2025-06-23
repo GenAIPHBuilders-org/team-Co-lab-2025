@@ -18,7 +18,7 @@ export function QuizBoss({
   getBossState,
 }: QuizBossProps) {
   return (
-    <div className="mb-6 bg-purple-950/80 rounded-lg p-4 border border-purple-500">
+    <div className={`mb-6 ${getBossState() === "critical" ? "bg-red-900/80" : getBossState() === "weakened" ? "bg-yellow-900/80" : "bg-purple-950/80"} rounded-lg p-4 border border-purple-500 max-w-7xl mx-auto`}>
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center gap-2">
           <Avatar
@@ -47,18 +47,12 @@ export function QuizBoss({
       <div className="relative">
         <Progress
           value={bossHealth}
-          className={`h-4 ${damageAnimation ? "animate-pulse" : ""}`}
-          style={
-            {
-              background: "rgba(88, 28, 135, 0.3)",
-              "--tw-progress-fill":
-                bossHealth > 60
-                  ? "linear-gradient(90deg, #9333ea, #6366f1)"
-                  : bossHealth > 20
-                    ? "linear-gradient(90deg, #eab308, #f97316)"
-                    : "linear-gradient(90deg, #ef4444, #b91c1c)",
-            } as React.CSSProperties
-          }
+          className={`h-4 ${damageAnimation ? "animate-pulse" : ""} ${getBossState() === "critical"
+              ? "bg-red-900 [&>div]:bg-gradient-to-r [&>div]:from-red-500 [&>div]:to-red-700"
+              : getBossState() === "weakened"
+                ? "bg-yellow-900 [&>div]:bg-gradient-to-r [&>div]:from-yellow-400 [&>div]:to-orange-400"
+                : "bg-purple-900 [&>div]:bg-gradient-to-r [&>div]:from-purple-500 [&>div]:to-indigo-500"
+            }`}
         />
         <span className="absolute top-0 right-2 text-xs font-bold text-white">{Math.round(bossHealth)}%</span>
       </div>

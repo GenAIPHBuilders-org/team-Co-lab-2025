@@ -1,12 +1,10 @@
-import { Lock } from "lucide-react";
+import { Atom, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { TopicCardProps } from "@/types/topic";
+import { Difficulty, TopicCardProps } from "@/types/topic";
 import { difficultyMap } from "@/constants/topics";
 
 export function TopicCard({ topic, isSelected, onClick }: TopicCardProps) {
-  const Icon = topic.icon;
-
   const topicButton = (
     <Button
       variant="outline"
@@ -19,7 +17,7 @@ export function TopicCard({ topic, isSelected, onClick }: TopicCardProps) {
       disabled={topic.locked}
     >
       <div className={cn("rounded-full p-2", topic.color)}>
-        <Icon />
+        <Atom />
       </div>
       <span className="text-xs font-medium text-[#9F8DFC]">
         {topic.name}
@@ -33,11 +31,11 @@ export function TopicCard({ topic, isSelected, onClick }: TopicCardProps) {
         <div
           className={cn(
             "absolute top-1 right-1 px-1.5 py-0.5 rounded-sm text-[10px] font-medium",
-            difficultyMap[topic.difficulty].color,
-            difficultyMap[topic.difficulty].textColor
+            difficultyMap[topic.difficulty as Difficulty].color,
+            difficultyMap[topic.difficulty as Difficulty].textColor
           )}
         >
-          {difficultyMap[topic.difficulty].label}
+          {difficultyMap[topic.difficulty as Difficulty].label}
         </div>
       )}
     </Button>

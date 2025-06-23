@@ -13,6 +13,9 @@ from app.config import settings
 from app.exceptions import DuplicateEmailError, DuplicateUsernameError, InvalidCredentialsError, InactiveUserError
 from app.services.preferences_service import PreferencesService
 from app.services.stats_service import StatsService
+from app.services.topic_service import TopicService
+from app.models.user_achievements_model import UserAchievements as UserAchievement
+from typing import List
 
 router = APIRouter(tags=["auth"])
 
@@ -76,12 +79,11 @@ async def get_current_user_info(
     db: Session = Depends(get_db)
 ) -> TokenizedUser:
     access_token = create_access_token(subject=current_user.id)
-
+    
     preferences_service = PreferencesService(db)
     stats_service = StatsService(db)
     preferences = None
     stats = None
-    
     try:
         stats = stats_service.get_user_stats(current_user.id)
         preferences = await preferences_service.get_user_preferences(current_user.id)
@@ -93,7 +95,7 @@ async def get_current_user_info(
         "access_token": access_token,
         "token_type": "Bearer",
         "preferences": preferences,
-        "stats": stats
+        "stats": stats,
     }
 
 @router.post("/set-new-user-status", response_model=User)

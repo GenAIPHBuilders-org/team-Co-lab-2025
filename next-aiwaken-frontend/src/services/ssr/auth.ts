@@ -25,6 +25,6 @@ export async function getServerAuthSession(): Promise<TExtendedUser | null> {
   }
 
   const data = await response.json();
-
+  console.log(data);
   return data;
 }

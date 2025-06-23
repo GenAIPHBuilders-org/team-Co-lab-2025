@@ -1,4 +1,4 @@
-import { Course } from "@/app/dashboard/course-structure/mock";
+import { AIContentGenerationResponse } from "@/types/course";
 import Cookies from "js-cookie";
 
 export class TokenStorage {
@@ -28,11 +28,7 @@ export class TokenStorage {
     localStorage.setItem("user_companion", companion);
   }
 
-  static getUserCompanion(): string | null {
-    return localStorage.getItem("user_companion") || null;
-  }
-
-  static getCourseData(): Course | null {
+  static getCourseData(): AIContentGenerationResponse | null {
     if (typeof window === "undefined") {
       return null;
     }

@@ -6,8 +6,9 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Clock, Trophy, Star, Target, Flame, Gift, Crown } from "lucide-react"
 import { motion } from "framer-motion"
+import { ComingSoon } from "@/components/coming-soon"
+import { useState } from "react"
 
-// Mock data for daily quest
 const dailyQuest = {
   title: "Python Master Challenge",
   description: "Complete 3 Python coding exercises with 100% accuracy",
@@ -23,6 +24,12 @@ const dailyQuest = {
 }
 
 export default function DailyQuestPage() {
+  const [showComingSoon] = useState(true)
+
+  if (showComingSoon) {
+    return <ComingSoon />
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-gray-950 text-white">
       <div className="container mx-auto mt-12 py-12 px-4 space-y-8">

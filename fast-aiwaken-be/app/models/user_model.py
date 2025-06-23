@@ -17,7 +17,9 @@ class User(Base):
     is_new_user = Column(Boolean, default=True)
     preferences = relationship("UserPreferences", back_populates="user", uselist=False)
     stats = relationship("UserStats", back_populates="user", uselist=False)
-
+    topic_progress = relationship("UserTopicProgress", back_populates="user")
+    achievements = relationship("UserAchievements", back_populates="user")
+    
 class LoginRequest(BaseModel):
     username: str
     password: str

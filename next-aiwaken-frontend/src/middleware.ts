@@ -31,6 +31,7 @@ const PRIVATE_PATHS = [
   "/dashboard/user-profile",
   "/dashboard/leaderboard",
   "/dashboard/referral",
+  "/dashboard/all-topics",
 ];
 
 export async function middleware(request: NextRequest) {

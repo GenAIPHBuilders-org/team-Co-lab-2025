@@ -1,0 +1,406 @@
+{
+  "course_title": "Arithmancy: A Magical Journey Through Math",
+  "course_description": "Embark on an enchanting adventure through the world of mathematics! Learn fundamental concepts through magical spells, mythical creatures, and captivating stories. This course is designed for beginners, focusing on clear explanations and engaging activities to build a solid mathematical foundation.",
+  "subject": "mathematics",
+  "difficulty": "easy",
+  "sections": [
+    {
+      "section_id": "section_1",
+      "section_title": "The Realm of Numbers: Mastering Whole Numbers",
+      "topics": [
+        {
+          "topic_id": "topic_1_1",
+          "topic_title": "Understanding Whole Numbers",
+          "learning_steps": [
+            {
+              "step_id": "step_1_1_1",
+              "step_title": "Introduction to Whole Numbers (0, 1, 2, 3...): Counting with Unicorns!",
+              "material_type_suggestion": "text_with_image",
+              "content": {
+                "type": "text_with_image",
+                "content": "Welcome, Brian James, to the enchanting world of whole numbers!  Imagine a land filled with magical unicorns. Each unicorn represents a whole number.  Whole numbers are like counting pebbles, but instead of pebbles, we have these magnificent creatures. We start with zero, representing the absence of unicorns – a peaceful meadow before they arrive. Then comes one unicorn, then two, then three, and so on.  Each number represents a specific quantity of these mystical beings.  There's no end to how many unicorns we can count; the numbers go on forever, just like the endless possibilities in our magical world.  These numbers, 0, 1, 2, 3, and beyond, are our whole numbers. They're the foundation for all the incredible mathematical spells and adventures we'll embark on together.  For instance, Brian James, imagine counting the number of stars in the night sky - even if there are so many you can't count them all, they are still a whole number.  What's important is understanding the concept of how many unicorns (or stars, or anything we're counting!) we have.\n\nThe really cool thing about whole numbers is that they're always whole – you'll never find half a unicorn in our magical realm!  We're dealing with complete, indivisible units, making them perfect for building the groundwork for more advanced mathematical concepts later on.",
+                "accompanying_text": null,
+                "image_description": "A vibrant illustration depicting a meadow filled with unicorns.  In the foreground, there are three unicorns clearly visible, with a larger number of unicorns gradually fading into the background, suggesting the infinite continuation of whole numbers. The meadow is lush and colorful, with flowers and sparkling streams, creating a magical and welcoming atmosphere. The unicorns are playful and friendly, encouraging a sense of wonder and curiosity.  In the far distance, a rainbow arches, symbolizing a continuous progression to infinity.  Above the unicorns, a number line labeled '0, 1, 2, 3, ... ∞' elegantly arcs above the meadow to connect the visual elements with the abstract mathematical concept. The overall style of the image should be whimsical and inviting, perfect for engaging a young learner like Brian James.",
+                "video_details": null,
+                "pdf_description": null
+              }
+            },
+            {
+              "step_id": "step_1_1_2",
+              "step_title": "Practice: Counting Magical Creatures!",
+              "material_type_suggestion": "interactive_quiz_placeholder",
+              "content": {
+                "type": "interactive_quiz_placeholder",
+                "content": [
+                  {
+                    "monster_intro": "Hee hee... Hello Brian James. I am Vaporion, the spirit of the unseen! I’ve mastered the secrets of gases and vapors. Now, YOU must answer my question... or be turned into mist!",
+                    "question_text": "If I have 3 puffs of smoke, and I add 5 more, how many puffs of smoke do I have in total?",
+                    "options": ["5", "8", "3", "15"],
+                    "correct_answer": "8",
+                    "explanation": "You started with 3 puffs and added 5 more.  Adding them together (3 + 5) gives you a total of 8 puffs of smoke.",
+                    "incorrect_explanation": {
+                      "5": "This is only the number of puffs added, not the total.",
+                      "3": "This is the starting number of puffs, you need to add the additional puffs.",
+                      "15": "This is the result of multiplying, not adding, 3 and 5."
+                    }
+                  },
+                  {
+                    "monster_intro": "Greetings, Brian James, I am Numeron, the guardian of numbers! I exist as a never-ending sequence of digits.  Solve my riddle or become trapped within my infinite count!",
+                    "question_text": "What whole number comes immediately after 12?",
+                    "options": ["10", "11", "13", "14"],
+                    "correct_answer": "13",
+                    "explanation": "Whole numbers are counting numbers,  so after 12, the next whole number is 13.",
+                    "incorrect_explanation": {
+                      "10": "This number comes before 12.",
+                      "11": "This number also comes before 12.",
+                      "14": "This number comes after 13."
+                    }
+                  },
+                  {
+                    "monster_intro": "Raaaaawr! I am Countcula, the number-crunching vampire! I feast on the energy of unsolved mathematical problems. Answer my question, or I'll drain your mathematical essence!",
+                    "question_text": "If you have 7 bats and 2 fly away, how many bats remain?",
+                    "options": ["9", "5", "2", "7"],
+                    "correct_answer": "5",
+                    "explanation": "Subtracting the bats that flew away (7 - 2) leaves you with 5 bats.",
+                    "incorrect_explanation": {
+                      "9": "This is the result of adding instead of subtracting.",
+                      "2": "This is the number of bats that flew away, not the number remaining.",
+                      "7": "This is the original number of bats, before any flew away."
+                    }
+                  },
+                  {
+                    "monster_intro": "Hello Brian James, I'm Addicus, the friendly addition adder! I love adding numbers together – it’s simply delightful! Solve my sum or get lost in the magical maze of numbers!",
+                    "question_text": "What is the sum of 4 and 6?",
+                    "options": ["10", "2", "24", "12"],
+                    "correct_answer": "10",
+                    "explanation": "Adding 4 and 6 together (4 + 6) equals 10.",
+                    "incorrect_explanation": {
+                      "2": "This is the result of subtraction, not addition.",
+                      "24": "This is the result of multiplication, not addition.",
+                      "12": "This is an incorrect sum of 4 and 6."
+                    }
+                  },
+                  {
+                    "monster_intro": "Brian James, I am Subtracia, the shadowy subtractor! I love taking things away...especially incorrect answers! Answer my question correctly, or face the darkness!",
+                    "question_text": "If you have 10 magical candies and eat 3, how many candies do you have left?",
+                    "options": ["7", "13", "3", "10"],
+                    "correct_answer": "7",
+                    "explanation": "Subtracting the candies you ate from the original amount (10 - 3) leaves 7 candies.",
+                    "incorrect_explanation": {
+                      "13": "This is the result of adding instead of subtracting.",
+                      "3": "This is the number of candies eaten, not the number remaining.",
+                      "10": "This is the original number of candies, before any were eaten."
+                    }
+                  }
+                ],
+                "accompanying_text": "Test your understanding with this quiz!",
+                "image_description": null,
+                "video_details": null,
+                "pdf_description": null
+              }
+            }
+          ]
+        },
+        {
+          "topic_id": "topic_1_2",
+          "topic_title": "Addition and Subtraction Spells",
+          "learning_steps": [
+            {
+              "step_id": "step_1_2_1",
+              "step_title": "Adding Numbers: The Summons Spell!",
+              "material_type_suggestion": "youtube_video",
+              "content": {
+                "type": "youtube_video",
+                "content": null,
+                "video_details": {
+                  "title": "China-USA Multiplication Tricks",
+                  "description": "short #Shorts #trick #trending #China #USA #Multiplication.",
+                  "video_id": "Wkds7WSy0po",
+                  "url": "https://www.youtube.com/watch?v=Wkds7WSy0po",
+                  "thumbnail": "https://i.ytimg.com/vi/Wkds7WSy0po/hqdefault.jpg"
+                }
+              }
+            },
+            {
+              "step_id": "step_1_2_2",
+              "step_title": "Subtracting Numbers: The Banishing Spell!",
+              "material_type_suggestion": "text",
+              "content": {
+                "type": "text",
+                "content": "Hello Brian James! Welcome to the enchanting world of Addition and Subtraction Spells!  Today, we're tackling a particularly powerful incantation: **Subtracting Numbers: The Banishing Spell!**\n\nImagine you're a young wizard, bravely venturing through a mystical forest. You've discovered a chest overflowing with shimmering gemstones – 12 to be exact!  But, alas, mischievous sprites have decided to play a trick!  They've snatched away 5 of your precious gems. How many gems remain?  This, Brian James, is where our Banishing Spell comes in!\n\nSubtraction is like banishing unwanted things.  It's the magical process of taking away from a total. We use the minus sign (-) to represent this banishment.\n\nOur formula for the Banishing Spell is simple:\n\n**Total Number of Gems - Number of Gems Banished = Remaining Gems**\n\nIn our example:\n\n12 (Total Gems) - 5 (Gems Banished) = 7 (Remaining Gems)\n\nSo, you have 7 gems left!\n\nLet's look at some more examples to perfect your Banishing Spell:\n\n* **Example 1:** You start with 8 magical potions (Total). You use 3 potions (Banished).  How many are left?  8 - 3 = 5 potions.\n\n* **Example 2:**  A friendly griffin gave you 15 enchanted feathers (Total). You lose 7 feathers (Banished) in a strong wind.  How many do you have left? 15 - 7 = 8 feathers.\n\n* **Example 3:** Brian James, let's consider an example just for you. Imagine you had 20 gold coins (Total) and spent 12 on a magnificent enchanted sword (Banished). How many gold coins remain in your pouch? 20 - 12 = 8 gold coins.\n\n**Remember these key points about the Banishing Spell:**\n\n* **The bigger number always comes first.** This is like having more gems to start with before the sprites take some away.\n\n* **The minus sign (-) shows that we are taking away.** It’s the symbol of our Banishing spell.\n\n* **The answer is always less than the starting number.** After banishing some gems, you always have fewer than you began with.\n\nPracticing these examples will help you master the Banishing Spell, Brian James!  With enough practice, you’ll be banishing numbers like a seasoned wizard in no time.  Next, we'll explore more advanced Banishing Spells involving larger numbers and even borrowing from other magical sources – but that’s a spell for another day! Keep practicing, and you'll be a master of subtraction in no time!",
+                "accompanying_text": null,
+                "image_description": null,
+                "video_details": null,
+                "pdf_description": null
+              }
+            },
+            {
+              "step_id": "step_1_2_3",
+              "step_title": "Practice: Casting Addition and Subtraction Spells!",
+              "material_type_suggestion": "interactive_quiz_placeholder",
+              "content": {
+                "type": "interactive_quiz_placeholder",
+                "content": [
+                  {
+                    "monster_intro": "Hee hee... Hello Brian James. I am Vaporion, the spirit of the unseen! I’ve mastered the secrets of gases and vapors. Now, YOU must answer my question... or be turned into mist!",
+                    "question_text": "If I expand by 5 units and then contract by 2 units, what is my net change in size?",
+                    "options": ["-7 units", "3 units", "7 units", "-3 units"],
+                    "correct_answer": "3 units",
+                    "explanation": "Expanding by 5 units and contracting by 2 units means a net increase of 5 - 2 = 3 units.  Think of it like gaining 5 magical points and then losing 2.",
+                    "incorrect_explanation": {
+                      "-7 units": "This would be correct if you contracted by 5 and then expanded by 2.  You subtracted in the wrong order.",
+                      "7 units": "You added both numbers instead of subtracting the contraction from the expansion.",
+                      "-3 units": "You subtracted the expansion from the contraction instead of the other way around."
+                    }
+                  },
+                  {
+                    "monster_intro": "Greetings, Brian James, I am Subtrahendus, the shadowy lord of subtraction! I relish in taking away! Solve my riddle or face eternal diminishment!",
+                    "question_text": "A magical creature had 12 enchanted apples.  It ate 4. Then it found 3 more. How many apples does it now have?",
+                    "options": ["11", "9", "15", "5"],
+                    "correct_answer": "11",
+                    "explanation": "First, subtract 4 apples (12 - 4 = 8). Then, add the 3 newly found apples (8 + 3 = 11).",
+                    "incorrect_explanation": {
+                      "9": "You subtracted the 3 apples instead of adding them after eating 4.",
+                      "15": "You added the 4 and 3 apples without considering the subtraction.",
+                      "5": "You subtracted both 4 and 3 apples from the initial amount."
+                    }
+                  },
+                  {
+                    "monster_intro": "Ahoy there, Brian James! I'm Captain Addington, terror of the arithmetic seas!  Answer my question or walk the plank!",
+                    "question_text": "Imagine you have 17 gold coins and find a treasure chest containing 23 more.  How many gold coins do you have in total?",
+                    "options": ["16", "30", "40", "6"],
+                    "correct_answer": "40",
+                    "explanation": "You simply add the number of coins you initially had to the number you found: 17 + 23 = 40.",
+                    "incorrect_explanation": {
+                      "16": "This answer might arise from incorrectly subtracting one of the numbers instead of adding them.",
+                      "30": "It seems that a calculation error during the addition was made. Maybe one digit was misplaced?",
+                      "6": "This is a subtraction result, not an addition result."
+                    }
+                  },
+                  {
+                    "monster_intro": "Brian James, I am Numerius, the ever-shifting sandworm of sums!  My form changes constantly! Answer correctly to avoid becoming one with the desert!",
+                    "question_text": "If a wizard starts with 25 magic beans and loses 11, then gains 6, how many beans does he possess?",
+                    "options": ["10", "20", "32", "42"],
+                    "correct_answer": "20",
+                    "explanation": "First subtract the lost beans (25 - 11 = 14). Then, add the gained beans (14 + 6 = 20).",
+                    "incorrect_explanation": {
+                      "10": "It seems you subtracted the 6 instead of adding it.",
+                      "32": "You may have added all numbers together instead of following the order of operations.",
+                      "42": "You probably added the 11 instead of subtracting it."
+                    }
+                  },
+                  {
+                    "monster_intro": "Hello there, Brian James, I am Minuscule, the minuscule master of minus signs! My power is in the tiny details!  Solve my puzzle or be reduced to an atom!",
+                    "question_text": "A fairy starts with 3 flowers, loses 2, then gains 5 more. How many flowers does she have?",
+                    "options": ["0", "4", "6", "8"],
+                    "correct_answer": "6",
+                    "explanation": "First, subtract the lost flowers: 3 - 2 = 1. Then add the gained flowers: 1 + 5 = 6.",
+                    "incorrect_explanation": {
+                      "0": "You likely subtracted 5 instead of adding it to the remaining flowers.",
+                      "4": "You might have added and subtracted incorrectly.",
+                      "8": "You likely added both the 2 and 5 without considering the initial subtraction."
+                    }
+                  }
+                ],
+                "accompanying_text": "Test your understanding with this quiz!",
+                "image_description": null,
+                "video_details": null,
+                "pdf_description": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "section_2",
+      "section_title": "The Enchanted Forest of Multiplication and Division",
+      "topics": [
+        {
+          "topic_id": "topic_2_1",
+          "topic_title": "Multiplication: The Growth Charm",
+          "learning_steps": [
+            {
+              "step_id": "step_2_1_1",
+              "step_title": "Understanding Multiplication: Growing Magical Plants!",
+              "material_type_suggestion": "text_with_image",
+              "content": {
+                "type": "text_with_image",
+                "content": "Greetings, Brian James! Welcome to the enchanting world of Multiplication: The Growth Charm! Today, we're learning about growing magical plants, and the secret ingredient is... multiplication!  Imagine you have a magical seed that, when planted, sprouts three shimmering leaves.  That's one plant, and it has 3 leaves.  Now, let's say you plant *two* of these seeds. How many leaves will you have in total? That's where multiplication comes in!  We can represent this as 3 leaves/plant x 2 plants = 6 leaves. We are essentially adding the number of leaves from each plant together: 3 + 3 = 6.  Multiplication is a faster way to do repeated addition!  Think of it as a powerful spell that combines groups of things quickly. For instance, Brian James, imagine you have 5 magical flower pots, and each pot magically grows 4 beautiful blossoms. To find the total number of blossoms, we'd use multiplication: 5 pots x 4 blossoms/pot = 20 blossoms.  See how easily we found the total?  This 'Growth Charm', as we call multiplication, will help us quickly calculate the results of growing many magical plants!",
+                "accompanying_text": null,
+                "image_description": "The image should show two magical plant pots. Each pot has three shimmering, sprout-like leaves growing from it.  The leaves should have a slightly otherworldly, glowing quality to them. Above the pots, a larger number '6' should appear, encircled by a sparkling, magical effect, indicating the total number of leaves. The background could be a whimsical garden with other fantastical plants, further immersing Brian James in the magical learning experience.",
+                "video_details": null,
+                "pdf_description": null
+              }
+            },
+            {
+              "step_id": "step_2_1_2",
+              "step_title": "Multiplication Tables: Mastering the Growth Charm!",
+              "material_type_suggestion": "pdf_document",
+              "content": {
+                "error": "Failed to generate Multiplication Tables: Mastering the Growth Charm!"
+              }
+            }
+          ]
+        },
+        {
+          "topic_id": "topic_2_2",
+          "topic_title": "Division: The Shrinking Potion",
+          "learning_steps": [
+            {
+              "step_id": "step_2_2_1",
+              "step_title": "Understanding Division: Shrinking Giants!",
+              "material_type_suggestion": "youtube_video",
+              "content": {
+                "type": "youtube_video",
+                "content": null,
+                "video_details": {
+                  "title": "What Is Dandruff, Really? 🤔",
+                  "description": "",
+                  "video_id": "Ci-E_wGB04Y",
+                  "url": "https://www.youtube.com/watch?v=Ci-E_wGB04Y",
+                  "thumbnail": "https://i.ytimg.com/vi/Ci-E_wGB04Y/hqdefault.jpg"
+                }
+              }
+            },
+            {
+              "step_id": "step_2_2_2",
+              "step_title": "Practice: Brewing the Shrinking Potion!",
+              "material_type_suggestion": "interactive_quiz_placeholder",
+              "content": {
+                "type": "interactive_quiz_placeholder",
+                "content": [
+                  {
+                    "monster_intro": "Hee hee... Hello Brian James. I am Vaporion, the spirit of the unseen! I’ve mastered the secrets of gases and vapors. Now, YOU must answer my question... or be turned into mist!",
+                    "question_text": "If you shrink a 12-inch tall goblin by half, how tall will it be afterwards?",
+                    "options": [
+                      "6 inches",
+                      "24 inches",
+                      "3 inches",
+                      "12 inches"
+                    ],
+                    "correct_answer": "6 inches",
+                    "explanation": "Shrinking something by half means dividing its size by 2.  12 inches / 2 = 6 inches.  The goblin will now be a much more manageable size!",
+                    "incorrect_explanation": {
+                      "24 inches": "You've actually doubled the goblin's size, not shrunk it.  Remember, shrinking is division, not multiplication!",
+                      "3 inches": "You seem to have divided 12 by 4 instead of 2. Try focusing on the 'half' aspect of the shrinking.",
+                      "12 inches": "If the goblin was shrunk, its height would change.  You've described the goblin's height before any shrinking potion was applied."
+                    }
+                  },
+                  {
+                    "monster_intro": "Greetings, Brian James, I am Gnarlwood, guardian of the shrinking woods! My bark is as old as the oldest spell. Answer my riddle, or face the wrath of the shrinking vines!",
+                    "question_text": "A group of 20 mischievous pixies need to be divided into 4 equal groups for their mischief. How many pixies are in each group?",
+                    "options": [
+                      "5 pixies",
+                      "16 pixies",
+                      "24 pixies",
+                      "80 pixies"
+                    ],
+                    "correct_answer": "5 pixies",
+                    "explanation": "To find the number of pixies in each group, you divide the total number of pixies (20) by the number of groups (4). 20 / 4 = 5.",
+                    "incorrect_explanation": {
+                      "16 pixies": "You subtracted 4 from 20 instead of dividing.  Remember, we're splitting them into equal groups.",
+                      "24 pixies": "You added the numbers instead of dividing. Try dividing 20 by 4 to find the number of pixies in each group.",
+                      "80 pixies": "You multiplied 20 by 4 instead of dividing. Remember, we need to find out how many are in each smaller group."
+                    }
+                  },
+                  {
+                    "monster_intro": "Rattle, rattle... Brian James! I am the Cauldron Crawler, master of bubbling brews and shrinking solutions. Solve my problem or be trapped in my perpetual stew!",
+                    "question_text": "If you have 15 magic beans and you want to divide them equally among 3 friends, how many beans does each friend receive?",
+                    "options": ["3 beans", "5 beans", "45 beans", "12 beans"],
+                    "correct_answer": "5 beans",
+                    "explanation": "Divide the total number of beans (15) by the number of friends (3). 15 / 3 = 5. Each friend receives 5 magic beans!",
+                    "incorrect_explanation": {
+                      "3 beans": "You divided 15 by 5 instead of 3. You've got the right idea, but you chose the wrong divisor. ",
+                      "45 beans": "It seems you multiplied 15 by 3 instead of dividing.  Remember, we're sharing the beans.",
+                      "12 beans": "There's a small calculation error there, Brian James.  Let's try dividing 15 by 3 again."
+                    }
+                  },
+                  {
+                    "monster_intro": "Hello there, Brian James. I am Sir Reginald the Shrinking Knight, protector of the miniature realm! Answer my question correctly, or become a tiny squire!",
+                    "question_text": "A wizard has 28 enchanted acorns. He wants to plant them in 7 rows.  How many acorns will be in each row?",
+                    "options": [
+                      "21 acorns",
+                      "35 acorns",
+                      "4 acorns",
+                      "7 acorns"
+                    ],
+                    "correct_answer": "4 acorns",
+                    "explanation": "To determine the number of acorns in each row, divide the total number of acorns (28) by the number of rows (7). 28 / 7 = 4.",
+                    "incorrect_explanation": {
+                      "21 acorns": "You've subtracted 7 from 28 instead of dividing. Think about how to distribute the acorns evenly among the rows.",
+                      "35 acorns": "You multiplied 28 by 7 instead of dividing. Remember we are looking at how many acorns fit into each row.",
+                      "7 acorns": "You might have confused the total number of rows with the number of acorns per row.  Try dividing 28 by 7."
+                    }
+                  },
+                  {
+                    "monster_intro": "Brian James... I am the Potion Master, keeper of ancient recipes and shrinking secrets! Solve my puzzle, or become my next experiment!",
+                    "question_text": "If a 30-inch long dragon is shrunk to one-tenth of its size, how long will it be?",
+                    "options": [
+                      "3 inches",
+                      "300 inches",
+                      "10 inches",
+                      "20 inches"
+                    ],
+                    "correct_answer": "3 inches",
+                    "explanation": "Shrinking something to one-tenth means dividing its size by 10.  30 inches / 10 = 3 inches. The dragon is much smaller now!",
+                    "incorrect_explanation": {
+                      "300 inches": "You multiplied by 10 instead of dividing. Remember, shrinking makes things smaller!",
+                      "10 inches": "You've divided 30 by 3 instead of 10.  One-tenth is equivalent to dividing by 10.",
+                      "20 inches": "You seem to have subtracted 10 instead of dividing.  Remember, we are shrinking the dragon's length."
+                    }
+                  }
+                ],
+                "accompanying_text": "Test your understanding with this quiz!",
+                "image_description": null,
+                "video_details": null,
+                "pdf_description": null
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "section_3",
+      "section_title": "The Crystal Caves of Geometry",
+      "topics": [
+        {
+          "topic_id": "topic_3_1",
+          "topic_title": "Shapes and Patterns",
+          "learning_steps": [
+            {
+              "step_id": "step_3_1_1",
+              "step_title": "Exploring Basic Shapes: Discovering Crystal Caves!",
+              "material_type_suggestion": "text_with_image",
+              "content": {
+                "type": "text_with_image",
+                "content": "Greetings, Brian James! Welcome to the Crystal Caves, where the magic of shapes awaits!  Our journey begins with the most fundamental spells in the geometer's arsenal: basic shapes. These aren't just any shapes; they're the building blocks of everything we see in this enchanted realm – from shimmering stalactites to the mysterious pathways leading deeper into the cave.  Think of them as the magical runes that create all the wonders around us.\n\nFirst, we have the **circle**, a perfectly round shape, like a mystical sunstone.  Then, there's the **square**, with its four equal sides and four right angles – imagine a sturdy, magical chest protecting ancient treasures. Next, the **triangle**, a shape with three sides, often found in the patterns on enchanted crystals.  Triangles can be different shapes, some pointy, some wide. Finally, we have the **rectangle**, a shape similar to a square, except its sides aren’t all the same length. Think of it as a magically stretched square, perfect for creating sprawling caverns.  These four shapes – circle, square, triangle, and rectangle – are our essential shapes. Mastering them is the key to understanding the more complex patterns and structures that lie ahead in our magical expedition.  Learning about them is like learning the basic spells, Brian James, before tackling more challenging enchantments. For instance, Brian James, imagine using these shapes to draw a map of the Crystal Caves – a triangle for a sharp turn in the passage, a rectangle for a long hallway, and a circle to represent a large chamber filled with glittering crystals.",
+                "accompanying_text": null,
+                "image_description": "A whimsical illustration depicting a cross-section of a Crystal Cave.  The walls are adorned with glowing crystals forming simple shapes: a large circle in the center representing a cavern's opening, squares and rectangles forming the cave walls and pathways, and various triangles decorating the crystal formations.  The colors are vibrant and fantastical, with shimmering blues, purples, and greens.  Small, friendly-looking magical creatures could be seen exploring the cave, perhaps pointing out the shapes to the viewer, giving a clear visual representation of the basic shapes discussed in the explanation.",
+                "video_details": null,
+                "pdf_description": null
+              }
+            },
+            {
+              "step_id": "step_3_1_2",
+              "step_title": "Identifying Shapes in Nature: Finding Magical Crystals!",
+              "material_type_suggestion": "youtube_video",
+              "content": {
+                "type": "youtube_video",
+                "content": null,
+                "video_details": {
+                  "title": "DIY Custom Slides 🤩💖 #shorts #diy #art #tutorial #artist #craft #drawing #crafts #painting",
+                  "description": "",
+                  "video_id": "UrgmhDDlJeE",
+                  "url": "https://www.youtube.com/watch?v=UrgmhDDlJeE",
+                  "thumbnail": "https://i.ytimg.com/vi/UrgmhDDlJeE/hqdefault.jpg"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

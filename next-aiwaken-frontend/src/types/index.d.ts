@@ -175,6 +175,8 @@ declare global {
   }
 
   interface QuizQuestion {
+    monster_intro: string;
+    incorrect_explanation: Record<string, string>;
     question_text: string;
     options: string[];
     correct_answer: string;
